@@ -2484,11 +2484,926 @@ Creating the project structure and core files:
 
 <details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\version.py</summary>
 
-Status: **loading**
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\compat.py</summary>
 
 </details>
 
 </tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\atomic_data_manager\ui\preferences_ui.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Creating the main `__init__.py` with property groups and the ops/ui structure:
+
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ops\__init__.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ui\__init__.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\__init__.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="task" data-tool-name="todo_write">
+<details><summary>Tool use: **todo_write** • Todo List</summary>
+
+- [x] Create project structure: __init__.py, blender_manifest.toml, config.py, and directory structure (ops/, ui/, utils/)
+- [x] Implement utils/version.py and utils/compat.py for multi-version Blender support
+- [x] Create property groups in __init__.py for submit settings
+- [-] Convert pack.py logic to ops/pack_ops.py with operators for copy-only and pack-and-save workflows
+- [ ] Create ops/submit_ops.py for SheepIt API integration and submission
+- [ ] Create ui/output_panel.py with all UI elements (frame range, compute method, checkboxes, advanced options, submission buttons)
+- [ ] Create ui/preferences_ui.py for SheepIt authentication (username, password/render key)
+- [ ] Create .github/workflows/release.yml for GitHub releases
+
+</details>
+</tool-use>
+
+---
+
+
+Creating `pack_ops.py` by extracting core logic from `pack.py`. Reviewing key sections:
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\pack.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\pack.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Creating `pack_ops.py` with core packing logic extracted from `pack.py`:
+
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ops\pack_ops.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+
+Adding the `pack_output_path` property to the property group:
+
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\__init__.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ops\submit_ops.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="task" data-tool-name="todo_write">
+<details><summary>Tool use: **todo_write** • Todo List</summary>
+
+- [x] Create project structure: __init__.py, blender_manifest.toml, config.py, and directory structure (ops/, ui/, utils/)
+- [x] Implement utils/version.py and utils/compat.py for multi-version Blender support
+- [x] Create property groups in __init__.py for submit settings
+- [x] Convert pack.py logic to ops/pack_ops.py with operators for copy-only and pack-and-save workflows
+- [x] Create ops/submit_ops.py for SheepIt API integration and submission
+- [-] Create ui/output_panel.py with all UI elements (frame range, compute method, checkboxes, advanced options, submission buttons)
+- [ ] Create ui/preferences_ui.py for SheepIt authentication (username, password/render key)
+- [ ] Create .github/workflows/release.yml for GitHub releases
+
+</details>
+</tool-use>
+
+---
+
+
+Creating the output panel UI:
+
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ui\output_panel.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ui\preferences_ui.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="task" data-tool-name="todo_write">
+<details><summary>Tool use: **todo_write** • Todo List</summary>
+
+- [x] Create project structure: __init__.py, blender_manifest.toml, config.py, and directory structure (ops/, ui/, utils/)
+- [x] Implement utils/version.py and utils/compat.py for multi-version Blender support
+- [x] Create property groups in __init__.py for submit settings
+- [x] Convert pack.py logic to ops/pack_ops.py with operators for copy-only and pack-and-save workflows
+- [x] Create ops/submit_ops.py for SheepIt API integration and submission
+- [x] Create ui/output_panel.py with all UI elements (frame range, compute method, checkboxes, advanced options, submission buttons)
+- [x] Create ui/preferences_ui.py for SheepIt authentication (username, password/render key)
+- [-] Create .github/workflows/release.yml for GitHub releases
+
+</details>
+</tool-use>
+
+---
+
+
+Creating the GitHub release workflow:
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\atomic_data_manager\.github\workflows\release.yml</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\.github\workflows\release.yml</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="task" data-tool-name="todo_write">
+<details><summary>Tool use: **todo_write** • Todo List</summary>
+
+- [x] Create project structure: __init__.py, blender_manifest.toml, config.py, and directory structure (ops/, ui/, utils/)
+- [x] Implement utils/version.py and utils/compat.py for multi-version Blender support
+- [x] Create property groups in __init__.py for submit settings
+- [x] Convert pack.py logic to ops/pack_ops.py with operators for copy-only and pack-and-save workflows
+- [x] Create ops/submit_ops.py for SheepIt API integration and submission
+- [x] Create ui/output_panel.py with all UI elements (frame range, compute method, checkboxes, advanced options, submission buttons)
+- [x] Create ui/preferences_ui.py for SheepIt authentication (username, password/render key)
+- [x] Create .github/workflows/release.yml for GitHub releases
+
+</details>
+</tool-use>
+
+---
+
+
+Checking for issues and fixing any problems:
+
+
+---
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints">
+<details>
+<summary>Tool use: **read_lints**</summary>
+
+
+Parameters:
+
+```json
+{
+  "paths": [
+    "D:\\sheepit_project_submitter"
+  ]
+}
+```
+Result:
+
+```json
+{
+  "linterErrorsByFile": [
+    {
+      "relativeWorkspacePath": "D:\\sheepit_project_submitter"
+    }
+  ]
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\ops\pack_ops.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Fixing a few issues and improving the code:
+
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ui\output_panel.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ops\submit_ops.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\__init__.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\__init__.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\batter\__init__.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Updating the property group to initialize frame range from scene settings:
+
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\__init__.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ui\output_panel.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+
+Fixing the frame range sync approach:
+
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\__init__.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ui\output_panel.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+
+Verifying the structure and fixing the batter import path:
+
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ops\pack_ops.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="unknown" data-tool-name="list_dir_v2">
+<details>
+<summary>Tool use: **list_dir_v2**</summary>
+
+
+Parameters:
+
+```json
+{
+  "targetDirectory": "D:\\sheepit_project_submitter"
+}
+```
+Result:
+
+```json
+{
+  "directoryTreeRoot": {
+    "absPath": "D:\\sheepit_project_submitter",
+    "childrenDirs": [
+      {
+        "absPath": "D:\\sheepit_project_submitter\\.github",
+        "childrenDirs": [
+          {
+            "absPath": "D:\\sheepit_project_submitter\\.github\\workflows",
+            "childrenFiles": [
+              {
+                "name": "release.yml"
+              }
+            ],
+            "childrenWereProcessed": true
+          }
+        ],
+        "childrenWereProcessed": true
+      },
+      {
+        "absPath": "D:\\sheepit_project_submitter\\.specstory",
+        "childrenDirs": [
+          {
+            "absPath": "D:\\sheepit_project_submitter\\.specstory\\history",
+            "childrenFiles": [
+              {
+                "name": "2026-01-21_21-39Z-sheepit-blender-addon-development.md"
+              }
+            ],
+            "childrenWereProcessed": true
+          }
+        ],
+        "childrenFiles": [
+          {
+            "name": ".gitignore"
+          }
+        ],
+        "childrenWereProcessed": true
+      },
+      {
+        "absPath": "D:\\sheepit_project_submitter\\batter",
+        "childrenFiles": [
+          {
+            "name": "__init__.py"
+          },
+          {
+            "name": "asset_usage_test.py"
+          },
+          {
+            "name": "asset_usage.py"
+          }
+        ],
+        "childrenWereProcessed": true
+      },
+      {
+        "absPath": "D:\\sheepit_project_submitter\\ops",
+        "childrenFiles": [
+          {
+            "name": "__init__.py"
+          },
+          {
+            "name": "pack_ops.py"
+          },
+          {
+            "name": "submit_ops.py"
+          }
+        ],
+        "childrenWereProcessed": true
+      },
+      {
+        "absPath": "D:\\sheepit_project_submitter\\ui",
+        "childrenFiles": [
+          {
+            "name": "__init__.py"
+          },
+          {
+            "name": "output_panel.py"
+          },
+          {
+            "name": "preferences_ui.py"
+          }
+        ],
+        "childrenWereProcessed": true
+      },
+      {
+        "absPath": "D:\\sheepit_project_submitter\\utils",
+        "childrenFiles": [
+          {
+            "name": "__init__.py"
+          },
+          {
+            "name": "compat.py"
+          },
+          {
+            "name": "version.py"
+          }
+        ],
+        "childrenWereProcessed": true
+      }
+    ],
+    "childrenFiles": [
+      {
+        "name": "__init__.py"
+      },
+      {
+        "name": ".cursorindexingignore"
+      },
+      {
+        "name": ".gitignore"
+      },
+      {
+        "name": "blender_manifest.toml"
+      },
+      {
+        "name": "config.py"
+      },
+      {
+        "name": "listdeps.py"
+      },
+      {
+        "name": "pack.bat"
+      },
+      {
+        "name": "pack.py"
+      },
+      {
+        "name": "poetry.lock"
+      },
+      {
+        "name": "pyproject.toml"
+      },
+      {
+        "name": "README.md"
+      },
+      {
+        "name": "testrunner.py"
+      }
+    ],
+    "childrenWereProcessed": true
+  }
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+---
+
+
+Verifying the final structure and ensuring everything is connected:
+
+
+---
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "pattern": "bl_idname.*sheepit",
+  "path": "D:\\sheepit_project_submitter",
+  "caseInsensitive": false
+}
+```
+Result:
+
+```json
+{
+  "success": {
+    "pattern": "bl_idname.*sheepit",
+    "path": "D:\\sheepit_project_submitter",
+    "outputMode": "content",
+    "workspaceResults": {
+      "D:\\sheepit_project_submitter": {
+        "content": {
+          "matches": [
+            {
+              "file": ".\\ops\\pack_ops.py",
+              "matches": [
+                {
+                  "lineNumber": 461,
+                  "content": "    bl_idname = \"sheepit.pack_copy_only\""
+                },
+                {
+                  "lineNumber": 479,
+                  "content": "    bl_idname = \"sheepit.pack_and_save\""
+                }
+              ]
+            },
+            {
+              "file": ".\\ops\\submit_ops.py",
+              "matches": [
+                {
+                  "lineNumber": 18,
+                  "content": "    bl_idname = \"sheepit.submit_project\""
+                }
+              ]
+            },
+            {
+              "file": ".\\ui\\preferences_ui.py",
+              "matches": [
+                {
+                  "lineNumber": 15,
+                  "content": "    bl_idname = \"sheepit.test_connection\""
+                }
+              ]
+            }
+          ],
+          "totalLines": 4,
+          "totalMatchedLines": 4
+        }
+      }
+    }
+  }
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\ops\pack_ops.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+## Implementation complete
+
+### Project structure
+- Core files: `__init__.py`, `blender_manifest.toml`, `config.py`
+- Directories: `ops/`, `ui/`, `utils/`
+- GitHub workflow: `.github/workflows/release.yml`
+
+### Features implemented
+
+1. Multi-version support (`utils/version.py`, `utils/compat.py`)
+   - Supports Blender 2.7x through 5.0+
+   - Version detection and compatibility functions
+
+2. Property groups (`__init__.py`)
+   - Frame range (full/custom with start/end/step)
+   - Compute method (CPU/GPU)
+   - Renderable by all members checkbox
+   - Generate MP4 checkbox
+   - Advanced options (memory used MB)
+   - Pack output path storage
+
+3. Packing operations (`ops/pack_ops.py`)
+   - `SHEEPIT_OT_pack_copy_only` - Copy-only workflow (ZIP submission)
+   - `SHEEPIT_OT_pack_and_save` - Pack-and-save workflow (Blend submission)
+   - Both output to temporary directories
+   - Integrates with `batter/asset_usage.py`
+   - Handles NLA tracks, library remapping, and asset packing
+
+4. Submission operations (`ops/submit_ops.py`)
+   - `SHEEPIT_OT_submit_project` - Main submission operator
+   - Creates ZIP files when needed
+   - Placeholder for API integration (needs research from SheepIt GitLab)
+
+5. UI panel (`ui/output_panel.py`)
+   - Located in Output tab (like Flamenco)
+   - Frame range selector (full/custom)
+   - Compute method selector (CPU/GPU)
+   - Checkboxes for options
+   - Collapsible advanced options
+   - Submission buttons with icons
+
+6. Preferences (`ui/preferences_ui.py`)
+   - Username field
+   - Password field (hidden)
+   - Render Key option (toggle)
+   - Test connection button
+   - Help text about Render Keys
+
+### Notes
+- The SheepIt API integration is a placeholder and needs implementation after researching their GitLab repository endpoints.
+- The addon follows the structure of your `atomic_data_manager` addon.
+- All operators, panels, and preferences are registered and should work in Blender.
+
+The addon is ready for testing. You can install it in Blender and configure your SheepIt credentials in the preferences panel.
+
+---
+
+_**User**_
+
+Minimum supported on sheepit is bl3.0. https://www.sheepit-renderfarm.com/home/binaries 
+
+---
+
+_**Agent (model default, mode Agent)**_
+
+
+Confirming the minimum is Blender 3.0. Verifying the code reflects this and supports the full range (3.0–5.0):
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\blender_manifest.toml</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\utils\version.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "pattern": "2\\.7|2\\.8",
+  "path": "D:\\sheepit_project_submitter",
+  "caseInsensitive": false
+}
+```
+Result:
+
+```json
+{
+  "success": {
+    "pattern": "2\\.7|2\\.8",
+    "path": "D:\\sheepit_project_submitter",
+    "outputMode": "content",
+    "workspaceResults": {
+      "D:\\sheepit_project_submitter": {
+        "content": {
+          "matches": [
+            {
+              "file": ".\\utils\\compat.py",
+              "matches": [
+                {
+                  "lineNumber": 3,
+                  "content": "Supports full SheepIt range: 2.7x, 2.8x, 3.x, 4.0, 4.1, 4.2, 4.3, 4.4, 4.5, 5.0+"
+                }
+              ]
+            },
+            {
+              "file": ".\\utils\\version.py",
+              "matches": [
+                {
+                  "lineNumber": 3,
+                  "content": "Supports full SheepIt range: 2.7x, 2.8x, 3.x, 4.0, 4.1, 4.2, 4.3, 4.4, 4.5, 5.0+"
+                },
+                {
+                  "lineNumber": 68,
+                  "content": "    \"\"\"Check if running Blender 2.7x.\"\"\""
+                },
+                {
+                  "lineNumber": 74,
+                  "content": "    \"\"\"Check if running Blender 2.8x.\"\"\""
+                },
+                {
+                  "lineNumber": 126,
+                  "content": "        str: Version category like '2.7', '2.8', '3.x', '4.0', '4.1', '4.2', '4.3', '4.4', '4.5', or '5.0+'"
+                },
+                {
+                  "lineNumber": 133,
+                  "content": "            return '2.7'"
+                },
+                {
+                  "lineNumber": 135,
+                  "content": "            return '2.8'"
+                }
+              ]
+            },
+            {
+              "file": ".\\.specstory\\history\\2026-01-21_21-39Z-sheepit-blender-addon-development.md",
+              "matches": [
+                {
+                  "lineNumber": 381,
+                  "content": "| Web Search Results |  | Here are the Blender versions for which SheepIt Render Farm provides binaries, along with related support notes as of the latest updates:&lt;br/&gt;&lt;br/&gt;---&lt;br/&gt;&lt;br/&gt;## Supported Blender Versions&lt;br/&gt;&lt;br/&gt;SheepIt has added support for many recent versions of Blender. As of late 2025, the following versions are confirmed supported:&lt;br/&gt;&lt;br/&gt;- Blender 5.0 ([api.sheepit-renderfarm.com](https://api.sheepit-renderfarm.com/?utm_source=openai))  &lt;br/&gt;- Blender 4.5 ([sheepit-renderfarm.com](https://www.sheepit-renderfarm.com/news/1752592508?utm_source=openai))  &lt;br/&gt;- Blender 4.4 ([sheepit-renderfarm.com](https://www.sheepit-renderfarm.com/news/1742333030?utm_source=openai))  &lt;br/&gt;- Blender 4.3 ([sheepit-renderfarm.com](https://www.sheepit-renderfarm.com/?utm_source=openai))  &lt;br/&gt;- Blender 4.2 ([sandbox.sheepit-renderfarm.com](https://sandbox.sheepit-renderfarm.com/news/1721298849?utm_source=openai))  &lt;br/&gt;- Blender 4.1 ([sheepit-renderfarm.com](https://www.sheepit-renderf [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 2373,
+                  "content": "  \"plan\": \"# SheepIt Project Submitter Addon Plan\\n\\n## Overview\\nRepurpose the Batter (Bat v2.0) project into a Blender addon that packs files and submits them to SheepIt render farm. The addon will follow the structure of &amp;#96;atomic_data_manager&amp;#96; with &amp;#96;ops/&amp;#96;, &amp;#96;ui/&amp;#96;, &amp;#96;utils/&amp;#96;, and GitHub release workflow.\\n\\n## Project Structure\\n\\n### Core Files\\n- &amp;#96;__init__.py&amp;#96; - Main addon registration, property groups\\n- &amp;#96;blender_manifest.toml&amp;#96; - Addon metadata (name, version, Blender version support)\\n- &amp;#96;config.py&amp;#96; - Configuration constants\\n- &amp;#96;.github/workflows/release.yml&amp;#96; - GitHub Actions release workflow\\n\\n### Directory Structure\\n&amp;#96;&amp;#96;&amp;#96;\\nsheepit_project_submitter/\\n├── __init__.py\\n├── blender_manifest.toml\\n├── config.py\\n├── ops/\\n│   ├── __init__.py\\n│   ├── pack_ops.py          # Packing operations (from pack.py)\\n│   └── submit_ops.py         # SheepIt submission operations\\n├── ui/\\n│   ├── __init__.py\\n│   ├── outp [... omitted end of long line]"
+                }
+              ]
+            }
+          ],
+          "totalLines": 9,
+          "totalMatchedLines": 9
+        }
+      }
+    }
+  }
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+---
+
+
+Updating version utilities to reflect the correct minimum (3.0) and remove 2.7x/2.8x references:
+
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\version.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\version.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\version.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\compat.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+
+Verifying the version utilities support the full range:
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\utils\version.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Updated the version utilities to reflect the correct minimum. Changes:
+
+1. **Updated `blender_manifest.toml`** — already set to `3.0.0` (correct)
+2. **Updated docstrings** in `utils/version.py` and `utils/compat.py` — removed references to 2.7x/2.8x and noted minimum 3.0
+3. **Removed obsolete functions** — removed `is_version_2_7x()` and `is_version_2_8x()`
+4. **Updated `get_version_category()`** — removed 2.7/2.8 handling
+
+The addon now supports Blender 3.0 through 5.0+, matching SheepIt's supported range per [their binaries page](https://www.sheepit-renderfarm.com/home/binaries):
+- 3.0, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6
+- 4.0, 4.1, 4.2, 4.3, 4.4, 4.5
+- 5.0+
+
+The version detection functions (`is_version_3_x()`, `is_version_4_0()`, etc.) cover this range.
 
 ---
 
