@@ -3214,7 +3214,6 @@ Minimum supported on sheepit is bl3.0. https://www.sheepit-renderfarm.com/home/b
 
 _**Agent (model default, mode Agent)**_
 
-
 Confirming the minimum is Blender 3.0. Verifying the code reflects this and supports the full range (3.0–5.0):
 
 
@@ -3250,76 +3249,30 @@ Parameters:
   "caseInsensitive": false
 }
 ```
-Result:
+Additional data:
 
 ```json
 {
-  "success": {
-    "pattern": "2\\.7|2\\.8",
-    "path": "D:\\sheepit_project_submitter",
-    "outputMode": "content",
-    "workspaceResults": {
-      "D:\\sheepit_project_submitter": {
-        "content": {
-          "matches": [
-            {
-              "file": ".\\utils\\compat.py",
-              "matches": [
-                {
-                  "lineNumber": 3,
-                  "content": "Supports full SheepIt range: 2.7x, 2.8x, 3.x, 4.0, 4.1, 4.2, 4.3, 4.4, 4.5, 5.0+"
-                }
-              ]
-            },
-            {
-              "file": ".\\utils\\version.py",
-              "matches": [
-                {
-                  "lineNumber": 3,
-                  "content": "Supports full SheepIt range: 2.7x, 2.8x, 3.x, 4.0, 4.1, 4.2, 4.3, 4.4, 4.5, 5.0+"
-                },
-                {
-                  "lineNumber": 68,
-                  "content": "    \"\"\"Check if running Blender 2.7x.\"\"\""
-                },
-                {
-                  "lineNumber": 74,
-                  "content": "    \"\"\"Check if running Blender 2.8x.\"\"\""
-                },
-                {
-                  "lineNumber": 126,
-                  "content": "        str: Version category like '2.7', '2.8', '3.x', '4.0', '4.1', '4.2', '4.3', '4.4', '4.5', or '5.0+'"
-                },
-                {
-                  "lineNumber": 133,
-                  "content": "            return '2.7'"
-                },
-                {
-                  "lineNumber": 135,
-                  "content": "            return '2.8'"
-                }
-              ]
-            },
-            {
-              "file": ".\\.specstory\\history\\2026-01-21_21-39Z-sheepit-blender-addon-development.md",
-              "matches": [
-                {
-                  "lineNumber": 381,
-                  "content": "| Web Search Results |  | Here are the Blender versions for which SheepIt Render Farm provides binaries, along with related support notes as of the latest updates:&lt;br/&gt;&lt;br/&gt;---&lt;br/&gt;&lt;br/&gt;## Supported Blender Versions&lt;br/&gt;&lt;br/&gt;SheepIt has added support for many recent versions of Blender. As of late 2025, the following versions are confirmed supported:&lt;br/&gt;&lt;br/&gt;- Blender 5.0 ([api.sheepit-renderfarm.com](https://api.sheepit-renderfarm.com/?utm_source=openai))  &lt;br/&gt;- Blender 4.5 ([sheepit-renderfarm.com](https://www.sheepit-renderfarm.com/news/1752592508?utm_source=openai))  &lt;br/&gt;- Blender 4.4 ([sheepit-renderfarm.com](https://www.sheepit-renderfarm.com/news/1742333030?utm_source=openai))  &lt;br/&gt;- Blender 4.3 ([sheepit-renderfarm.com](https://www.sheepit-renderfarm.com/?utm_source=openai))  &lt;br/&gt;- Blender 4.2 ([sandbox.sheepit-renderfarm.com](https://sandbox.sheepit-renderfarm.com/news/1721298849?utm_source=openai))  &lt;br/&gt;- Blender 4.1 ([sheepit-renderfarm.com](https://www.sheepit-renderf [... omitted end of long line]"
-                },
-                {
-                  "lineNumber": 2373,
-                  "content": "  \"plan\": \"# SheepIt Project Submitter Addon Plan\\n\\n## Overview\\nRepurpose the Batter (Bat v2.0) project into a Blender addon that packs files and submits them to SheepIt render farm. The addon will follow the structure of &amp;#96;atomic_data_manager&amp;#96; with &amp;#96;ops/&amp;#96;, &amp;#96;ui/&amp;#96;, &amp;#96;utils/&amp;#96;, and GitHub release workflow.\\n\\n## Project Structure\\n\\n### Core Files\\n- &amp;#96;__init__.py&amp;#96; - Main addon registration, property groups\\n- &amp;#96;blender_manifest.toml&amp;#96; - Addon metadata (name, version, Blender version support)\\n- &amp;#96;config.py&amp;#96; - Configuration constants\\n- &amp;#96;.github/workflows/release.yml&amp;#96; - GitHub Actions release workflow\\n\\n### Directory Structure\\n&amp;#96;&amp;#96;&amp;#96;\\nsheepit_project_submitter/\\n├── __init__.py\\n├── blender_manifest.toml\\n├── config.py\\n├── ops/\\n│   ├── __init__.py\\n│   ├── pack_ops.py          # Packing operations (from pack.py)\\n│   └── submit_ops.py         # SheepIt submission operations\\n├── ui/\\n│   ├── __init__.py\\n│   ├── outp [... omitted end of long line]"
-                }
-              ]
-            }
-          ],
-          "totalLines": 9,
-          "totalMatchedLines": 9
-        }
-      }
+  "isPruned": true,
+  "pattern": "2\\.7|2\\.8",
+  "path": "D:\\sheepit_project_submitter",
+  "outputMode": "content",
+  "totalFiles": 3,
+  "totalMatches": 9,
+  "topFiles": [
+    {
+      "uri": ".\\utils\\compat.py",
+      "matchCount": 1
+    },
+    {
+      "uri": ".\\utils\\version.py",
+      "matchCount": 6
+    },
+    {
+      "uri": ".\\.specstory\\history\\2026-01-21_21-39Z-sheepit-blender-addon-development.md",
+      "matchCount": 2
     }
-  }
+  ]
 }
 ```
 Status: **completed**
@@ -3329,7 +3282,6 @@ Status: **completed**
 </tool-use>
 
 ---
-
 
 Updating version utilities to reflect the correct minimum (3.0) and remove 2.7x/2.8x references:
 
@@ -3376,7 +3328,6 @@ Updating version utilities to reflect the correct minimum (3.0) and remove 2.7x/
 
 ---
 
-
 Verifying the version utilities support the full range:
 
 
@@ -3389,7 +3340,6 @@ Verifying the version utilities support the full range:
 </tool-use>
 
 ---
-
 
 Updated the version utilities to reflect the correct minimum. Changes:
 
@@ -4273,7 +4223,808 @@ Bootstrap integration matches atomic_data_manager. Summary:
    ui.unregister()
    ops.unregister()
    ```
-   ✓ Called first in unregister(), same as at
+   ✓ Called first in unregister(), same as atomic_data_manager
+
+4. **Bootstrap file**: Identical to atomic_data_manager's version
+
+5. **GitHub workflow**: Includes `rainys_repo_bootstrap.py` in the release package
+
+## Summary
+
+The bootstrap is integrated correctly and follows the same pattern as atomic_data_manager. It will:
+- Register the Rainy's Extensions repository when the addon is enabled
+- Reset the bootstrap guard when the addon is disabled
+- Handle context restrictions and deferred execution
+- Work across multiple Blender versions
+
+The integration is complete and should work as expected.
+
+---
+
+_**User**_
+
+addon preferences still aren't being drawn
+
+---
+
+_**Agent (model default, mode Agent)**_
+
+
+Checking how atomic_data_manager registers preferences and comparing with our implementation:
+
+
+---
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "pattern": "AddonPreferences|bl_idname.*preferences",
+  "path": "D:\\atomic_data_manager",
+  "caseInsensitive": false
+}
+```
+Result:
+
+```json
+{
+  "success": {
+    "pattern": "AddonPreferences|bl_idname.*preferences",
+    "path": "D:\\atomic_data_manager",
+    "outputMode": "content",
+    "workspaceResults": {
+      "d:\\sheepit_project_submitter": {
+        "content": {
+          "matches": [
+            {
+              "file": "..\\atomic_data_manager\\.specstory\\history\\2025-12-18_18-37Z-blender-library-packed-files-error.md",
+              "matches": [
+                {
+                  "lineNumber": 161319,
+                  "content": "        \"contents\": \"def _get_addon_prefs():\\n    # robustly find our AddonPreferences instance regardless of module name\\n    prefs = bpy.context.preferences\\n    for addon in prefs.addons.values():\\n        ap = getattr(addon, \\\"preferences\\\", None)\\n        if ap and hasattr(ap, \\\"bl_idname\\\") and ap.bl_idname == ATOMIC_PT_preferences_panel.bl_idname:\\n            return ap\\n        # fallback: match by known property\\n        if ap and hasattr(ap, \\\"enable_missing_file_warning\\\"):\\n            return ap\\n    return None\\n\\n\\ndef _save_after_pref_change():\\n    \\\"\\\"\\\"\\n    Persist user preferences after programmatic updates.\\n    \\\"\\\"\\\"\","
+                },
+                {
+                  "lineNumber": 161328,
+                  "content": "            \"text\": \"    # robustly find our AddonPreferences instance regardless of module name\","
+                },
+                {
+                  "lineNumber": 161345,
+                  "content": "            \"text\": \"        if ap and hasattr(ap, \\\"bl_idname\\\") and ap.bl_idname == ATOMIC_PT_preferences_panel.bl_idname:\","
+                },
+                {
+                  "lineNumber": 161860,
+                  "content": "        \"contents\": \"# updater removed in Blender 4.5 extension format\\n\\n# Get the root module name dynamically\\ndef _get_addon_module_name():\\n    \\\"\\\"\\\"Get the root addon module name for bl_idname.\\\"\\\"\\\"\\n    # In Blender 5.0 extensions loaded via VSCode, the module name is the full path\\n    # e.g., \\\"bl_ext.vscode_development.atomic_data_manager\\\"\\n    # We need to get it from the parent package (atomic_data_manager)\\n    try:\\n        # Get parent package name from __package__ (remove .ui suffix)\\n        if __package__:\\n            parent_pkg = __package__.rsplit('.', 1)[0] if '.' in __package__ else __package__\\n            # Get the actual module from sys.modules to get its __name__\\n            parent_module = sys.modules.get(parent_pkg)\\n            if parent_module and hasattr(parent_module, '__name__'):\\n                module_name = parent_module.__name__\\n                config.debug_print(f\\\"[Atomic Debug] Using parent module __name__ as bl_idname: {module_name}\\\")\\n   [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 161992,
+                  "content": "            \"text\": \"    # robustly find our AddonPreferences instance regardless of module name\","
+                },
+                {
+                  "lineNumber": 162853,
+                  "content": "        \"contents\": \"# Atomic Data Manager Preference Panel UI\\nclass ATOMIC_PT_preferences_panel(bpy.types.AddonPreferences):\\n    # bl_idname must match the add-on's module name exactly\\n    # Get it dynamically to ensure it matches what Blender registered\\n    bl_idname = _get_addon_module_name()\\n\\n    # visible atomic preferences\\n    enable_missing_file_warning: bpy.props.BoolProperty(\\n        description=\\\"Display a warning on startup if Atomic detects \\\"\\n                    \\\"missing files in your project\\\",\\n        default=True\\n    )\\n\\n    include_fake_users: bpy.props.BoolProperty(\\n        description=\\\"Include data-blocks with only fake users in unused \\\"\\n                    \\\"data detection\\\",\\n        default=False\\n    )\\n\\n    enable_pie_menu_ui: bpy.props.BoolProperty(\\n        description=\\\"Enable the Atomic pie menu UI, so you can clean \\\"\\n                    \\\"your project from anywhere.\\\",\\n        default=True,\\n        update=update_pie_menu_hotkeys\\n    ) [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 162861,
+                  "content": "            \"text\": \"class ATOMIC_PT_preferences_panel(bpy.types.AddonPreferences):\","
+                }
+              ]
+            },
+            {
+              "file": "..\\atomic_data_manager\\ui\\preferences_ui.py",
+              "matches": [
+                {
+                  "lineNumber": 64,
+                  "content": "    # robustly find our AddonPreferences instance regardless of module name"
+                },
+                {
+                  "lineNumber": 68,
+                  "content": "        if ap and hasattr(ap, \"bl_idname\") and ap.bl_idname == ATOMIC_PT_preferences_panel.bl_idname:"
+                },
+                {
+                  "lineNumber": 227,
+                  "content": "class ATOMIC_PT_preferences_panel(bpy.types.AddonPreferences):"
+                }
+              ]
+            },
+            {
+              "file": "..\\atomic_data_manager\\utils\\compat.py",
+              "matches": [
+                {
+                  "lineNumber": 54,
+                  "content": "        AddonPreferences or None: The addon preferences instance if found"
+                }
+              ]
+            },
+            {
+              "file": "..\\atomic_data_manager\\.specstory\\history\\2025-12-16_23-24Z-blender-library-packed-files-error.md",
+              "matches": [
+                {
+                  "lineNumber": 4959,
+                  "content": "        \"contents\": \"def get_addon_prefs():\\n    \\\"\\\"\\\"\\n    Get the addon preferences instance, compatible across versions.\\n    \\n    Returns:\\n        AddonPreferences or None: The addon preferences instance if found\\n    \\\"\\\"\\\"\\n    prefs = bpy.context.preferences\\n    for addon in prefs.addons.values():\\n        ap = getattr(addon, \\\"preferences\\\", None)\\n        if ap and hasattr(ap, \\\"enable_missing_file_warning\\\"):\\n            return ap\\n    return None\\n\\n\\ndef get_geometry_nodes_modifier_node_group(modifier):\\n    \\\"\\\"\\\"\","
+                },
+                {
+                  "lineNumber": 4984,
+                  "content": "            \"text\": \"        AddonPreferences or None: The addon preferences instance if found\","
+                },
+                {
+                  "lineNumber": 9659,
+                  "content": "        \"contents\": \"def get_addon_prefs():\\n    \\\"\\\"\\\"\\n    Get the addon preferences instance, compatible across versions.\\n    \\n    Returns:\\n        AddonPreferences or None: The addon preferences instance if found\\n    \\\"\\\"\\\"\\n    prefs = bpy.context.preferences\\n    for addon in prefs.addons.values():\\n        ap = getattr(addon, \\\"preferences\\\", None)\\n        if ap and hasattr(ap, \\\"enable_missing_file_warning\\\"):\\n            return ap\\n    return None\\n\\n\\ndef get_geometry_nodes_modifier_node_group(modifier):\\n    \\\"\\\"\\\"\","
+                },
+                {
+                  "lineNumber": 9684,
+                  "content": "            \"text\": \"        AddonPreferences or None: The addon preferences instance if found\","
+                },
+                {
+                  "lineNumber": 10066,
+                  "content": "        \"contents\": \"\\\"\\\"\\\"\\nCopyright (C) 2019 Remington Creative\\n\\nThis file is part of Atomic Data Manager.\\n\\nAtomic Data Manager is free software: you can redistribute\\nit and/or modify it under the terms of the GNU General Public License\\nas published by the Free Software Foundation, either version 3 of the\\nLicense, or (at your option) any later version.\\n\\nAtomic Data Manager is distributed in the hope that it will\\nbe useful, but WITHOUT ANY WARRANTY; without even the implied warranty\\nof MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\\nGeneral Public License for more details.\\n\\nYou should have received a copy of the GNU General Public License along\\nwith Atomic Data Manager.  If not, see &amp;lt;https://www.gnu.org/licenses/&amp;gt;.\\n\\n---\\n\\nThis file contains the Atomic preferences UI, preferences properties, and\\nsome functions for syncing the preference properties with external factors.\\n\\n\\\"\\\"\\\"\\n\\nimport bpy\\nfrom bpy.utils import register_class\\nfrom ..uti [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 10193,
+                  "content": "            \"text\": \"    # robustly find our AddonPreferences instance regardless of module name\","
+                },
+                {
+                  "lineNumber": 10210,
+                  "content": "            \"text\": \"        if ap and hasattr(ap, \\\"bl_idname\\\") and ap.bl_idname == ATOMIC_PT_preferences_panel.bl_idname:\","
+                }
+              ]
+            },
+            {
+              "file": "..\\atomic_data_manager\\.specstory\\history\\2025-12-01_20-15Z-blender-integration-error-troubleshooting.md",
+              "matches": [
+                {
+                  "lineNumber": 2866,
+                  "content": "  \"contentsAfterEdit\": \"\\\"\\\"\\\"\\nCopyright (C) 2019 Remington Creative\\n\\nThis file is part of Atomic Data Manager.\\n\\nAtomic Data Manager is free software: you can redistribute\\nit and/or modify it under the terms of the GNU General Public License\\nas published by the Free Software Foundation, either version 3 of the\\nLicense, or (at your option) any later version.\\n\\nAtomic Data Manager is distributed in the hope that it will\\nbe useful, but WITHOUT ANY WARRANTY; without even the implied warranty\\nof MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\\nGeneral Public License for more details.\\n\\nYou should have received a copy of the GNU General Public License along\\nwith Atomic Data Manager.  If not, see &amp;lt;https://www.gnu.org/licenses/&amp;gt;.\\n\\n---\\n\\nThis file contains the Atomic preferences UI, preferences properties, and\\nsome functions for syncing the preference properties with external factors.\\n\\n\\\"\\\"\\\"\\n\\nimport bpy\\nfrom bpy.utils import register_class\\nfrom bp [... omitted end of long line]"
+                }
+              ]
+            },
+            {
+              "file": "..\\atomic_data_manager\\.specstory\\history\\2025-12-01_20-46Z-setting-up-a-blender-extension-api.md",
+              "matches": [
+                {
+                  "lineNumber": 922,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;\"diffString\": \"- import bpy # type: ignore\\r\\n+ import bpy  # type: ignore\\r\\n  import os\\r\\n  import subprocess\\r\\n  import sys\\r\\n  import tempfile\\r\\n  import glob  # Add missing import\\r\\n- from bpy.props import (StringProperty, BoolProperty, IntProperty, EnumProperty, PointerProperty, FloatProperty) # type: ignore\\r\\n- from bpy.types import (Panel, Operator, PropertyGroup, AddonPreferences) # type: ignore\\r\\n+ from bpy.props import (StringProperty, BoolProperty, IntProperty, EnumProperty, PointerProperty, FloatProperty)  # type: ignore\\r\\n+ from bpy.types import (Panel, Operator, PropertyGroup, AddonPreferences)  # type: ignore\\r\\n  import time\\r\\n  \\r\\n+ RAINYS_EXTENSIONS_REPO_NAME = \\\"Rainy's Extensions\\\"\\r\\n+ RAINYS_EXTENSIONS_REPO_URL = \\\"https://raw.githubusercontent.com/RaincloudTheDragon/rainys-blender-extensions/refs/heads/main/index.json\\\"\\r\\n+ \\r\\n+ \\r\\n+ def ensure_rainys_e [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 923,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;\"contentsAfterEdit\": \"import bpy  # type: ignore\\r\\nimport os\\r\\nimport subprocess\\r\\nimport sys\\r\\nimport tempfile\\r\\nimport glob  # Add missing import\\r\\nfrom bpy.props import (StringProperty, BoolProperty, IntProperty, EnumProperty, PointerProperty, FloatProperty)  # type: ignore\\r\\nfrom bpy.types import (Panel, Operator, PropertyGroup, AddonPreferences)  # type: ignore\\r\\nimport time\\r\\n\\r\\nRAINYS_EXTENSIONS_REPO_NAME = \\\"Rainy's Extensions\\\"\\r\\nRAINYS_EXTENSIONS_REPO_URL = \\\"https://raw.githubusercontent.com/RaincloudTheDragon/rainys-blender-extensions/refs/heads/main/index.json\\\"\\r\\n\\r\\n\\r\\ndef ensure_rainys_extensions_repo() -&amp;gt; None:\\r\\n    \\\"\\\"\\\"Keep the Rainy's extension repository registered so updates stay discoverable.\\\"\\\"\\\"\\r\\n    prefs = getattr(bpy.context, \\\"preferences\\\", None)\\r\\n    extensions = getattr(prefs, \\\"extensions\\\", None) if prefs else None\\r\\n    repositori [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 925,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;\"contentsAfterEdit\": \"import bpy  # type: ignore\\r\\nimport os\\r\\nimport subprocess\\r\\nimport sys\\r\\nimport tempfile\\r\\nimport glob  # Add missing import\\r\\nfrom bpy.props import (StringProperty, BoolProperty, IntProperty, EnumProperty, PointerProperty, FloatProperty)  # type: ignore\\r\\nfrom bpy.types import (Panel, Operator, PropertyGroup, AddonPreferences)  # type: ignore\\r\\nimport time\\r\\n\\r\\nRAINYS_EXTENSIONS_REPO_NAME = \\\"Rainy's Extensions\\\"\\r\\nRAINYS_EXTENSIONS_REPO_URL = \\\"https://raw.githubusercontent.com/RaincloudTheDragon/rainys-blender-extensions/refs/heads/main/index.json\\\"\\r\\n\\r\\n\\r\\ndef ensure_rainys_extensions_repo() -&amp;gt; None:\\r\\n    \\\"\\\"\\\"Keep the Rainy's extension repository registered so updates stay discoverable.\\\"\\\"\\\"\\r\\n    prefs = getattr(bpy.context, \\\"preferences\\\", None)\\r\\n    extensions = getattr(prefs, \\\"extensions\\\", None) if prefs else None\\r\\n    repositori [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 932,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;\"contentsAfterEdit\": \"import bpy  # type: ignore\\r\\nimport os\\r\\nimport subprocess\\r\\nimport sys\\r\\nimport tempfile\\r\\nimport glob  # Add missing import\\r\\nfrom bpy.props import (StringProperty, BoolProperty, IntProperty, EnumProperty, PointerProperty, FloatProperty)  # type: ignore\\r\\nfrom bpy.types import (Panel, Operator, PropertyGroup, AddonPreferences)  # type: ignore\\r\\nimport time\\r\\n\\r\\nRAINYS_EXTENSIONS_REPO_NAME = \\\"Rainy's Extensions\\\"\\r\\nRAINYS_EXTENSIONS_REPO_URL = \\\"https://raw.githubusercontent.com/RaincloudTheDragon/rainys-blender-extensions/refs/heads/main/index.json\\\"\\r\\n\\r\\n\\r\\ndef ensure_rainys_extensions_repo() -&amp;gt; None:\\r\\n    \\\"\\\"\\\"Keep the Rainy's extension repository registered so updates stay discoverable.\\\"\\\"\\\"\\r\\n    def _log(msg: str) -&amp;gt; None:\\r\\n        print(f\\\"BasedPlayblast repo check: \\{msg\\}\\\")\\r\\n\\r\\n    _log(\\\"starting repository verification\\\")\\r\\ [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 933,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;\"contentsAfterEdit\": \"import bpy  # type: ignore\\r\\nimport os\\r\\nimport subprocess\\r\\nimport sys\\r\\nimport tempfile\\r\\nimport glob  # Add missing import\\r\\nfrom bpy.props import (StringProperty, BoolProperty, IntProperty, EnumProperty, PointerProperty, FloatProperty)  # type: ignore\\r\\nfrom bpy.types import (Panel, Operator, PropertyGroup, AddonPreferences)  # type: ignore\\r\\nimport time\\r\\n\\r\\nRAINYS_EXTENSIONS_REPO_NAME = \\\"Rainy's Extensions\\\"\\r\\nRAINYS_EXTENSIONS_REPO_URL = \\\"https://raw.githubusercontent.com/RaincloudTheDragon/rainys-blender-extensions/refs/heads/main/index.json\\\"\\r\\n\\r\\n\\r\\ndef ensure_rainys_extensions_repo() -&amp;gt; None:\\r\\n    \\\"\\\"\\\"Keep the Rainy's extension repository registered so updates stay discoverable.\\\"\\\"\\\"\\r\\n    def _log(msg: str) -&amp;gt; None:\\r\\n        print(f\\\"BasedPlayblast repo check: \\{msg\\}\\\")\\r\\n\\r\\n    _log(\\\"starting repository verification\\\")\\r\\ [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 934,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;\"contentsAfterEdit\": \"import bpy  # type: ignore\\r\\nimport os\\r\\nimport subprocess\\r\\nimport sys\\r\\nimport tempfile\\r\\nimport glob  # Add missing import\\r\\nfrom bpy.props import (StringProperty, BoolProperty, IntProperty, EnumProperty, PointerProperty, FloatProperty)  # type: ignore\\r\\nfrom bpy.types import (Panel, Operator, PropertyGroup, AddonPreferences)  # type: ignore\\r\\nimport time\\r\\n\\r\\nRAINYS_EXTENSIONS_REPO_NAME = \\\"Rainy's Extensions\\\"\\r\\nRAINYS_EXTENSIONS_REPO_URL = \\\"https://raw.githubusercontent.com/RaincloudTheDragon/rainys-blender-extensions/refs/heads/main/index.json\\\"\\r\\n\\r\\n\\r\\ndef ensure_rainys_extensions_repo() -&amp;gt; None:\\r\\n    \\\"\\\"\\\"Keep the Rainy's extension repository registered so updates stay discoverable.\\\"\\\"\\\"\\r\\n    def _log(msg: str) -&amp;gt; None:\\r\\n        print(f\\\"BasedPlayblast repo check: \\{msg\\}\\\")\\r\\n\\r\\n    _log(\\\"starting repository verification\\\")\\r\\ [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 935,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;\"contentsAfterEdit\": \"import bpy  # type: ignore\\r\\nimport os\\r\\nimport subprocess\\r\\nimport sys\\r\\nimport tempfile\\r\\nimport glob  # Add missing import\\r\\nfrom bpy.props import (StringProperty, BoolProperty, IntProperty, EnumProperty, PointerProperty, FloatProperty)  # type: ignore\\r\\nfrom bpy.types import (Panel, Operator, PropertyGroup, AddonPreferences)  # type: ignore\\r\\nimport time\\r\\n\\r\\nRAINYS_EXTENSIONS_REPO_NAME = \\\"Rainy's Extensions\\\"\\r\\nRAINYS_EXTENSIONS_REPO_URL = \\\"https://raw.githubusercontent.com/RaincloudTheDragon/rainys-blender-extensions/refs/heads/main/index.json\\\"\\r\\n\\r\\n\\r\\ndef ensure_rainys_extensions_repo() -&amp;gt; None:\\r\\n    \\\"\\\"\\\"Keep the Rainy's extension repository registered so updates stay discoverable.\\\"\\\"\\\"\\r\\n    def _log(msg: str) -&amp;gt; None:\\r\\n        print(f\\\"BasedPlayblast repo check: \\{msg\\}\\\")\\r\\n\\r\\n    _log(\\\"starting repository verification\\\")\\r\\ [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 937,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;\"contentsAfterEdit\": \"import bpy  # type: ignore\\r\\nimport os\\r\\nimport subprocess\\r\\nimport sys\\r\\nimport tempfile\\r\\nimport glob  # Add missing import\\r\\nfrom bpy.props import (StringProperty, BoolProperty, IntProperty, EnumProperty, PointerProperty, FloatProperty)  # type: ignore\\r\\nfrom bpy.types import (Panel, Operator, PropertyGroup, AddonPreferences)  # type: ignore\\r\\nimport time\\r\\n\\r\\nRAINYS_EXTENSIONS_REPO_NAME = \\\"Rainy's Extensions\\\"\\r\\nRAINYS_EXTENSIONS_REPO_URL = \\\"https://raw.githubusercontent.com/RaincloudTheDragon/rainys-blender-extensions/refs/heads/main/index.json\\\"\\r\\n\\r\\n\\r\\ndef ensure_rainys_extensions_repo() -&amp;gt; None:\\r\\n    \\\"\\\"\\\"Keep the Rainy's extension repository registered so updates stay discoverable.\\\"\\\"\\\"\\r\\n    def _log(msg: str) -&amp;gt; None:\\r\\n        print(f\\\"BasedPlayblast repo check: \\{msg\\}\\\")\\r\\n\\r\\n    _log(\\\"starting repository verification\\\")\\r\\ [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 938,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;\"contentsAfterEdit\": \"import bpy  # type: ignore\\r\\nimport os\\r\\nimport subprocess\\r\\nimport sys\\r\\nimport tempfile\\r\\nimport glob  # Add missing import\\r\\nfrom bpy.props import (StringProperty, BoolProperty, IntProperty, EnumProperty, PointerProperty, FloatProperty)  # type: ignore\\r\\nfrom bpy.types import (Panel, Operator, PropertyGroup, AddonPreferences)  # type: ignore\\r\\nimport time\\r\\n\\r\\nRAINYS_EXTENSIONS_REPO_NAME = \\\"Rainy's Extensions\\\"\\r\\nRAINYS_EXTENSIONS_REPO_URL = \\\"https://raw.githubusercontent.com/RaincloudTheDragon/rainys-blender-extensions/refs/heads/main/index.json\\\"\\r\\n\\r\\n\\r\\ndef ensure_rainys_extensions_repo() -&amp;gt; None:\\r\\n    \\\"\\\"\\\"Keep the Rainy's extension repository registered so updates stay discoverable.\\\"\\\"\\\"\\r\\n    def _log(msg: str) -&amp;gt; None:\\r\\n        print(f\\\"BasedPlayblast repo check: \\{msg\\}\\\")\\r\\n\\r\\n    _log(\\\"starting repository verification\\\")\\r\\ [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 941,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;\"contentsAfterEdit\": \"import bpy  # type: ignore\\r\\nimport os\\r\\nimport subprocess\\r\\nimport sys\\r\\nimport tempfile\\r\\nimport glob  # Add missing import\\r\\nfrom bpy.props import (StringProperty, BoolProperty, IntProperty, EnumProperty, PointerProperty, FloatProperty)  # type: ignore\\r\\nfrom bpy.types import (Panel, Operator, PropertyGroup, AddonPreferences)  # type: ignore\\r\\nimport time\\r\\n\\r\\nRAINYS_EXTENSIONS_REPO_NAME = \\\"Rainy's Extensions\\\"\\r\\nRAINYS_EXTENSIONS_REPO_URL = \\\"https://raw.githubusercontent.com/RaincloudTheDragon/rainys-blender-extensions/refs/heads/main/index.json\\\"\\r\\n\\r\\n\\r\\ndef ensure_rainys_extensions_repo() -&amp;gt; None:\\r\\n    \\\"\\\"\\\"Keep the Rainy's extension repository registered so updates stay discoverable.\\\"\\\"\\\"\\r\\n    def _log(msg: str) -&amp;gt; None:\\r\\n        print(f\\\"BasedPlayblast repo check: \\{msg\\}\\\")\\r\\n\\r\\n    _log(\\\"starting repository verification\\\")\\r\\ [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 942,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;\"contentsAfterEdit\": \"import bpy  # type: ignore\\r\\nimport os\\r\\nimport subprocess\\r\\nimport sys\\r\\nimport tempfile\\r\\nimport glob  # Add missing import\\r\\nfrom bpy.props import (StringProperty, BoolProperty, IntProperty, EnumProperty, PointerProperty, FloatProperty)  # type: ignore\\r\\nfrom bpy.types import (Panel, Operator, PropertyGroup, AddonPreferences)  # type: ignore\\r\\nimport time\\r\\n\\r\\nRAINYS_EXTENSIONS_REPO_NAME = \\\"Rainy's Extensions\\\"\\r\\nRAINYS_EXTENSIONS_REPO_URL = \\\"https://raw.githubusercontent.com/RaincloudTheDragon/rainys-blender-extensions/refs/heads/main/index.json\\\"\\r\\n\\r\\n\\r\\ndef ensure_rainys_extensions_repo() -&amp;gt; None:\\r\\n    \\\"\\\"\\\"Keep the Rainy's extension repository registered so updates stay discoverable.\\\"\\\"\\\"\\r\\n    def _log(msg: str) -&amp;gt; None:\\r\\n        print(f\\\"BasedPlayblast repo check: \\{msg\\}\\\")\\r\\n\\r\\n    _log(\\\"starting repository verification\\\")\\r\\ [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 943,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;\"contentsAfterEdit\": \"import bpy  # type: ignore\\r\\nimport os\\r\\nimport subprocess\\r\\nimport sys\\r\\nimport tempfile\\r\\nimport glob  # Add missing import\\r\\nfrom bpy.props import (StringProperty, BoolProperty, IntProperty, EnumProperty, PointerProperty, FloatProperty)  # type: ignore\\r\\nfrom bpy.types import (Panel, Operator, PropertyGroup, AddonPreferences)  # type: ignore\\r\\nimport time\\r\\n\\r\\nRAINYS_EXTENSIONS_REPO_NAME = \\\"Rainy's Extensions\\\"\\r\\nRAINYS_EXTENSIONS_REPO_URL = \\\"https://raw.githubusercontent.com/RaincloudTheDragon/rainys-blender-extensions/refs/heads/main/index.json\\\"\\r\\n\\r\\n\\r\\ndef ensure_rainys_extensions_repo() -&amp;gt; None:\\r\\n    \\\"\\\"\\\"Keep the Rainy's extension repository registered so updates stay discoverable.\\\"\\\"\\\"\\r\\n    def _log(msg: str) -&amp;gt; None:\\r\\n        print(f\\\"BasedPlayblast repo check: \\{msg\\}\\\")\\r\\n\\r\\n    _log(\\\"starting repository verification\\\")\\r\\ [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 946,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;\"contentsAfterEdit\": \"import bpy  # type: ignore\\r\\nimport os\\r\\nimport subprocess\\r\\nimport sys\\r\\nimport tempfile\\r\\nimport glob  # Add missing import\\r\\nfrom bpy.props import (StringProperty, BoolProperty, IntProperty, EnumProperty, PointerProperty, FloatProperty)  # type: ignore\\r\\nfrom bpy.types import (Panel, Operator, PropertyGroup, AddonPreferences)  # type: ignore\\r\\nimport time\\r\\n\\r\\nRAINYS_EXTENSIONS_REPO_NAME = \\\"Rainy's Extensions\\\"\\r\\nRAINYS_EXTENSIONS_REPO_URL = \\\"https://raw.githubusercontent.com/RaincloudTheDragon/rainys-blender-extensions/refs/heads/main/index.json\\\"\\r\\n\\r\\n\\r\\ndef ensure_rainys_extensions_repo(_deferred: bool = False) -&amp;gt; None:\\r\\n    \\\"\\\"\\\"Keep the Rainy's extension repository registered so updates stay discoverable.\\\"\\\"\\\"\\r\\n    def _log(msg: str) -&amp;gt; None:\\r\\n        print(f\\\"BasedPlayblast repo check: \\{msg\\}\\\")\\r\\n\\r\\n    _log(\\\"starting reposi [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 952,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;\"contentsAfterEdit\": \"import bpy  # type: ignore\\r\\nimport os\\r\\nimport subprocess\\r\\nimport sys\\r\\nimport tempfile\\r\\nimport glob  # Add missing import\\r\\nfrom bpy.props import (StringProperty, BoolProperty, IntProperty, EnumProperty, PointerProperty, FloatProperty)  # type: ignore\\r\\nfrom bpy.types import (Panel, Operator, PropertyGroup, AddonPreferences)  # type: ignore\\r\\nimport time\\r\\n\\r\\nRAINYS_EXTENSIONS_REPO_NAME = \\\"Rainy's Extensions\\\"\\r\\nRAINYS_EXTENSIONS_REPO_URL = \\\"https://raw.githubusercontent.com/RaincloudTheDragon/rainys-blender-extensions/refs/heads/main/index.json\\\"\\r\\n\\r\\n\\r\\ndef ensure_rainys_extensions_repo(_deferred: bool = False) -&amp;gt; None:\\r\\n    \\\"\\\"\\\"Keep the Rainy's extension repository registered so updates stay discoverable.\\\"\\\"\\\"\\r\\n    def _log(msg: str) -&amp;gt; None:\\r\\n        print(f\\\"BasedPlayblast repo check: \\{msg\\}\\\")\\r\\n\\r\\n    _log(\\\"starting reposi [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 1114,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;\"contentsAfterEdit\": \"import bpy  # type: ignore\\r\\nimport os\\r\\nimport subprocess\\r\\nimport sys\\r\\nimport tempfile\\r\\nimport glob  # Add missing import\\r\\nfrom bpy.props import (StringProperty, BoolProperty, IntProperty, EnumProperty, PointerProperty, FloatProperty)  # type: ignore\\r\\nfrom bpy.types import (Panel, Operator, PropertyGroup, AddonPreferences)  # type: ignore\\r\\nimport time\\r\\n\\r\\nfrom .rainys_repo_bootstrap import ensure_rainys_extensions_repo\\r\\n\\r\\n# Pre-defined items lists for EnumProperties\\r\\nRESOLUTION_MODE_ITEMS = [\\r\\n    ('SCENE', \\\"Use Scene Resolution\\\", \\\"Use the scene's render resolution\\\"),\\r\\n    ('PRESET', \\\"Preset Resolution\\\", \\\"Use a preset resolution\\\"),\\r\\n    ('CUSTOM', \\\"Custom Resolution\\\", \\\"Use a custom resolution\\\")\\r\\n]\\r\\n\\r\\nRESOLUTION_PRESET_ITEMS = [\\r\\n    ('x1920y1080', \\\"1920 x 1080 (16:9) HD1080p\\\", \\\"\\\"),\\r\\n    ('x1280y720', \\\"1280 x 720 [... omitted end of long line]"
+                }
+              ]
+            },
+            {
+              "file": "..\\atomic_data_manager\\.specstory\\history\\2025-12-01_19-37Z-integrate-multi-blender-version-support.md",
+              "matches": [
+                {
+                  "lineNumber": 1301,
+                  "content": "+         AddonPreferences or None: The addon preferences instance if found"
+                }
+              ]
+            },
+            {
+              "file": "..\\atomic_data_manager\\.specstory\\history\\2025-10-09_00-08Z-update-blender-addon-for-version-4-5.md",
+              "matches": [
+                {
+                  "lineNumber": 2309,
+                  "content": "**Fixing KeyError with AddonPreferences**"
+                },
+                {
+                  "lineNumber": 2311,
+                  "content": "It looks like the hyphen in __package__ is causing a problem. When I split it using '.', I get 'bl_ext', which doesn't exist in preferences.addons, leading to a KeyError. The solution is to stop attempting to index preferences.addons directly. Instead, I should access the key using AddonPreferences.bl_idname, which is set to 'atomic_data_manager'. However, Blender registers keys based on module names, so it’s better to use context.preferences.addons.get(addon_name) to retrieve the AddonPreferences instance correctly. The error log indicates it's registered properly, which is reassuring!"
+                },
+                {
+                  "lineNumber": 2314,
+                  "content": "To access preferences, I can use context.preferences.addons[addon_name].preferences, where addon_name corresponds to the module ID registered. However, the module here is 'bl_ext.vscode_development.atomic-data-manager', not 'atomic_data_manager'. Blender registers Addon preferences based on the module name passed to addon_utils.enable. I should avoid fetching preferences by module key. Instead, while in the AddonPreferences class, I can utilize self to copy to the config during draw. For helper functions, I can find preferences by iterating through bpy.context.preferences.addons and matching the class identifier 'ATOMIC_PT_preferences_panel'."
+                },
+                {
+                  "lineNumber": 2348,
+                  "content": "+    # robustly find our AddonPreferences instance regardless of module name"
+                },
+                {
+                  "lineNumber": 2352,
+                  "content": "+        if ap and hasattr(ap, \"bl_idname\") and ap.bl_idname == ATOMIC_PT_preferences_panel.bl_idname:"
+                }
+              ]
+            }
+          ],
+          "totalLines": 40,
+          "totalMatchedLines": 40
+        }
+      }
+    }
+  }
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\atomic_data_manager\ui\preferences_ui.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\ui\preferences_ui.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "pattern": "register_class.*Preferences|safe_register_class.*Preferences",
+  "path": "D:\\atomic_data_manager",
+  "caseInsensitive": false
+}
+```
+Result:
+
+```json
+{
+  "success": {
+    "pattern": "register_class.*Preferences|safe_register_class.*Preferences",
+    "path": "D:\\atomic_data_manager",
+    "outputMode": "content",
+    "workspaceResults": {
+      "d:\\sheepit_project_submitter": {
+        "content": {
+          "matches": [
+            {
+              "file": "..\\atomic_data_manager\\.specstory\\history\\2025-12-16_23-24Z-blender-library-packed-files-error.md",
+              "matches": [
+                {
+                  "lineNumber": 10066,
+                  "content": "        \"contents\": \"\\\"\\\"\\\"\\nCopyright (C) 2019 Remington Creative\\n\\nThis file is part of Atomic Data Manager.\\n\\nAtomic Data Manager is free software: you can redistribute\\nit and/or modify it under the terms of the GNU General Public License\\nas published by the Free Software Foundation, either version 3 of the\\nLicense, or (at your option) any later version.\\n\\nAtomic Data Manager is distributed in the hope that it will\\nbe useful, but WITHOUT ANY WARRANTY; without even the implied warranty\\nof MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\\nGeneral Public License for more details.\\n\\nYou should have received a copy of the GNU General Public License along\\nwith Atomic Data Manager.  If not, see &amp;lt;https://www.gnu.org/licenses/&amp;gt;.\\n\\n---\\n\\nThis file contains the Atomic preferences UI, preferences properties, and\\nsome functions for syncing the preference properties with external factors.\\n\\n\\\"\\\"\\\"\\n\\nimport bpy\\nfrom bpy.utils import register_class\\nfrom ..uti [... omitted end of long line]"
+                }
+              ]
+            },
+            {
+              "file": "..\\atomic_data_manager\\.specstory\\history\\2025-12-01_20-15Z-blender-integration-error-troubleshooting.md",
+              "matches": [
+                {
+                  "lineNumber": 2866,
+                  "content": "  \"contentsAfterEdit\": \"\\\"\\\"\\\"\\nCopyright (C) 2019 Remington Creative\\n\\nThis file is part of Atomic Data Manager.\\n\\nAtomic Data Manager is free software: you can redistribute\\nit and/or modify it under the terms of the GNU General Public License\\nas published by the Free Software Foundation, either version 3 of the\\nLicense, or (at your option) any later version.\\n\\nAtomic Data Manager is distributed in the hope that it will\\nbe useful, but WITHOUT ANY WARRANTY; without even the implied warranty\\nof MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\\nGeneral Public License for more details.\\n\\nYou should have received a copy of the GNU General Public License along\\nwith Atomic Data Manager.  If not, see &amp;lt;https://www.gnu.org/licenses/&amp;gt;.\\n\\n---\\n\\nThis file contains the Atomic preferences UI, preferences properties, and\\nsome functions for syncing the preference properties with external factors.\\n\\n\\\"\\\"\\\"\\n\\nimport bpy\\nfrom bpy.utils import register_class\\nfrom bp [... omitted end of long line]"
+                }
+              ]
+            }
+          ],
+          "totalLines": 2,
+          "totalMatchedLines": 2
+        }
+      }
+    }
+  }
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+---
+
+
+Checking how atomic_data_manager sets the `bl_idname` for preferences:
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\atomic_data_manager\ui\preferences_ui.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\atomic_data_manager\ui\preferences_ui.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "pattern": "register_class.*ATOMIC_PT_preferences|safe_register_class.*ATOMIC_PT_preferences",
+  "path": "D:\\atomic_data_manager",
+  "caseInsensitive": false
+}
+```
+Result:
+
+```json
+{
+  "success": {
+    "pattern": "register_class.*ATOMIC_PT_preferences|safe_register_class.*ATOMIC_PT_preferences",
+    "path": "D:\\atomic_data_manager",
+    "outputMode": "content",
+    "workspaceResults": {
+      "d:\\sheepit_project_submitter": {
+        "content": {
+          "matches": [
+            {
+              "file": "..\\atomic_data_manager\\.specstory\\history\\2025-12-16_23-24Z-blender-library-packed-files-error.md",
+              "matches": [
+                {
+                  "lineNumber": 10066,
+                  "content": "        \"contents\": \"\\\"\\\"\\\"\\nCopyright (C) 2019 Remington Creative\\n\\nThis file is part of Atomic Data Manager.\\n\\nAtomic Data Manager is free software: you can redistribute\\nit and/or modify it under the terms of the GNU General Public License\\nas published by the Free Software Foundation, either version 3 of the\\nLicense, or (at your option) any later version.\\n\\nAtomic Data Manager is distributed in the hope that it will\\nbe useful, but WITHOUT ANY WARRANTY; without even the implied warranty\\nof MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\\nGeneral Public License for more details.\\n\\nYou should have received a copy of the GNU General Public License along\\nwith Atomic Data Manager.  If not, see &amp;lt;https://www.gnu.org/licenses/&amp;gt;.\\n\\n---\\n\\nThis file contains the Atomic preferences UI, preferences properties, and\\nsome functions for syncing the preference properties with external factors.\\n\\n\\\"\\\"\\\"\\n\\nimport bpy\\nfrom bpy.utils import register_class\\nfrom ..uti [... omitted end of long line]"
+                }
+              ]
+            },
+            {
+              "file": "..\\atomic_data_manager\\.specstory\\history\\2025-12-01_20-15Z-blender-integration-error-troubleshooting.md",
+              "matches": [
+                {
+                  "lineNumber": 2866,
+                  "content": "  \"contentsAfterEdit\": \"\\\"\\\"\\\"\\nCopyright (C) 2019 Remington Creative\\n\\nThis file is part of Atomic Data Manager.\\n\\nAtomic Data Manager is free software: you can redistribute\\nit and/or modify it under the terms of the GNU General Public License\\nas published by the Free Software Foundation, either version 3 of the\\nLicense, or (at your option) any later version.\\n\\nAtomic Data Manager is distributed in the hope that it will\\nbe useful, but WITHOUT ANY WARRANTY; without even the implied warranty\\nof MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\\nGeneral Public License for more details.\\n\\nYou should have received a copy of the GNU General Public License along\\nwith Atomic Data Manager.  If not, see &amp;lt;https://www.gnu.org/licenses/&amp;gt;.\\n\\n---\\n\\nThis file contains the Atomic preferences UI, preferences properties, and\\nsome functions for syncing the preference properties with external factors.\\n\\n\\\"\\\"\\\"\\n\\nimport bpy\\nfrom bpy.utils import register_class\\nfrom bp [... omitted end of long line]"
+                }
+              ]
+            }
+          ],
+          "totalLines": 2,
+          "totalMatchedLines": 2
+        }
+      }
+    }
+  }
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+---
+
+
+Updating preferences to use a dynamic `bl_idname` that matches the registered module name, like atomic_data_manager:
+
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ui\preferences_ui.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ui\preferences_ui.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\atomic_data_manager\__init__.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Checking where atomic_data_manager registers the preferences class:
+
+
+---
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "pattern": "register_class.*ATOMIC_PT_preferences|register.*ATOMIC_PT_preferences",
+  "path": "D:\\atomic_data_manager\\ui",
+  "caseInsensitive": false
+}
+```
+Result:
+
+```json
+{
+  "success": {
+    "pattern": "register_class.*ATOMIC_PT_preferences|register.*ATOMIC_PT_preferences",
+    "path": "D:\\atomic_data_manager\\ui",
+    "outputMode": "content",
+    "workspaceResults": {
+      "d:\\sheepit_project_submitter": {
+        "content": {}
+      }
+    }
+  }
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\atomic_data_manager\ui\__init__.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\atomic_data_manager\ui\preferences_ui.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Checking the register function in preferences_ui:
+
+
+---
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "pattern": "def register|reg_list|register_class",
+  "path": "D:\\atomic_data_manager\\ui\\preferences_ui.py",
+  "contextAfter": 5,
+  "caseInsensitive": false
+}
+```
+Result:
+
+```json
+{
+  "success": {
+    "pattern": "def register|reg_list|register_class",
+    "path": "D:\\atomic_data_manager\\ui\\preferences_ui.py",
+    "outputMode": "content",
+    "workspaceResults": {
+      "d:\\sheepit_project_submitter": {
+        "content": {
+          "matches": [
+            {
+              "file": "..\\atomic_data_manager\\ui\\preferences_ui.py",
+              "matches": [
+                {
+                  "lineNumber": 28,
+                  "content": "from bpy.utils import register_class"
+                },
+                {
+                  "lineNumber": 29,
+                  "content": "from ..utils import compat",
+                  "isContextLine": true
+                },
+                {
+                  "lineNumber": 30,
+                  "content": "from .. import config",
+                  "isContextLine": true
+                },
+                {
+                  "lineNumber": 31,
+                  "content": "import sys",
+                  "isContextLine": true
+                },
+                {
+                  "lineNumber": 32,
+                  "content": "# updater removed in Blender 4.5 extension format",
+                  "isContextLine": true
+                },
+                {
+                  "lineNumber": 33,
+                  "isContextLine": true
+                },
+                {
+                  "lineNumber": 364,
+                  "content": "reg_list = [ATOMIC_PT_preferences_panel]"
+                },
+                {
+                  "lineNumber": 365,
+                  "content": "keymaps = []",
+                  "isContextLine": true
+                },
+                {
+                  "lineNumber": 366,
+                  "isContextLine": true
+                },
+                {
+                  "lineNumber": 367,
+                  "isContextLine": true
+                },
+                {
+                  "lineNumber": 368,
+                  "content": "def register():"
+                },
+                {
+                  "lineNumber": 369,
+                  "content": "    for cls in reg_list:"
+                },
+                {
+                  "lineNumber": 370,
+                  "content": "        try:",
+                  "isContextLine": true
+                },
+                {
+                  "lineNumber": 371,
+                  "content": "            register_class(cls)"
+                },
+                {
+                  "lineNumber": 372,
+                  "content": "            config.debug_print(f\"[Atomic Debug] Registered preferences class: {cls.__name__} with bl_idname: {cls.bl_idname}\")",
+                  "isContextLine": true
+                },
+                {
+                  "lineNumber": 373,
+                  "content": "        except Exception as e:",
+                  "isContextLine": true
+                },
+                {
+                  "lineNumber": 374,
+                  "content": "            print(f\"[Atomic Error] Failed to register preferences class {cls.__name__}: {e}\")",
+                  "isContextLine": true
+                },
+                {
+                  "lineNumber": 375,
+                  "content": "            import traceback",
+                  "isContextLine": true
+                },
+                {
+                  "lineNumber": 376,
+                  "content": "            traceback.print_exc()",
+                  "isContextLine": true
+                },
+                {
+                  "lineNumber": 386,
+                  "content": "    for cls in reg_list:"
+                },
+                {
+                  "lineNumber": 387,
+                  "content": "        compat.safe_unregister_class(cls)"
+                },
+                {
+                  "lineNumber": 388,
+                  "isContextLine": true
+                },
+                {
+                  "lineNumber": 389,
+                  "content": "    remove_pie_menu_hotkeys()",
+                  "isContextLine": true
+                }
+              ]
+            }
+          ],
+          "totalLines": 23,
+          "totalMatchedLines": 7
+        }
+      }
+    }
+  }
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\atomic_data_manager\ui\preferences_ui.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Updating our code to match atomic_data_manager: register preferences in `preferences_ui.register()` instead of `__init__.py`:
+
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ui\preferences_ui.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\__init__.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\__init__.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\__init__.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\ui\__init__.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Updating `ui/__init__.py` to register preferences first, like atomic_data_manager:
+
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ui\__init__.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\ui\preferences_ui.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Updated the preferences registration to match atomic_data_manager's pattern. Changes:
+
+1. **Dynamic `bl_idname`**: Added `_get_addon_module_name()` to get the actual module name (handles Blender 5.0+ extension paths).
+
+2. **Registration location**: Moved preferences registration from `__init__.py` to `preferences_ui.register()`, matching atomic_data_manager.
+
+3. **Registration order**: Preferences are registered first in `ui.register()` before other UI components.
+
+4. **Registration method**: Using `register_class()` directly with error handling, like atomic_data_manager.
+
+The preferences should now appear when you click the addon in Blender's preferences panel. The `bl_idname` will match the module name Blender registered, which is required for preferences to display.
+
+Try reloading the addon and check the preferences panel.
+
+---
+
+_**User**_
+
+@c:\Users\Nathan\.cursor\projects\d-sheepit-project-submitter\terminals\3.txt 
+
+---
+
+_**Agent (model default, mode Agent)**_
+
+
+Checking the terminal output for errors:
+
 
 ---
 
