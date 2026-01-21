@@ -11469,3 +11469,9342 @@ let's implement the connection test.
 
 ---
 
+_**Agent (model default, mode Agent)**_
+
+
+Researching SheepIt's API to implement the connection test. Checking the codebase and searching for API documentation.
+
+
+---
+
+<tool-use data-tool-type="unknown" data-tool-name="semantic_search_full">
+<details>
+<summary>Tool use: **semantic_search_full**</summary>
+
+
+Parameters:
+
+```json
+{
+  "query": "How does the code interact with SheepIt API endpoints for authentication or testing?",
+  "topK": 10,
+  "explanation": ""
+}
+```
+Result:
+
+```json
+{
+  "codeResults": [
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\utils\\auth.py",
+        "range": {
+          "startPosition": {
+            "line": 222,
+            "column": 20
+          },
+          "endPosition": {
+            "line": 283
+          }
+        },
+        "contents": "def verify_session_with_token(session_token: str) -&gt; bool:\n    \"\"\"\n    Verify a session token by testing it against SheepIt API.\n    \n    Args:\n        session_token: Session token/cookie value from browser\n    \n    Returns:\n        True if token is valid, False otherwise\n    \"\"\"\n    if not bpy.app.online_access:\n        return False\n    \n    try:\n        import urllib.request\n        \n        # Test the token by making a request to a protected endpoint\n        # This is a placeholder - actual implementation depends on SheepIt's API\n        test_url = f\"{config.SHEEPIT_CLIENT_BASE}/api/user/info\"  # Example endpoint\n        \n        req = urllib.request.Request(test_url)\n        req.add_header('Cookie', f'session={session_token}')\n        req.add_header('User-Agent', f'SheepIt-Blender-Addon/{config.ADDON_ID}')\n        \n        try:\n            with urllib.request.urlopen(req, timeout=10) as response:\n                if response.status == 200:\n                    return True\n        except urllib.error.HTTPError as e:\n            if e.code in (401, 403):\n                return False\n    except Exception as e:\n        print(f\"[SheepIt Auth] Token verification failed: {e}\")\n    \n    return False\n\n\ndef get_auth_headers(cookies: Optional[Dict[str, str]] = None) -&gt; Dict[str, str]:\n    ",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "def verify_session_with_token(session_token: str) -&gt; bool:",
+            "lineNumber": 226,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 227
+          },
+          {
+            "text": "    Verify a session token by testing it against SheepIt API.",
+            "lineNumber": 228
+          },
+          {
+            "text": "    ",
+            "lineNumber": 229
+          },
+          {
+            "text": "    Args:",
+            "lineNumber": 230
+          },
+          {
+            "text": "        session_token: Session token/cookie value from browser",
+            "lineNumber": 231
+          },
+          {
+            "text": "    ",
+            "lineNumber": 232
+          },
+          {
+            "text": "    Returns:",
+            "lineNumber": 233
+          },
+          {
+            "text": "        True if token is valid, False otherwise",
+            "lineNumber": 234
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 235
+          },
+          {
+            "text": "    if not bpy.app.online_access:",
+            "lineNumber": 236
+          },
+          {
+            "text": "        return False",
+            "lineNumber": 237
+          },
+          {
+            "text": "    ",
+            "lineNumber": 238
+          },
+          {
+            "text": "    try:",
+            "lineNumber": 239
+          },
+          {
+            "text": "        import urllib.request",
+            "lineNumber": 240
+          },
+          {
+            "text": "        ",
+            "lineNumber": 241
+          },
+          {
+            "text": "        # Test the token by making a request to a protected endpoint",
+            "lineNumber": 242
+          },
+          {
+            "text": "        # This is a placeholder - actual implementation depends on SheepIt's API",
+            "lineNumber": 243
+          },
+          {
+            "text": "        test_url = f\"{config.SHEEPIT_CLIENT_BASE}/api/user/info\"  # Example endpoint",
+            "lineNumber": 244
+          },
+          {
+            "text": "        ",
+            "lineNumber": 245
+          },
+          {
+            "text": "        req = urllib.request.Request(test_url)",
+            "lineNumber": 246
+          },
+          {
+            "text": "        req.add_header('Cookie', f'session={session_token}')",
+            "lineNumber": 247
+          },
+          {
+            "text": "        req.add_header('User-Agent', f'SheepIt-Blender-Addon/{config.ADDON_ID}')",
+            "lineNumber": 248
+          },
+          {
+            "text": "        ",
+            "lineNumber": 249
+          },
+          {
+            "text": "        try:",
+            "lineNumber": 250
+          },
+          {
+            "text": "            with urllib.request.urlopen(req, timeout=10) as response:",
+            "lineNumber": 251
+          },
+          {
+            "text": "                if response.status == 200:",
+            "lineNumber": 252
+          },
+          {
+            "text": "                    return True",
+            "lineNumber": 253
+          },
+          {
+            "text": "        except urllib.error.HTTPError as e:",
+            "lineNumber": 254
+          },
+          {
+            "text": "            if e.code in (401, 403):",
+            "lineNumber": 255
+          },
+          {
+            "text": "                return False",
+            "lineNumber": 256
+          },
+          {
+            "text": "    except Exception as e:",
+            "lineNumber": 257
+          },
+          {
+            "text": "        print(f\"[SheepIt Auth] Token verification failed: {e}\")",
+            "lineNumber": 258
+          },
+          {
+            "text": "    ",
+            "lineNumber": 259
+          },
+          {
+            "text": "    return False",
+            "lineNumber": 260,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 261
+          },
+          {
+            "lineNumber": 262
+          },
+          {
+            "text": "def get_auth_headers(cookies: Optional[Dict[str, str]] = None) -&gt; Dict[str, str]:",
+            "lineNumber": 263,
+            "isSignature": true
+          },
+          {
+            "text": "    ",
+            "lineNumber": 264
+          }
+        ]
+      },
+      "score": 0.48592591285705566
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ui\\preferences_ui.py",
+        "range": {
+          "startPosition": {
+            "line": 39,
+            "column": 22
+          },
+          "endPosition": {
+            "line": 204
+          }
+        },
+        "contents": "class SHEEPIT_OT_test_connection(Operator):\n    \"\"\"Test connection to SheepIt with current credentials.\"\"\"\n    bl_idname = \"sheepit.test_connection\"\n    bl_label = \"Test Connection\"\n    bl_description = \"Test connection to SheepIt render farm with current credentials\"\n    bl_options = {'REGISTER', 'UNDO'}\n    \n    def execute(self, context):\n        if not bpy.app.online_access:\n            self.report({'ERROR'}, \"Online access is disabled. Enable it in Preferences → System.\")\n            return {'CANCELLED'}\n        \n        prefs = compat.get_addon_prefs()\n        if not prefs:\n            self.report({'ERROR'}, \"Addon preferences not found.\")\n            return {'CANCELLED'}\n        \n        # Try browser login cookies first\n        if prefs.use_browser_login:\n            from ..utils.auth import load_auth_cookies\n            cookies = load_auth_cookies()\n            if cookies:\n                # Test with cookies\n                # TODO: Implement actual API test with cookies\n                self.report({'INFO'}, \"Browser login cookies found. Connection test not yet implemented.\")\n                return {'FINISHED'}\n            else:\n                self.report({'ERROR'}, \"No browser login cookies found. Please login via browser first.\")\n                return {'CANCELLED'}\n        \n        # Fallback to username/password\n        if not prefs.sheepit_username:\n            self.report({'ERROR'}, \"Username is required\")\n            return {'CANCELLED'}\n        \n        if not prefs.sheepit_password:\n            self.report({'ERROR'}, \"Password is required\")\n            return {'CANCELLED'}\n        \n        # Placeholder for actual API test\n        # TODO: Implement actual API connection test\n        self.report({'INFO'}, \"Connection test not yet implemented. Please verify credentials manually.\")\n        return {'FINISHED'}\n\n\nclass SHEEPIT_AddonPreferences(AddonPreferences):\n    \"\"\"Addon preferences for SheepIt Project Submitter.\"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "class SHEEPIT_OT_test_connection(Operator):",
+            "lineNumber": 43,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Test connection to SheepIt with current credentials.\"\"\"",
+            "lineNumber": 44
+          },
+          {
+            "text": "    bl_idname = \"sheepit.test_connection\"",
+            "lineNumber": 45
+          },
+          {
+            "text": "    bl_label = \"Test Connection\"",
+            "lineNumber": 46
+          },
+          {
+            "text": "    bl_description = \"Test connection to SheepIt render farm with current credentials\"",
+            "lineNumber": 47
+          },
+          {
+            "text": "    bl_options = {'REGISTER', 'UNDO'}",
+            "lineNumber": 48
+          },
+          {
+            "text": "    ",
+            "lineNumber": 49
+          },
+          {
+            "text": "    def execute(self, context):",
+            "lineNumber": 50
+          },
+          {
+            "text": "        if not bpy.app.online_access:",
+            "lineNumber": 51
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Online access is disabled. Enable it in Preferences → System.\")",
+            "lineNumber": 52
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 53
+          },
+          {
+            "text": "        ",
+            "lineNumber": 54
+          },
+          {
+            "text": "        prefs = compat.get_addon_prefs()",
+            "lineNumber": 55
+          },
+          {
+            "text": "        if not prefs:",
+            "lineNumber": 56
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Addon preferences not found.\")",
+            "lineNumber": 57
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 58
+          },
+          {
+            "text": "        ",
+            "lineNumber": 59
+          },
+          {
+            "text": "        # Try browser login cookies first",
+            "lineNumber": 60
+          },
+          {
+            "text": "        if prefs.use_browser_login:",
+            "lineNumber": 61
+          },
+          {
+            "text": "            from ..utils.auth import load_auth_cookies",
+            "lineNumber": 62
+          },
+          {
+            "text": "            cookies = load_auth_cookies()",
+            "lineNumber": 63
+          },
+          {
+            "text": "            if cookies:",
+            "lineNumber": 64
+          },
+          {
+            "text": "                # Test with cookies",
+            "lineNumber": 65
+          },
+          {
+            "text": "                # TODO: Implement actual API test with cookies",
+            "lineNumber": 66
+          },
+          {
+            "text": "                self.report({'INFO'}, \"Browser login cookies found. Connection test not yet implemented.\")",
+            "lineNumber": 67
+          },
+          {
+            "text": "                return {'FINISHED'}",
+            "lineNumber": 68
+          },
+          {
+            "text": "            else:",
+            "lineNumber": 69
+          },
+          {
+            "text": "                self.report({'ERROR'}, \"No browser login cookies found. Please login via browser first.\")",
+            "lineNumber": 70
+          },
+          {
+            "text": "                return {'CANCELLED'}",
+            "lineNumber": 71
+          },
+          {
+            "text": "        ",
+            "lineNumber": 72
+          },
+          {
+            "text": "        # Fallback to username/password",
+            "lineNumber": 73
+          },
+          {
+            "text": "        if not prefs.sheepit_username:",
+            "lineNumber": 74
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Username is required\")",
+            "lineNumber": 75
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 76
+          },
+          {
+            "text": "        ",
+            "lineNumber": 77
+          },
+          {
+            "text": "        if not prefs.sheepit_password:",
+            "lineNumber": 78
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Password is required\")",
+            "lineNumber": 79
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 80
+          },
+          {
+            "text": "        ",
+            "lineNumber": 81
+          },
+          {
+            "text": "        # Placeholder for actual API test",
+            "lineNumber": 82
+          },
+          {
+            "text": "        # TODO: Implement actual API connection test",
+            "lineNumber": 83
+          },
+          {
+            "text": "        self.report({'INFO'}, \"Connection test not yet implemented. Please verify credentials manually.\")",
+            "lineNumber": 84
+          },
+          {
+            "text": "        return {'FINISHED'}",
+            "lineNumber": 85,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 86
+          },
+          {
+            "lineNumber": 87
+          },
+          {
+            "text": "class SHEEPIT_AddonPreferences(AddonPreferences):",
+            "lineNumber": 88,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Addon preferences for SheepIt Project Submitter.\"\"\"",
+            "lineNumber": 89
+          }
+        ]
+      },
+      "score": 0.4221470057964325
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\config.py",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 19,
+            "column": 42
+          }
+        },
+        "contents": "\"\"\"\nConfiguration constants for SheepIt Project Submitter addon.\n\"\"\"\n\n# Addon metadata\nADDON_NAME = \"SheepIt Project Submitter\"\nADDON_ID = \"sheepit_project_submitter\"\n\n# SheepIt API endpoints (to be researched and updated)\nSHEEPIT_API_BASE = \"https://www.sheepit-renderfarm.com\"\nSHEEPIT_CLIENT_BASE = \"https://client.sheepit-renderfarm.com\"\n\n# Debug mode\nDEBUG = False\n\n\ndef debug_print(message: str) -&gt; None:\n    \"\"\"Print debug message if DEBUG is enabled.\"\"\"\n    if DEBUG:\n        print(f\"[{ADDON_NAME}] {message}\")",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "\"\"\"",
+            "lineNumber": 1
+          },
+          {
+            "text": "Configuration constants for SheepIt Project Submitter addon.",
+            "lineNumber": 2
+          },
+          {
+            "text": "\"\"\"",
+            "lineNumber": 3
+          },
+          {
+            "lineNumber": 4
+          },
+          {
+            "text": "# Addon metadata",
+            "lineNumber": 5
+          },
+          {
+            "text": "ADDON_NAME = \"SheepIt Project Submitter\"",
+            "lineNumber": 6
+          },
+          {
+            "text": "ADDON_ID = \"sheepit_project_submitter\"",
+            "lineNumber": 7
+          },
+          {
+            "lineNumber": 8
+          },
+          {
+            "text": "# SheepIt API endpoints (to be researched and updated)",
+            "lineNumber": 9
+          },
+          {
+            "text": "SHEEPIT_API_BASE = \"https://www.sheepit-renderfarm.com\"",
+            "lineNumber": 10
+          },
+          {
+            "text": "SHEEPIT_CLIENT_BASE = \"https://client.sheepit-renderfarm.com\"",
+            "lineNumber": 11
+          },
+          {
+            "lineNumber": 12
+          },
+          {
+            "text": "# Debug mode",
+            "lineNumber": 13
+          },
+          {
+            "text": "DEBUG = False",
+            "lineNumber": 14
+          },
+          {
+            "lineNumber": 15
+          },
+          {
+            "lineNumber": 16
+          },
+          {
+            "text": "def debug_print(message: str) -&gt; None:",
+            "lineNumber": 17,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Print debug message if DEBUG is enabled.\"\"\"",
+            "lineNumber": 18
+          },
+          {
+            "text": "    if DEBUG:",
+            "lineNumber": 19
+          },
+          {
+            "text": "        print(f\"[{ADDON_NAME}] {message}\")",
+            "lineNumber": 20,
+            "isSignature": true
+          }
+        ]
+      },
+      "score": 0.37206995487213135
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\utils\\auth.py",
+        "range": {
+          "startPosition": {
+            "line": 194,
+            "column": 20
+          },
+          "endPosition": {
+            "line": 259
+          }
+        },
+        "contents": "def browser_login() -&gt; bool:\n    \"\"\"\n    Open browser for login and provide instructions.\n    \n    Since we cannot directly extract cookies from the browser session,\n    this opens the login page and provides instructions for the user.\n    After login, the user can verify the session works.\n    \n    Returns:\n        True if browser opened successfully\n    \"\"\"\n    if not bpy.app.online_access:\n        print(\"[SheepIt Auth] Online access is disabled. Cannot perform browser login.\")\n        return False\n    \n    # Open browser to login page\n    login_url = f\"{config.SHEEPIT_CLIENT_BASE}/user/signin\"\n    try:\n        webbrowser.open(login_url)\n        print(f\"[SheepIt Auth] Opened browser to: {login_url}\")\n        print(\"[SheepIt Auth] Please complete login in your browser.\")\n        print(\"[SheepIt Auth] After logging in, return to Blender and click 'Verify Login'.\")\n        return True\n    except Exception as e:\n        print(f\"[SheepIt Auth] Failed to open browser: {e}\")\n        return False\n\n\ndef verify_session_with_token(session_token: str) -&gt; bool:\n    \"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "def browser_login() -&gt; bool:",
+            "lineNumber": 198,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 199
+          },
+          {
+            "text": "    Open browser for login and provide instructions.",
+            "lineNumber": 200
+          },
+          {
+            "text": "    ",
+            "lineNumber": 201
+          },
+          {
+            "text": "    Since we cannot directly extract cookies from the browser session,",
+            "lineNumber": 202
+          },
+          {
+            "text": "    this opens the login page and provides instructions for the user.",
+            "lineNumber": 203
+          },
+          {
+            "text": "    After login, the user can verify the session works.",
+            "lineNumber": 204
+          },
+          {
+            "text": "    ",
+            "lineNumber": 205
+          },
+          {
+            "text": "    Returns:",
+            "lineNumber": 206
+          },
+          {
+            "text": "        True if browser opened successfully",
+            "lineNumber": 207
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 208
+          },
+          {
+            "text": "    if not bpy.app.online_access:",
+            "lineNumber": 209
+          },
+          {
+            "text": "        print(\"[SheepIt Auth] Online access is disabled. Cannot perform browser login.\")",
+            "lineNumber": 210
+          },
+          {
+            "text": "        return False",
+            "lineNumber": 211
+          },
+          {
+            "text": "    ",
+            "lineNumber": 212
+          },
+          {
+            "text": "    # Open browser to login page",
+            "lineNumber": 213
+          },
+          {
+            "text": "    login_url = f\"{config.SHEEPIT_CLIENT_BASE}/user/signin\"",
+            "lineNumber": 214
+          },
+          {
+            "text": "    try:",
+            "lineNumber": 215
+          },
+          {
+            "text": "        webbrowser.open(login_url)",
+            "lineNumber": 216
+          },
+          {
+            "text": "        print(f\"[SheepIt Auth] Opened browser to: {login_url}\")",
+            "lineNumber": 217
+          },
+          {
+            "text": "        print(\"[SheepIt Auth] Please complete login in your browser.\")",
+            "lineNumber": 218
+          },
+          {
+            "text": "        print(\"[SheepIt Auth] After logging in, return to Blender and click 'Verify Login'.\")",
+            "lineNumber": 219
+          },
+          {
+            "text": "        return True",
+            "lineNumber": 220
+          },
+          {
+            "text": "    except Exception as e:",
+            "lineNumber": 221
+          },
+          {
+            "text": "        print(f\"[SheepIt Auth] Failed to open browser: {e}\")",
+            "lineNumber": 222
+          },
+          {
+            "text": "        return False",
+            "lineNumber": 223,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 224
+          },
+          {
+            "lineNumber": 225
+          },
+          {
+            "text": "def verify_session_with_token(session_token: str) -&gt; bool:",
+            "lineNumber": 226,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 227
+          }
+        ]
+      },
+      "score": 0.34693118929862976
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\utils\\auth.py",
+        "range": {
+          "startPosition": {
+            "line": 259,
+            "column": 16
+          },
+          "endPosition": {
+            "line": 283,
+            "column": 5
+          }
+        },
+        "contents": "def get_auth_headers(cookies: Optional[Dict[str, str]] = None) -&gt; Dict[str, str]:\n    \"\"\"\n    Get HTTP headers with authentication cookies.\n    \n    Args:\n        cookies: Cookie dictionary (if None, loads from storage)\n    \n    Returns:\n        Dictionary of HTTP headers\n    \"\"\"\n    if cookies is None:\n        cookies = load_auth_cookies()\n    \n    if not cookies:\n        return {}\n    \n    # Format cookies as Cookie header\n    cookie_str = '; '.join(f\"{k}={v}\" for k, v in cookies.items())\n    return {\n        'Cookie': cookie_str,\n        'User-Agent': f'SheepIt-Blender-Addon/{config.ADDON_ID}',\n    }",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "def get_auth_headers(cookies: Optional[Dict[str, str]] = None) -&gt; Dict[str, str]:",
+            "lineNumber": 263,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 264
+          },
+          {
+            "text": "    Get HTTP headers with authentication cookies.",
+            "lineNumber": 265
+          },
+          {
+            "text": "    ",
+            "lineNumber": 266
+          },
+          {
+            "text": "    Args:",
+            "lineNumber": 267
+          },
+          {
+            "text": "        cookies: Cookie dictionary (if None, loads from storage)",
+            "lineNumber": 268
+          },
+          {
+            "text": "    ",
+            "lineNumber": 269
+          },
+          {
+            "text": "    Returns:",
+            "lineNumber": 270
+          },
+          {
+            "text": "        Dictionary of HTTP headers",
+            "lineNumber": 271
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 272
+          },
+          {
+            "text": "    if cookies is None:",
+            "lineNumber": 273
+          },
+          {
+            "text": "        cookies = load_auth_cookies()",
+            "lineNumber": 274
+          },
+          {
+            "text": "    ",
+            "lineNumber": 275
+          },
+          {
+            "text": "    if not cookies:",
+            "lineNumber": 276
+          },
+          {
+            "text": "        return {}",
+            "lineNumber": 277
+          },
+          {
+            "text": "    ",
+            "lineNumber": 278
+          },
+          {
+            "text": "    # Format cookies as Cookie header",
+            "lineNumber": 279
+          },
+          {
+            "text": "    cookie_str = '; '.join(f\"{k}={v}\" for k, v in cookies.items())",
+            "lineNumber": 280
+          },
+          {
+            "text": "    return {",
+            "lineNumber": 281
+          },
+          {
+            "text": "        'Cookie': cookie_str,",
+            "lineNumber": 282
+          },
+          {
+            "text": "        'User-Agent': f'SheepIt-Blender-Addon/{config.ADDON_ID}',",
+            "lineNumber": 283
+          },
+          {
+            "text": "    }",
+            "lineNumber": 284,
+            "isSignature": true
+          }
+        ]
+      },
+      "score": 0.33503589034080505
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\utils\\auth.py",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 76
+          }
+        },
+        "contents": "\"\"\"\nAuthentication utilities for SheepIt render farm.\nImplements browser-based login with secure cookie/token storage.\n\nSince SheepIt doesn't appear to support OAuth, we use a hybrid approach:\n1. Open browser for user to login (more secure than storing passwords)\n2. User extracts session token from browser cookies manually\n3. Token is stored encrypted on the local system\n4. Token is reused for API requests\n\nThis approach is similar to how many desktop apps handle authentication\nwhen OAuth isn't available. It's more secure than storing passwords because:\n- User logs in via official website (phishing-resistant)\n- Only session token is stored (not password)\n- Token can be revoked independently\n- Token is encrypted at rest\n\"\"\"\n\nimport os\nimport json\nimport secrets\nimport threading\nimport time\nimport webbrowser\nfrom http.server import HTTPServer, BaseHTTPRequestHandler\nfrom urllib.parse import urlparse, parse_qs\nfrom pathlib import Path\nfrom typing import Optional, Dict\nimport base64\n\nimport bpy\nfrom .. import config\n\n\nclass AuthCallbackHandler(BaseHTTPRequestHandler):\n    \"\"\"HTTP handler for OAuth/login callback.\"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "\"\"\"",
+            "lineNumber": 1
+          },
+          {
+            "text": "Authentication utilities for SheepIt render farm.",
+            "lineNumber": 2
+          },
+          {
+            "text": "Implements browser-based login with secure cookie/token storage.",
+            "lineNumber": 3
+          },
+          {
+            "lineNumber": 4
+          },
+          {
+            "text": "Since SheepIt doesn't appear to support OAuth, we use a hybrid approach:",
+            "lineNumber": 5
+          },
+          {
+            "text": "1. Open browser for user to login (more secure than storing passwords)",
+            "lineNumber": 6
+          },
+          {
+            "text": "2. User extracts session token from browser cookies manually",
+            "lineNumber": 7
+          },
+          {
+            "text": "3. Token is stored encrypted on the local system",
+            "lineNumber": 8
+          },
+          {
+            "text": "4. Token is reused for API requests",
+            "lineNumber": 9
+          },
+          {
+            "lineNumber": 10
+          },
+          {
+            "text": "This approach is similar to how many desktop apps handle authentication",
+            "lineNumber": 11
+          },
+          {
+            "text": "when OAuth isn't available. It's more secure than storing passwords because:",
+            "lineNumber": 12
+          },
+          {
+            "text": "- User logs in via official website (phishing-resistant)",
+            "lineNumber": 13
+          },
+          {
+            "text": "- Only session token is stored (not password)",
+            "lineNumber": 14
+          },
+          {
+            "text": "- Token can be revoked independently",
+            "lineNumber": 15
+          },
+          {
+            "text": "- Token is encrypted at rest",
+            "lineNumber": 16
+          },
+          {
+            "text": "\"\"\"",
+            "lineNumber": 17
+          },
+          {
+            "lineNumber": 18
+          },
+          {
+            "text": "import os",
+            "lineNumber": 19
+          },
+          {
+            "text": "import json",
+            "lineNumber": 20
+          },
+          {
+            "text": "import secrets",
+            "lineNumber": 21
+          },
+          {
+            "text": "import threading",
+            "lineNumber": 22
+          },
+          {
+            "text": "import time",
+            "lineNumber": 23
+          },
+          {
+            "text": "import webbrowser",
+            "lineNumber": 24
+          },
+          {
+            "text": "from http.server import HTTPServer, BaseHTTPRequestHandler",
+            "lineNumber": 25
+          },
+          {
+            "text": "from urllib.parse import urlparse, parse_qs",
+            "lineNumber": 26
+          },
+          {
+            "text": "from pathlib import Path",
+            "lineNumber": 27
+          },
+          {
+            "text": "from typing import Optional, Dict",
+            "lineNumber": 28
+          },
+          {
+            "text": "import base64",
+            "lineNumber": 29
+          },
+          {
+            "lineNumber": 30
+          },
+          {
+            "text": "import bpy",
+            "lineNumber": 31
+          },
+          {
+            "text": "from .. import config",
+            "lineNumber": 32
+          },
+          {
+            "lineNumber": 33
+          },
+          {
+            "lineNumber": 34
+          },
+          {
+            "text": "class AuthCallbackHandler(BaseHTTPRequestHandler):",
+            "lineNumber": 35,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"HTTP handler for OAuth/login callback.\"\"\"",
+            "lineNumber": 36
+          }
+        ]
+      },
+      "score": 0.3340468406677246
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ui\\preferences_ui.py",
+        "range": {
+          "startPosition": {
+            "line": 87
+          },
+          "endPosition": {
+            "line": 204
+          }
+        },
+        "contents": "class SHEEPIT_AddonPreferences(AddonPreferences):\ndef draw(self, context):\n\n        \n        if self.use_browser_login:\n            # Browser login mode\n            row = box.row()\n            row.label(text=f\"Status: {self.auth_status}\")\n            \n            if self.auth_status == \"Not logged in\" or \"Please login\" in self.auth_status:\n                row = box.row()\n                row.scale_y = 1.2\n                row.operator(\"sheepit.browser_login\", text=\"Open Browser for Login\", icon='WORLD')\n                \n                # Instructions\n                box.label(text=\"After logging in:\", icon='INFO')\n                box.label(text=\"1. Open browser DevTools (F12)\")\n                box.label(text=\"2. Go to Application/Storage → Cookies\")\n                box.label(text=\"3. Find 'session' or 'PHPSESSID' cookie\")\n                box.label(text=\"4. Copy its value and paste below:\")\n                \n                # Token entry\n                row = box.row()\n                row.prop(self, \"session_token\")\n                row = box.row()\n                row.scale_y = 1.2\n                row.operator(\"sheepit.verify_login\", text=\"Save Session Token\", icon='CHECKMARK')\n            else:\n                row = box.row()\n                row.scale_y = 1.2\n                row.operator(\"sheepit.logout\", text=\"Logout\", icon='QUIT')\n        else:\n            # Username/Password mode\n            row = box.row()\n            row.prop(self, \"sheepit_username\")\n            \n            row = box.row()\n            row.prop(self, \"sheepit_password\")\n        \n        box.separator()\n        \n        # Test connection button\n        row = box.row()\n        row.scale_y = 1.5\n        row.operator(\"sheepit.test_connection\", icon='WORLD')\n        \n        box.separator()\n        \n        # Info box\n        box.label(text=\"About Authentication:\", icon='QUESTION')\n        if self.use_browser_login:\n            box.label",
+        "signatures": {
+          "ranges": [
+            {
+              "startPosition": {
+                "line": 88,
+                "column": 1
+              },
+              "endPosition": {
+                "line": 89,
+                "column": 5
+              }
+            },
+            {
+              "startPosition": {
+                "line": 130,
+                "column": 5
+              },
+              "endPosition": {
+                "line": 131,
+                "column": 9
+              }
+            }
+          ]
+        },
+        "detailedLines": [
+          {
+            "text": "class SHEEPIT_AddonPreferences(AddonPreferences):",
+            "lineNumber": 88,
+            "isSignature": true
+          },
+          {
+            "text": "def draw(self, context):",
+            "lineNumber": 130
+          },
+          {
+            "lineNumber": 151
+          },
+          {
+            "text": "        ",
+            "lineNumber": 152
+          },
+          {
+            "text": "        if self.use_browser_login:",
+            "lineNumber": 153
+          },
+          {
+            "text": "            # Browser login mode",
+            "lineNumber": 154
+          },
+          {
+            "text": "            row = box.row()",
+            "lineNumber": 155
+          },
+          {
+            "text": "            row.label(text=f\"Status: {self.auth_status}\")",
+            "lineNumber": 156
+          },
+          {
+            "text": "            ",
+            "lineNumber": 157
+          },
+          {
+            "text": "            if self.auth_status == \"Not logged in\" or \"Please login\" in self.auth_status:",
+            "lineNumber": 158
+          },
+          {
+            "text": "                row = box.row()",
+            "lineNumber": 159
+          },
+          {
+            "text": "                row.scale_y = 1.2",
+            "lineNumber": 160
+          },
+          {
+            "text": "                row.operator(\"sheepit.browser_login\", text=\"Open Browser for Login\", icon='WORLD')",
+            "lineNumber": 161
+          },
+          {
+            "text": "                ",
+            "lineNumber": 162
+          },
+          {
+            "text": "                # Instructions",
+            "lineNumber": 163
+          },
+          {
+            "text": "                box.label(text=\"After logging in:\", icon='INFO')",
+            "lineNumber": 164
+          },
+          {
+            "text": "                box.label(text=\"1. Open browser DevTools (F12)\")",
+            "lineNumber": 165
+          },
+          {
+            "text": "                box.label(text=\"2. Go to Application/Storage → Cookies\")",
+            "lineNumber": 166
+          },
+          {
+            "text": "                box.label(text=\"3. Find 'session' or 'PHPSESSID' cookie\")",
+            "lineNumber": 167
+          },
+          {
+            "text": "                box.label(text=\"4. Copy its value and paste below:\")",
+            "lineNumber": 168
+          },
+          {
+            "text": "                ",
+            "lineNumber": 169
+          },
+          {
+            "text": "                # Token entry",
+            "lineNumber": 170
+          },
+          {
+            "text": "                row = box.row()",
+            "lineNumber": 171
+          },
+          {
+            "text": "                row.prop(self, \"session_token\")",
+            "lineNumber": 172
+          },
+          {
+            "text": "                row = box.row()",
+            "lineNumber": 173
+          },
+          {
+            "text": "                row.scale_y = 1.2",
+            "lineNumber": 174
+          },
+          {
+            "text": "                row.operator(\"sheepit.verify_login\", text=\"Save Session Token\", icon='CHECKMARK')",
+            "lineNumber": 175
+          },
+          {
+            "text": "            else:",
+            "lineNumber": 176
+          },
+          {
+            "text": "                row = box.row()",
+            "lineNumber": 177
+          },
+          {
+            "text": "                row.scale_y = 1.2",
+            "lineNumber": 178
+          },
+          {
+            "text": "                row.operator(\"sheepit.logout\", text=\"Logout\", icon='QUIT')",
+            "lineNumber": 179
+          },
+          {
+            "text": "        else:",
+            "lineNumber": 180
+          },
+          {
+            "text": "            # Username/Password mode",
+            "lineNumber": 181
+          },
+          {
+            "text": "            row = box.row()",
+            "lineNumber": 182
+          },
+          {
+            "text": "            row.prop(self, \"sheepit_username\")",
+            "lineNumber": 183
+          },
+          {
+            "text": "            ",
+            "lineNumber": 184
+          },
+          {
+            "text": "            row = box.row()",
+            "lineNumber": 185
+          },
+          {
+            "text": "            row.prop(self, \"sheepit_password\")",
+            "lineNumber": 186
+          },
+          {
+            "text": "        ",
+            "lineNumber": 187
+          },
+          {
+            "text": "        box.separator()",
+            "lineNumber": 188
+          },
+          {
+            "text": "        ",
+            "lineNumber": 189
+          },
+          {
+            "text": "        # Test connection button",
+            "lineNumber": 190
+          },
+          {
+            "text": "        row = box.row()",
+            "lineNumber": 191
+          },
+          {
+            "text": "        row.scale_y = 1.5",
+            "lineNumber": 192
+          },
+          {
+            "text": "        row.operator(\"sheepit.test_connection\", icon='WORLD')",
+            "lineNumber": 193
+          },
+          {
+            "text": "        ",
+            "lineNumber": 194
+          },
+          {
+            "text": "        box.separator()",
+            "lineNumber": 195
+          },
+          {
+            "text": "        ",
+            "lineNumber": 196
+          },
+          {
+            "text": "        # Info box",
+            "lineNumber": 197
+          },
+          {
+            "text": "        box.label(text=\"About Authentication:\", icon='QUESTION')",
+            "lineNumber": 198
+          },
+          {
+            "text": "        if self.use_browser_login:",
+            "lineNumber": 199
+          },
+          {
+            "text": "            box.label",
+            "lineNumber": 200
+          }
+        ]
+      },
+      "score": 0.3135031461715698
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ops\\submit_ops.py",
+        "range": {
+          "startPosition": {
+            "line": 15
+          },
+          "endPosition": {
+            "line": 82
+          }
+        },
+        "contents": "class SHEEPIT_OT_submit_project(Operator):\ndef execute(self, context):\n\")\n            return {'CANCELLED'}\n        \n        # Check authentication method\n        if sheepit_prefs.use_browser_login:\n            # Use browser login cookies\n            from ..utils.auth import load_auth_cookies\n            cookies = load_auth_cookies()\n            if not cookies:\n                self.report({'ERROR'}, \"No browser login session found. Please login via browser in preferences.\")\n                return {'CANCELLED'}\n        else:\n            # Use username/password\n            if not sheepit_prefs.sheepit_username or not sheepit_prefs.sheepit_password:\n                self.report({'ERROR'}, \"Please configure SheepIt username and password in preferences.\")\n                return {'CANCELLED'}\n        \n        try:\n            # Determine if we need to create a ZIP\n            # For copy-only workflow, create ZIP of the directory\n            # For pack-and-save, we might submit the blend file directly or create ZIP\n            \n            # For now, create ZIP for both workflows (can be optimized later)\n            zip_path = pack_path.parent / f\"{pack_path.name}.zip\"\n            create_zip_from_directory(pack_path, zip_path)\n            \n            self.report({'INFO'}, f\"Created ZIP: {zip_path}\")\n            self.report({'WARNING'}, \"API submission not yet implemented. Please upload manually.\")\n            self.report({'INFO'}, f\"Upload this file to SheepIt: {zip_path}\")\n            return {'FINISHED'}\n        except Exception as e:\n            self.report({'ERROR'}, f\"Submission failed: {str(e)}\")\n            return {'CANCELLED'}\n\n\ndef create_zip_from_directory(directory: Path, output_zip: Path) -&gt; None:\n    \"\"\"Create a ZIP file from a directory.\"\"\"",
+        "signatures": {
+          "ranges": [
+            {
+              "startPosition": {
+                "line": 16,
+                "column": 1
+              },
+              "endPosition": {
+                "line": 17,
+                "column": 5
+              }
+            },
+            {
+              "startPosition": {
+                "line": 23,
+                "column": 5
+              },
+              "endPosition": {
+                "line": 24,
+                "column": 9
+              }
+            }
+          ]
+        },
+        "detailedLines": [
+          {
+            "text": "class SHEEPIT_OT_submit_project(Operator):",
+            "lineNumber": 16,
+            "isSignature": true
+          },
+          {
+            "text": "def execute(self, context):",
+            "lineNumber": 23
+          },
+          {
+            "text": "\")",
+            "lineNumber": 41
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 42
+          },
+          {
+            "text": "        ",
+            "lineNumber": 43
+          },
+          {
+            "text": "        # Check authentication method",
+            "lineNumber": 44
+          },
+          {
+            "text": "        if sheepit_prefs.use_browser_login:",
+            "lineNumber": 45
+          },
+          {
+            "text": "            # Use browser login cookies",
+            "lineNumber": 46
+          },
+          {
+            "text": "            from ..utils.auth import load_auth_cookies",
+            "lineNumber": 47
+          },
+          {
+            "text": "            cookies = load_auth_cookies()",
+            "lineNumber": 48
+          },
+          {
+            "text": "            if not cookies:",
+            "lineNumber": 49
+          },
+          {
+            "text": "                self.report({'ERROR'}, \"No browser login session found. Please login via browser in preferences.\")",
+            "lineNumber": 50
+          },
+          {
+            "text": "                return {'CANCELLED'}",
+            "lineNumber": 51
+          },
+          {
+            "text": "        else:",
+            "lineNumber": 52
+          },
+          {
+            "text": "            # Use username/password",
+            "lineNumber": 53
+          },
+          {
+            "text": "            if not sheepit_prefs.sheepit_username or not sheepit_prefs.sheepit_password:",
+            "lineNumber": 54
+          },
+          {
+            "text": "                self.report({'ERROR'}, \"Please configure SheepIt username and password in preferences.\")",
+            "lineNumber": 55
+          },
+          {
+            "text": "                return {'CANCELLED'}",
+            "lineNumber": 56
+          },
+          {
+            "text": "        ",
+            "lineNumber": 57
+          },
+          {
+            "text": "        try:",
+            "lineNumber": 58
+          },
+          {
+            "text": "            # Determine if we need to create a ZIP",
+            "lineNumber": 59
+          },
+          {
+            "text": "            # For copy-only workflow, create ZIP of the directory",
+            "lineNumber": 60
+          },
+          {
+            "text": "            # For pack-and-save, we might submit the blend file directly or create ZIP",
+            "lineNumber": 61
+          },
+          {
+            "text": "            ",
+            "lineNumber": 62
+          },
+          {
+            "text": "            # For now, create ZIP for both workflows (can be optimized later)",
+            "lineNumber": 63
+          },
+          {
+            "text": "            zip_path = pack_path.parent / f\"{pack_path.name}.zip\"",
+            "lineNumber": 64
+          },
+          {
+            "text": "            create_zip_from_directory(pack_path, zip_path)",
+            "lineNumber": 65
+          },
+          {
+            "text": "            ",
+            "lineNumber": 66
+          },
+          {
+            "text": "            self.report({'INFO'}, f\"Created ZIP: {zip_path}\")",
+            "lineNumber": 67
+          },
+          {
+            "text": "            self.report({'WARNING'}, \"API submission not yet implemented. Please upload manually.\")",
+            "lineNumber": 68
+          },
+          {
+            "text": "            self.report({'INFO'}, f\"Upload this file to SheepIt: {zip_path}\")",
+            "lineNumber": 69
+          },
+          {
+            "text": "            return {'FINISHED'}",
+            "lineNumber": 70
+          },
+          {
+            "text": "        except Exception as e:",
+            "lineNumber": 71
+          },
+          {
+            "text": "            self.report({'ERROR'}, f\"Submission failed: {str(e)}\")",
+            "lineNumber": 72
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 73,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 74
+          },
+          {
+            "lineNumber": 75
+          },
+          {
+            "text": "def create_zip_from_directory(directory: Path, output_zip: Path) -&gt; None:",
+            "lineNumber": 76,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Create a ZIP file from a directory.\"\"\"",
+            "lineNumber": 77
+          }
+        ]
+      },
+      "score": 0.30846893787384033
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ops\\auth_ops.py",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 73
+          }
+        },
+        "contents": "\"\"\"\nAuthentication operators for browser-based login.\n\"\"\"\n\nimport bpy\nfrom bpy.types import Operator\nfrom ..utils.auth import browser_login, save_auth_cookies, clear_auth_cookies, load_auth_cookies\nfrom .. import config\n\n\nclass SHEEPIT_OT_browser_login(Operator):\n    \"\"\"Open browser for SheepIt login.\"\"\"\n    bl_idname = \"sheepit.browser_login\"\n    bl_label = \"Open Browser for Login\"\n    bl_description = \"Open browser to login to SheepIt. After logging in, click 'Verify Login' to save session.\"\n    bl_options = {'REGISTER', 'UNDO'}\n    \n    def execute(self, context):\n        if not bpy.app.online_access:\n            self.report({'ERROR'}, \"Online access is disabled. Enable it in Preferences → System.\")\n            return {'CANCELLED'}\n        \n        # Open browser\n        if browser_login():\n            # Update preferences status\n            from ..utils.compat import get_addon_prefs\n            prefs = get_addon_prefs()\n            if prefs:\n                prefs.auth_status = \"Please login in browser, then click 'Verify Login'\"\n            self.report({'INFO'}, \"Browser opened. Please login, then click 'Verify Login'.\")\n            return {'FINISHED'}\n        else:\n            self.report({'ERROR'}, \"Failed to open browser.\")\n            return {'CANCELLED'}\n\n\nclass SHEEPIT_OT_verify_login(Operator):\n    \"\"\"Save session token from browser login.\"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "\"\"\"",
+            "lineNumber": 1
+          },
+          {
+            "text": "Authentication operators for browser-based login.",
+            "lineNumber": 2
+          },
+          {
+            "text": "\"\"\"",
+            "lineNumber": 3
+          },
+          {
+            "lineNumber": 4
+          },
+          {
+            "text": "import bpy",
+            "lineNumber": 5
+          },
+          {
+            "text": "from bpy.types import Operator",
+            "lineNumber": 6
+          },
+          {
+            "text": "from ..utils.auth import browser_login, save_auth_cookies, clear_auth_cookies, load_auth_cookies",
+            "lineNumber": 7
+          },
+          {
+            "text": "from .. import config",
+            "lineNumber": 8
+          },
+          {
+            "lineNumber": 9
+          },
+          {
+            "lineNumber": 10
+          },
+          {
+            "text": "class SHEEPIT_OT_browser_login(Operator):",
+            "lineNumber": 11,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Open browser for SheepIt login.\"\"\"",
+            "lineNumber": 12
+          },
+          {
+            "text": "    bl_idname = \"sheepit.browser_login\"",
+            "lineNumber": 13
+          },
+          {
+            "text": "    bl_label = \"Open Browser for Login\"",
+            "lineNumber": 14
+          },
+          {
+            "text": "    bl_description = \"Open browser to login to SheepIt. After logging in, click 'Verify Login' to save session.\"",
+            "lineNumber": 15
+          },
+          {
+            "text": "    bl_options = {'REGISTER', 'UNDO'}",
+            "lineNumber": 16
+          },
+          {
+            "text": "    ",
+            "lineNumber": 17
+          },
+          {
+            "text": "    def execute(self, context):",
+            "lineNumber": 18
+          },
+          {
+            "text": "        if not bpy.app.online_access:",
+            "lineNumber": 19
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Online access is disabled. Enable it in Preferences → System.\")",
+            "lineNumber": 20
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 21
+          },
+          {
+            "text": "        ",
+            "lineNumber": 22
+          },
+          {
+            "text": "        # Open browser",
+            "lineNumber": 23
+          },
+          {
+            "text": "        if browser_login():",
+            "lineNumber": 24
+          },
+          {
+            "text": "            # Update preferences status",
+            "lineNumber": 25
+          },
+          {
+            "text": "            from ..utils.compat import get_addon_prefs",
+            "lineNumber": 26
+          },
+          {
+            "text": "            prefs = get_addon_prefs()",
+            "lineNumber": 27
+          },
+          {
+            "text": "            if prefs:",
+            "lineNumber": 28
+          },
+          {
+            "text": "                prefs.auth_status = \"Please login in browser, then click 'Verify Login'\"",
+            "lineNumber": 29
+          },
+          {
+            "text": "            self.report({'INFO'}, \"Browser opened. Please login, then click 'Verify Login'.\")",
+            "lineNumber": 30
+          },
+          {
+            "text": "            return {'FINISHED'}",
+            "lineNumber": 31
+          },
+          {
+            "text": "        else:",
+            "lineNumber": 32
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Failed to open browser.\")",
+            "lineNumber": 33
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 34,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 35
+          },
+          {
+            "lineNumber": 36
+          },
+          {
+            "text": "class SHEEPIT_OT_verify_login(Operator):",
+            "lineNumber": 37,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Save session token from browser login.\"\"\"",
+            "lineNumber": 38
+          }
+        ]
+      },
+      "score": 0.2991867661476135
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ui\\preferences_ui.py",
+        "range": {
+          "startPosition": {
+            "line": 84,
+            "column": 27
+          },
+          "endPosition": {
+            "line": 204
+          }
+        },
+        "contents": "class SHEEPIT_AddonPreferences(AddonPreferences):\n    \"\"\"Addon preferences for SheepIt Project Submitter.\"\"\"\n    # bl_idname must match the add-on's module name exactly\n    # Get it dynamically to ensure it matches what Blender registered\n    bl_idname = _get_addon_module_name()\n    \n    # Authentication\n    sheepit_username: StringProperty(\n        name=\"Username\",\n        description=\"Your SheepIt render farm username\",\n        default=\"\",\n        subtype='NONE',\n    )\n    \n    sheepit_password: StringProperty(\n        name=\"Password\",\n        description=\"Your SheepIt account password\",\n        default=\"\",\n        subtype='PASSWORD',\n    )\n    \n    # Browser login status\n    use_browser_login: BoolProperty(\n        name=\"Use Browser Login\",\n        description=\"Login via browser and reuse session cookies (more secure, recommended)\",\n        default=True,\n    )\n    \n    auth_status: StringProperty(\n        name=\"Auth Status\",\n        description=\"Current authentication status\",\n        default=\"Not logged in\",\n    )\n    \n    # Manual session token entry (for browser login)\n    session_token: StringProperty(\n        name=\"Session Token\",\n        description=\"Session token from browser (extract from browser cookies after login)\",\n        default=\"\",\n        subtype='PASSWORD',\n    )\n    \n    def draw(self, context):\n        layout = self.layout",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "class SHEEPIT_AddonPreferences(AddonPreferences):",
+            "lineNumber": 88,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Addon preferences for SheepIt Project Submitter.\"\"\"",
+            "lineNumber": 89
+          },
+          {
+            "text": "    # bl_idname must match the add-on's module name exactly",
+            "lineNumber": 90
+          },
+          {
+            "text": "    # Get it dynamically to ensure it matches what Blender registered",
+            "lineNumber": 91
+          },
+          {
+            "text": "    bl_idname = _get_addon_module_name()",
+            "lineNumber": 92
+          },
+          {
+            "text": "    ",
+            "lineNumber": 93
+          },
+          {
+            "text": "    # Authentication",
+            "lineNumber": 94
+          },
+          {
+            "text": "    sheepit_username: StringProperty(",
+            "lineNumber": 95
+          },
+          {
+            "text": "        name=\"Username\",",
+            "lineNumber": 96
+          },
+          {
+            "text": "        description=\"Your SheepIt render farm username\",",
+            "lineNumber": 97
+          },
+          {
+            "text": "        default=\"\",",
+            "lineNumber": 98
+          },
+          {
+            "text": "        subtype='NONE',",
+            "lineNumber": 99
+          },
+          {
+            "text": "    )",
+            "lineNumber": 100
+          },
+          {
+            "text": "    ",
+            "lineNumber": 101
+          },
+          {
+            "text": "    sheepit_password: StringProperty(",
+            "lineNumber": 102
+          },
+          {
+            "text": "        name=\"Password\",",
+            "lineNumber": 103
+          },
+          {
+            "text": "        description=\"Your SheepIt account password\",",
+            "lineNumber": 104
+          },
+          {
+            "text": "        default=\"\",",
+            "lineNumber": 105
+          },
+          {
+            "text": "        subtype='PASSWORD',",
+            "lineNumber": 106
+          },
+          {
+            "text": "    )",
+            "lineNumber": 107
+          },
+          {
+            "text": "    ",
+            "lineNumber": 108
+          },
+          {
+            "text": "    # Browser login status",
+            "lineNumber": 109
+          },
+          {
+            "text": "    use_browser_login: BoolProperty(",
+            "lineNumber": 110
+          },
+          {
+            "text": "        name=\"Use Browser Login\",",
+            "lineNumber": 111
+          },
+          {
+            "text": "        description=\"Login via browser and reuse session cookies (more secure, recommended)\",",
+            "lineNumber": 112
+          },
+          {
+            "text": "        default=True,",
+            "lineNumber": 113
+          },
+          {
+            "text": "    )",
+            "lineNumber": 114
+          },
+          {
+            "text": "    ",
+            "lineNumber": 115
+          },
+          {
+            "text": "    auth_status: StringProperty(",
+            "lineNumber": 116
+          },
+          {
+            "text": "        name=\"Auth Status\",",
+            "lineNumber": 117
+          },
+          {
+            "text": "        description=\"Current authentication status\",",
+            "lineNumber": 118
+          },
+          {
+            "text": "        default=\"Not logged in\",",
+            "lineNumber": 119
+          },
+          {
+            "text": "    )",
+            "lineNumber": 120
+          },
+          {
+            "text": "    ",
+            "lineNumber": 121
+          },
+          {
+            "text": "    # Manual session token entry (for browser login)",
+            "lineNumber": 122
+          },
+          {
+            "text": "    session_token: StringProperty(",
+            "lineNumber": 123
+          },
+          {
+            "text": "        name=\"Session Token\",",
+            "lineNumber": 124
+          },
+          {
+            "text": "        description=\"Session token from browser (extract from browser cookies after login)\",",
+            "lineNumber": 125
+          },
+          {
+            "text": "        default=\"\",",
+            "lineNumber": 126
+          },
+          {
+            "text": "        subtype='PASSWORD',",
+            "lineNumber": 127
+          },
+          {
+            "text": "    )",
+            "lineNumber": 128
+          },
+          {
+            "text": "    ",
+            "lineNumber": 129
+          },
+          {
+            "text": "    def draw(self, context):",
+            "lineNumber": 130
+          },
+          {
+            "text": "        layout = self.layout",
+            "lineNumber": 131
+          }
+        ]
+      },
+      "score": 0.2707192003726959
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ops\\auth_ops.py",
+        "range": {
+          "startPosition": {
+            "line": 33,
+            "column": 32
+          },
+          "endPosition": {
+            "line": 94
+          }
+        },
+        "contents": "class SHEEPIT_OT_verify_login(Operator):\n    \"\"\"Save session token from browser login.\"\"\"\n    bl_idname = \"sheepit.verify_login\"\n    bl_label = \"Save Session Token\"\n    bl_description = \"Save the session token you copied from browser cookies\"\n    bl_options = {'REGISTER', 'UNDO'}\n    \n    def execute(self, context):\n        if not bpy.app.online_access:\n            self.report({'ERROR'}, \"Online access is disabled. Enable it in Preferences → System.\")\n            return {'CANCELLED'}\n        \n        from ..utils.compat import get_addon_prefs\n        prefs = get_addon_prefs()\n        if not prefs:\n            self.report({'ERROR'}, \"Addon preferences not found.\")\n            return {'CANCELLED'}\n        \n        if not prefs.session_token:\n            self.report({'ERROR'}, \"Please enter the session token from your browser.\")\n            return {'CANCELLED'}\n        \n        # Verify token (optional - can skip if user trusts it)\n        # if not auth.verify_session_with_token(prefs.session_token):\n        #     self.report({'WARNING'}, \"Token verification failed, but saving anyway.\")\n        \n        # Save as cookie\n        cookies = {'session': prefs.session_token}  # Adjust cookie name based on SheepIt's actual cookie name\n        \n        if save_auth_cookies(cookies):\n            # Update preferences status\n            prefs.auth_status = \"Logged in (Browser)\"\n            prefs.session_token = \"\"  # Clear token field for security\n            self.report({'INFO'}, \"Session token saved successfully!\")\n            return {'FINISHED'}\n        else:\n            self.report({'ERROR'}, \"Failed to save session token.\")\n            return {'CANCELLED'}\n\n\nclass SHEEPIT_OT_logout(Operator):\n    \"\"\"Logout and clear stored authentication cookies.\"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "class SHEEPIT_OT_verify_login(Operator):",
+            "lineNumber": 37,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Save session token from browser login.\"\"\"",
+            "lineNumber": 38
+          },
+          {
+            "text": "    bl_idname = \"sheepit.verify_login\"",
+            "lineNumber": 39
+          },
+          {
+            "text": "    bl_label = \"Save Session Token\"",
+            "lineNumber": 40
+          },
+          {
+            "text": "    bl_description = \"Save the session token you copied from browser cookies\"",
+            "lineNumber": 41
+          },
+          {
+            "text": "    bl_options = {'REGISTER', 'UNDO'}",
+            "lineNumber": 42
+          },
+          {
+            "text": "    ",
+            "lineNumber": 43
+          },
+          {
+            "text": "    def execute(self, context):",
+            "lineNumber": 44
+          },
+          {
+            "text": "        if not bpy.app.online_access:",
+            "lineNumber": 45
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Online access is disabled. Enable it in Preferences → System.\")",
+            "lineNumber": 46
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 47
+          },
+          {
+            "text": "        ",
+            "lineNumber": 48
+          },
+          {
+            "text": "        from ..utils.compat import get_addon_prefs",
+            "lineNumber": 49
+          },
+          {
+            "text": "        prefs = get_addon_prefs()",
+            "lineNumber": 50
+          },
+          {
+            "text": "        if not prefs:",
+            "lineNumber": 51
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Addon preferences not found.\")",
+            "lineNumber": 52
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 53
+          },
+          {
+            "text": "        ",
+            "lineNumber": 54
+          },
+          {
+            "text": "        if not prefs.session_token:",
+            "lineNumber": 55
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Please enter the session token from your browser.\")",
+            "lineNumber": 56
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 57
+          },
+          {
+            "text": "        ",
+            "lineNumber": 58
+          },
+          {
+            "text": "        # Verify token (optional - can skip if user trusts it)",
+            "lineNumber": 59
+          },
+          {
+            "text": "        # if not auth.verify_session_with_token(prefs.session_token):",
+            "lineNumber": 60
+          },
+          {
+            "text": "        #     self.report({'WARNING'}, \"Token verification failed, but saving anyway.\")",
+            "lineNumber": 61
+          },
+          {
+            "text": "        ",
+            "lineNumber": 62
+          },
+          {
+            "text": "        # Save as cookie",
+            "lineNumber": 63
+          },
+          {
+            "text": "        cookies = {'session': prefs.session_token}  # Adjust cookie name based on SheepIt's actual cookie name",
+            "lineNumber": 64
+          },
+          {
+            "text": "        ",
+            "lineNumber": 65
+          },
+          {
+            "text": "        if save_auth_cookies(cookies):",
+            "lineNumber": 66
+          },
+          {
+            "text": "            # Update preferences status",
+            "lineNumber": 67
+          },
+          {
+            "text": "            prefs.auth_status = \"Logged in (Browser)\"",
+            "lineNumber": 68
+          },
+          {
+            "text": "            prefs.session_token = \"\"  # Clear token field for security",
+            "lineNumber": 69
+          },
+          {
+            "text": "            self.report({'INFO'}, \"Session token saved successfully!\")",
+            "lineNumber": 70
+          },
+          {
+            "text": "            return {'FINISHED'}",
+            "lineNumber": 71
+          },
+          {
+            "text": "        else:",
+            "lineNumber": 72
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Failed to save session token.\")",
+            "lineNumber": 73
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 74,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 75
+          },
+          {
+            "lineNumber": 76
+          },
+          {
+            "text": "class SHEEPIT_OT_logout(Operator):",
+            "lineNumber": 77,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Logout and clear stored authentication cookies.\"\"\"",
+            "lineNumber": 78
+          }
+        ]
+      },
+      "score": 0.26955339312553406
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ops\\submit_ops.py",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 72
+          }
+        },
+        "contents": "\"\"\"\nSubmission operations for SheepIt render farm.\n\"\"\"\n\nimport os\nimport zipfile\nfrom pathlib import Path\nfrom typing import Optional\n\nimport bpy\nfrom bpy.types import Operator\n\nfrom .. import config\n\n\nclass SHEEPIT_OT_submit_project(Operator):\n    \"\"\"Submit project to SheepIt render farm.\"\"\"\n    bl_idname = \"sheepit.submit_project\"\n    bl_label = \"Submit to SheepIt\"\n    bl_description = \"Submit the packed project to SheepIt render farm\"\n    bl_options = {'REGISTER', 'UNDO'}\n    \n    def execute(self, context):\n        scene = context.scene\n        submit_settings = scene.sheepit_submit\n        \n        # Check if project has been packed\n        if not submit_settings.pack_output_path:\n            self.report({'ERROR'}, \"Please pack the project first using 'Pack Copy Only' or 'Pack and Save'\")\n            return {'CANCELLED'}\n        \n        pack_path = Path(submit_settings.pack_output_path)\n        if not pack_path.exists():\n            self.report({'ERROR'}, f\"Packed project path does not exist: {pack_path}\")\n            return {'CANCELLED'}\n        \n        # Get preferences for authentication\n        from ..utils.compat import get_addon_prefs\n        sheepit_prefs = get_addon_prefs()\n        if not sheepit_prefs:\n            self.report({'ERROR'}, \"Addon preferences not found. Please configure SheepIt credentials in preferences.\")\n            return {'CANCELLED'}\n        \n        # Check authentication method\n        if",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "\"\"\"",
+            "lineNumber": 1
+          },
+          {
+            "text": "Submission operations for SheepIt render farm.",
+            "lineNumber": 2
+          },
+          {
+            "text": "\"\"\"",
+            "lineNumber": 3
+          },
+          {
+            "lineNumber": 4
+          },
+          {
+            "text": "import os",
+            "lineNumber": 5
+          },
+          {
+            "text": "import zipfile",
+            "lineNumber": 6
+          },
+          {
+            "text": "from pathlib import Path",
+            "lineNumber": 7
+          },
+          {
+            "text": "from typing import Optional",
+            "lineNumber": 8
+          },
+          {
+            "lineNumber": 9
+          },
+          {
+            "text": "import bpy",
+            "lineNumber": 10
+          },
+          {
+            "text": "from bpy.types import Operator",
+            "lineNumber": 11
+          },
+          {
+            "lineNumber": 12
+          },
+          {
+            "text": "from .. import config",
+            "lineNumber": 13
+          },
+          {
+            "lineNumber": 14
+          },
+          {
+            "lineNumber": 15
+          },
+          {
+            "text": "class SHEEPIT_OT_submit_project(Operator):",
+            "lineNumber": 16,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Submit project to SheepIt render farm.\"\"\"",
+            "lineNumber": 17
+          },
+          {
+            "text": "    bl_idname = \"sheepit.submit_project\"",
+            "lineNumber": 18
+          },
+          {
+            "text": "    bl_label = \"Submit to SheepIt\"",
+            "lineNumber": 19
+          },
+          {
+            "text": "    bl_description = \"Submit the packed project to SheepIt render farm\"",
+            "lineNumber": 20
+          },
+          {
+            "text": "    bl_options = {'REGISTER', 'UNDO'}",
+            "lineNumber": 21
+          },
+          {
+            "text": "    ",
+            "lineNumber": 22
+          },
+          {
+            "text": "    def execute(self, context):",
+            "lineNumber": 23
+          },
+          {
+            "text": "        scene = context.scene",
+            "lineNumber": 24
+          },
+          {
+            "text": "        submit_settings = scene.sheepit_submit",
+            "lineNumber": 25
+          },
+          {
+            "text": "        ",
+            "lineNumber": 26
+          },
+          {
+            "text": "        # Check if project has been packed",
+            "lineNumber": 27
+          },
+          {
+            "text": "        if not submit_settings.pack_output_path:",
+            "lineNumber": 28
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Please pack the project first using 'Pack Copy Only' or 'Pack and Save'\")",
+            "lineNumber": 29
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 30
+          },
+          {
+            "text": "        ",
+            "lineNumber": 31
+          },
+          {
+            "text": "        pack_path = Path(submit_settings.pack_output_path)",
+            "lineNumber": 32
+          },
+          {
+            "text": "        if not pack_path.exists():",
+            "lineNumber": 33
+          },
+          {
+            "text": "            self.report({'ERROR'}, f\"Packed project path does not exist: {pack_path}\")",
+            "lineNumber": 34
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 35
+          },
+          {
+            "text": "        ",
+            "lineNumber": 36
+          },
+          {
+            "text": "        # Get preferences for authentication",
+            "lineNumber": 37
+          },
+          {
+            "text": "        from ..utils.compat import get_addon_prefs",
+            "lineNumber": 38
+          },
+          {
+            "text": "        sheepit_prefs = get_addon_prefs()",
+            "lineNumber": 39
+          },
+          {
+            "text": "        if not sheepit_prefs:",
+            "lineNumber": 40
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Addon preferences not found. Please configure SheepIt credentials in preferences.\")",
+            "lineNumber": 41
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 42
+          },
+          {
+            "text": "        ",
+            "lineNumber": 43
+          },
+          {
+            "text": "        # Check authentication method",
+            "lineNumber": 44
+          },
+          {
+            "text": "        if",
+            "lineNumber": 45
+          }
+        ]
+      },
+      "score": 0.25593793392181396
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\utils\\auth.py",
+        "range": {
+          "startPosition": {
+            "line": 125,
+            "column": 17
+          },
+          "endPosition": {
+            "line": 183
+          }
+        },
+        "contents": "def save_auth_cookies(cookies: Dict[str, str]) -&gt; bool:\n    \"\"\"\n    Save authentication cookies securely.\n    \n    Args:\n        cookies: Dictionary of cookie name-value pairs\n    \n    Returns:\n        True if saved successfully, False otherwise\n    \"\"\"\n    try:\n        storage_path = _get_auth_storage_path()\n        encrypted = _encrypt_cookies(cookies)\n        \n        data = {\n            'cookies': encrypted,\n            'timestamp': time.time(),\n        }\n        \n        with open(storage_path, 'w') as f:\n            json.dump(data, f)\n        \n        # Set restrictive permissions (Unix-like systems)\n        try:\n            os.chmod(storage_path, 0o600)\n        except Exception:\n            pass  # Windows doesn't support chmod the same way\n        \n        return True\n    except Exception as e:\n        print(f\"[SheepIt Auth] Failed to save cookies: {e}\")\n        return False\n\n\ndef load_auth_cookies() -&gt; Optional[Dict[str, str]]:\n    \"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "def save_auth_cookies(cookies: Dict[str, str]) -&gt; bool:",
+            "lineNumber": 129,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 130
+          },
+          {
+            "text": "    Save authentication cookies securely.",
+            "lineNumber": 131
+          },
+          {
+            "text": "    ",
+            "lineNumber": 132
+          },
+          {
+            "text": "    Args:",
+            "lineNumber": 133
+          },
+          {
+            "text": "        cookies: Dictionary of cookie name-value pairs",
+            "lineNumber": 134
+          },
+          {
+            "text": "    ",
+            "lineNumber": 135
+          },
+          {
+            "text": "    Returns:",
+            "lineNumber": 136
+          },
+          {
+            "text": "        True if saved successfully, False otherwise",
+            "lineNumber": 137
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 138
+          },
+          {
+            "text": "    try:",
+            "lineNumber": 139
+          },
+          {
+            "text": "        storage_path = _get_auth_storage_path()",
+            "lineNumber": 140
+          },
+          {
+            "text": "        encrypted = _encrypt_cookies(cookies)",
+            "lineNumber": 141
+          },
+          {
+            "text": "        ",
+            "lineNumber": 142
+          },
+          {
+            "text": "        data = {",
+            "lineNumber": 143
+          },
+          {
+            "text": "            'cookies': encrypted,",
+            "lineNumber": 144
+          },
+          {
+            "text": "            'timestamp': time.time(),",
+            "lineNumber": 145
+          },
+          {
+            "text": "        }",
+            "lineNumber": 146
+          },
+          {
+            "text": "        ",
+            "lineNumber": 147
+          },
+          {
+            "text": "        with open(storage_path, 'w') as f:",
+            "lineNumber": 148
+          },
+          {
+            "text": "            json.dump(data, f)",
+            "lineNumber": 149
+          },
+          {
+            "text": "        ",
+            "lineNumber": 150
+          },
+          {
+            "text": "        # Set restrictive permissions (Unix-like systems)",
+            "lineNumber": 151
+          },
+          {
+            "text": "        try:",
+            "lineNumber": 152
+          },
+          {
+            "text": "            os.chmod(storage_path, 0o600)",
+            "lineNumber": 153
+          },
+          {
+            "text": "        except Exception:",
+            "lineNumber": 154
+          },
+          {
+            "text": "            pass  # Windows doesn't support chmod the same way",
+            "lineNumber": 155
+          },
+          {
+            "text": "        ",
+            "lineNumber": 156
+          },
+          {
+            "text": "        return True",
+            "lineNumber": 157
+          },
+          {
+            "text": "    except Exception as e:",
+            "lineNumber": 158
+          },
+          {
+            "text": "        print(f\"[SheepIt Auth] Failed to save cookies: {e}\")",
+            "lineNumber": 159
+          },
+          {
+            "text": "        return False",
+            "lineNumber": 160,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 161
+          },
+          {
+            "lineNumber": 162
+          },
+          {
+            "text": "def load_auth_cookies() -&gt; Optional[Dict[str, str]]:",
+            "lineNumber": 163,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 164
+          }
+        ]
+      },
+      "score": 0.22537195682525635
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ops\\__init__.py",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 44
+          }
+        },
+        "contents": "\"\"\"\nOperators for SheepIt Project Submitter addon.\n\"\"\"\n\n\ndef register():\n    \"\"\"Register all operators.\"\"\"\n    # Lazy imports - these are only executed when register() is called\n    # This avoids circular import issues since imports happen at function call time\n    from . import pack_ops\n    from . import submit_ops\n    \n    pack_ops.register()\n    submit_ops.register()\n    \n    # Import auth_ops separately with error handling\n    try:\n        from . import auth_ops\n        auth_ops.register()\n    except ImportError as e:\n        import traceback\n        print(f\"[SheepIt] Warning: Could not import auth_ops: {e}\")\n        traceback.print_exc()\n        # Continue without auth_ops - browser login features won't be available\n    except Exception as e:\n        import traceback\n        print(f\"[SheepIt] Error importing auth_ops: {e}\")\n        traceback.print_exc()\n\n\ndef unregister():\n    \"\"\"Unregister all operators.\"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "\"\"\"",
+            "lineNumber": 1
+          },
+          {
+            "text": "Operators for SheepIt Project Submitter addon.",
+            "lineNumber": 2
+          },
+          {
+            "text": "\"\"\"",
+            "lineNumber": 3
+          },
+          {
+            "lineNumber": 4
+          },
+          {
+            "lineNumber": 5
+          },
+          {
+            "text": "def register():",
+            "lineNumber": 6,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Register all operators.\"\"\"",
+            "lineNumber": 7
+          },
+          {
+            "text": "    # Lazy imports - these are only executed when register() is called",
+            "lineNumber": 8
+          },
+          {
+            "text": "    # This avoids circular import issues since imports happen at function call time",
+            "lineNumber": 9
+          },
+          {
+            "text": "    from . import pack_ops",
+            "lineNumber": 10
+          },
+          {
+            "text": "    from . import submit_ops",
+            "lineNumber": 11
+          },
+          {
+            "text": "    ",
+            "lineNumber": 12
+          },
+          {
+            "text": "    pack_ops.register()",
+            "lineNumber": 13
+          },
+          {
+            "text": "    submit_ops.register()",
+            "lineNumber": 14
+          },
+          {
+            "text": "    ",
+            "lineNumber": 15
+          },
+          {
+            "text": "    # Import auth_ops separately with error handling",
+            "lineNumber": 16
+          },
+          {
+            "text": "    try:",
+            "lineNumber": 17
+          },
+          {
+            "text": "        from . import auth_ops",
+            "lineNumber": 18
+          },
+          {
+            "text": "        auth_ops.register()",
+            "lineNumber": 19
+          },
+          {
+            "text": "    except ImportError as e:",
+            "lineNumber": 20
+          },
+          {
+            "text": "        import traceback",
+            "lineNumber": 21
+          },
+          {
+            "text": "        print(f\"[SheepIt] Warning: Could not import auth_ops: {e}\")",
+            "lineNumber": 22
+          },
+          {
+            "text": "        traceback.print_exc()",
+            "lineNumber": 23
+          },
+          {
+            "text": "        # Continue without auth_ops - browser login features won't be available",
+            "lineNumber": 24
+          },
+          {
+            "text": "    except Exception as e:",
+            "lineNumber": 25
+          },
+          {
+            "text": "        import traceback",
+            "lineNumber": 26
+          },
+          {
+            "text": "        print(f\"[SheepIt] Error importing auth_ops: {e}\")",
+            "lineNumber": 27
+          },
+          {
+            "text": "        traceback.print_exc()",
+            "lineNumber": 28,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 29
+          },
+          {
+            "lineNumber": 30
+          },
+          {
+            "text": "def unregister():",
+            "lineNumber": 31,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Unregister all operators.\"\"\"",
+            "lineNumber": 32
+          }
+        ]
+      },
+      "score": 0.2200562059879303
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ui\\preferences_ui.py",
+        "range": {
+          "startPosition": {
+            "line": 87
+          },
+          "endPosition": {
+            "line": 204
+          }
+        },
+        "contents": "class SHEEPIT_AddonPreferences(AddonPreferences):\n\n    \n    def draw(self, context):\n        layout = self.layout\n        \n        # Update auth status if using browser login\n        if self.use_browser_login:\n            # Use direct import to avoid circular import issues\n            from ..utils.auth import load_auth_cookies\n            cookies = load_auth_cookies()\n            if cookies:\n                if self.auth_status == \"Not logged in\":\n                    self.auth_status = \"Logged in (Browser)\"\n            else:\n                if self.auth_status != \"Not logged in\":\n                    self.auth_status = \"Not logged in\"\n        \n        # Main authentication box\n        box = layout.box()\n        box.label(text=\"SheepIt Authentication\", icon='USER')\n        \n        # Browser login toggle\n        row = box.row()\n        row.prop(self, \"use_browser_login\")\n        \n        if self.use_browser_login:",
+        "signatures": {
+          "ranges": [
+            {
+              "startPosition": {
+                "line": 88,
+                "column": 1
+              },
+              "endPosition": {
+                "line": 89,
+                "column": 5
+              }
+            }
+          ]
+        },
+        "detailedLines": [
+          {
+            "text": "class SHEEPIT_AddonPreferences(AddonPreferences):",
+            "lineNumber": 88,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 128
+          },
+          {
+            "text": "    ",
+            "lineNumber": 129
+          },
+          {
+            "text": "    def draw(self, context):",
+            "lineNumber": 130
+          },
+          {
+            "text": "        layout = self.layout",
+            "lineNumber": 131
+          },
+          {
+            "text": "        ",
+            "lineNumber": 132
+          },
+          {
+            "text": "        # Update auth status if using browser login",
+            "lineNumber": 133
+          },
+          {
+            "text": "        if self.use_browser_login:",
+            "lineNumber": 134
+          },
+          {
+            "text": "            # Use direct import to avoid circular import issues",
+            "lineNumber": 135
+          },
+          {
+            "text": "            from ..utils.auth import load_auth_cookies",
+            "lineNumber": 136
+          },
+          {
+            "text": "            cookies = load_auth_cookies()",
+            "lineNumber": 137
+          },
+          {
+            "text": "            if cookies:",
+            "lineNumber": 138
+          },
+          {
+            "text": "                if self.auth_status == \"Not logged in\":",
+            "lineNumber": 139
+          },
+          {
+            "text": "                    self.auth_status = \"Logged in (Browser)\"",
+            "lineNumber": 140
+          },
+          {
+            "text": "            else:",
+            "lineNumber": 141
+          },
+          {
+            "text": "                if self.auth_status != \"Not logged in\":",
+            "lineNumber": 142
+          },
+          {
+            "text": "                    self.auth_status = \"Not logged in\"",
+            "lineNumber": 143
+          },
+          {
+            "text": "        ",
+            "lineNumber": 144
+          },
+          {
+            "text": "        # Main authentication box",
+            "lineNumber": 145
+          },
+          {
+            "text": "        box = layout.box()",
+            "lineNumber": 146
+          },
+          {
+            "text": "        box.label(text=\"SheepIt Authentication\", icon='USER')",
+            "lineNumber": 147
+          },
+          {
+            "text": "        ",
+            "lineNumber": 148
+          },
+          {
+            "text": "        # Browser login toggle",
+            "lineNumber": 149
+          },
+          {
+            "text": "        row = box.row()",
+            "lineNumber": 150
+          },
+          {
+            "text": "        row.prop(self, \"use_browser_login\")",
+            "lineNumber": 151
+          },
+          {
+            "text": "        ",
+            "lineNumber": 152
+          },
+          {
+            "text": "        if self.use_browser_login:",
+            "lineNumber": 153
+          }
+        ]
+      },
+      "score": 0.21269239485263824
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\utils\\auth.py",
+        "range": {
+          "startPosition": {
+            "line": 30,
+            "column": 10
+          },
+          "endPosition": {
+            "line": 91
+          }
+        },
+        "contents": "from .. import config\n\n\nclass AuthCallbackHandler(BaseHTTPRequestHandler):\n    \"\"\"HTTP handler for OAuth/login callback.\"\"\"\n    \n    def do_GET(self):\n        \"\"\"Handle GET request from browser redirect.\"\"\"\n        parsed = urlparse(self.path)\n        query = parse_qs(parsed.query)\n        \n        # Extract cookies from request headers\n        cookies = {}\n        if 'Cookie' in self.headers:\n            cookie_header = self.headers['Cookie']\n            for item in cookie_header.split(';'):\n                if '=' in item:\n                    key, value = item.strip().split('=', 1)\n                    cookies[key] = value\n        \n        # Store cookies in server instance\n        if hasattr(self.server, 'auth_result'):\n            self.server.auth_result = {\n                'success': True,\n                'cookies': cookies,\n                'query_params': query,\n            }\n        \n        # Send success response\n        self.send_response(200)\n        self.send_header('Content-type', 'text/html')\n        self.end_headers()\n        self.wfile.write(b\"\"\"\n        &lt;html&gt;\n        &lt;head&gt;&lt;title&gt;Authentication Successful&lt;/title&gt;&lt;/head&gt;\n        &lt;body&gt;\n        &lt;h1&gt;Authentication Successful!&lt;/h1&gt;\n        &lt;p&gt;You can close this window and return to Blender.&lt;/p&gt;\n        &lt;script&gt;window.close();&lt;/script&gt;\n        &lt;/body&gt;\n        &lt;/html&gt;\n        \"\"\")\n    \n    def log_message(self, format, *args):\n        \"\"\"Suppress server log messages.\"\"\"\n        pass\n\n\ndef _get_auth_storage_path() -&gt; Path:\n    \"\"\"Get path to secure auth storage file.\"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "from .. import config",
+            "lineNumber": 32
+          },
+          {
+            "lineNumber": 33
+          },
+          {
+            "lineNumber": 34
+          },
+          {
+            "text": "class AuthCallbackHandler(BaseHTTPRequestHandler):",
+            "lineNumber": 35,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"HTTP handler for OAuth/login callback.\"\"\"",
+            "lineNumber": 36
+          },
+          {
+            "text": "    ",
+            "lineNumber": 37
+          },
+          {
+            "text": "    def do_GET(self):",
+            "lineNumber": 38
+          },
+          {
+            "text": "        \"\"\"Handle GET request from browser redirect.\"\"\"",
+            "lineNumber": 39
+          },
+          {
+            "text": "        parsed = urlparse(self.path)",
+            "lineNumber": 40
+          },
+          {
+            "text": "        query = parse_qs(parsed.query)",
+            "lineNumber": 41
+          },
+          {
+            "text": "        ",
+            "lineNumber": 42
+          },
+          {
+            "text": "        # Extract cookies from request headers",
+            "lineNumber": 43
+          },
+          {
+            "text": "        cookies = {}",
+            "lineNumber": 44
+          },
+          {
+            "text": "        if 'Cookie' in self.headers:",
+            "lineNumber": 45
+          },
+          {
+            "text": "            cookie_header = self.headers['Cookie']",
+            "lineNumber": 46
+          },
+          {
+            "text": "            for item in cookie_header.split(';'):",
+            "lineNumber": 47
+          },
+          {
+            "text": "                if '=' in item:",
+            "lineNumber": 48
+          },
+          {
+            "text": "                    key, value = item.strip().split('=', 1)",
+            "lineNumber": 49
+          },
+          {
+            "text": "                    cookies[key] = value",
+            "lineNumber": 50
+          },
+          {
+            "text": "        ",
+            "lineNumber": 51
+          },
+          {
+            "text": "        # Store cookies in server instance",
+            "lineNumber": 52
+          },
+          {
+            "text": "        if hasattr(self.server, 'auth_result'):",
+            "lineNumber": 53
+          },
+          {
+            "text": "            self.server.auth_result = {",
+            "lineNumber": 54
+          },
+          {
+            "text": "                'success': True,",
+            "lineNumber": 55
+          },
+          {
+            "text": "                'cookies': cookies,",
+            "lineNumber": 56
+          },
+          {
+            "text": "                'query_params': query,",
+            "lineNumber": 57
+          },
+          {
+            "text": "            }",
+            "lineNumber": 58
+          },
+          {
+            "text": "        ",
+            "lineNumber": 59
+          },
+          {
+            "text": "        # Send success response",
+            "lineNumber": 60
+          },
+          {
+            "text": "        self.send_response(200)",
+            "lineNumber": 61
+          },
+          {
+            "text": "        self.send_header('Content-type', 'text/html')",
+            "lineNumber": 62
+          },
+          {
+            "text": "        self.end_headers()",
+            "lineNumber": 63
+          },
+          {
+            "text": "        self.wfile.write(b\"\"\"",
+            "lineNumber": 64
+          },
+          {
+            "text": "        &lt;html&gt;",
+            "lineNumber": 65
+          },
+          {
+            "text": "        &lt;head&gt;&lt;title&gt;Authentication Successful&lt;/title&gt;&lt;/head&gt;",
+            "lineNumber": 66
+          },
+          {
+            "text": "        &lt;body&gt;",
+            "lineNumber": 67
+          },
+          {
+            "text": "        &lt;h1&gt;Authentication Successful!&lt;/h1&gt;",
+            "lineNumber": 68
+          },
+          {
+            "text": "        &lt;p&gt;You can close this window and return to Blender.&lt;/p&gt;",
+            "lineNumber": 69
+          },
+          {
+            "text": "        &lt;script&gt;window.close();&lt;/script&gt;",
+            "lineNumber": 70
+          },
+          {
+            "text": "        &lt;/body&gt;",
+            "lineNumber": 71
+          },
+          {
+            "text": "        &lt;/html&gt;",
+            "lineNumber": 72
+          },
+          {
+            "text": "        \"\"\")",
+            "lineNumber": 73
+          },
+          {
+            "text": "    ",
+            "lineNumber": 74
+          },
+          {
+            "text": "    def log_message(self, format, *args):",
+            "lineNumber": 75
+          },
+          {
+            "text": "        \"\"\"Suppress server log messages.\"\"\"",
+            "lineNumber": 76
+          },
+          {
+            "text": "        pass",
+            "lineNumber": 77,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 78
+          },
+          {
+            "lineNumber": 79
+          },
+          {
+            "text": "def _get_auth_storage_path() -&gt; Path:",
+            "lineNumber": 80,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Get path to secure auth storage file.\"\"\"",
+            "lineNumber": 81
+          }
+        ]
+      },
+      "score": 0.19739210605621338
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\utils\\auth.py",
+        "range": {
+          "startPosition": {
+            "line": 76,
+            "column": 12
+          },
+          "endPosition": {
+            "line": 109
+          }
+        },
+        "contents": "def _get_auth_storage_path() -&gt; Path:\n    \"\"\"Get path to secure auth storage file.\"\"\"\n    # Use Blender's user config directory for secure storage\n    if hasattr(bpy.utils, 'user_resource'):\n        config_dir = Path(bpy.utils.user_resource('CONFIG'))\n    else:\n        # Fallback for older Blender versions\n        import tempfile\n        config_dir = Path(tempfile.gettempdir())\n    \n    auth_dir = config_dir / \"sheepit_auth\"\n    auth_dir.mkdir(parents=True, exist_ok=True)\n    return auth_dir / \"session.json\"\n\n\ndef _encrypt_cookies(cookies: Dict[str, str]) -&gt; str:\n    \"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "def _get_auth_storage_path() -&gt; Path:",
+            "lineNumber": 80,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Get path to secure auth storage file.\"\"\"",
+            "lineNumber": 81
+          },
+          {
+            "text": "    # Use Blender's user config directory for secure storage",
+            "lineNumber": 82
+          },
+          {
+            "text": "    if hasattr(bpy.utils, 'user_resource'):",
+            "lineNumber": 83
+          },
+          {
+            "text": "        config_dir = Path(bpy.utils.user_resource('CONFIG'))",
+            "lineNumber": 84
+          },
+          {
+            "text": "    else:",
+            "lineNumber": 85
+          },
+          {
+            "text": "        # Fallback for older Blender versions",
+            "lineNumber": 86
+          },
+          {
+            "text": "        import tempfile",
+            "lineNumber": 87
+          },
+          {
+            "text": "        config_dir = Path(tempfile.gettempdir())",
+            "lineNumber": 88
+          },
+          {
+            "text": "    ",
+            "lineNumber": 89
+          },
+          {
+            "text": "    auth_dir = config_dir / \"sheepit_auth\"",
+            "lineNumber": 90
+          },
+          {
+            "text": "    auth_dir.mkdir(parents=True, exist_ok=True)",
+            "lineNumber": 91
+          },
+          {
+            "text": "    return auth_dir / \"session.json\"",
+            "lineNumber": 92,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 93
+          },
+          {
+            "lineNumber": 94
+          },
+          {
+            "text": "def _encrypt_cookies(cookies: Dict[str, str]) -&gt; str:",
+            "lineNumber": 95,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 96
+          }
+        ]
+      },
+      "score": 0.19640040397644043
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ops\\auth_ops.py",
+        "range": {
+          "startPosition": {
+            "line": 73,
+            "column": 32
+          },
+          "endPosition": {
+            "line": 101
+          }
+        },
+        "contents": "class SHEEPIT_OT_logout(Operator):\n    \"\"\"Logout and clear stored authentication cookies.\"\"\"\n    bl_idname = \"sheepit.logout\"\n    bl_label = \"Logout\"\n    bl_description = \"Clear stored authentication cookies and logout\"\n    bl_options = {'REGISTER', 'UNDO'}\n    \n    def execute(self, context):\n        if clear_auth_cookies():\n            # Update preferences status\n            from ..utils.compat import get_addon_prefs\n            prefs = get_addon_prefs()\n            if prefs:\n                prefs.auth_status = \"Not logged in\"\n            self.report({'INFO'}, \"Logged out successfully.\")\n            return {'FINISHED'}\n        else:\n            self.report({'WARNING'}, \"No stored cookies to clear.\")\n            return {'FINISHED'}\n\n\ndef register():\n    \"\"\"Register authentication operators.\"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "class SHEEPIT_OT_logout(Operator):",
+            "lineNumber": 77,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Logout and clear stored authentication cookies.\"\"\"",
+            "lineNumber": 78
+          },
+          {
+            "text": "    bl_idname = \"sheepit.logout\"",
+            "lineNumber": 79
+          },
+          {
+            "text": "    bl_label = \"Logout\"",
+            "lineNumber": 80
+          },
+          {
+            "text": "    bl_description = \"Clear stored authentication cookies and logout\"",
+            "lineNumber": 81
+          },
+          {
+            "text": "    bl_options = {'REGISTER', 'UNDO'}",
+            "lineNumber": 82
+          },
+          {
+            "text": "    ",
+            "lineNumber": 83
+          },
+          {
+            "text": "    def execute(self, context):",
+            "lineNumber": 84
+          },
+          {
+            "text": "        if clear_auth_cookies():",
+            "lineNumber": 85
+          },
+          {
+            "text": "            # Update preferences status",
+            "lineNumber": 86
+          },
+          {
+            "text": "            from ..utils.compat import get_addon_prefs",
+            "lineNumber": 87
+          },
+          {
+            "text": "            prefs = get_addon_prefs()",
+            "lineNumber": 88
+          },
+          {
+            "text": "            if prefs:",
+            "lineNumber": 89
+          },
+          {
+            "text": "                prefs.auth_status = \"Not logged in\"",
+            "lineNumber": 90
+          },
+          {
+            "text": "            self.report({'INFO'}, \"Logged out successfully.\")",
+            "lineNumber": 91
+          },
+          {
+            "text": "            return {'FINISHED'}",
+            "lineNumber": 92
+          },
+          {
+            "text": "        else:",
+            "lineNumber": 93
+          },
+          {
+            "text": "            self.report({'WARNING'}, \"No stored cookies to clear.\")",
+            "lineNumber": 94
+          },
+          {
+            "text": "            return {'FINISHED'}",
+            "lineNumber": 95,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 96
+          },
+          {
+            "lineNumber": 97
+          },
+          {
+            "text": "def register():",
+            "lineNumber": 98,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Register authentication operators.\"\"\"",
+            "lineNumber": 99
+          }
+        ]
+      },
+      "score": 0.18343770503997803
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\utils\\__init__.py",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 20,
+            "column": 74
+          }
+        },
+        "contents": "\"\"\"\nUtility modules for SheepIt Project Submitter addon.\n\"\"\"\n\nfrom . import compat\nfrom . import version\n\n# Don't import auth at module level to avoid circular imports\n# It will be imported lazily when needed\n# Users should import it as: from ..utils.auth import &lt;function&gt;\n# Or: from ..utils import auth (which will trigger lazy import)\n\n__all__ = [\"compat\", \"version\"]\n\n\ndef __getattr__(name):\n    \"\"\"Lazy import for auth module to avoid circular imports.\"\"\"\n    if name == \"auth\":\n        from . import auth\n        return auth\n    raise AttributeError(f\"module '{__name__}' has no attribute '{name}'\")",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "\"\"\"",
+            "lineNumber": 1
+          },
+          {
+            "text": "Utility modules for SheepIt Project Submitter addon.",
+            "lineNumber": 2
+          },
+          {
+            "text": "\"\"\"",
+            "lineNumber": 3
+          },
+          {
+            "lineNumber": 4
+          },
+          {
+            "text": "from . import compat",
+            "lineNumber": 5
+          },
+          {
+            "text": "from . import version",
+            "lineNumber": 6
+          },
+          {
+            "lineNumber": 7
+          },
+          {
+            "text": "# Don't import auth at module level to avoid circular imports",
+            "lineNumber": 8
+          },
+          {
+            "text": "# It will be imported lazily when needed",
+            "lineNumber": 9
+          },
+          {
+            "text": "# Users should import it as: from ..utils.auth import &lt;function&gt;",
+            "lineNumber": 10
+          },
+          {
+            "text": "# Or: from ..utils import auth (which will trigger lazy import)",
+            "lineNumber": 11
+          },
+          {
+            "lineNumber": 12
+          },
+          {
+            "text": "__all__ = [\"compat\", \"version\"]",
+            "lineNumber": 13
+          },
+          {
+            "lineNumber": 14
+          },
+          {
+            "lineNumber": 15
+          },
+          {
+            "text": "def __getattr__(name):",
+            "lineNumber": 16,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Lazy import for auth module to avoid circular imports.\"\"\"",
+            "lineNumber": 17
+          },
+          {
+            "text": "    if name == \"auth\":",
+            "lineNumber": 18
+          },
+          {
+            "text": "        from . import auth",
+            "lineNumber": 19
+          },
+          {
+            "text": "        return auth",
+            "lineNumber": 20
+          },
+          {
+            "text": "    raise AttributeError(f\"module '{__name__}' has no attribute '{name}'\")",
+            "lineNumber": 21,
+            "isSignature": true
+          }
+        ]
+      },
+      "score": 0.17160916328430176
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\__init__.py",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 95
+          }
+        },
+        "contents": "\"\"\"\nSheepIt Project Submitter Addon\n\nA Blender addon for submitting projects to SheepIt render farm with automatic asset packing.\nBased on Dr. Sybren's Batter (Bat v2.0) project.\n\"\"\"\n\nimport bpy\nfrom bpy.utils import register_class\nfrom .utils import compat\nfrom . import ops\nfrom . import ui\nfrom . import rainys_repo_bootstrap\n\n\n# SheepIt Submit Settings Property Group\nclass SHEEPIT_PG_submit_settings(bpy.types.PropertyGroup):\n    \"\"\"Property group for storing submit settings.\"\"\"\n    \n    # Frame range mode\n    frame_range_mode: bpy.props.EnumProperty(\n        name=\"Frame Range Mode\",\n        description=\"Choose between full range or custom frame range\",\n        items=[\n            ('FULL', \"Full Range\", \"Use the full frame range from scene settings\"),\n            ('CUSTOM', \"Custom\", \"Specify custom start, end, and step frames\"),\n        ],\n        default='FULL',\n    )\n    \n    # Custom frame range\n    frame_start: bpy.props.IntProperty(\n        name=\"Start Frame\",\n        description=\"Start frame for rendering\",\n        default=1,\n        min=0,\n    )\n    \n    frame_end: bpy.props.IntProperty(\n        name=\"End Frame\",\n        description=\"End frame for rendering\",\n        default=250,\n        min=0,\n    )\n    \n    frame_step: bpy.props.IntProperty(\n        name=\"Frame Step\",\n        description=\"Frame step (render every Nth frame)\",\n        default=1,\n        min=1,\n    )\n    \n    # Compute method\n    compute_method: bpy.props.EnumProperty(\n        name=\"Compute Method\",\n        description=\"Choose CPU or GPU rendering\",\n        items=[\n            ('CPU', \"CPU\", \"Use CPU for rendering\"),\n            ('GPU', \"GPU\", \"Use GPU for rendering\"),\n        ],\n        default='CPU',\n    )\n    \n    # Checkboxes\n    renderable_by_all: bpy.props.BoolProperty(\n        name=\"Renderable by all members\",\n        description=\"Allow all SheepIt members to render this project\",\n        default=True,\n    )\n    \n    generate_mp4:",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "\"\"\"",
+            "lineNumber": 1
+          },
+          {
+            "text": "SheepIt Project Submitter Addon",
+            "lineNumber": 2
+          },
+          {
+            "lineNumber": 3
+          },
+          {
+            "text": "A Blender addon for submitting projects to SheepIt render farm with automatic asset packing.",
+            "lineNumber": 4
+          },
+          {
+            "text": "Based on Dr. Sybren's Batter (Bat v2.0) project.",
+            "lineNumber": 5
+          },
+          {
+            "text": "\"\"\"",
+            "lineNumber": 6
+          },
+          {
+            "lineNumber": 7
+          },
+          {
+            "text": "import bpy",
+            "lineNumber": 8
+          },
+          {
+            "text": "from bpy.utils import register_class",
+            "lineNumber": 9
+          },
+          {
+            "text": "from .utils import compat",
+            "lineNumber": 10
+          },
+          {
+            "text": "from . import ops",
+            "lineNumber": 11
+          },
+          {
+            "text": "from . import ui",
+            "lineNumber": 12
+          },
+          {
+            "text": "from . import rainys_repo_bootstrap",
+            "lineNumber": 13
+          },
+          {
+            "lineNumber": 14
+          },
+          {
+            "lineNumber": 15
+          },
+          {
+            "text": "# SheepIt Submit Settings Property Group",
+            "lineNumber": 16
+          },
+          {
+            "text": "class SHEEPIT_PG_submit_settings(bpy.types.PropertyGroup):",
+            "lineNumber": 17,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Property group for storing submit settings.\"\"\"",
+            "lineNumber": 18
+          },
+          {
+            "text": "    ",
+            "lineNumber": 19
+          },
+          {
+            "text": "    # Frame range mode",
+            "lineNumber": 20
+          },
+          {
+            "text": "    frame_range_mode: bpy.props.EnumProperty(",
+            "lineNumber": 21
+          },
+          {
+            "text": "        name=\"Frame Range Mode\",",
+            "lineNumber": 22
+          },
+          {
+            "text": "        description=\"Choose between full range or custom frame range\",",
+            "lineNumber": 23
+          },
+          {
+            "text": "        items=[",
+            "lineNumber": 24
+          },
+          {
+            "text": "            ('FULL', \"Full Range\", \"Use the full frame range from scene settings\"),",
+            "lineNumber": 25
+          },
+          {
+            "text": "            ('CUSTOM', \"Custom\", \"Specify custom start, end, and step frames\"),",
+            "lineNumber": 26
+          },
+          {
+            "text": "        ],",
+            "lineNumber": 27
+          },
+          {
+            "text": "        default='FULL',",
+            "lineNumber": 28
+          },
+          {
+            "text": "    )",
+            "lineNumber": 29
+          },
+          {
+            "text": "    ",
+            "lineNumber": 30
+          },
+          {
+            "text": "    # Custom frame range",
+            "lineNumber": 31
+          },
+          {
+            "text": "    frame_start: bpy.props.IntProperty(",
+            "lineNumber": 32
+          },
+          {
+            "text": "        name=\"Start Frame\",",
+            "lineNumber": 33
+          },
+          {
+            "text": "        description=\"Start frame for rendering\",",
+            "lineNumber": 34
+          },
+          {
+            "text": "        default=1,",
+            "lineNumber": 35
+          },
+          {
+            "text": "        min=0,",
+            "lineNumber": 36
+          },
+          {
+            "text": "    )",
+            "lineNumber": 37
+          },
+          {
+            "text": "    ",
+            "lineNumber": 38
+          },
+          {
+            "text": "    frame_end: bpy.props.IntProperty(",
+            "lineNumber": 39
+          },
+          {
+            "text": "        name=\"End Frame\",",
+            "lineNumber": 40
+          },
+          {
+            "text": "        description=\"End frame for rendering\",",
+            "lineNumber": 41
+          },
+          {
+            "text": "        default=250,",
+            "lineNumber": 42
+          },
+          {
+            "text": "        min=0,",
+            "lineNumber": 43
+          },
+          {
+            "text": "    )",
+            "lineNumber": 44
+          },
+          {
+            "text": "    ",
+            "lineNumber": 45
+          },
+          {
+            "text": "    frame_step: bpy.props.IntProperty(",
+            "lineNumber": 46
+          },
+          {
+            "text": "        name=\"Frame Step\",",
+            "lineNumber": 47
+          },
+          {
+            "text": "        description=\"Frame step (render every Nth frame)\",",
+            "lineNumber": 48
+          },
+          {
+            "text": "        default=1,",
+            "lineNumber": 49
+          },
+          {
+            "text": "        min=1,",
+            "lineNumber": 50
+          },
+          {
+            "text": "    )",
+            "lineNumber": 51
+          },
+          {
+            "text": "    ",
+            "lineNumber": 52
+          },
+          {
+            "text": "    # Compute method",
+            "lineNumber": 53
+          },
+          {
+            "text": "    compute_method: bpy.props.EnumProperty(",
+            "lineNumber": 54
+          },
+          {
+            "text": "        name=\"Compute Method\",",
+            "lineNumber": 55
+          },
+          {
+            "text": "        description=\"Choose CPU or GPU rendering\",",
+            "lineNumber": 56
+          },
+          {
+            "text": "        items=[",
+            "lineNumber": 57
+          },
+          {
+            "text": "            ('CPU', \"CPU\", \"Use CPU for rendering\"),",
+            "lineNumber": 58
+          },
+          {
+            "text": "            ('GPU', \"GPU\", \"Use GPU for rendering\"),",
+            "lineNumber": 59
+          },
+          {
+            "text": "        ],",
+            "lineNumber": 60
+          },
+          {
+            "text": "        default='CPU',",
+            "lineNumber": 61
+          },
+          {
+            "text": "    )",
+            "lineNumber": 62
+          },
+          {
+            "text": "    ",
+            "lineNumber": 63
+          },
+          {
+            "text": "    # Checkboxes",
+            "lineNumber": 64
+          },
+          {
+            "text": "    renderable_by_all: bpy.props.BoolProperty(",
+            "lineNumber": 65
+          },
+          {
+            "text": "        name=\"Renderable by all members\",",
+            "lineNumber": 66
+          },
+          {
+            "text": "        description=\"Allow all SheepIt members to render this project\",",
+            "lineNumber": 67
+          },
+          {
+            "text": "        default=True,",
+            "lineNumber": 68
+          },
+          {
+            "text": "    )",
+            "lineNumber": 69
+          },
+          {
+            "text": "    ",
+            "lineNumber": 70
+          },
+          {
+            "text": "    generate_mp4:",
+            "lineNumber": 71
+          }
+        ]
+      },
+      "score": 0.15939229726791382
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ui\\output_panel.py",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 98
+          }
+        },
+        "contents": "\"\"\"\nOutput panel UI for SheepIt Project Submitter.\nLocated in the Output tab, similar to Flamenco addon.\n\"\"\"\n\nimport bpy\nfrom bpy.types import Panel\nfrom ..utils import compat\n\n\nclass SHEEPIT_PT_output_panel(Panel):\n    \"\"\"SheepIt submission panel in Output properties.\"\"\"\n    bl_label = \"SheepIt Render Farm\"\n    bl_idname = \"SHEEPIT_PT_output_panel\"\n    bl_space_type = 'PROPERTIES'\n    bl_region_type = 'WINDOW'\n    bl_context = \"output\"\n    \n    def draw(self, context):\n        layout = self.layout\n        scene = context.scene\n        submit_settings = scene.sheepit_submit\n        \n        # Frame Range Section\n        box = layout.box()\n        box.label(text=\"Frame Range:\", icon='RENDER_ANIMATION')\n        row = box.row()\n        row.prop(submit_settings, \"frame_range_mode\", expand=True)\n        \n        if submit_settings.frame_range_mode == 'CUSTOM':\n            col = box.column(align=True)\n            col.prop(submit_settings, \"frame_start\")\n            col.prop(submit_settings, \"frame_end\")\n            col.prop(submit_settings, \"frame_step\")\n        else:\n            # Show current scene frame range\n            row = box.row()\n            row.label(text=f\"Scene Range: {scene.frame_start} - {scene.frame_end} (Step: {scene.frame_step})\")\n        \n        layout.separator()\n        \n        # Compute Method Section\n        box = layout.box()\n        box.label(text=\"Compute Method:\", icon='SETTINGS')\n        row = box.row()\n        row.prop(submit_settings, \"compute_method\", expand=True)\n        \n        # Show queue info if available (placeholder for future API integration)\n        if submit_settings.compute_method == 'CPU':\n            row = box.row()\n            row.label(text=\"Est. queue position: 1st\", icon='INFO')\n        else:\n            row = box.row()\n            row.label(text=\"Est. queue position: 1st\", icon='INFO')\n        \n        layout.separator()\n        \n        # Options Section\n        box = layout.box()\n        box.label(text=\"Options:\", icon='CHECKBOX_HLT')\n        box.prop(submit_settings, \"renderable_by_all\")",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "\"\"\"",
+            "lineNumber": 1
+          },
+          {
+            "text": "Output panel UI for SheepIt Project Submitter.",
+            "lineNumber": 2
+          },
+          {
+            "text": "Located in the Output tab, similar to Flamenco addon.",
+            "lineNumber": 3
+          },
+          {
+            "text": "\"\"\"",
+            "lineNumber": 4
+          },
+          {
+            "lineNumber": 5
+          },
+          {
+            "text": "import bpy",
+            "lineNumber": 6
+          },
+          {
+            "text": "from bpy.types import Panel",
+            "lineNumber": 7
+          },
+          {
+            "text": "from ..utils import compat",
+            "lineNumber": 8
+          },
+          {
+            "lineNumber": 9
+          },
+          {
+            "lineNumber": 10
+          },
+          {
+            "text": "class SHEEPIT_PT_output_panel(Panel):",
+            "lineNumber": 11,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"SheepIt submission panel in Output properties.\"\"\"",
+            "lineNumber": 12
+          },
+          {
+            "text": "    bl_label = \"SheepIt Render Farm\"",
+            "lineNumber": 13
+          },
+          {
+            "text": "    bl_idname = \"SHEEPIT_PT_output_panel\"",
+            "lineNumber": 14
+          },
+          {
+            "text": "    bl_space_type = 'PROPERTIES'",
+            "lineNumber": 15
+          },
+          {
+            "text": "    bl_region_type = 'WINDOW'",
+            "lineNumber": 16
+          },
+          {
+            "text": "    bl_context = \"output\"",
+            "lineNumber": 17
+          },
+          {
+            "text": "    ",
+            "lineNumber": 18
+          },
+          {
+            "text": "    def draw(self, context):",
+            "lineNumber": 19
+          },
+          {
+            "text": "        layout = self.layout",
+            "lineNumber": 20
+          },
+          {
+            "text": "        scene = context.scene",
+            "lineNumber": 21
+          },
+          {
+            "text": "        submit_settings = scene.sheepit_submit",
+            "lineNumber": 22
+          },
+          {
+            "text": "        ",
+            "lineNumber": 23
+          },
+          {
+            "text": "        # Frame Range Section",
+            "lineNumber": 24
+          },
+          {
+            "text": "        box = layout.box()",
+            "lineNumber": 25
+          },
+          {
+            "text": "        box.label(text=\"Frame Range:\", icon='RENDER_ANIMATION')",
+            "lineNumber": 26
+          },
+          {
+            "text": "        row = box.row()",
+            "lineNumber": 27
+          },
+          {
+            "text": "        row.prop(submit_settings, \"frame_range_mode\", expand=True)",
+            "lineNumber": 28
+          },
+          {
+            "text": "        ",
+            "lineNumber": 29
+          },
+          {
+            "text": "        if submit_settings.frame_range_mode == 'CUSTOM':",
+            "lineNumber": 30
+          },
+          {
+            "text": "            col = box.column(align=True)",
+            "lineNumber": 31
+          },
+          {
+            "text": "            col.prop(submit_settings, \"frame_start\")",
+            "lineNumber": 32
+          },
+          {
+            "text": "            col.prop(submit_settings, \"frame_end\")",
+            "lineNumber": 33
+          },
+          {
+            "text": "            col.prop(submit_settings, \"frame_step\")",
+            "lineNumber": 34
+          },
+          {
+            "text": "        else:",
+            "lineNumber": 35
+          },
+          {
+            "text": "            # Show current scene frame range",
+            "lineNumber": 36
+          },
+          {
+            "text": "            row = box.row()",
+            "lineNumber": 37
+          },
+          {
+            "text": "            row.label(text=f\"Scene Range: {scene.frame_start} - {scene.frame_end} (Step: {scene.frame_step})\")",
+            "lineNumber": 38
+          },
+          {
+            "text": "        ",
+            "lineNumber": 39
+          },
+          {
+            "text": "        layout.separator()",
+            "lineNumber": 40
+          },
+          {
+            "text": "        ",
+            "lineNumber": 41
+          },
+          {
+            "text": "        # Compute Method Section",
+            "lineNumber": 42
+          },
+          {
+            "text": "        box = layout.box()",
+            "lineNumber": 43
+          },
+          {
+            "text": "        box.label(text=\"Compute Method:\", icon='SETTINGS')",
+            "lineNumber": 44
+          },
+          {
+            "text": "        row = box.row()",
+            "lineNumber": 45
+          },
+          {
+            "text": "        row.prop(submit_settings, \"compute_method\", expand=True)",
+            "lineNumber": 46
+          },
+          {
+            "text": "        ",
+            "lineNumber": 47
+          },
+          {
+            "text": "        # Show queue info if available (placeholder for future API integration)",
+            "lineNumber": 48
+          },
+          {
+            "text": "        if submit_settings.compute_method == 'CPU':",
+            "lineNumber": 49
+          },
+          {
+            "text": "            row = box.row()",
+            "lineNumber": 50
+          },
+          {
+            "text": "            row.label(text=\"Est. queue position: 1st\", icon='INFO')",
+            "lineNumber": 51
+          },
+          {
+            "text": "        else:",
+            "lineNumber": 52
+          },
+          {
+            "text": "            row = box.row()",
+            "lineNumber": 53
+          },
+          {
+            "text": "            row.label(text=\"Est. queue position: 1st\", icon='INFO')",
+            "lineNumber": 54
+          },
+          {
+            "text": "        ",
+            "lineNumber": 55
+          },
+          {
+            "text": "        layout.separator()",
+            "lineNumber": 56
+          },
+          {
+            "text": "        ",
+            "lineNumber": 57
+          },
+          {
+            "text": "        # Options Section",
+            "lineNumber": 58
+          },
+          {
+            "text": "        box = layout.box()",
+            "lineNumber": 59
+          },
+          {
+            "text": "        box.label(text=\"Options:\", icon='CHECKBOX_HLT')",
+            "lineNumber": 60
+          },
+          {
+            "text": "        box.prop(submit_settings, \"renderable_by_all\")",
+            "lineNumber": 61
+          }
+        ]
+      },
+      "score": 0.1573881059885025
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\utils\\auth.py",
+        "range": {
+          "startPosition": {
+            "line": 159,
+            "column": 20
+          },
+          "endPosition": {
+            "line": 194
+          }
+        },
+        "contents": "def load_auth_cookies() -&gt; Optional[Dict[str, str]]:\n    \"\"\"\n    Load authentication cookies from secure storage.\n    \n    Returns:\n        Dictionary of cookies if found, None otherwise\n    \"\"\"\n    try:\n        storage_path = _get_auth_storage_path()\n        if not storage_path.exists():\n            return None\n        \n        with open(storage_path, 'r') as f:\n            data = json.load(f)\n        \n        encrypted = data.get('cookies')\n        if not encrypted:\n            return None\n        \n        return _decrypt_cookies(encrypted)\n    except Exception:\n        return None\n\n\ndef clear_auth_cookies() -&gt; bool:\n    \"\"\"Clear stored authentication cookies.\"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "def load_auth_cookies() -&gt; Optional[Dict[str, str]]:",
+            "lineNumber": 163,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 164
+          },
+          {
+            "text": "    Load authentication cookies from secure storage.",
+            "lineNumber": 165
+          },
+          {
+            "text": "    ",
+            "lineNumber": 166
+          },
+          {
+            "text": "    Returns:",
+            "lineNumber": 167
+          },
+          {
+            "text": "        Dictionary of cookies if found, None otherwise",
+            "lineNumber": 168
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 169
+          },
+          {
+            "text": "    try:",
+            "lineNumber": 170
+          },
+          {
+            "text": "        storage_path = _get_auth_storage_path()",
+            "lineNumber": 171
+          },
+          {
+            "text": "        if not storage_path.exists():",
+            "lineNumber": 172
+          },
+          {
+            "text": "            return None",
+            "lineNumber": 173
+          },
+          {
+            "text": "        ",
+            "lineNumber": 174
+          },
+          {
+            "text": "        with open(storage_path, 'r') as f:",
+            "lineNumber": 175
+          },
+          {
+            "text": "            data = json.load(f)",
+            "lineNumber": 176
+          },
+          {
+            "text": "        ",
+            "lineNumber": 177
+          },
+          {
+            "text": "        encrypted = data.get('cookies')",
+            "lineNumber": 178
+          },
+          {
+            "text": "        if not encrypted:",
+            "lineNumber": 179
+          },
+          {
+            "text": "            return None",
+            "lineNumber": 180
+          },
+          {
+            "text": "        ",
+            "lineNumber": 181
+          },
+          {
+            "text": "        return _decrypt_cookies(encrypted)",
+            "lineNumber": 182
+          },
+          {
+            "text": "    except Exception:",
+            "lineNumber": 183
+          },
+          {
+            "text": "        return None",
+            "lineNumber": 184,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 185
+          },
+          {
+            "lineNumber": 186
+          },
+          {
+            "text": "def clear_auth_cookies() -&gt; bool:",
+            "lineNumber": 187,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Clear stored authentication cookies.\"\"\"",
+            "lineNumber": 188
+          }
+        ]
+      },
+      "score": 0.15572699904441833
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ui\\preferences_ui.py",
+        "range": {
+          "startPosition": {
+            "line": 204,
+            "column": 88
+          },
+          "endPosition": {
+            "line": 234
+          }
+        },
+        "contents": "reg_list = [SHEEPIT_AddonPreferences]\n\n\ndef register():\n    \"\"\"Register preferences and operators.\"\"\"\n    # Register preferences class first\n    for cls in reg_list:\n        try:\n            from bpy.utils import register_class\n            register_class(cls)\n            config.debug_print(f\"[SheepIt Debug] Registered preferences class: {cls.__name__} with bl_idname: {cls.bl_idname}\")\n        except Exception as e:\n            print(f\"[SheepIt Error] Failed to register preferences class {cls.__name__}: {e}\")\n            import traceback\n            traceback.print_exc()\n    \n    # Register test connection operator\n    compat.safe_register_class(SHEEPIT_OT_test_connection)\n\n\ndef unregister():\n    \"\"\"Unregister preferences and operators.\"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "reg_list = [SHEEPIT_AddonPreferences]",
+            "lineNumber": 208
+          },
+          {
+            "lineNumber": 209
+          },
+          {
+            "lineNumber": 210
+          },
+          {
+            "text": "def register():",
+            "lineNumber": 211,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Register preferences and operators.\"\"\"",
+            "lineNumber": 212
+          },
+          {
+            "text": "    # Register preferences class first",
+            "lineNumber": 213
+          },
+          {
+            "text": "    for cls in reg_list:",
+            "lineNumber": 214
+          },
+          {
+            "text": "        try:",
+            "lineNumber": 215
+          },
+          {
+            "text": "            from bpy.utils import register_class",
+            "lineNumber": 216
+          },
+          {
+            "text": "            register_class(cls)",
+            "lineNumber": 217
+          },
+          {
+            "text": "            config.debug_print(f\"[SheepIt Debug] Registered preferences class: {cls.__name__} with bl_idname: {cls.bl_idname}\")",
+            "lineNumber": 218
+          },
+          {
+            "text": "        except Exception as e:",
+            "lineNumber": 219
+          },
+          {
+            "text": "            print(f\"[SheepIt Error] Failed to register preferences class {cls.__name__}: {e}\")",
+            "lineNumber": 220
+          },
+          {
+            "text": "            import traceback",
+            "lineNumber": 221
+          },
+          {
+            "text": "            traceback.print_exc()",
+            "lineNumber": 222
+          },
+          {
+            "text": "    ",
+            "lineNumber": 223
+          },
+          {
+            "text": "    # Register test connection operator",
+            "lineNumber": 224
+          },
+          {
+            "text": "    compat.safe_register_class(SHEEPIT_OT_test_connection)",
+            "lineNumber": 225,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 226
+          },
+          {
+            "lineNumber": 227
+          },
+          {
+            "text": "def unregister():",
+            "lineNumber": 228,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Unregister preferences and operators.\"\"\"",
+            "lineNumber": 229
+          }
+        ]
+      },
+      "score": 0.14343640208244324
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ops\\auth_ops.py",
+        "range": {
+          "startPosition": {
+            "line": 94,
+            "column": 31
+          },
+          "endPosition": {
+            "line": 108
+          }
+        },
+        "contents": "def register():\n    \"\"\"Register authentication operators.\"\"\"\n    bpy.utils.register_class(SHEEPIT_OT_browser_login)\n    bpy.utils.register_class(SHEEPIT_OT_verify_login)\n    bpy.utils.register_class(SHEEPIT_OT_logout)\n\n\ndef unregister():\n    \"\"\"Unregister authentication operators.\"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "def register():",
+            "lineNumber": 98,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Register authentication operators.\"\"\"",
+            "lineNumber": 99
+          },
+          {
+            "text": "    bpy.utils.register_class(SHEEPIT_OT_browser_login)",
+            "lineNumber": 100
+          },
+          {
+            "text": "    bpy.utils.register_class(SHEEPIT_OT_verify_login)",
+            "lineNumber": 101
+          },
+          {
+            "text": "    bpy.utils.register_class(SHEEPIT_OT_logout)",
+            "lineNumber": 102,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 103
+          },
+          {
+            "lineNumber": 104
+          },
+          {
+            "text": "def unregister():",
+            "lineNumber": 105,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Unregister authentication operators.\"\"\"",
+            "lineNumber": 106
+          }
+        ]
+      },
+      "score": 0.13741029798984528
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\utils\\auth.py",
+        "range": {
+          "startPosition": {
+            "line": 91,
+            "column": 36
+          },
+          "endPosition": {
+            "line": 125
+          }
+        },
+        "contents": "def _encrypt_cookies(cookies: Dict[str, str]) -&gt; str:\n    \"\"\"\n    Simple encryption for cookies (XOR with key derived from system).\n    For production, consider using proper encryption libraries.\n    \"\"\"\n    # Generate a simple key from system info\n    key = str(bpy.app.version_string).encode() + config.ADDON_ID.encode()\n    key = key[:32].ljust(32, b'0')[:32]  # Pad to 32 bytes\n    \n    # Simple XOR encryption (not cryptographically secure, but better than plaintext)\n    cookie_str = json.dumps(cookies)\n    encrypted = bytearray()\n    for i, byte in enumerate(cookie_str.encode()):\n        encrypted.append(byte ^ key[i % len(key)])\n    \n    return base64.b64encode(encrypted).decode()\n\n\ndef _decrypt_cookies(encrypted: str) -&gt; Dict[str, str]:\n    \"\"\"Decrypt cookies.\"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "def _encrypt_cookies(cookies: Dict[str, str]) -&gt; str:",
+            "lineNumber": 95,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 96
+          },
+          {
+            "text": "    Simple encryption for cookies (XOR with key derived from system).",
+            "lineNumber": 97
+          },
+          {
+            "text": "    For production, consider using proper encryption libraries.",
+            "lineNumber": 98
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 99
+          },
+          {
+            "text": "    # Generate a simple key from system info",
+            "lineNumber": 100
+          },
+          {
+            "text": "    key = str(bpy.app.version_string).encode() + config.ADDON_ID.encode()",
+            "lineNumber": 101
+          },
+          {
+            "text": "    key = key[:32].ljust(32, b'0')[:32]  # Pad to 32 bytes",
+            "lineNumber": 102
+          },
+          {
+            "text": "    ",
+            "lineNumber": 103
+          },
+          {
+            "text": "    # Simple XOR encryption (not cryptographically secure, but better than plaintext)",
+            "lineNumber": 104
+          },
+          {
+            "text": "    cookie_str = json.dumps(cookies)",
+            "lineNumber": 105
+          },
+          {
+            "text": "    encrypted = bytearray()",
+            "lineNumber": 106
+          },
+          {
+            "text": "    for i, byte in enumerate(cookie_str.encode()):",
+            "lineNumber": 107
+          },
+          {
+            "text": "        encrypted.append(byte ^ key[i % len(key)])",
+            "lineNumber": 108
+          },
+          {
+            "text": "    ",
+            "lineNumber": 109
+          },
+          {
+            "text": "    return base64.b64encode(encrypted).decode()",
+            "lineNumber": 110,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 111
+          },
+          {
+            "lineNumber": 112
+          },
+          {
+            "text": "def _decrypt_cookies(encrypted: str) -&gt; Dict[str, str]:",
+            "lineNumber": 113,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Decrypt cookies.\"\"\"",
+            "lineNumber": 114
+          }
+        ]
+      },
+      "score": 0.1320311427116394
+    }
+  ]
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\config.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\ui\preferences_ui.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="search" data-tool-name="web_search">
+<details>
+            <summary>Tool use: **web_search** • Searched web `undefined` • **1** results</summary>
+        
+| Title | URL | Chunk |
+|-------|-----|-------|
+| Web Search Results |  | I was unable to find any public documentation for an official **SheepIt Render Farm** API—especially regarding authentication endpoints. The Neural Search didn’t turn up anything suggesting that SheepIt provides a REST API for external use, at least not in their public docs or typical developer resources.<br/><br/>Here’s what I *did* find, and also some related APIs that might have been confused or mixed up with what you're asking:<br/><br/>---<br/><br/>### 🔍 What I Checked<br/><br/>- The main SheepIt website (sheepit-renderfarm.com) offers tools for uploading projects, using the client, and collaborating via their farm, but I saw **no references to any REST API endpoints for third-party access**, or specific docs for authentication. ([sheepit-renderfarm.com](https://www.sheepit-renderfarm.com/index.php?utm_source=openai))  <br/>- API domains related to “SheepAPI” (and “SheepCRM”) seem to correspond to **other services**, like a CRM system, not the SheepIt render farm. Those APIs do have authentication endpoints under `/api/v1/$FLOCK/user/auth/` etc. ([docs.sheepcrm.com](https://docs.sheepcrm.com/self-service/auth.html?utm_source=openai))<br/><br/>---<br/><br/>### ⚠️ Possible Confusion with SheepAPI / SheepCRM<br/><br/>- The **SheepAPI / SheepCRM** documentation describes endpoints for user authentication (login/logout), pre-authentication, registering users, activation etc. These use paths like:<br/><br/>  ```<br/>  /api/v1/$FLOCK/user/auth/     ← POST (login), DELETE (logout)<br/>  /api/v1/$FLOCK/user/preauth/<br/>  /api/v1/$FLOCK/user/register/<br/>  /api/v1/$FLOCK/user/activate/<br/>  ```<br/><br/>  But that is from **SheepCRM**, which is unrelated (apparently) to the SheepIt render farm. ([docs.sheepcrm.com](https://docs.sheepcrm.com/self-service/auth.html?utm_source=openai))<br/><br/>---<br/><br/>### ✅ Conclusion<br/><br/>At present:<br/><br/>- *No* publicly documented API authentication endpoints are available for SheepIt Render Farm.<br/>- If you saw anything referencing “SheepIt API,” it might be private/internal, or possibly misattributed (or confused with other services with “Sheep” in their name).<br/>- If you’re looking to integrate or script actions with SheepIt, your best bet might be:<br/>  - Reaching out directly to SheepIt support to see if they offer a private or partner API.<br/>  - Inspecting their frontend/web interface to reverse-engineer API calls (though this may violate terms of service).<br/><br/>---<br/><br/>If you like, I can try digging in GitHub repos, community forums, or contacting SheepIt to see if there *is* a hidden or undocumented API and get you whatever endpoints are known. Would you want me to do that? |
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="search" data-tool-name="web_search">
+<details>
+            <summary>Tool use: **web_search** • Searched web `undefined` • **1** results</summary>
+        
+| Title | URL | Chunk |
+|-------|-----|-------|
+| Web Search Results |  | I searched and found **no public documentation** confirming that SheepIt (the render farm for Blender) provides a GitLab‐API style endpoint for user profiles (i.e. an endpoint like `GET /users/:id` in GitLab). The SheepIt API documentation does *not* appear to include endpoint details for user profile data and no references to “GitLab” in their documentation. ([sheepit-renderfarm.com](https://www.sheepit-renderfarm.com/?utm_source=openai))<br/><br/>Here’s what is known:<br/><br/>- SheepIt’s public-facing site shows status endpoints (home, servers, etc.), but **doesn't list an endpoint specifically for “user profile” or authenticated user data** via API. ([sheepit-renderfarm.com](https://www.sheepit-renderfarm.com/?utm_source=openai))  <br/>- Their API endpoints (e.g. `/api/home`, `/api/getstarted`) are mostly for non‐authenticated public info. ([api.sheepit-renderfarm.com](https://api.sheepit-renderfarm.com/getstarted?utm_source=openai))  <br/>- No mention anywhere of a “GitLab API user profile endpoint” in relation to SheepIt. “GitLab” appears only in relation to their own users API (for GitLab, not SheepIt). ([docs.gitlab.com](https://docs.gitlab.com/api/users/?utm_source=openai))  <br/><br/>---<br/><br/>If you meant something else by “GitLab API user profile endpoint” (for example: integrating GitLab user profiles into SheepIt, or using SheepIt’s API in a GitLab‐CI context), I can try to find a workaround. Do you want me to check if there’s an unofficial or internal endpoint, or perhaps documentation via a developer portal? |
+
+</details>
+</tool-use>
+
+---
+
+
+Searching the SheepIt GitLab repository for API endpoints:
+
+
+---
+
+<tool-use data-tool-type="search" data-tool-name="web_search">
+<details>
+            <summary>Tool use: **web_search** • Searched web `undefined` • **1** results</summary>
+        
+| Title | URL | Chunk |
+|-------|-----|-------|
+| Web Search Results |  | I searched extensively and couldn’t locate any *publicly documented* or official API endpoints for **SheepIt Render Farm** related to authentication, neither on GitLab nor elsewhere. The site provides limited information about its API (mostly around project status, server details, etc.), but nothing that confirms authentication methods or detailed endpoints.  <br/>Here’s a summary of what I found, and where things are uncertain:<br/><br/>---<br/><br/>## What *is* available<br/><br/>- The SheepIt API root: `https://api.sheepit-renderfarm.com/` exists and provides some site status information. ([api.sheepit-renderfarm.com](https://api.sheepit-renderfarm.com/?utm_source=openai))  <br/>- The general "Get started" page notes that you **must be logged in** to add projects, suggesting authentication is required for basic operations such as project uploads. ([api.sheepit-renderfarm.com](https://api.sheepit-renderfarm.com/getstarted?utm_source=openai))  <br/>- SheepIt also publishes server/network infrastructure details (e.g. servers, mirrors, etc.). ([sheepit-renderfarm.com](https://www.sheepit-renderfarm.com/servers?utm_source=openai))  <br/><br/>---<br/><br/>## What could *not* be found<br/><br/>- No API documentation for authentication endpoints (e.g. login, token retrieval) was found on their website or GitLab.  <br/>- No examples of token-based or OAuth authentication for SheepIt.  <br/>- No internal or developer docs accessible that describe API key generation, bearer tokens, or other credentials.  <br/><br/>---<br/><br/>## Likely scenarios / suggestions<br/><br/>Given the lack of public documentation, here are plausible expectations and what you might try:<br/><br/>- SheepIt may require user credentials (username/password) via a web form or login endpoint to access authenticated parts of the API.  <br/>- They might issue session tokens or cookies after login to authorize subsequent API requests.  <br/>- Some actions (add project, status check, retrieve files) are likely gated behind authenticated sessions.  <br/><br/>---<br/><br/>If you need to integrate with SheepIt programmatically, options would include:<br/><br/>1. **Inspect network traffic** when using the website (e.g. via browser DevTools) to see what endpoints get called during login and project upload, and how authentication is handled.  <br/>2. **Contact SheepIt support** directly to request API documentation.  <br/>3. **Search GitLab** (if SheepIt has a public GitLab repo) for “API”, “auth”, or “login” terms — sometimes implementation details are exposed in code.  <br/><br/>---<br/><br/>If you want, I can try digging specifically into SheepIt’s GitLab repositories (if public) to see if there are hidden or semi-public API authentication methods/definitions. Do you want me to go ahead and do that? |
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="unknown" data-tool-name="web_fetch">
+<details>
+<summary>Tool use: **web_fetch**</summary>
+
+
+Parameters:
+
+```json
+{
+  "url": "https://gitlab.com/sheepitrenderfarm"
+}
+```
+Result:
+
+```json
+{
+  "url": "https://gitlab.com/sheepitrenderfarm",
+  "markdown": "sheepitrenderfarm ·GitLab\n[Skip to main content] \n[Homepage] \nMenu\n* Get free trialSign in\n* * [Why GitLab] \n* [Pricing] \n* [Contact Sales] \n* [Explore] \n* [Why GitLab] \n* [Pricing] \n* [Explore] \nSearch or go to…/\n[Get free trial] [Sign in] \nMenu\n* [Get free trial] [Sign in] \n* * [Why GitLab] \n* [Pricing] \n* [Contact Sales] \n* [Explore] \n* [Why GitLab] \n* [Pricing] \n* [Explore] \n[Snippets] [Groups] [Projects] \n![sheepitrenderfarm] # sheepitrenderfarm\n[https://www.sheepit-renderfarm.com] \nRead more\n* [\nSubgroups and projects\n] \n* [\nShared projects\n] \n* [\nShared groups\n] \n* [\nInactive\n] \nToggle search history\nRecent searches\n* You don't have any recent searches\nName\n* * * Name\n* Created date\n* Updated date\n* Stars\n* * Sort by:\n* B\n[blend-reader] \nBlend file reader, interface in PHP\n[6] \nCreatedSep 4, 2020\nActions\n* Copy project ID: 20931142\n* B\n[Blender] \n[1] \nCreatedJun 12, 2024\nActions\n* Copy project ID: 58777288\n* C\n[client] \n[30] \nCreatedAug 30, 2020\nActions\n* Copy project ID: 20825969\n* C\n[client-docker] \nOfficial docker client image for SheepIt renderfarm\n[5] \nCreatedJan 4, 2022\nActions\n* Copy project ID: 32558312\n* C\n[client-launcher] \n[0] \nCreated6 months ago\nActions\n* Copy project ID: 71595859\n* S\n[sheeple-bot] \nDiscord-Bot for SheepIt ([https://sheepit-renderfarm.com])\n[2] \nCreatedJan 23, 2021\nActions\n* Copy project ID: 23874218\n* S\n[shepherd] \n[8] \nCreatedAug 30, 2020\nActions\n* Copy project ID: 20825965\n* T\n[tools] \n[1] \nCreatedDec 10, 2020\nActions\n* Copy project ID: 23026343\n* W\n[www] \n[9] \nCreatedSep 1, 2020\nActions\n* Copy project ID: 20860113"
+}
+```
+User decision: **accepted**
+
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="unknown" data-tool-name="semantic_search_full">
+<details>
+<summary>Tool use: **semantic_search_full**</summary>
+
+
+Parameters:
+
+```json
+{
+  "query": "What HTTP requests or API calls are made to SheepIt endpoints?",
+  "topK": 10,
+  "explanation": ""
+}
+```
+Result:
+
+```json
+{
+  "codeResults": [
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\config.py",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 19,
+            "column": 42
+          }
+        },
+        "contents": "\"\"\"\nConfiguration constants for SheepIt Project Submitter addon.\n\"\"\"\n\n# Addon metadata\nADDON_NAME = \"SheepIt Project Submitter\"\nADDON_ID = \"sheepit_project_submitter\"\n\n# SheepIt API endpoints (to be researched and updated)\nSHEEPIT_API_BASE = \"https://www.sheepit-renderfarm.com\"\nSHEEPIT_CLIENT_BASE = \"https://client.sheepit-renderfarm.com\"\n\n# Debug mode\nDEBUG = False\n\n\ndef debug_print(message: str) -&gt; None:\n    \"\"\"Print debug message if DEBUG is enabled.\"\"\"\n    if DEBUG:\n        print(f\"[{ADDON_NAME}] {message}\")",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "\"\"\"",
+            "lineNumber": 1
+          },
+          {
+            "text": "Configuration constants for SheepIt Project Submitter addon.",
+            "lineNumber": 2
+          },
+          {
+            "text": "\"\"\"",
+            "lineNumber": 3
+          },
+          {
+            "lineNumber": 4
+          },
+          {
+            "text": "# Addon metadata",
+            "lineNumber": 5
+          },
+          {
+            "text": "ADDON_NAME = \"SheepIt Project Submitter\"",
+            "lineNumber": 6
+          },
+          {
+            "text": "ADDON_ID = \"sheepit_project_submitter\"",
+            "lineNumber": 7
+          },
+          {
+            "lineNumber": 8
+          },
+          {
+            "text": "# SheepIt API endpoints (to be researched and updated)",
+            "lineNumber": 9
+          },
+          {
+            "text": "SHEEPIT_API_BASE = \"https://www.sheepit-renderfarm.com\"",
+            "lineNumber": 10
+          },
+          {
+            "text": "SHEEPIT_CLIENT_BASE = \"https://client.sheepit-renderfarm.com\"",
+            "lineNumber": 11
+          },
+          {
+            "lineNumber": 12
+          },
+          {
+            "text": "# Debug mode",
+            "lineNumber": 13
+          },
+          {
+            "text": "DEBUG = False",
+            "lineNumber": 14
+          },
+          {
+            "lineNumber": 15
+          },
+          {
+            "lineNumber": 16
+          },
+          {
+            "text": "def debug_print(message: str) -&gt; None:",
+            "lineNumber": 17,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Print debug message if DEBUG is enabled.\"\"\"",
+            "lineNumber": 18
+          },
+          {
+            "text": "    if DEBUG:",
+            "lineNumber": 19
+          },
+          {
+            "text": "        print(f\"[{ADDON_NAME}] {message}\")",
+            "lineNumber": 20,
+            "isSignature": true
+          }
+        ]
+      },
+      "score": 0.33061420917510986
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\utils\\auth.py",
+        "range": {
+          "startPosition": {
+            "line": 222,
+            "column": 20
+          },
+          "endPosition": {
+            "line": 283
+          }
+        },
+        "contents": "def verify_session_with_token(session_token: str) -&gt; bool:\n    \"\"\"\n    Verify a session token by testing it against SheepIt API.\n    \n    Args:\n        session_token: Session token/cookie value from browser\n    \n    Returns:\n        True if token is valid, False otherwise\n    \"\"\"\n    if not bpy.app.online_access:\n        return False\n    \n    try:\n        import urllib.request\n        \n        # Test the token by making a request to a protected endpoint\n        # This is a placeholder - actual implementation depends on SheepIt's API\n        test_url = f\"{config.SHEEPIT_CLIENT_BASE}/api/user/info\"  # Example endpoint\n        \n        req = urllib.request.Request(test_url)\n        req.add_header('Cookie', f'session={session_token}')\n        req.add_header('User-Agent', f'SheepIt-Blender-Addon/{config.ADDON_ID}')\n        \n        try:\n            with urllib.request.urlopen(req, timeout=10) as response:\n                if response.status == 200:\n                    return True\n        except urllib.error.HTTPError as e:\n            if e.code in (401, 403):\n                return False\n    except Exception as e:\n        print(f\"[SheepIt Auth] Token verification failed: {e}\")\n    \n    return False\n\n\ndef get_auth_headers(cookies: Optional[Dict[str, str]] = None) -&gt; Dict[str, str]:\n    ",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "def verify_session_with_token(session_token: str) -&gt; bool:",
+            "lineNumber": 226,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 227
+          },
+          {
+            "text": "    Verify a session token by testing it against SheepIt API.",
+            "lineNumber": 228
+          },
+          {
+            "text": "    ",
+            "lineNumber": 229
+          },
+          {
+            "text": "    Args:",
+            "lineNumber": 230
+          },
+          {
+            "text": "        session_token: Session token/cookie value from browser",
+            "lineNumber": 231
+          },
+          {
+            "text": "    ",
+            "lineNumber": 232
+          },
+          {
+            "text": "    Returns:",
+            "lineNumber": 233
+          },
+          {
+            "text": "        True if token is valid, False otherwise",
+            "lineNumber": 234
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 235
+          },
+          {
+            "text": "    if not bpy.app.online_access:",
+            "lineNumber": 236
+          },
+          {
+            "text": "        return False",
+            "lineNumber": 237
+          },
+          {
+            "text": "    ",
+            "lineNumber": 238
+          },
+          {
+            "text": "    try:",
+            "lineNumber": 239
+          },
+          {
+            "text": "        import urllib.request",
+            "lineNumber": 240
+          },
+          {
+            "text": "        ",
+            "lineNumber": 241
+          },
+          {
+            "text": "        # Test the token by making a request to a protected endpoint",
+            "lineNumber": 242
+          },
+          {
+            "text": "        # This is a placeholder - actual implementation depends on SheepIt's API",
+            "lineNumber": 243
+          },
+          {
+            "text": "        test_url = f\"{config.SHEEPIT_CLIENT_BASE}/api/user/info\"  # Example endpoint",
+            "lineNumber": 244
+          },
+          {
+            "text": "        ",
+            "lineNumber": 245
+          },
+          {
+            "text": "        req = urllib.request.Request(test_url)",
+            "lineNumber": 246
+          },
+          {
+            "text": "        req.add_header('Cookie', f'session={session_token}')",
+            "lineNumber": 247
+          },
+          {
+            "text": "        req.add_header('User-Agent', f'SheepIt-Blender-Addon/{config.ADDON_ID}')",
+            "lineNumber": 248
+          },
+          {
+            "text": "        ",
+            "lineNumber": 249
+          },
+          {
+            "text": "        try:",
+            "lineNumber": 250
+          },
+          {
+            "text": "            with urllib.request.urlopen(req, timeout=10) as response:",
+            "lineNumber": 251
+          },
+          {
+            "text": "                if response.status == 200:",
+            "lineNumber": 252
+          },
+          {
+            "text": "                    return True",
+            "lineNumber": 253
+          },
+          {
+            "text": "        except urllib.error.HTTPError as e:",
+            "lineNumber": 254
+          },
+          {
+            "text": "            if e.code in (401, 403):",
+            "lineNumber": 255
+          },
+          {
+            "text": "                return False",
+            "lineNumber": 256
+          },
+          {
+            "text": "    except Exception as e:",
+            "lineNumber": 257
+          },
+          {
+            "text": "        print(f\"[SheepIt Auth] Token verification failed: {e}\")",
+            "lineNumber": 258
+          },
+          {
+            "text": "    ",
+            "lineNumber": 259
+          },
+          {
+            "text": "    return False",
+            "lineNumber": 260,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 261
+          },
+          {
+            "lineNumber": 262
+          },
+          {
+            "text": "def get_auth_headers(cookies: Optional[Dict[str, str]] = None) -&gt; Dict[str, str]:",
+            "lineNumber": 263,
+            "isSignature": true
+          },
+          {
+            "text": "    ",
+            "lineNumber": 264
+          }
+        ]
+      },
+      "score": 0.3139999508857727
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ops\\submit_ops.py",
+        "range": {
+          "startPosition": {
+            "line": 15
+          },
+          "endPosition": {
+            "line": 82
+          }
+        },
+        "contents": "class SHEEPIT_OT_submit_project(Operator):\ndef execute(self, context):\n\")\n            return {'CANCELLED'}\n        \n        # Check authentication method\n        if sheepit_prefs.use_browser_login:\n            # Use browser login cookies\n            from ..utils.auth import load_auth_cookies\n            cookies = load_auth_cookies()\n            if not cookies:\n                self.report({'ERROR'}, \"No browser login session found. Please login via browser in preferences.\")\n                return {'CANCELLED'}\n        else:\n            # Use username/password\n            if not sheepit_prefs.sheepit_username or not sheepit_prefs.sheepit_password:\n                self.report({'ERROR'}, \"Please configure SheepIt username and password in preferences.\")\n                return {'CANCELLED'}\n        \n        try:\n            # Determine if we need to create a ZIP\n            # For copy-only workflow, create ZIP of the directory\n            # For pack-and-save, we might submit the blend file directly or create ZIP\n            \n            # For now, create ZIP for both workflows (can be optimized later)\n            zip_path = pack_path.parent / f\"{pack_path.name}.zip\"\n            create_zip_from_directory(pack_path, zip_path)\n            \n            self.report({'INFO'}, f\"Created ZIP: {zip_path}\")\n            self.report({'WARNING'}, \"API submission not yet implemented. Please upload manually.\")\n            self.report({'INFO'}, f\"Upload this file to SheepIt: {zip_path}\")\n            return {'FINISHED'}\n        except Exception as e:\n            self.report({'ERROR'}, f\"Submission failed: {str(e)}\")\n            return {'CANCELLED'}\n\n\ndef create_zip_from_directory(directory: Path, output_zip: Path) -&gt; None:\n    \"\"\"Create a ZIP file from a directory.\"\"\"",
+        "signatures": {
+          "ranges": [
+            {
+              "startPosition": {
+                "line": 16,
+                "column": 1
+              },
+              "endPosition": {
+                "line": 17,
+                "column": 5
+              }
+            },
+            {
+              "startPosition": {
+                "line": 23,
+                "column": 5
+              },
+              "endPosition": {
+                "line": 24,
+                "column": 9
+              }
+            }
+          ]
+        },
+        "detailedLines": [
+          {
+            "text": "class SHEEPIT_OT_submit_project(Operator):",
+            "lineNumber": 16,
+            "isSignature": true
+          },
+          {
+            "text": "def execute(self, context):",
+            "lineNumber": 23
+          },
+          {
+            "text": "\")",
+            "lineNumber": 41
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 42
+          },
+          {
+            "text": "        ",
+            "lineNumber": 43
+          },
+          {
+            "text": "        # Check authentication method",
+            "lineNumber": 44
+          },
+          {
+            "text": "        if sheepit_prefs.use_browser_login:",
+            "lineNumber": 45
+          },
+          {
+            "text": "            # Use browser login cookies",
+            "lineNumber": 46
+          },
+          {
+            "text": "            from ..utils.auth import load_auth_cookies",
+            "lineNumber": 47
+          },
+          {
+            "text": "            cookies = load_auth_cookies()",
+            "lineNumber": 48
+          },
+          {
+            "text": "            if not cookies:",
+            "lineNumber": 49
+          },
+          {
+            "text": "                self.report({'ERROR'}, \"No browser login session found. Please login via browser in preferences.\")",
+            "lineNumber": 50
+          },
+          {
+            "text": "                return {'CANCELLED'}",
+            "lineNumber": 51
+          },
+          {
+            "text": "        else:",
+            "lineNumber": 52
+          },
+          {
+            "text": "            # Use username/password",
+            "lineNumber": 53
+          },
+          {
+            "text": "            if not sheepit_prefs.sheepit_username or not sheepit_prefs.sheepit_password:",
+            "lineNumber": 54
+          },
+          {
+            "text": "                self.report({'ERROR'}, \"Please configure SheepIt username and password in preferences.\")",
+            "lineNumber": 55
+          },
+          {
+            "text": "                return {'CANCELLED'}",
+            "lineNumber": 56
+          },
+          {
+            "text": "        ",
+            "lineNumber": 57
+          },
+          {
+            "text": "        try:",
+            "lineNumber": 58
+          },
+          {
+            "text": "            # Determine if we need to create a ZIP",
+            "lineNumber": 59
+          },
+          {
+            "text": "            # For copy-only workflow, create ZIP of the directory",
+            "lineNumber": 60
+          },
+          {
+            "text": "            # For pack-and-save, we might submit the blend file directly or create ZIP",
+            "lineNumber": 61
+          },
+          {
+            "text": "            ",
+            "lineNumber": 62
+          },
+          {
+            "text": "            # For now, create ZIP for both workflows (can be optimized later)",
+            "lineNumber": 63
+          },
+          {
+            "text": "            zip_path = pack_path.parent / f\"{pack_path.name}.zip\"",
+            "lineNumber": 64
+          },
+          {
+            "text": "            create_zip_from_directory(pack_path, zip_path)",
+            "lineNumber": 65
+          },
+          {
+            "text": "            ",
+            "lineNumber": 66
+          },
+          {
+            "text": "            self.report({'INFO'}, f\"Created ZIP: {zip_path}\")",
+            "lineNumber": 67
+          },
+          {
+            "text": "            self.report({'WARNING'}, \"API submission not yet implemented. Please upload manually.\")",
+            "lineNumber": 68
+          },
+          {
+            "text": "            self.report({'INFO'}, f\"Upload this file to SheepIt: {zip_path}\")",
+            "lineNumber": 69
+          },
+          {
+            "text": "            return {'FINISHED'}",
+            "lineNumber": 70
+          },
+          {
+            "text": "        except Exception as e:",
+            "lineNumber": 71
+          },
+          {
+            "text": "            self.report({'ERROR'}, f\"Submission failed: {str(e)}\")",
+            "lineNumber": 72
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 73,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 74
+          },
+          {
+            "lineNumber": 75
+          },
+          {
+            "text": "def create_zip_from_directory(directory: Path, output_zip: Path) -&gt; None:",
+            "lineNumber": 76,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Create a ZIP file from a directory.\"\"\"",
+            "lineNumber": 77
+          }
+        ]
+      },
+      "score": 0.2857615351676941
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ui\\preferences_ui.py",
+        "range": {
+          "startPosition": {
+            "line": 39,
+            "column": 22
+          },
+          "endPosition": {
+            "line": 204
+          }
+        },
+        "contents": "class SHEEPIT_OT_test_connection(Operator):\n    \"\"\"Test connection to SheepIt with current credentials.\"\"\"\n    bl_idname = \"sheepit.test_connection\"\n    bl_label = \"Test Connection\"\n    bl_description = \"Test connection to SheepIt render farm with current credentials\"\n    bl_options = {'REGISTER', 'UNDO'}\n    \n    def execute(self, context):\n        if not bpy.app.online_access:\n            self.report({'ERROR'}, \"Online access is disabled. Enable it in Preferences → System.\")\n            return {'CANCELLED'}\n        \n        prefs = compat.get_addon_prefs()\n        if not prefs:\n            self.report({'ERROR'}, \"Addon preferences not found.\")\n            return {'CANCELLED'}\n        \n        # Try browser login cookies first\n        if prefs.use_browser_login:\n            from ..utils.auth import load_auth_cookies\n            cookies = load_auth_cookies()\n            if cookies:\n                # Test with cookies\n                # TODO: Implement actual API test with cookies\n                self.report({'INFO'}, \"Browser login cookies found. Connection test not yet implemented.\")\n                return {'FINISHED'}\n            else:\n                self.report({'ERROR'}, \"No browser login cookies found. Please login via browser first.\")\n                return {'CANCELLED'}\n        \n        # Fallback to username/password\n        if not prefs.sheepit_username:\n            self.report({'ERROR'}, \"Username is required\")\n            return {'CANCELLED'}\n        \n        if not prefs.sheepit_password:\n            self.report({'ERROR'}, \"Password is required\")\n            return {'CANCELLED'}\n        \n        # Placeholder for actual API test\n        # TODO: Implement actual API connection test\n        self.report({'INFO'}, \"Connection test not yet implemented. Please verify credentials manually.\")\n        return {'FINISHED'}\n\n\nclass SHEEPIT_AddonPreferences(AddonPreferences):\n    \"\"\"Addon preferences for SheepIt Project Submitter.\"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "class SHEEPIT_OT_test_connection(Operator):",
+            "lineNumber": 43,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Test connection to SheepIt with current credentials.\"\"\"",
+            "lineNumber": 44
+          },
+          {
+            "text": "    bl_idname = \"sheepit.test_connection\"",
+            "lineNumber": 45
+          },
+          {
+            "text": "    bl_label = \"Test Connection\"",
+            "lineNumber": 46
+          },
+          {
+            "text": "    bl_description = \"Test connection to SheepIt render farm with current credentials\"",
+            "lineNumber": 47
+          },
+          {
+            "text": "    bl_options = {'REGISTER', 'UNDO'}",
+            "lineNumber": 48
+          },
+          {
+            "text": "    ",
+            "lineNumber": 49
+          },
+          {
+            "text": "    def execute(self, context):",
+            "lineNumber": 50
+          },
+          {
+            "text": "        if not bpy.app.online_access:",
+            "lineNumber": 51
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Online access is disabled. Enable it in Preferences → System.\")",
+            "lineNumber": 52
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 53
+          },
+          {
+            "text": "        ",
+            "lineNumber": 54
+          },
+          {
+            "text": "        prefs = compat.get_addon_prefs()",
+            "lineNumber": 55
+          },
+          {
+            "text": "        if not prefs:",
+            "lineNumber": 56
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Addon preferences not found.\")",
+            "lineNumber": 57
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 58
+          },
+          {
+            "text": "        ",
+            "lineNumber": 59
+          },
+          {
+            "text": "        # Try browser login cookies first",
+            "lineNumber": 60
+          },
+          {
+            "text": "        if prefs.use_browser_login:",
+            "lineNumber": 61
+          },
+          {
+            "text": "            from ..utils.auth import load_auth_cookies",
+            "lineNumber": 62
+          },
+          {
+            "text": "            cookies = load_auth_cookies()",
+            "lineNumber": 63
+          },
+          {
+            "text": "            if cookies:",
+            "lineNumber": 64
+          },
+          {
+            "text": "                # Test with cookies",
+            "lineNumber": 65
+          },
+          {
+            "text": "                # TODO: Implement actual API test with cookies",
+            "lineNumber": 66
+          },
+          {
+            "text": "                self.report({'INFO'}, \"Browser login cookies found. Connection test not yet implemented.\")",
+            "lineNumber": 67
+          },
+          {
+            "text": "                return {'FINISHED'}",
+            "lineNumber": 68
+          },
+          {
+            "text": "            else:",
+            "lineNumber": 69
+          },
+          {
+            "text": "                self.report({'ERROR'}, \"No browser login cookies found. Please login via browser first.\")",
+            "lineNumber": 70
+          },
+          {
+            "text": "                return {'CANCELLED'}",
+            "lineNumber": 71
+          },
+          {
+            "text": "        ",
+            "lineNumber": 72
+          },
+          {
+            "text": "        # Fallback to username/password",
+            "lineNumber": 73
+          },
+          {
+            "text": "        if not prefs.sheepit_username:",
+            "lineNumber": 74
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Username is required\")",
+            "lineNumber": 75
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 76
+          },
+          {
+            "text": "        ",
+            "lineNumber": 77
+          },
+          {
+            "text": "        if not prefs.sheepit_password:",
+            "lineNumber": 78
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Password is required\")",
+            "lineNumber": 79
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 80
+          },
+          {
+            "text": "        ",
+            "lineNumber": 81
+          },
+          {
+            "text": "        # Placeholder for actual API test",
+            "lineNumber": 82
+          },
+          {
+            "text": "        # TODO: Implement actual API connection test",
+            "lineNumber": 83
+          },
+          {
+            "text": "        self.report({'INFO'}, \"Connection test not yet implemented. Please verify credentials manually.\")",
+            "lineNumber": 84
+          },
+          {
+            "text": "        return {'FINISHED'}",
+            "lineNumber": 85,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 86
+          },
+          {
+            "lineNumber": 87
+          },
+          {
+            "text": "class SHEEPIT_AddonPreferences(AddonPreferences):",
+            "lineNumber": 88,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Addon preferences for SheepIt Project Submitter.\"\"\"",
+            "lineNumber": 89
+          }
+        ]
+      },
+      "score": 0.2580524682998657
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\utils\\auth.py",
+        "range": {
+          "startPosition": {
+            "line": 259,
+            "column": 16
+          },
+          "endPosition": {
+            "line": 283,
+            "column": 5
+          }
+        },
+        "contents": "def get_auth_headers(cookies: Optional[Dict[str, str]] = None) -&gt; Dict[str, str]:\n    \"\"\"\n    Get HTTP headers with authentication cookies.\n    \n    Args:\n        cookies: Cookie dictionary (if None, loads from storage)\n    \n    Returns:\n        Dictionary of HTTP headers\n    \"\"\"\n    if cookies is None:\n        cookies = load_auth_cookies()\n    \n    if not cookies:\n        return {}\n    \n    # Format cookies as Cookie header\n    cookie_str = '; '.join(f\"{k}={v}\" for k, v in cookies.items())\n    return {\n        'Cookie': cookie_str,\n        'User-Agent': f'SheepIt-Blender-Addon/{config.ADDON_ID}',\n    }",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "def get_auth_headers(cookies: Optional[Dict[str, str]] = None) -&gt; Dict[str, str]:",
+            "lineNumber": 263,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 264
+          },
+          {
+            "text": "    Get HTTP headers with authentication cookies.",
+            "lineNumber": 265
+          },
+          {
+            "text": "    ",
+            "lineNumber": 266
+          },
+          {
+            "text": "    Args:",
+            "lineNumber": 267
+          },
+          {
+            "text": "        cookies: Cookie dictionary (if None, loads from storage)",
+            "lineNumber": 268
+          },
+          {
+            "text": "    ",
+            "lineNumber": 269
+          },
+          {
+            "text": "    Returns:",
+            "lineNumber": 270
+          },
+          {
+            "text": "        Dictionary of HTTP headers",
+            "lineNumber": 271
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 272
+          },
+          {
+            "text": "    if cookies is None:",
+            "lineNumber": 273
+          },
+          {
+            "text": "        cookies = load_auth_cookies()",
+            "lineNumber": 274
+          },
+          {
+            "text": "    ",
+            "lineNumber": 275
+          },
+          {
+            "text": "    if not cookies:",
+            "lineNumber": 276
+          },
+          {
+            "text": "        return {}",
+            "lineNumber": 277
+          },
+          {
+            "text": "    ",
+            "lineNumber": 278
+          },
+          {
+            "text": "    # Format cookies as Cookie header",
+            "lineNumber": 279
+          },
+          {
+            "text": "    cookie_str = '; '.join(f\"{k}={v}\" for k, v in cookies.items())",
+            "lineNumber": 280
+          },
+          {
+            "text": "    return {",
+            "lineNumber": 281
+          },
+          {
+            "text": "        'Cookie': cookie_str,",
+            "lineNumber": 282
+          },
+          {
+            "text": "        'User-Agent': f'SheepIt-Blender-Addon/{config.ADDON_ID}',",
+            "lineNumber": 283
+          },
+          {
+            "text": "    }",
+            "lineNumber": 284,
+            "isSignature": true
+          }
+        ]
+      },
+      "score": 0.23924580216407776
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ops\\submit_ops.py",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 72
+          }
+        },
+        "contents": "\"\"\"\nSubmission operations for SheepIt render farm.\n\"\"\"\n\nimport os\nimport zipfile\nfrom pathlib import Path\nfrom typing import Optional\n\nimport bpy\nfrom bpy.types import Operator\n\nfrom .. import config\n\n\nclass SHEEPIT_OT_submit_project(Operator):\n    \"\"\"Submit project to SheepIt render farm.\"\"\"\n    bl_idname = \"sheepit.submit_project\"\n    bl_label = \"Submit to SheepIt\"\n    bl_description = \"Submit the packed project to SheepIt render farm\"\n    bl_options = {'REGISTER', 'UNDO'}\n    \n    def execute(self, context):\n        scene = context.scene\n        submit_settings = scene.sheepit_submit\n        \n        # Check if project has been packed\n        if not submit_settings.pack_output_path:\n            self.report({'ERROR'}, \"Please pack the project first using 'Pack Copy Only' or 'Pack and Save'\")\n            return {'CANCELLED'}\n        \n        pack_path = Path(submit_settings.pack_output_path)\n        if not pack_path.exists():\n            self.report({'ERROR'}, f\"Packed project path does not exist: {pack_path}\")\n            return {'CANCELLED'}\n        \n        # Get preferences for authentication\n        from ..utils.compat import get_addon_prefs\n        sheepit_prefs = get_addon_prefs()\n        if not sheepit_prefs:\n            self.report({'ERROR'}, \"Addon preferences not found. Please configure SheepIt credentials in preferences.\")\n            return {'CANCELLED'}\n        \n        # Check authentication method\n        if",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "\"\"\"",
+            "lineNumber": 1
+          },
+          {
+            "text": "Submission operations for SheepIt render farm.",
+            "lineNumber": 2
+          },
+          {
+            "text": "\"\"\"",
+            "lineNumber": 3
+          },
+          {
+            "lineNumber": 4
+          },
+          {
+            "text": "import os",
+            "lineNumber": 5
+          },
+          {
+            "text": "import zipfile",
+            "lineNumber": 6
+          },
+          {
+            "text": "from pathlib import Path",
+            "lineNumber": 7
+          },
+          {
+            "text": "from typing import Optional",
+            "lineNumber": 8
+          },
+          {
+            "lineNumber": 9
+          },
+          {
+            "text": "import bpy",
+            "lineNumber": 10
+          },
+          {
+            "text": "from bpy.types import Operator",
+            "lineNumber": 11
+          },
+          {
+            "lineNumber": 12
+          },
+          {
+            "text": "from .. import config",
+            "lineNumber": 13
+          },
+          {
+            "lineNumber": 14
+          },
+          {
+            "lineNumber": 15
+          },
+          {
+            "text": "class SHEEPIT_OT_submit_project(Operator):",
+            "lineNumber": 16,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Submit project to SheepIt render farm.\"\"\"",
+            "lineNumber": 17
+          },
+          {
+            "text": "    bl_idname = \"sheepit.submit_project\"",
+            "lineNumber": 18
+          },
+          {
+            "text": "    bl_label = \"Submit to SheepIt\"",
+            "lineNumber": 19
+          },
+          {
+            "text": "    bl_description = \"Submit the packed project to SheepIt render farm\"",
+            "lineNumber": 20
+          },
+          {
+            "text": "    bl_options = {'REGISTER', 'UNDO'}",
+            "lineNumber": 21
+          },
+          {
+            "text": "    ",
+            "lineNumber": 22
+          },
+          {
+            "text": "    def execute(self, context):",
+            "lineNumber": 23
+          },
+          {
+            "text": "        scene = context.scene",
+            "lineNumber": 24
+          },
+          {
+            "text": "        submit_settings = scene.sheepit_submit",
+            "lineNumber": 25
+          },
+          {
+            "text": "        ",
+            "lineNumber": 26
+          },
+          {
+            "text": "        # Check if project has been packed",
+            "lineNumber": 27
+          },
+          {
+            "text": "        if not submit_settings.pack_output_path:",
+            "lineNumber": 28
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Please pack the project first using 'Pack Copy Only' or 'Pack and Save'\")",
+            "lineNumber": 29
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 30
+          },
+          {
+            "text": "        ",
+            "lineNumber": 31
+          },
+          {
+            "text": "        pack_path = Path(submit_settings.pack_output_path)",
+            "lineNumber": 32
+          },
+          {
+            "text": "        if not pack_path.exists():",
+            "lineNumber": 33
+          },
+          {
+            "text": "            self.report({'ERROR'}, f\"Packed project path does not exist: {pack_path}\")",
+            "lineNumber": 34
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 35
+          },
+          {
+            "text": "        ",
+            "lineNumber": 36
+          },
+          {
+            "text": "        # Get preferences for authentication",
+            "lineNumber": 37
+          },
+          {
+            "text": "        from ..utils.compat import get_addon_prefs",
+            "lineNumber": 38
+          },
+          {
+            "text": "        sheepit_prefs = get_addon_prefs()",
+            "lineNumber": 39
+          },
+          {
+            "text": "        if not sheepit_prefs:",
+            "lineNumber": 40
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Addon preferences not found. Please configure SheepIt credentials in preferences.\")",
+            "lineNumber": 41
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 42
+          },
+          {
+            "text": "        ",
+            "lineNumber": 43
+          },
+          {
+            "text": "        # Check authentication method",
+            "lineNumber": 44
+          },
+          {
+            "text": "        if",
+            "lineNumber": 45
+          }
+        ]
+      },
+      "score": 0.23563869297504425
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\utils\\auth.py",
+        "range": {
+          "startPosition": {
+            "line": 194,
+            "column": 20
+          },
+          "endPosition": {
+            "line": 259
+          }
+        },
+        "contents": "def browser_login() -&gt; bool:\n    \"\"\"\n    Open browser for login and provide instructions.\n    \n    Since we cannot directly extract cookies from the browser session,\n    this opens the login page and provides instructions for the user.\n    After login, the user can verify the session works.\n    \n    Returns:\n        True if browser opened successfully\n    \"\"\"\n    if not bpy.app.online_access:\n        print(\"[SheepIt Auth] Online access is disabled. Cannot perform browser login.\")\n        return False\n    \n    # Open browser to login page\n    login_url = f\"{config.SHEEPIT_CLIENT_BASE}/user/signin\"\n    try:\n        webbrowser.open(login_url)\n        print(f\"[SheepIt Auth] Opened browser to: {login_url}\")\n        print(\"[SheepIt Auth] Please complete login in your browser.\")\n        print(\"[SheepIt Auth] After logging in, return to Blender and click 'Verify Login'.\")\n        return True\n    except Exception as e:\n        print(f\"[SheepIt Auth] Failed to open browser: {e}\")\n        return False\n\n\ndef verify_session_with_token(session_token: str) -&gt; bool:\n    \"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "def browser_login() -&gt; bool:",
+            "lineNumber": 198,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 199
+          },
+          {
+            "text": "    Open browser for login and provide instructions.",
+            "lineNumber": 200
+          },
+          {
+            "text": "    ",
+            "lineNumber": 201
+          },
+          {
+            "text": "    Since we cannot directly extract cookies from the browser session,",
+            "lineNumber": 202
+          },
+          {
+            "text": "    this opens the login page and provides instructions for the user.",
+            "lineNumber": 203
+          },
+          {
+            "text": "    After login, the user can verify the session works.",
+            "lineNumber": 204
+          },
+          {
+            "text": "    ",
+            "lineNumber": 205
+          },
+          {
+            "text": "    Returns:",
+            "lineNumber": 206
+          },
+          {
+            "text": "        True if browser opened successfully",
+            "lineNumber": 207
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 208
+          },
+          {
+            "text": "    if not bpy.app.online_access:",
+            "lineNumber": 209
+          },
+          {
+            "text": "        print(\"[SheepIt Auth] Online access is disabled. Cannot perform browser login.\")",
+            "lineNumber": 210
+          },
+          {
+            "text": "        return False",
+            "lineNumber": 211
+          },
+          {
+            "text": "    ",
+            "lineNumber": 212
+          },
+          {
+            "text": "    # Open browser to login page",
+            "lineNumber": 213
+          },
+          {
+            "text": "    login_url = f\"{config.SHEEPIT_CLIENT_BASE}/user/signin\"",
+            "lineNumber": 214
+          },
+          {
+            "text": "    try:",
+            "lineNumber": 215
+          },
+          {
+            "text": "        webbrowser.open(login_url)",
+            "lineNumber": 216
+          },
+          {
+            "text": "        print(f\"[SheepIt Auth] Opened browser to: {login_url}\")",
+            "lineNumber": 217
+          },
+          {
+            "text": "        print(\"[SheepIt Auth] Please complete login in your browser.\")",
+            "lineNumber": 218
+          },
+          {
+            "text": "        print(\"[SheepIt Auth] After logging in, return to Blender and click 'Verify Login'.\")",
+            "lineNumber": 219
+          },
+          {
+            "text": "        return True",
+            "lineNumber": 220
+          },
+          {
+            "text": "    except Exception as e:",
+            "lineNumber": 221
+          },
+          {
+            "text": "        print(f\"[SheepIt Auth] Failed to open browser: {e}\")",
+            "lineNumber": 222
+          },
+          {
+            "text": "        return False",
+            "lineNumber": 223,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 224
+          },
+          {
+            "lineNumber": 225
+          },
+          {
+            "text": "def verify_session_with_token(session_token: str) -&gt; bool:",
+            "lineNumber": 226,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 227
+          }
+        ]
+      },
+      "score": 0.23023070394992828
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ops\\auth_ops.py",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 73
+          }
+        },
+        "contents": "\"\"\"\nAuthentication operators for browser-based login.\n\"\"\"\n\nimport bpy\nfrom bpy.types import Operator\nfrom ..utils.auth import browser_login, save_auth_cookies, clear_auth_cookies, load_auth_cookies\nfrom .. import config\n\n\nclass SHEEPIT_OT_browser_login(Operator):\n    \"\"\"Open browser for SheepIt login.\"\"\"\n    bl_idname = \"sheepit.browser_login\"\n    bl_label = \"Open Browser for Login\"\n    bl_description = \"Open browser to login to SheepIt. After logging in, click 'Verify Login' to save session.\"\n    bl_options = {'REGISTER', 'UNDO'}\n    \n    def execute(self, context):\n        if not bpy.app.online_access:\n            self.report({'ERROR'}, \"Online access is disabled. Enable it in Preferences → System.\")\n            return {'CANCELLED'}\n        \n        # Open browser\n        if browser_login():\n            # Update preferences status\n            from ..utils.compat import get_addon_prefs\n            prefs = get_addon_prefs()\n            if prefs:\n                prefs.auth_status = \"Please login in browser, then click 'Verify Login'\"\n            self.report({'INFO'}, \"Browser opened. Please login, then click 'Verify Login'.\")\n            return {'FINISHED'}\n        else:\n            self.report({'ERROR'}, \"Failed to open browser.\")\n            return {'CANCELLED'}\n\n\nclass SHEEPIT_OT_verify_login(Operator):\n    \"\"\"Save session token from browser login.\"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "\"\"\"",
+            "lineNumber": 1
+          },
+          {
+            "text": "Authentication operators for browser-based login.",
+            "lineNumber": 2
+          },
+          {
+            "text": "\"\"\"",
+            "lineNumber": 3
+          },
+          {
+            "lineNumber": 4
+          },
+          {
+            "text": "import bpy",
+            "lineNumber": 5
+          },
+          {
+            "text": "from bpy.types import Operator",
+            "lineNumber": 6
+          },
+          {
+            "text": "from ..utils.auth import browser_login, save_auth_cookies, clear_auth_cookies, load_auth_cookies",
+            "lineNumber": 7
+          },
+          {
+            "text": "from .. import config",
+            "lineNumber": 8
+          },
+          {
+            "lineNumber": 9
+          },
+          {
+            "lineNumber": 10
+          },
+          {
+            "text": "class SHEEPIT_OT_browser_login(Operator):",
+            "lineNumber": 11,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Open browser for SheepIt login.\"\"\"",
+            "lineNumber": 12
+          },
+          {
+            "text": "    bl_idname = \"sheepit.browser_login\"",
+            "lineNumber": 13
+          },
+          {
+            "text": "    bl_label = \"Open Browser for Login\"",
+            "lineNumber": 14
+          },
+          {
+            "text": "    bl_description = \"Open browser to login to SheepIt. After logging in, click 'Verify Login' to save session.\"",
+            "lineNumber": 15
+          },
+          {
+            "text": "    bl_options = {'REGISTER', 'UNDO'}",
+            "lineNumber": 16
+          },
+          {
+            "text": "    ",
+            "lineNumber": 17
+          },
+          {
+            "text": "    def execute(self, context):",
+            "lineNumber": 18
+          },
+          {
+            "text": "        if not bpy.app.online_access:",
+            "lineNumber": 19
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Online access is disabled. Enable it in Preferences → System.\")",
+            "lineNumber": 20
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 21
+          },
+          {
+            "text": "        ",
+            "lineNumber": 22
+          },
+          {
+            "text": "        # Open browser",
+            "lineNumber": 23
+          },
+          {
+            "text": "        if browser_login():",
+            "lineNumber": 24
+          },
+          {
+            "text": "            # Update preferences status",
+            "lineNumber": 25
+          },
+          {
+            "text": "            from ..utils.compat import get_addon_prefs",
+            "lineNumber": 26
+          },
+          {
+            "text": "            prefs = get_addon_prefs()",
+            "lineNumber": 27
+          },
+          {
+            "text": "            if prefs:",
+            "lineNumber": 28
+          },
+          {
+            "text": "                prefs.auth_status = \"Please login in browser, then click 'Verify Login'\"",
+            "lineNumber": 29
+          },
+          {
+            "text": "            self.report({'INFO'}, \"Browser opened. Please login, then click 'Verify Login'.\")",
+            "lineNumber": 30
+          },
+          {
+            "text": "            return {'FINISHED'}",
+            "lineNumber": 31
+          },
+          {
+            "text": "        else:",
+            "lineNumber": 32
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Failed to open browser.\")",
+            "lineNumber": 33
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 34,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 35
+          },
+          {
+            "lineNumber": 36
+          },
+          {
+            "text": "class SHEEPIT_OT_verify_login(Operator):",
+            "lineNumber": 37,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Save session token from browser login.\"\"\"",
+            "lineNumber": 38
+          }
+        ]
+      },
+      "score": 0.21186953783035278
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\utils\\auth.py",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 76
+          }
+        },
+        "contents": "\"\"\"\nAuthentication utilities for SheepIt render farm.\nImplements browser-based login with secure cookie/token storage.\n\nSince SheepIt doesn't appear to support OAuth, we use a hybrid approach:\n1. Open browser for user to login (more secure than storing passwords)\n2. User extracts session token from browser cookies manually\n3. Token is stored encrypted on the local system\n4. Token is reused for API requests\n\nThis approach is similar to how many desktop apps handle authentication\nwhen OAuth isn't available. It's more secure than storing passwords because:\n- User logs in via official website (phishing-resistant)\n- Only session token is stored (not password)\n- Token can be revoked independently\n- Token is encrypted at rest\n\"\"\"\n\nimport os\nimport json\nimport secrets\nimport threading\nimport time\nimport webbrowser\nfrom http.server import HTTPServer, BaseHTTPRequestHandler\nfrom urllib.parse import urlparse, parse_qs\nfrom pathlib import Path\nfrom typing import Optional, Dict\nimport base64\n\nimport bpy\nfrom .. import config\n\n\nclass AuthCallbackHandler(BaseHTTPRequestHandler):\n    \"\"\"HTTP handler for OAuth/login callback.\"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "\"\"\"",
+            "lineNumber": 1
+          },
+          {
+            "text": "Authentication utilities for SheepIt render farm.",
+            "lineNumber": 2
+          },
+          {
+            "text": "Implements browser-based login with secure cookie/token storage.",
+            "lineNumber": 3
+          },
+          {
+            "lineNumber": 4
+          },
+          {
+            "text": "Since SheepIt doesn't appear to support OAuth, we use a hybrid approach:",
+            "lineNumber": 5
+          },
+          {
+            "text": "1. Open browser for user to login (more secure than storing passwords)",
+            "lineNumber": 6
+          },
+          {
+            "text": "2. User extracts session token from browser cookies manually",
+            "lineNumber": 7
+          },
+          {
+            "text": "3. Token is stored encrypted on the local system",
+            "lineNumber": 8
+          },
+          {
+            "text": "4. Token is reused for API requests",
+            "lineNumber": 9
+          },
+          {
+            "lineNumber": 10
+          },
+          {
+            "text": "This approach is similar to how many desktop apps handle authentication",
+            "lineNumber": 11
+          },
+          {
+            "text": "when OAuth isn't available. It's more secure than storing passwords because:",
+            "lineNumber": 12
+          },
+          {
+            "text": "- User logs in via official website (phishing-resistant)",
+            "lineNumber": 13
+          },
+          {
+            "text": "- Only session token is stored (not password)",
+            "lineNumber": 14
+          },
+          {
+            "text": "- Token can be revoked independently",
+            "lineNumber": 15
+          },
+          {
+            "text": "- Token is encrypted at rest",
+            "lineNumber": 16
+          },
+          {
+            "text": "\"\"\"",
+            "lineNumber": 17
+          },
+          {
+            "lineNumber": 18
+          },
+          {
+            "text": "import os",
+            "lineNumber": 19
+          },
+          {
+            "text": "import json",
+            "lineNumber": 20
+          },
+          {
+            "text": "import secrets",
+            "lineNumber": 21
+          },
+          {
+            "text": "import threading",
+            "lineNumber": 22
+          },
+          {
+            "text": "import time",
+            "lineNumber": 23
+          },
+          {
+            "text": "import webbrowser",
+            "lineNumber": 24
+          },
+          {
+            "text": "from http.server import HTTPServer, BaseHTTPRequestHandler",
+            "lineNumber": 25
+          },
+          {
+            "text": "from urllib.parse import urlparse, parse_qs",
+            "lineNumber": 26
+          },
+          {
+            "text": "from pathlib import Path",
+            "lineNumber": 27
+          },
+          {
+            "text": "from typing import Optional, Dict",
+            "lineNumber": 28
+          },
+          {
+            "text": "import base64",
+            "lineNumber": 29
+          },
+          {
+            "lineNumber": 30
+          },
+          {
+            "text": "import bpy",
+            "lineNumber": 31
+          },
+          {
+            "text": "from .. import config",
+            "lineNumber": 32
+          },
+          {
+            "lineNumber": 33
+          },
+          {
+            "lineNumber": 34
+          },
+          {
+            "text": "class AuthCallbackHandler(BaseHTTPRequestHandler):",
+            "lineNumber": 35,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"HTTP handler for OAuth/login callback.\"\"\"",
+            "lineNumber": 36
+          }
+        ]
+      },
+      "score": 0.20418860018253326
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\__init__.py",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 95
+          }
+        },
+        "contents": "\"\"\"\nSheepIt Project Submitter Addon\n\nA Blender addon for submitting projects to SheepIt render farm with automatic asset packing.\nBased on Dr. Sybren's Batter (Bat v2.0) project.\n\"\"\"\n\nimport bpy\nfrom bpy.utils import register_class\nfrom .utils import compat\nfrom . import ops\nfrom . import ui\nfrom . import rainys_repo_bootstrap\n\n\n# SheepIt Submit Settings Property Group\nclass SHEEPIT_PG_submit_settings(bpy.types.PropertyGroup):\n    \"\"\"Property group for storing submit settings.\"\"\"\n    \n    # Frame range mode\n    frame_range_mode: bpy.props.EnumProperty(\n        name=\"Frame Range Mode\",\n        description=\"Choose between full range or custom frame range\",\n        items=[\n            ('FULL', \"Full Range\", \"Use the full frame range from scene settings\"),\n            ('CUSTOM', \"Custom\", \"Specify custom start, end, and step frames\"),\n        ],\n        default='FULL',\n    )\n    \n    # Custom frame range\n    frame_start: bpy.props.IntProperty(\n        name=\"Start Frame\",\n        description=\"Start frame for rendering\",\n        default=1,\n        min=0,\n    )\n    \n    frame_end: bpy.props.IntProperty(\n        name=\"End Frame\",\n        description=\"End frame for rendering\",\n        default=250,\n        min=0,\n    )\n    \n    frame_step: bpy.props.IntProperty(\n        name=\"Frame Step\",\n        description=\"Frame step (render every Nth frame)\",\n        default=1,\n        min=1,\n    )\n    \n    # Compute method\n    compute_method: bpy.props.EnumProperty(\n        name=\"Compute Method\",\n        description=\"Choose CPU or GPU rendering\",\n        items=[\n            ('CPU', \"CPU\", \"Use CPU for rendering\"),\n            ('GPU', \"GPU\", \"Use GPU for rendering\"),\n        ],\n        default='CPU',\n    )\n    \n    # Checkboxes\n    renderable_by_all: bpy.props.BoolProperty(\n        name=\"Renderable by all members\",\n        description=\"Allow all SheepIt members to render this project\",\n        default=True,\n    )\n    \n    generate_mp4:",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "\"\"\"",
+            "lineNumber": 1
+          },
+          {
+            "text": "SheepIt Project Submitter Addon",
+            "lineNumber": 2
+          },
+          {
+            "lineNumber": 3
+          },
+          {
+            "text": "A Blender addon for submitting projects to SheepIt render farm with automatic asset packing.",
+            "lineNumber": 4
+          },
+          {
+            "text": "Based on Dr. Sybren's Batter (Bat v2.0) project.",
+            "lineNumber": 5
+          },
+          {
+            "text": "\"\"\"",
+            "lineNumber": 6
+          },
+          {
+            "lineNumber": 7
+          },
+          {
+            "text": "import bpy",
+            "lineNumber": 8
+          },
+          {
+            "text": "from bpy.utils import register_class",
+            "lineNumber": 9
+          },
+          {
+            "text": "from .utils import compat",
+            "lineNumber": 10
+          },
+          {
+            "text": "from . import ops",
+            "lineNumber": 11
+          },
+          {
+            "text": "from . import ui",
+            "lineNumber": 12
+          },
+          {
+            "text": "from . import rainys_repo_bootstrap",
+            "lineNumber": 13
+          },
+          {
+            "lineNumber": 14
+          },
+          {
+            "lineNumber": 15
+          },
+          {
+            "text": "# SheepIt Submit Settings Property Group",
+            "lineNumber": 16
+          },
+          {
+            "text": "class SHEEPIT_PG_submit_settings(bpy.types.PropertyGroup):",
+            "lineNumber": 17,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Property group for storing submit settings.\"\"\"",
+            "lineNumber": 18
+          },
+          {
+            "text": "    ",
+            "lineNumber": 19
+          },
+          {
+            "text": "    # Frame range mode",
+            "lineNumber": 20
+          },
+          {
+            "text": "    frame_range_mode: bpy.props.EnumProperty(",
+            "lineNumber": 21
+          },
+          {
+            "text": "        name=\"Frame Range Mode\",",
+            "lineNumber": 22
+          },
+          {
+            "text": "        description=\"Choose between full range or custom frame range\",",
+            "lineNumber": 23
+          },
+          {
+            "text": "        items=[",
+            "lineNumber": 24
+          },
+          {
+            "text": "            ('FULL', \"Full Range\", \"Use the full frame range from scene settings\"),",
+            "lineNumber": 25
+          },
+          {
+            "text": "            ('CUSTOM', \"Custom\", \"Specify custom start, end, and step frames\"),",
+            "lineNumber": 26
+          },
+          {
+            "text": "        ],",
+            "lineNumber": 27
+          },
+          {
+            "text": "        default='FULL',",
+            "lineNumber": 28
+          },
+          {
+            "text": "    )",
+            "lineNumber": 29
+          },
+          {
+            "text": "    ",
+            "lineNumber": 30
+          },
+          {
+            "text": "    # Custom frame range",
+            "lineNumber": 31
+          },
+          {
+            "text": "    frame_start: bpy.props.IntProperty(",
+            "lineNumber": 32
+          },
+          {
+            "text": "        name=\"Start Frame\",",
+            "lineNumber": 33
+          },
+          {
+            "text": "        description=\"Start frame for rendering\",",
+            "lineNumber": 34
+          },
+          {
+            "text": "        default=1,",
+            "lineNumber": 35
+          },
+          {
+            "text": "        min=0,",
+            "lineNumber": 36
+          },
+          {
+            "text": "    )",
+            "lineNumber": 37
+          },
+          {
+            "text": "    ",
+            "lineNumber": 38
+          },
+          {
+            "text": "    frame_end: bpy.props.IntProperty(",
+            "lineNumber": 39
+          },
+          {
+            "text": "        name=\"End Frame\",",
+            "lineNumber": 40
+          },
+          {
+            "text": "        description=\"End frame for rendering\",",
+            "lineNumber": 41
+          },
+          {
+            "text": "        default=250,",
+            "lineNumber": 42
+          },
+          {
+            "text": "        min=0,",
+            "lineNumber": 43
+          },
+          {
+            "text": "    )",
+            "lineNumber": 44
+          },
+          {
+            "text": "    ",
+            "lineNumber": 45
+          },
+          {
+            "text": "    frame_step: bpy.props.IntProperty(",
+            "lineNumber": 46
+          },
+          {
+            "text": "        name=\"Frame Step\",",
+            "lineNumber": 47
+          },
+          {
+            "text": "        description=\"Frame step (render every Nth frame)\",",
+            "lineNumber": 48
+          },
+          {
+            "text": "        default=1,",
+            "lineNumber": 49
+          },
+          {
+            "text": "        min=1,",
+            "lineNumber": 50
+          },
+          {
+            "text": "    )",
+            "lineNumber": 51
+          },
+          {
+            "text": "    ",
+            "lineNumber": 52
+          },
+          {
+            "text": "    # Compute method",
+            "lineNumber": 53
+          },
+          {
+            "text": "    compute_method: bpy.props.EnumProperty(",
+            "lineNumber": 54
+          },
+          {
+            "text": "        name=\"Compute Method\",",
+            "lineNumber": 55
+          },
+          {
+            "text": "        description=\"Choose CPU or GPU rendering\",",
+            "lineNumber": 56
+          },
+          {
+            "text": "        items=[",
+            "lineNumber": 57
+          },
+          {
+            "text": "            ('CPU', \"CPU\", \"Use CPU for rendering\"),",
+            "lineNumber": 58
+          },
+          {
+            "text": "            ('GPU', \"GPU\", \"Use GPU for rendering\"),",
+            "lineNumber": 59
+          },
+          {
+            "text": "        ],",
+            "lineNumber": 60
+          },
+          {
+            "text": "        default='CPU',",
+            "lineNumber": 61
+          },
+          {
+            "text": "    )",
+            "lineNumber": 62
+          },
+          {
+            "text": "    ",
+            "lineNumber": 63
+          },
+          {
+            "text": "    # Checkboxes",
+            "lineNumber": 64
+          },
+          {
+            "text": "    renderable_by_all: bpy.props.BoolProperty(",
+            "lineNumber": 65
+          },
+          {
+            "text": "        name=\"Renderable by all members\",",
+            "lineNumber": 66
+          },
+          {
+            "text": "        description=\"Allow all SheepIt members to render this project\",",
+            "lineNumber": 67
+          },
+          {
+            "text": "        default=True,",
+            "lineNumber": 68
+          },
+          {
+            "text": "    )",
+            "lineNumber": 69
+          },
+          {
+            "text": "    ",
+            "lineNumber": 70
+          },
+          {
+            "text": "    generate_mp4:",
+            "lineNumber": 71
+          }
+        ]
+      },
+      "score": 0.1940179020166397
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ops\\auth_ops.py",
+        "range": {
+          "startPosition": {
+            "line": 33,
+            "column": 32
+          },
+          "endPosition": {
+            "line": 94
+          }
+        },
+        "contents": "class SHEEPIT_OT_verify_login(Operator):\n    \"\"\"Save session token from browser login.\"\"\"\n    bl_idname = \"sheepit.verify_login\"\n    bl_label = \"Save Session Token\"\n    bl_description = \"Save the session token you copied from browser cookies\"\n    bl_options = {'REGISTER', 'UNDO'}\n    \n    def execute(self, context):\n        if not bpy.app.online_access:\n            self.report({'ERROR'}, \"Online access is disabled. Enable it in Preferences → System.\")\n            return {'CANCELLED'}\n        \n        from ..utils.compat import get_addon_prefs\n        prefs = get_addon_prefs()\n        if not prefs:\n            self.report({'ERROR'}, \"Addon preferences not found.\")\n            return {'CANCELLED'}\n        \n        if not prefs.session_token:\n            self.report({'ERROR'}, \"Please enter the session token from your browser.\")\n            return {'CANCELLED'}\n        \n        # Verify token (optional - can skip if user trusts it)\n        # if not auth.verify_session_with_token(prefs.session_token):\n        #     self.report({'WARNING'}, \"Token verification failed, but saving anyway.\")\n        \n        # Save as cookie\n        cookies = {'session': prefs.session_token}  # Adjust cookie name based on SheepIt's actual cookie name\n        \n        if save_auth_cookies(cookies):\n            # Update preferences status\n            prefs.auth_status = \"Logged in (Browser)\"\n            prefs.session_token = \"\"  # Clear token field for security\n            self.report({'INFO'}, \"Session token saved successfully!\")\n            return {'FINISHED'}\n        else:\n            self.report({'ERROR'}, \"Failed to save session token.\")\n            return {'CANCELLED'}\n\n\nclass SHEEPIT_OT_logout(Operator):\n    \"\"\"Logout and clear stored authentication cookies.\"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "class SHEEPIT_OT_verify_login(Operator):",
+            "lineNumber": 37,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Save session token from browser login.\"\"\"",
+            "lineNumber": 38
+          },
+          {
+            "text": "    bl_idname = \"sheepit.verify_login\"",
+            "lineNumber": 39
+          },
+          {
+            "text": "    bl_label = \"Save Session Token\"",
+            "lineNumber": 40
+          },
+          {
+            "text": "    bl_description = \"Save the session token you copied from browser cookies\"",
+            "lineNumber": 41
+          },
+          {
+            "text": "    bl_options = {'REGISTER', 'UNDO'}",
+            "lineNumber": 42
+          },
+          {
+            "text": "    ",
+            "lineNumber": 43
+          },
+          {
+            "text": "    def execute(self, context):",
+            "lineNumber": 44
+          },
+          {
+            "text": "        if not bpy.app.online_access:",
+            "lineNumber": 45
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Online access is disabled. Enable it in Preferences → System.\")",
+            "lineNumber": 46
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 47
+          },
+          {
+            "text": "        ",
+            "lineNumber": 48
+          },
+          {
+            "text": "        from ..utils.compat import get_addon_prefs",
+            "lineNumber": 49
+          },
+          {
+            "text": "        prefs = get_addon_prefs()",
+            "lineNumber": 50
+          },
+          {
+            "text": "        if not prefs:",
+            "lineNumber": 51
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Addon preferences not found.\")",
+            "lineNumber": 52
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 53
+          },
+          {
+            "text": "        ",
+            "lineNumber": 54
+          },
+          {
+            "text": "        if not prefs.session_token:",
+            "lineNumber": 55
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Please enter the session token from your browser.\")",
+            "lineNumber": 56
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 57
+          },
+          {
+            "text": "        ",
+            "lineNumber": 58
+          },
+          {
+            "text": "        # Verify token (optional - can skip if user trusts it)",
+            "lineNumber": 59
+          },
+          {
+            "text": "        # if not auth.verify_session_with_token(prefs.session_token):",
+            "lineNumber": 60
+          },
+          {
+            "text": "        #     self.report({'WARNING'}, \"Token verification failed, but saving anyway.\")",
+            "lineNumber": 61
+          },
+          {
+            "text": "        ",
+            "lineNumber": 62
+          },
+          {
+            "text": "        # Save as cookie",
+            "lineNumber": 63
+          },
+          {
+            "text": "        cookies = {'session': prefs.session_token}  # Adjust cookie name based on SheepIt's actual cookie name",
+            "lineNumber": 64
+          },
+          {
+            "text": "        ",
+            "lineNumber": 65
+          },
+          {
+            "text": "        if save_auth_cookies(cookies):",
+            "lineNumber": 66
+          },
+          {
+            "text": "            # Update preferences status",
+            "lineNumber": 67
+          },
+          {
+            "text": "            prefs.auth_status = \"Logged in (Browser)\"",
+            "lineNumber": 68
+          },
+          {
+            "text": "            prefs.session_token = \"\"  # Clear token field for security",
+            "lineNumber": 69
+          },
+          {
+            "text": "            self.report({'INFO'}, \"Session token saved successfully!\")",
+            "lineNumber": 70
+          },
+          {
+            "text": "            return {'FINISHED'}",
+            "lineNumber": 71
+          },
+          {
+            "text": "        else:",
+            "lineNumber": 72
+          },
+          {
+            "text": "            self.report({'ERROR'}, \"Failed to save session token.\")",
+            "lineNumber": 73
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 74,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 75
+          },
+          {
+            "lineNumber": 76
+          },
+          {
+            "text": "class SHEEPIT_OT_logout(Operator):",
+            "lineNumber": 77,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Logout and clear stored authentication cookies.\"\"\"",
+            "lineNumber": 78
+          }
+        ]
+      },
+      "score": 0.16615509986877441
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ui\\output_panel.py",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 98
+          }
+        },
+        "contents": "\"\"\"\nOutput panel UI for SheepIt Project Submitter.\nLocated in the Output tab, similar to Flamenco addon.\n\"\"\"\n\nimport bpy\nfrom bpy.types import Panel\nfrom ..utils import compat\n\n\nclass SHEEPIT_PT_output_panel(Panel):\n    \"\"\"SheepIt submission panel in Output properties.\"\"\"\n    bl_label = \"SheepIt Render Farm\"\n    bl_idname = \"SHEEPIT_PT_output_panel\"\n    bl_space_type = 'PROPERTIES'\n    bl_region_type = 'WINDOW'\n    bl_context = \"output\"\n    \n    def draw(self, context):\n        layout = self.layout\n        scene = context.scene\n        submit_settings = scene.sheepit_submit\n        \n        # Frame Range Section\n        box = layout.box()\n        box.label(text=\"Frame Range:\", icon='RENDER_ANIMATION')\n        row = box.row()\n        row.prop(submit_settings, \"frame_range_mode\", expand=True)\n        \n        if submit_settings.frame_range_mode == 'CUSTOM':\n            col = box.column(align=True)\n            col.prop(submit_settings, \"frame_start\")\n            col.prop(submit_settings, \"frame_end\")\n            col.prop(submit_settings, \"frame_step\")\n        else:\n            # Show current scene frame range\n            row = box.row()\n            row.label(text=f\"Scene Range: {scene.frame_start} - {scene.frame_end} (Step: {scene.frame_step})\")\n        \n        layout.separator()\n        \n        # Compute Method Section\n        box = layout.box()\n        box.label(text=\"Compute Method:\", icon='SETTINGS')\n        row = box.row()\n        row.prop(submit_settings, \"compute_method\", expand=True)\n        \n        # Show queue info if available (placeholder for future API integration)\n        if submit_settings.compute_method == 'CPU':\n            row = box.row()\n            row.label(text=\"Est. queue position: 1st\", icon='INFO')\n        else:\n            row = box.row()\n            row.label(text=\"Est. queue position: 1st\", icon='INFO')\n        \n        layout.separator()\n        \n        # Options Section\n        box = layout.box()\n        box.label(text=\"Options:\", icon='CHECKBOX_HLT')\n        box.prop(submit_settings, \"renderable_by_all\")",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "\"\"\"",
+            "lineNumber": 1
+          },
+          {
+            "text": "Output panel UI for SheepIt Project Submitter.",
+            "lineNumber": 2
+          },
+          {
+            "text": "Located in the Output tab, similar to Flamenco addon.",
+            "lineNumber": 3
+          },
+          {
+            "text": "\"\"\"",
+            "lineNumber": 4
+          },
+          {
+            "lineNumber": 5
+          },
+          {
+            "text": "import bpy",
+            "lineNumber": 6
+          },
+          {
+            "text": "from bpy.types import Panel",
+            "lineNumber": 7
+          },
+          {
+            "text": "from ..utils import compat",
+            "lineNumber": 8
+          },
+          {
+            "lineNumber": 9
+          },
+          {
+            "lineNumber": 10
+          },
+          {
+            "text": "class SHEEPIT_PT_output_panel(Panel):",
+            "lineNumber": 11,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"SheepIt submission panel in Output properties.\"\"\"",
+            "lineNumber": 12
+          },
+          {
+            "text": "    bl_label = \"SheepIt Render Farm\"",
+            "lineNumber": 13
+          },
+          {
+            "text": "    bl_idname = \"SHEEPIT_PT_output_panel\"",
+            "lineNumber": 14
+          },
+          {
+            "text": "    bl_space_type = 'PROPERTIES'",
+            "lineNumber": 15
+          },
+          {
+            "text": "    bl_region_type = 'WINDOW'",
+            "lineNumber": 16
+          },
+          {
+            "text": "    bl_context = \"output\"",
+            "lineNumber": 17
+          },
+          {
+            "text": "    ",
+            "lineNumber": 18
+          },
+          {
+            "text": "    def draw(self, context):",
+            "lineNumber": 19
+          },
+          {
+            "text": "        layout = self.layout",
+            "lineNumber": 20
+          },
+          {
+            "text": "        scene = context.scene",
+            "lineNumber": 21
+          },
+          {
+            "text": "        submit_settings = scene.sheepit_submit",
+            "lineNumber": 22
+          },
+          {
+            "text": "        ",
+            "lineNumber": 23
+          },
+          {
+            "text": "        # Frame Range Section",
+            "lineNumber": 24
+          },
+          {
+            "text": "        box = layout.box()",
+            "lineNumber": 25
+          },
+          {
+            "text": "        box.label(text=\"Frame Range:\", icon='RENDER_ANIMATION')",
+            "lineNumber": 26
+          },
+          {
+            "text": "        row = box.row()",
+            "lineNumber": 27
+          },
+          {
+            "text": "        row.prop(submit_settings, \"frame_range_mode\", expand=True)",
+            "lineNumber": 28
+          },
+          {
+            "text": "        ",
+            "lineNumber": 29
+          },
+          {
+            "text": "        if submit_settings.frame_range_mode == 'CUSTOM':",
+            "lineNumber": 30
+          },
+          {
+            "text": "            col = box.column(align=True)",
+            "lineNumber": 31
+          },
+          {
+            "text": "            col.prop(submit_settings, \"frame_start\")",
+            "lineNumber": 32
+          },
+          {
+            "text": "            col.prop(submit_settings, \"frame_end\")",
+            "lineNumber": 33
+          },
+          {
+            "text": "            col.prop(submit_settings, \"frame_step\")",
+            "lineNumber": 34
+          },
+          {
+            "text": "        else:",
+            "lineNumber": 35
+          },
+          {
+            "text": "            # Show current scene frame range",
+            "lineNumber": 36
+          },
+          {
+            "text": "            row = box.row()",
+            "lineNumber": 37
+          },
+          {
+            "text": "            row.label(text=f\"Scene Range: {scene.frame_start} - {scene.frame_end} (Step: {scene.frame_step})\")",
+            "lineNumber": 38
+          },
+          {
+            "text": "        ",
+            "lineNumber": 39
+          },
+          {
+            "text": "        layout.separator()",
+            "lineNumber": 40
+          },
+          {
+            "text": "        ",
+            "lineNumber": 41
+          },
+          {
+            "text": "        # Compute Method Section",
+            "lineNumber": 42
+          },
+          {
+            "text": "        box = layout.box()",
+            "lineNumber": 43
+          },
+          {
+            "text": "        box.label(text=\"Compute Method:\", icon='SETTINGS')",
+            "lineNumber": 44
+          },
+          {
+            "text": "        row = box.row()",
+            "lineNumber": 45
+          },
+          {
+            "text": "        row.prop(submit_settings, \"compute_method\", expand=True)",
+            "lineNumber": 46
+          },
+          {
+            "text": "        ",
+            "lineNumber": 47
+          },
+          {
+            "text": "        # Show queue info if available (placeholder for future API integration)",
+            "lineNumber": 48
+          },
+          {
+            "text": "        if submit_settings.compute_method == 'CPU':",
+            "lineNumber": 49
+          },
+          {
+            "text": "            row = box.row()",
+            "lineNumber": 50
+          },
+          {
+            "text": "            row.label(text=\"Est. queue position: 1st\", icon='INFO')",
+            "lineNumber": 51
+          },
+          {
+            "text": "        else:",
+            "lineNumber": 52
+          },
+          {
+            "text": "            row = box.row()",
+            "lineNumber": 53
+          },
+          {
+            "text": "            row.label(text=\"Est. queue position: 1st\", icon='INFO')",
+            "lineNumber": 54
+          },
+          {
+            "text": "        ",
+            "lineNumber": 55
+          },
+          {
+            "text": "        layout.separator()",
+            "lineNumber": 56
+          },
+          {
+            "text": "        ",
+            "lineNumber": 57
+          },
+          {
+            "text": "        # Options Section",
+            "lineNumber": 58
+          },
+          {
+            "text": "        box = layout.box()",
+            "lineNumber": 59
+          },
+          {
+            "text": "        box.label(text=\"Options:\", icon='CHECKBOX_HLT')",
+            "lineNumber": 60
+          },
+          {
+            "text": "        box.prop(submit_settings, \"renderable_by_all\")",
+            "lineNumber": 61
+          }
+        ]
+      },
+      "score": 0.16469919681549072
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ui\\preferences_ui.py",
+        "range": {
+          "startPosition": {
+            "line": 87
+          },
+          "endPosition": {
+            "line": 204
+          }
+        },
+        "contents": "class SHEEPIT_AddonPreferences(AddonPreferences):\ndef draw(self, context):\n\n        \n        if self.use_browser_login:\n            # Browser login mode\n            row = box.row()\n            row.label(text=f\"Status: {self.auth_status}\")\n            \n            if self.auth_status == \"Not logged in\" or \"Please login\" in self.auth_status:\n                row = box.row()\n                row.scale_y = 1.2\n                row.operator(\"sheepit.browser_login\", text=\"Open Browser for Login\", icon='WORLD')\n                \n                # Instructions\n                box.label(text=\"After logging in:\", icon='INFO')\n                box.label(text=\"1. Open browser DevTools (F12)\")\n                box.label(text=\"2. Go to Application/Storage → Cookies\")\n                box.label(text=\"3. Find 'session' or 'PHPSESSID' cookie\")\n                box.label(text=\"4. Copy its value and paste below:\")\n                \n                # Token entry\n                row = box.row()\n                row.prop(self, \"session_token\")\n                row = box.row()\n                row.scale_y = 1.2\n                row.operator(\"sheepit.verify_login\", text=\"Save Session Token\", icon='CHECKMARK')\n            else:\n                row = box.row()\n                row.scale_y = 1.2\n                row.operator(\"sheepit.logout\", text=\"Logout\", icon='QUIT')\n        else:\n            # Username/Password mode\n            row = box.row()\n            row.prop(self, \"sheepit_username\")\n            \n            row = box.row()\n            row.prop(self, \"sheepit_password\")\n        \n        box.separator()\n        \n        # Test connection button\n        row = box.row()\n        row.scale_y = 1.5\n        row.operator(\"sheepit.test_connection\", icon='WORLD')\n        \n        box.separator()\n        \n        # Info box\n        box.label(text=\"About Authentication:\", icon='QUESTION')\n        if self.use_browser_login:\n            box.label",
+        "signatures": {
+          "ranges": [
+            {
+              "startPosition": {
+                "line": 88,
+                "column": 1
+              },
+              "endPosition": {
+                "line": 89,
+                "column": 5
+              }
+            },
+            {
+              "startPosition": {
+                "line": 130,
+                "column": 5
+              },
+              "endPosition": {
+                "line": 131,
+                "column": 9
+              }
+            }
+          ]
+        },
+        "detailedLines": [
+          {
+            "text": "class SHEEPIT_AddonPreferences(AddonPreferences):",
+            "lineNumber": 88,
+            "isSignature": true
+          },
+          {
+            "text": "def draw(self, context):",
+            "lineNumber": 130
+          },
+          {
+            "lineNumber": 151
+          },
+          {
+            "text": "        ",
+            "lineNumber": 152
+          },
+          {
+            "text": "        if self.use_browser_login:",
+            "lineNumber": 153
+          },
+          {
+            "text": "            # Browser login mode",
+            "lineNumber": 154
+          },
+          {
+            "text": "            row = box.row()",
+            "lineNumber": 155
+          },
+          {
+            "text": "            row.label(text=f\"Status: {self.auth_status}\")",
+            "lineNumber": 156
+          },
+          {
+            "text": "            ",
+            "lineNumber": 157
+          },
+          {
+            "text": "            if self.auth_status == \"Not logged in\" or \"Please login\" in self.auth_status:",
+            "lineNumber": 158
+          },
+          {
+            "text": "                row = box.row()",
+            "lineNumber": 159
+          },
+          {
+            "text": "                row.scale_y = 1.2",
+            "lineNumber": 160
+          },
+          {
+            "text": "                row.operator(\"sheepit.browser_login\", text=\"Open Browser for Login\", icon='WORLD')",
+            "lineNumber": 161
+          },
+          {
+            "text": "                ",
+            "lineNumber": 162
+          },
+          {
+            "text": "                # Instructions",
+            "lineNumber": 163
+          },
+          {
+            "text": "                box.label(text=\"After logging in:\", icon='INFO')",
+            "lineNumber": 164
+          },
+          {
+            "text": "                box.label(text=\"1. Open browser DevTools (F12)\")",
+            "lineNumber": 165
+          },
+          {
+            "text": "                box.label(text=\"2. Go to Application/Storage → Cookies\")",
+            "lineNumber": 166
+          },
+          {
+            "text": "                box.label(text=\"3. Find 'session' or 'PHPSESSID' cookie\")",
+            "lineNumber": 167
+          },
+          {
+            "text": "                box.label(text=\"4. Copy its value and paste below:\")",
+            "lineNumber": 168
+          },
+          {
+            "text": "                ",
+            "lineNumber": 169
+          },
+          {
+            "text": "                # Token entry",
+            "lineNumber": 170
+          },
+          {
+            "text": "                row = box.row()",
+            "lineNumber": 171
+          },
+          {
+            "text": "                row.prop(self, \"session_token\")",
+            "lineNumber": 172
+          },
+          {
+            "text": "                row = box.row()",
+            "lineNumber": 173
+          },
+          {
+            "text": "                row.scale_y = 1.2",
+            "lineNumber": 174
+          },
+          {
+            "text": "                row.operator(\"sheepit.verify_login\", text=\"Save Session Token\", icon='CHECKMARK')",
+            "lineNumber": 175
+          },
+          {
+            "text": "            else:",
+            "lineNumber": 176
+          },
+          {
+            "text": "                row = box.row()",
+            "lineNumber": 177
+          },
+          {
+            "text": "                row.scale_y = 1.2",
+            "lineNumber": 178
+          },
+          {
+            "text": "                row.operator(\"sheepit.logout\", text=\"Logout\", icon='QUIT')",
+            "lineNumber": 179
+          },
+          {
+            "text": "        else:",
+            "lineNumber": 180
+          },
+          {
+            "text": "            # Username/Password mode",
+            "lineNumber": 181
+          },
+          {
+            "text": "            row = box.row()",
+            "lineNumber": 182
+          },
+          {
+            "text": "            row.prop(self, \"sheepit_username\")",
+            "lineNumber": 183
+          },
+          {
+            "text": "            ",
+            "lineNumber": 184
+          },
+          {
+            "text": "            row = box.row()",
+            "lineNumber": 185
+          },
+          {
+            "text": "            row.prop(self, \"sheepit_password\")",
+            "lineNumber": 186
+          },
+          {
+            "text": "        ",
+            "lineNumber": 187
+          },
+          {
+            "text": "        box.separator()",
+            "lineNumber": 188
+          },
+          {
+            "text": "        ",
+            "lineNumber": 189
+          },
+          {
+            "text": "        # Test connection button",
+            "lineNumber": 190
+          },
+          {
+            "text": "        row = box.row()",
+            "lineNumber": 191
+          },
+          {
+            "text": "        row.scale_y = 1.5",
+            "lineNumber": 192
+          },
+          {
+            "text": "        row.operator(\"sheepit.test_connection\", icon='WORLD')",
+            "lineNumber": 193
+          },
+          {
+            "text": "        ",
+            "lineNumber": 194
+          },
+          {
+            "text": "        box.separator()",
+            "lineNumber": 195
+          },
+          {
+            "text": "        ",
+            "lineNumber": 196
+          },
+          {
+            "text": "        # Info box",
+            "lineNumber": 197
+          },
+          {
+            "text": "        box.label(text=\"About Authentication:\", icon='QUESTION')",
+            "lineNumber": 198
+          },
+          {
+            "text": "        if self.use_browser_login:",
+            "lineNumber": 199
+          },
+          {
+            "text": "            box.label",
+            "lineNumber": 200
+          }
+        ]
+      },
+      "score": 0.1614851951599121
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ui\\preferences_ui.py",
+        "range": {
+          "startPosition": {
+            "line": 84,
+            "column": 27
+          },
+          "endPosition": {
+            "line": 204
+          }
+        },
+        "contents": "class SHEEPIT_AddonPreferences(AddonPreferences):\n    \"\"\"Addon preferences for SheepIt Project Submitter.\"\"\"\n    # bl_idname must match the add-on's module name exactly\n    # Get it dynamically to ensure it matches what Blender registered\n    bl_idname = _get_addon_module_name()\n    \n    # Authentication\n    sheepit_username: StringProperty(\n        name=\"Username\",\n        description=\"Your SheepIt render farm username\",\n        default=\"\",\n        subtype='NONE',\n    )\n    \n    sheepit_password: StringProperty(\n        name=\"Password\",\n        description=\"Your SheepIt account password\",\n        default=\"\",\n        subtype='PASSWORD',\n    )\n    \n    # Browser login status\n    use_browser_login: BoolProperty(\n        name=\"Use Browser Login\",\n        description=\"Login via browser and reuse session cookies (more secure, recommended)\",\n        default=True,\n    )\n    \n    auth_status: StringProperty(\n        name=\"Auth Status\",\n        description=\"Current authentication status\",\n        default=\"Not logged in\",\n    )\n    \n    # Manual session token entry (for browser login)\n    session_token: StringProperty(\n        name=\"Session Token\",\n        description=\"Session token from browser (extract from browser cookies after login)\",\n        default=\"\",\n        subtype='PASSWORD',\n    )\n    \n    def draw(self, context):\n        layout = self.layout",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "class SHEEPIT_AddonPreferences(AddonPreferences):",
+            "lineNumber": 88,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Addon preferences for SheepIt Project Submitter.\"\"\"",
+            "lineNumber": 89
+          },
+          {
+            "text": "    # bl_idname must match the add-on's module name exactly",
+            "lineNumber": 90
+          },
+          {
+            "text": "    # Get it dynamically to ensure it matches what Blender registered",
+            "lineNumber": 91
+          },
+          {
+            "text": "    bl_idname = _get_addon_module_name()",
+            "lineNumber": 92
+          },
+          {
+            "text": "    ",
+            "lineNumber": 93
+          },
+          {
+            "text": "    # Authentication",
+            "lineNumber": 94
+          },
+          {
+            "text": "    sheepit_username: StringProperty(",
+            "lineNumber": 95
+          },
+          {
+            "text": "        name=\"Username\",",
+            "lineNumber": 96
+          },
+          {
+            "text": "        description=\"Your SheepIt render farm username\",",
+            "lineNumber": 97
+          },
+          {
+            "text": "        default=\"\",",
+            "lineNumber": 98
+          },
+          {
+            "text": "        subtype='NONE',",
+            "lineNumber": 99
+          },
+          {
+            "text": "    )",
+            "lineNumber": 100
+          },
+          {
+            "text": "    ",
+            "lineNumber": 101
+          },
+          {
+            "text": "    sheepit_password: StringProperty(",
+            "lineNumber": 102
+          },
+          {
+            "text": "        name=\"Password\",",
+            "lineNumber": 103
+          },
+          {
+            "text": "        description=\"Your SheepIt account password\",",
+            "lineNumber": 104
+          },
+          {
+            "text": "        default=\"\",",
+            "lineNumber": 105
+          },
+          {
+            "text": "        subtype='PASSWORD',",
+            "lineNumber": 106
+          },
+          {
+            "text": "    )",
+            "lineNumber": 107
+          },
+          {
+            "text": "    ",
+            "lineNumber": 108
+          },
+          {
+            "text": "    # Browser login status",
+            "lineNumber": 109
+          },
+          {
+            "text": "    use_browser_login: BoolProperty(",
+            "lineNumber": 110
+          },
+          {
+            "text": "        name=\"Use Browser Login\",",
+            "lineNumber": 111
+          },
+          {
+            "text": "        description=\"Login via browser and reuse session cookies (more secure, recommended)\",",
+            "lineNumber": 112
+          },
+          {
+            "text": "        default=True,",
+            "lineNumber": 113
+          },
+          {
+            "text": "    )",
+            "lineNumber": 114
+          },
+          {
+            "text": "    ",
+            "lineNumber": 115
+          },
+          {
+            "text": "    auth_status: StringProperty(",
+            "lineNumber": 116
+          },
+          {
+            "text": "        name=\"Auth Status\",",
+            "lineNumber": 117
+          },
+          {
+            "text": "        description=\"Current authentication status\",",
+            "lineNumber": 118
+          },
+          {
+            "text": "        default=\"Not logged in\",",
+            "lineNumber": 119
+          },
+          {
+            "text": "    )",
+            "lineNumber": 120
+          },
+          {
+            "text": "    ",
+            "lineNumber": 121
+          },
+          {
+            "text": "    # Manual session token entry (for browser login)",
+            "lineNumber": 122
+          },
+          {
+            "text": "    session_token: StringProperty(",
+            "lineNumber": 123
+          },
+          {
+            "text": "        name=\"Session Token\",",
+            "lineNumber": 124
+          },
+          {
+            "text": "        description=\"Session token from browser (extract from browser cookies after login)\",",
+            "lineNumber": 125
+          },
+          {
+            "text": "        default=\"\",",
+            "lineNumber": 126
+          },
+          {
+            "text": "        subtype='PASSWORD',",
+            "lineNumber": 127
+          },
+          {
+            "text": "    )",
+            "lineNumber": 128
+          },
+          {
+            "text": "    ",
+            "lineNumber": 129
+          },
+          {
+            "text": "    def draw(self, context):",
+            "lineNumber": 130
+          },
+          {
+            "text": "        layout = self.layout",
+            "lineNumber": 131
+          }
+        ]
+      },
+      "score": 0.16011670231819153
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ops\\__init__.py",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 44
+          }
+        },
+        "contents": "\"\"\"\nOperators for SheepIt Project Submitter addon.\n\"\"\"\n\n\ndef register():\n    \"\"\"Register all operators.\"\"\"\n    # Lazy imports - these are only executed when register() is called\n    # This avoids circular import issues since imports happen at function call time\n    from . import pack_ops\n    from . import submit_ops\n    \n    pack_ops.register()\n    submit_ops.register()\n    \n    # Import auth_ops separately with error handling\n    try:\n        from . import auth_ops\n        auth_ops.register()\n    except ImportError as e:\n        import traceback\n        print(f\"[SheepIt] Warning: Could not import auth_ops: {e}\")\n        traceback.print_exc()\n        # Continue without auth_ops - browser login features won't be available\n    except Exception as e:\n        import traceback\n        print(f\"[SheepIt] Error importing auth_ops: {e}\")\n        traceback.print_exc()\n\n\ndef unregister():\n    \"\"\"Unregister all operators.\"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "\"\"\"",
+            "lineNumber": 1
+          },
+          {
+            "text": "Operators for SheepIt Project Submitter addon.",
+            "lineNumber": 2
+          },
+          {
+            "text": "\"\"\"",
+            "lineNumber": 3
+          },
+          {
+            "lineNumber": 4
+          },
+          {
+            "lineNumber": 5
+          },
+          {
+            "text": "def register():",
+            "lineNumber": 6,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Register all operators.\"\"\"",
+            "lineNumber": 7
+          },
+          {
+            "text": "    # Lazy imports - these are only executed when register() is called",
+            "lineNumber": 8
+          },
+          {
+            "text": "    # This avoids circular import issues since imports happen at function call time",
+            "lineNumber": 9
+          },
+          {
+            "text": "    from . import pack_ops",
+            "lineNumber": 10
+          },
+          {
+            "text": "    from . import submit_ops",
+            "lineNumber": 11
+          },
+          {
+            "text": "    ",
+            "lineNumber": 12
+          },
+          {
+            "text": "    pack_ops.register()",
+            "lineNumber": 13
+          },
+          {
+            "text": "    submit_ops.register()",
+            "lineNumber": 14
+          },
+          {
+            "text": "    ",
+            "lineNumber": 15
+          },
+          {
+            "text": "    # Import auth_ops separately with error handling",
+            "lineNumber": 16
+          },
+          {
+            "text": "    try:",
+            "lineNumber": 17
+          },
+          {
+            "text": "        from . import auth_ops",
+            "lineNumber": 18
+          },
+          {
+            "text": "        auth_ops.register()",
+            "lineNumber": 19
+          },
+          {
+            "text": "    except ImportError as e:",
+            "lineNumber": 20
+          },
+          {
+            "text": "        import traceback",
+            "lineNumber": 21
+          },
+          {
+            "text": "        print(f\"[SheepIt] Warning: Could not import auth_ops: {e}\")",
+            "lineNumber": 22
+          },
+          {
+            "text": "        traceback.print_exc()",
+            "lineNumber": 23
+          },
+          {
+            "text": "        # Continue without auth_ops - browser login features won't be available",
+            "lineNumber": 24
+          },
+          {
+            "text": "    except Exception as e:",
+            "lineNumber": 25
+          },
+          {
+            "text": "        import traceback",
+            "lineNumber": 26
+          },
+          {
+            "text": "        print(f\"[SheepIt] Error importing auth_ops: {e}\")",
+            "lineNumber": 27
+          },
+          {
+            "text": "        traceback.print_exc()",
+            "lineNumber": 28,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 29
+          },
+          {
+            "lineNumber": 30
+          },
+          {
+            "text": "def unregister():",
+            "lineNumber": 31,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Unregister all operators.\"\"\"",
+            "lineNumber": 32
+          }
+        ]
+      },
+      "score": 0.15693479776382446
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\.github\\workflows\\release.yml",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 63,
+            "column": 10
+          }
+        },
+        "contents": "name: Create Release\n\non:\n  workflow_dispatch:\n    inputs:\n      release_tag:\n        description: 'Release tag (e.g., v1.0.0)'\n        required: true\n        type: string\n\njobs:\n  build:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - uses: actions/checkout@v4\n\n      - name: Get Version\n        id: get_version\n        run: |\n          python - &lt;&lt;'PY'\n          import os\n          import tomllib\n          from pathlib import Path\n\n          data = tomllib.loads(Path(\"blender_manifest.toml\").read_text(encoding=\"utf-8\"))\n          version = data[\"version\"]\n\n          with open(os.environ[\"GITHUB_OUTPUT\"], \"a\", encoding=\"utf-8\") as fh:\n              fh.write(f\"version={version}\\n\")\n              fh.write(f\"zip_name=SheepIt_Project_Submitter.v{version}.zip\\n\")\n          PY\n\n      - name: Create ZIP\n        run: |\n          ADDON_DIR=addon_files/sheepit_project_submitter\n          mkdir -p \"$ADDON_DIR\"\n\n          # Copy top-level files if they exist\n          for file in __init__.py rainys_repo_bootstrap.py blender_manifest.toml README.md CHANGELOG.md LICENSE.txt config.py; do\n            if [ -f \"$file\" ]; then\n              cp \"$file\" \"$ADDON_DIR\"/\n            else\n              echo \"Skipping missing file: $file\"\n            fi\n          done\n\n          # Copy packages\n          for dir in ops ui utils batter; do\n            if [ -d \"$dir\" ]; then\n              cp -r \"$dir\" \"$ADDON_DIR\"/\n            else\n              echo \"Skipping missing directory: $dir\"\n            fi\n          done\n\n          # Create the zip from the temporary directory\n          cd addon_files\n          zip -r \"../${{ steps.get_version.outputs.zip_name }}\" ./*\n\n      - name: Upload Release Asset\n        env:\n          ",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "name: Create Release",
+            "lineNumber": 1
+          },
+          {
+            "lineNumber": 2
+          },
+          {
+            "text": "on:",
+            "lineNumber": 3
+          },
+          {
+            "text": "  workflow_dispatch:",
+            "lineNumber": 4
+          },
+          {
+            "text": "    inputs:",
+            "lineNumber": 5
+          },
+          {
+            "text": "      release_tag:",
+            "lineNumber": 6
+          },
+          {
+            "text": "        description: 'Release tag (e.g., v1.0.0)'",
+            "lineNumber": 7
+          },
+          {
+            "text": "        required: true",
+            "lineNumber": 8
+          },
+          {
+            "text": "        type: string",
+            "lineNumber": 9
+          },
+          {
+            "lineNumber": 10
+          },
+          {
+            "text": "jobs:",
+            "lineNumber": 11
+          },
+          {
+            "text": "  build:",
+            "lineNumber": 12
+          },
+          {
+            "text": "    runs-on: ubuntu-latest",
+            "lineNumber": 13
+          },
+          {
+            "text": "    permissions:",
+            "lineNumber": 14
+          },
+          {
+            "text": "      contents: write",
+            "lineNumber": 15
+          },
+          {
+            "text": "    steps:",
+            "lineNumber": 16
+          },
+          {
+            "text": "      - uses: actions/checkout@v4",
+            "lineNumber": 17
+          },
+          {
+            "lineNumber": 18
+          },
+          {
+            "text": "      - name: Get Version",
+            "lineNumber": 19
+          },
+          {
+            "text": "        id: get_version",
+            "lineNumber": 20
+          },
+          {
+            "text": "        run: |",
+            "lineNumber": 21
+          },
+          {
+            "text": "          python - &lt;&lt;'PY'",
+            "lineNumber": 22
+          },
+          {
+            "text": "          import os",
+            "lineNumber": 23
+          },
+          {
+            "text": "          import tomllib",
+            "lineNumber": 24
+          },
+          {
+            "text": "          from pathlib import Path",
+            "lineNumber": 25
+          },
+          {
+            "lineNumber": 26
+          },
+          {
+            "text": "          data = tomllib.loads(Path(\"blender_manifest.toml\").read_text(encoding=\"utf-8\"))",
+            "lineNumber": 27
+          },
+          {
+            "text": "          version = data[\"version\"]",
+            "lineNumber": 28
+          },
+          {
+            "lineNumber": 29
+          },
+          {
+            "text": "          with open(os.environ[\"GITHUB_OUTPUT\"], \"a\", encoding=\"utf-8\") as fh:",
+            "lineNumber": 30
+          },
+          {
+            "text": "              fh.write(f\"version={version}\\n\")",
+            "lineNumber": 31
+          },
+          {
+            "text": "              fh.write(f\"zip_name=SheepIt_Project_Submitter.v{version}.zip\\n\")",
+            "lineNumber": 32
+          },
+          {
+            "text": "          PY",
+            "lineNumber": 33
+          },
+          {
+            "lineNumber": 34
+          },
+          {
+            "text": "      - name: Create ZIP",
+            "lineNumber": 35
+          },
+          {
+            "text": "        run: |",
+            "lineNumber": 36
+          },
+          {
+            "text": "          ADDON_DIR=addon_files/sheepit_project_submitter",
+            "lineNumber": 37
+          },
+          {
+            "text": "          mkdir -p \"$ADDON_DIR\"",
+            "lineNumber": 38
+          },
+          {
+            "lineNumber": 39
+          },
+          {
+            "text": "          # Copy top-level files if they exist",
+            "lineNumber": 40
+          },
+          {
+            "text": "          for file in __init__.py rainys_repo_bootstrap.py blender_manifest.toml README.md CHANGELOG.md LICENSE.txt config.py; do",
+            "lineNumber": 41
+          },
+          {
+            "text": "            if [ -f \"$file\" ]; then",
+            "lineNumber": 42
+          },
+          {
+            "text": "              cp \"$file\" \"$ADDON_DIR\"/",
+            "lineNumber": 43
+          },
+          {
+            "text": "            else",
+            "lineNumber": 44
+          },
+          {
+            "text": "              echo \"Skipping missing file: $file\"",
+            "lineNumber": 45
+          },
+          {
+            "text": "            fi",
+            "lineNumber": 46
+          },
+          {
+            "text": "          done",
+            "lineNumber": 47
+          },
+          {
+            "lineNumber": 48
+          },
+          {
+            "text": "          # Copy packages",
+            "lineNumber": 49
+          },
+          {
+            "text": "          for dir in ops ui utils batter; do",
+            "lineNumber": 50
+          },
+          {
+            "text": "            if [ -d \"$dir\" ]; then",
+            "lineNumber": 51
+          },
+          {
+            "text": "              cp -r \"$dir\" \"$ADDON_DIR\"/",
+            "lineNumber": 52
+          },
+          {
+            "text": "            else",
+            "lineNumber": 53
+          },
+          {
+            "text": "              echo \"Skipping missing directory: $dir\"",
+            "lineNumber": 54
+          },
+          {
+            "text": "            fi",
+            "lineNumber": 55
+          },
+          {
+            "text": "          done",
+            "lineNumber": 56
+          },
+          {
+            "lineNumber": 57
+          },
+          {
+            "text": "          # Create the zip from the temporary directory",
+            "lineNumber": 58
+          },
+          {
+            "text": "          cd addon_files",
+            "lineNumber": 59
+          },
+          {
+            "text": "          zip -r \"../${{ steps.get_version.outputs.zip_name }}\" ./*",
+            "lineNumber": 60
+          },
+          {
+            "lineNumber": 61
+          },
+          {
+            "text": "      - name: Upload Release Asset",
+            "lineNumber": 62
+          },
+          {
+            "text": "        env:",
+            "lineNumber": 63
+          },
+          {
+            "text": "          ",
+            "lineNumber": 64
+          }
+        ]
+      },
+      "score": 0.1370536983013153
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ui\\output_panel.py",
+        "range": {
+          "startPosition": {
+            "line": 10
+          },
+          "endPosition": {
+            "line": 103,
+            "column": 55
+          }
+        },
+        "contents": "class SHEEPIT_PT_output_panel(Panel):\ndef draw(self, context):\n\n        box.label(text=\"Options:\", icon='CHECKBOX_HLT')\n        box.prop(submit_settings, \"renderable_by_all\")\n        box.prop(submit_settings, \"generate_mp4\")\n        \n        layout.separator()\n        \n        # Advanced Options (collapsible)\n        box = layout.box()\n        row = box.row()\n        row.prop(submit_settings, \"show_advanced\", toggle=True, icon='TRIA_DOWN' if submit_settings.show_advanced else 'TRIA_RIGHT')\n        row.label(text=\"Advanced Options\")\n        \n        if submit_settings.show_advanced:\n            box.prop(submit_settings, \"memory_used_mb\")\n        \n        layout.separator()\n        \n        # Submission Buttons\n        col = layout.column()\n        col.scale_y = 1.5\n        \n        # Submit as ZIP button\n        op = col.operator(\"sheepit.pack_copy_only\", text=\"Submit as ZIP (for scenes with caches)\", icon='PACKAGE')\n        \n        # Submit as Blend button\n        op = col.operator(\"sheepit.pack_and_save\", text=\"Submit as Blend\", icon='FILE_BLEND')\n        \n        # Show pack output path if available\n        if submit_settings.pack_output_path:\n            layout.separator()\n            box = layout.box()\n            box.label(text=\"Packed Output:\", icon='FILE_FOLDER')\n            row = box.row()\n            row.scale_x = 0.8\n            row.label(text=submit_settings.pack_output_path)\n            \n            # Submit button (only shown after packing)\n            layout.separator()\n            submit_op = layout.operator(\"sheepit.submit_project\", text=\"Submit to SheepIt\", icon='EXPORT')\n            submit_op.scale_y = 1.5\n\n\ndef register():\n    \"\"\"Register panel.\"\"\"\n    compat.safe_register_class(SHEEPIT_PT_output_panel)",
+        "signatures": {
+          "ranges": [
+            {
+              "startPosition": {
+                "line": 11,
+                "column": 1
+              },
+              "endPosition": {
+                "line": 12,
+                "column": 5
+              }
+            },
+            {
+              "startPosition": {
+                "line": 19,
+                "column": 5
+              },
+              "endPosition": {
+                "line": 20,
+                "column": 9
+              }
+            }
+          ]
+        },
+        "detailedLines": [
+          {
+            "text": "class SHEEPIT_PT_output_panel(Panel):",
+            "lineNumber": 11,
+            "isSignature": true
+          },
+          {
+            "text": "def draw(self, context):",
+            "lineNumber": 19
+          },
+          {
+            "lineNumber": 59
+          },
+          {
+            "text": "        box.label(text=\"Options:\", icon='CHECKBOX_HLT')",
+            "lineNumber": 60
+          },
+          {
+            "text": "        box.prop(submit_settings, \"renderable_by_all\")",
+            "lineNumber": 61
+          },
+          {
+            "text": "        box.prop(submit_settings, \"generate_mp4\")",
+            "lineNumber": 62
+          },
+          {
+            "text": "        ",
+            "lineNumber": 63
+          },
+          {
+            "text": "        layout.separator()",
+            "lineNumber": 64
+          },
+          {
+            "text": "        ",
+            "lineNumber": 65
+          },
+          {
+            "text": "        # Advanced Options (collapsible)",
+            "lineNumber": 66
+          },
+          {
+            "text": "        box = layout.box()",
+            "lineNumber": 67
+          },
+          {
+            "text": "        row = box.row()",
+            "lineNumber": 68
+          },
+          {
+            "text": "        row.prop(submit_settings, \"show_advanced\", toggle=True, icon='TRIA_DOWN' if submit_settings.show_advanced else 'TRIA_RIGHT')",
+            "lineNumber": 69
+          },
+          {
+            "text": "        row.label(text=\"Advanced Options\")",
+            "lineNumber": 70
+          },
+          {
+            "text": "        ",
+            "lineNumber": 71
+          },
+          {
+            "text": "        if submit_settings.show_advanced:",
+            "lineNumber": 72
+          },
+          {
+            "text": "            box.prop(submit_settings, \"memory_used_mb\")",
+            "lineNumber": 73
+          },
+          {
+            "text": "        ",
+            "lineNumber": 74
+          },
+          {
+            "text": "        layout.separator()",
+            "lineNumber": 75
+          },
+          {
+            "text": "        ",
+            "lineNumber": 76
+          },
+          {
+            "text": "        # Submission Buttons",
+            "lineNumber": 77
+          },
+          {
+            "text": "        col = layout.column()",
+            "lineNumber": 78
+          },
+          {
+            "text": "        col.scale_y = 1.5",
+            "lineNumber": 79
+          },
+          {
+            "text": "        ",
+            "lineNumber": 80
+          },
+          {
+            "text": "        # Submit as ZIP button",
+            "lineNumber": 81
+          },
+          {
+            "text": "        op = col.operator(\"sheepit.pack_copy_only\", text=\"Submit as ZIP (for scenes with caches)\", icon='PACKAGE')",
+            "lineNumber": 82
+          },
+          {
+            "text": "        ",
+            "lineNumber": 83
+          },
+          {
+            "text": "        # Submit as Blend button",
+            "lineNumber": 84
+          },
+          {
+            "text": "        op = col.operator(\"sheepit.pack_and_save\", text=\"Submit as Blend\", icon='FILE_BLEND')",
+            "lineNumber": 85
+          },
+          {
+            "text": "        ",
+            "lineNumber": 86
+          },
+          {
+            "text": "        # Show pack output path if available",
+            "lineNumber": 87
+          },
+          {
+            "text": "        if submit_settings.pack_output_path:",
+            "lineNumber": 88
+          },
+          {
+            "text": "            layout.separator()",
+            "lineNumber": 89
+          },
+          {
+            "text": "            box = layout.box()",
+            "lineNumber": 90
+          },
+          {
+            "text": "            box.label(text=\"Packed Output:\", icon='FILE_FOLDER')",
+            "lineNumber": 91
+          },
+          {
+            "text": "            row = box.row()",
+            "lineNumber": 92
+          },
+          {
+            "text": "            row.scale_x = 0.8",
+            "lineNumber": 93
+          },
+          {
+            "text": "            row.label(text=submit_settings.pack_output_path)",
+            "lineNumber": 94
+          },
+          {
+            "text": "            ",
+            "lineNumber": 95
+          },
+          {
+            "text": "            # Submit button (only shown after packing)",
+            "lineNumber": 96
+          },
+          {
+            "text": "            layout.separator()",
+            "lineNumber": 97
+          },
+          {
+            "text": "            submit_op = layout.operator(\"sheepit.submit_project\", text=\"Submit to SheepIt\", icon='EXPORT')",
+            "lineNumber": 98
+          },
+          {
+            "text": "            submit_op.scale_y = 1.5",
+            "lineNumber": 99,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 100
+          },
+          {
+            "lineNumber": 101
+          },
+          {
+            "text": "def register():",
+            "lineNumber": 102,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Register panel.\"\"\"",
+            "lineNumber": 103
+          },
+          {
+            "text": "    compat.safe_register_class(SHEEPIT_PT_output_panel)",
+            "lineNumber": 104,
+            "isSignature": true
+          }
+        ]
+      },
+      "score": 0.11866623163223267
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\blender_manifest.toml",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 18
+          }
+        },
+        "contents": "schema_version = \"1.0.0\"\n\nid = \"sheepit_project_submitter\"\nname = \"SheepIt Project Submitter\"\nversion = \"0.0.1\"\ntype = \"add-on\"\nauthor = \"RaincloudTheDragon\"\nmaintainer = \"RaincloudTheDragon\"\nblender_version_min = \"3.0.0\"\nlicense = [\"GPL-3.0-or-later\"]\ndescription = \"Submit Blender projects to SheepIt render farm with automatic asset packing.\"\nhomepage = \"https://github.com/RaincloudTheDragon/sheepit-project-submitter/\"\ntagline = \"Submit projects to SheepIt render farm\"\n\ntags = [\"render\", \"farm\", \"submission\", \"utility\"]\n\n# Python modules to load for this add-on\nmodules = [\"sheepit_project_submitter\"]",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "schema_version = \"1.0.0\"",
+            "lineNumber": 1
+          },
+          {
+            "lineNumber": 2
+          },
+          {
+            "text": "id = \"sheepit_project_submitter\"",
+            "lineNumber": 3
+          },
+          {
+            "text": "name = \"SheepIt Project Submitter\"",
+            "lineNumber": 4
+          },
+          {
+            "text": "version = \"0.0.1\"",
+            "lineNumber": 5
+          },
+          {
+            "text": "type = \"add-on\"",
+            "lineNumber": 6
+          },
+          {
+            "text": "author = \"RaincloudTheDragon\"",
+            "lineNumber": 7
+          },
+          {
+            "text": "maintainer = \"RaincloudTheDragon\"",
+            "lineNumber": 8
+          },
+          {
+            "text": "blender_version_min = \"3.0.0\"",
+            "lineNumber": 9
+          },
+          {
+            "text": "license = [\"GPL-3.0-or-later\"]",
+            "lineNumber": 10
+          },
+          {
+            "text": "description = \"Submit Blender projects to SheepIt render farm with automatic asset packing.\"",
+            "lineNumber": 11
+          },
+          {
+            "text": "homepage = \"https://github.com/RaincloudTheDragon/sheepit-project-submitter/\"",
+            "lineNumber": 12
+          },
+          {
+            "text": "tagline = \"Submit projects to SheepIt render farm\"",
+            "lineNumber": 13
+          },
+          {
+            "lineNumber": 14
+          },
+          {
+            "text": "tags = [\"render\", \"farm\", \"submission\", \"utility\"]",
+            "lineNumber": 15
+          },
+          {
+            "lineNumber": 16
+          },
+          {
+            "text": "# Python modules to load for this add-on",
+            "lineNumber": 17
+          },
+          {
+            "text": "modules = [\"sheepit_project_submitter\"]",
+            "lineNumber": 18
+          }
+        ]
+      },
+      "score": 0.10127919912338257
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\__init__.py",
+        "range": {
+          "startPosition": {
+            "line": 95,
+            "column": 5
+          },
+          "endPosition": {
+            "line": 126
+          }
+        },
+        "contents": "def register():\n    \"\"\"Register the addon.\"\"\"\n    from .utils import compat\n    \n    compat.safe_register_class(SHEEPIT_PG_submit_settings)\n    bpy.types.Scene.sheepit_submit = bpy.props.PointerProperty(type=SHEEPIT_PG_submit_settings)\n    \n    # Register operators and UI (preferences are registered in ui.register())\n    ops.register()\n    ui.register()\n    \n    # Bootstrap Rainy's Extensions repository\n    rainys_repo_bootstrap.register()\n\n\ndef unregister():\n    \"\"\"Unregister the addon.\"\"\"\n    from .utils import compat",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "def register():",
+            "lineNumber": 99,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Register the addon.\"\"\"",
+            "lineNumber": 100
+          },
+          {
+            "text": "    from .utils import compat",
+            "lineNumber": 101
+          },
+          {
+            "text": "    ",
+            "lineNumber": 102
+          },
+          {
+            "text": "    compat.safe_register_class(SHEEPIT_PG_submit_settings)",
+            "lineNumber": 103
+          },
+          {
+            "text": "    bpy.types.Scene.sheepit_submit = bpy.props.PointerProperty(type=SHEEPIT_PG_submit_settings)",
+            "lineNumber": 104
+          },
+          {
+            "text": "    ",
+            "lineNumber": 105
+          },
+          {
+            "text": "    # Register operators and UI (preferences are registered in ui.register())",
+            "lineNumber": 106
+          },
+          {
+            "text": "    ops.register()",
+            "lineNumber": 107
+          },
+          {
+            "text": "    ui.register()",
+            "lineNumber": 108
+          },
+          {
+            "text": "    ",
+            "lineNumber": 109
+          },
+          {
+            "text": "    # Bootstrap Rainy's Extensions repository",
+            "lineNumber": 110
+          },
+          {
+            "text": "    rainys_repo_bootstrap.register()",
+            "lineNumber": 111,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 112
+          },
+          {
+            "lineNumber": 113
+          },
+          {
+            "text": "def unregister():",
+            "lineNumber": 114,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Unregister the addon.\"\"\"",
+            "lineNumber": 115
+          },
+          {
+            "text": "    from .utils import compat",
+            "lineNumber": 116
+          }
+        ]
+      },
+      "score": 0.09368163347244263
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ops\\pack_ops.py",
+        "range": {
+          "startPosition": {
+            "line": 312,
+            "column": 43
+          },
+          "endPosition": {
+            "line": 455
+          }
+        },
+        "contents": "def pack_project(workflow: str, target_path: Optional[Path] = None, enable_nla: bool = True) -&gt; Path:\n    \"\"\"\n    Main packing function.\n    \n    Args:\n        workflow: Either 'copy-only' or 'pack-and-save'\n        target_path: Target directory (if None, uses temp directory)\n        enable_nla: Whether to enable NLA tracks\n    \n    Returns:\n        Path to the packed output directory\n    \"\"\"\n    if target_path is None:\n        target_path = Path(tempfile.mkdtemp(prefix=\"sheepit_pack_\"))\n    \n    copy_only_mode = workflow == WorkflowMode.COPY_ONLY\n    autopack_on_save = not copy_only_mode\n    run_pack_linked = not copy_only_mode\n    \n    # Find asset usages\n    asset_usages = au.find()\n    top_level_blend_abs = au.library_abspath(None).resolve()\n    \n    # Collect all file paths\n    all_filepaths = []\n    all_filepaths.extend(au.library_abspath(lib) for lib in asset_usages.keys())\n    all_filepaths.extend(\n        asset_usage.abspath\n        for asset_usages in asset_usages.values()\n        for asset_usage in asset_usages\n    )\n    \n    # Determine common root\n    try:\n        common_root_str = os.path.commonpath(all_filepaths)\n    except ValueError:\n        blend_file_drive = Path(bpy.data.filepath).drive if hasattr(Path(bpy.data.filepath), 'drive') else \"\"\n        project_filepaths = [p for p in all_filepaths if getattr(p, \"drive\", \"\") == blend_file_drive]\n        if project_filepaths:\n            common_root_str = os.path.commonpath(project_filepaths)\n        else:\n            common_root_str = str(Path(bpy.data.filepath).parent)\n    \n    if not common_root_str:\n        raise ValueError(\"Could not find a common root directory for these assets.\")\n    \n    common_root = Path(common_root_str)\n    \n    # Copy files\n    copied_paths = set()\n    copy_map = {}\n    missing_on_copy = []\n    \n    # Copy top-level blend\n    current_blend_abspath = top_level_blend_abs\n    try:\n        current_relpath = current_blend_abspath.relative_to(common_root)",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "def pack_project(workflow: str, target_path: Optional[Path] = None, enable_nla: bool = True) -&gt; Path:",
+            "lineNumber": 316,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 317
+          },
+          {
+            "text": "    Main packing function.",
+            "lineNumber": 318
+          },
+          {
+            "text": "    ",
+            "lineNumber": 319
+          },
+          {
+            "text": "    Args:",
+            "lineNumber": 320
+          },
+          {
+            "text": "        workflow: Either 'copy-only' or 'pack-and-save'",
+            "lineNumber": 321
+          },
+          {
+            "text": "        target_path: Target directory (if None, uses temp directory)",
+            "lineNumber": 322
+          },
+          {
+            "text": "        enable_nla: Whether to enable NLA tracks",
+            "lineNumber": 323
+          },
+          {
+            "text": "    ",
+            "lineNumber": 324
+          },
+          {
+            "text": "    Returns:",
+            "lineNumber": 325
+          },
+          {
+            "text": "        Path to the packed output directory",
+            "lineNumber": 326
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 327
+          },
+          {
+            "text": "    if target_path is None:",
+            "lineNumber": 328
+          },
+          {
+            "text": "        target_path = Path(tempfile.mkdtemp(prefix=\"sheepit_pack_\"))",
+            "lineNumber": 329
+          },
+          {
+            "text": "    ",
+            "lineNumber": 330
+          },
+          {
+            "text": "    copy_only_mode = workflow == WorkflowMode.COPY_ONLY",
+            "lineNumber": 331
+          },
+          {
+            "text": "    autopack_on_save = not copy_only_mode",
+            "lineNumber": 332
+          },
+          {
+            "text": "    run_pack_linked = not copy_only_mode",
+            "lineNumber": 333
+          },
+          {
+            "text": "    ",
+            "lineNumber": 334
+          },
+          {
+            "text": "    # Find asset usages",
+            "lineNumber": 335
+          },
+          {
+            "text": "    asset_usages = au.find()",
+            "lineNumber": 336
+          },
+          {
+            "text": "    top_level_blend_abs = au.library_abspath(None).resolve()",
+            "lineNumber": 337
+          },
+          {
+            "text": "    ",
+            "lineNumber": 338
+          },
+          {
+            "text": "    # Collect all file paths",
+            "lineNumber": 339
+          },
+          {
+            "text": "    all_filepaths = []",
+            "lineNumber": 340
+          },
+          {
+            "text": "    all_filepaths.extend(au.library_abspath(lib) for lib in asset_usages.keys())",
+            "lineNumber": 341
+          },
+          {
+            "text": "    all_filepaths.extend(",
+            "lineNumber": 342
+          },
+          {
+            "text": "        asset_usage.abspath",
+            "lineNumber": 343
+          },
+          {
+            "text": "        for asset_usages in asset_usages.values()",
+            "lineNumber": 344
+          },
+          {
+            "text": "        for asset_usage in asset_usages",
+            "lineNumber": 345
+          },
+          {
+            "text": "    )",
+            "lineNumber": 346
+          },
+          {
+            "text": "    ",
+            "lineNumber": 347
+          },
+          {
+            "text": "    # Determine common root",
+            "lineNumber": 348
+          },
+          {
+            "text": "    try:",
+            "lineNumber": 349
+          },
+          {
+            "text": "        common_root_str = os.path.commonpath(all_filepaths)",
+            "lineNumber": 350
+          },
+          {
+            "text": "    except ValueError:",
+            "lineNumber": 351
+          },
+          {
+            "text": "        blend_file_drive = Path(bpy.data.filepath).drive if hasattr(Path(bpy.data.filepath), 'drive') else \"\"",
+            "lineNumber": 352
+          },
+          {
+            "text": "        project_filepaths = [p for p in all_filepaths if getattr(p, \"drive\", \"\") == blend_file_drive]",
+            "lineNumber": 353
+          },
+          {
+            "text": "        if project_filepaths:",
+            "lineNumber": 354
+          },
+          {
+            "text": "            common_root_str = os.path.commonpath(project_filepaths)",
+            "lineNumber": 355
+          },
+          {
+            "text": "        else:",
+            "lineNumber": 356
+          },
+          {
+            "text": "            common_root_str = str(Path(bpy.data.filepath).parent)",
+            "lineNumber": 357
+          },
+          {
+            "text": "    ",
+            "lineNumber": 358
+          },
+          {
+            "text": "    if not common_root_str:",
+            "lineNumber": 359
+          },
+          {
+            "text": "        raise ValueError(\"Could not find a common root directory for these assets.\")",
+            "lineNumber": 360
+          },
+          {
+            "text": "    ",
+            "lineNumber": 361
+          },
+          {
+            "text": "    common_root = Path(common_root_str)",
+            "lineNumber": 362
+          },
+          {
+            "text": "    ",
+            "lineNumber": 363
+          },
+          {
+            "text": "    # Copy files",
+            "lineNumber": 364
+          },
+          {
+            "text": "    copied_paths = set()",
+            "lineNumber": 365
+          },
+          {
+            "text": "    copy_map = {}",
+            "lineNumber": 366
+          },
+          {
+            "text": "    missing_on_copy = []",
+            "lineNumber": 367
+          },
+          {
+            "text": "    ",
+            "lineNumber": 368
+          },
+          {
+            "text": "    # Copy top-level blend",
+            "lineNumber": 369
+          },
+          {
+            "text": "    current_blend_abspath = top_level_blend_abs",
+            "lineNumber": 370
+          },
+          {
+            "text": "    try:",
+            "lineNumber": 371
+          },
+          {
+            "text": "        current_relpath = current_blend_abspath.relative_to(common_root)",
+            "lineNumber": 372
+          }
+        ]
+      },
+      "score": 0.0913173034787178
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\utils\\auth.py",
+        "range": {
+          "startPosition": {
+            "line": 125,
+            "column": 17
+          },
+          "endPosition": {
+            "line": 183
+          }
+        },
+        "contents": "def save_auth_cookies(cookies: Dict[str, str]) -&gt; bool:\n    \"\"\"\n    Save authentication cookies securely.\n    \n    Args:\n        cookies: Dictionary of cookie name-value pairs\n    \n    Returns:\n        True if saved successfully, False otherwise\n    \"\"\"\n    try:\n        storage_path = _get_auth_storage_path()\n        encrypted = _encrypt_cookies(cookies)\n        \n        data = {\n            'cookies': encrypted,\n            'timestamp': time.time(),\n        }\n        \n        with open(storage_path, 'w') as f:\n            json.dump(data, f)\n        \n        # Set restrictive permissions (Unix-like systems)\n        try:\n            os.chmod(storage_path, 0o600)\n        except Exception:\n            pass  # Windows doesn't support chmod the same way\n        \n        return True\n    except Exception as e:\n        print(f\"[SheepIt Auth] Failed to save cookies: {e}\")\n        return False\n\n\ndef load_auth_cookies() -&gt; Optional[Dict[str, str]]:\n    \"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "def save_auth_cookies(cookies: Dict[str, str]) -&gt; bool:",
+            "lineNumber": 129,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 130
+          },
+          {
+            "text": "    Save authentication cookies securely.",
+            "lineNumber": 131
+          },
+          {
+            "text": "    ",
+            "lineNumber": 132
+          },
+          {
+            "text": "    Args:",
+            "lineNumber": 133
+          },
+          {
+            "text": "        cookies: Dictionary of cookie name-value pairs",
+            "lineNumber": 134
+          },
+          {
+            "text": "    ",
+            "lineNumber": 135
+          },
+          {
+            "text": "    Returns:",
+            "lineNumber": 136
+          },
+          {
+            "text": "        True if saved successfully, False otherwise",
+            "lineNumber": 137
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 138
+          },
+          {
+            "text": "    try:",
+            "lineNumber": 139
+          },
+          {
+            "text": "        storage_path = _get_auth_storage_path()",
+            "lineNumber": 140
+          },
+          {
+            "text": "        encrypted = _encrypt_cookies(cookies)",
+            "lineNumber": 141
+          },
+          {
+            "text": "        ",
+            "lineNumber": 142
+          },
+          {
+            "text": "        data = {",
+            "lineNumber": 143
+          },
+          {
+            "text": "            'cookies': encrypted,",
+            "lineNumber": 144
+          },
+          {
+            "text": "            'timestamp': time.time(),",
+            "lineNumber": 145
+          },
+          {
+            "text": "        }",
+            "lineNumber": 146
+          },
+          {
+            "text": "        ",
+            "lineNumber": 147
+          },
+          {
+            "text": "        with open(storage_path, 'w') as f:",
+            "lineNumber": 148
+          },
+          {
+            "text": "            json.dump(data, f)",
+            "lineNumber": 149
+          },
+          {
+            "text": "        ",
+            "lineNumber": 150
+          },
+          {
+            "text": "        # Set restrictive permissions (Unix-like systems)",
+            "lineNumber": 151
+          },
+          {
+            "text": "        try:",
+            "lineNumber": 152
+          },
+          {
+            "text": "            os.chmod(storage_path, 0o600)",
+            "lineNumber": 153
+          },
+          {
+            "text": "        except Exception:",
+            "lineNumber": 154
+          },
+          {
+            "text": "            pass  # Windows doesn't support chmod the same way",
+            "lineNumber": 155
+          },
+          {
+            "text": "        ",
+            "lineNumber": 156
+          },
+          {
+            "text": "        return True",
+            "lineNumber": 157
+          },
+          {
+            "text": "    except Exception as e:",
+            "lineNumber": 158
+          },
+          {
+            "text": "        print(f\"[SheepIt Auth] Failed to save cookies: {e}\")",
+            "lineNumber": 159
+          },
+          {
+            "text": "        return False",
+            "lineNumber": 160,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 161
+          },
+          {
+            "lineNumber": 162
+          },
+          {
+            "text": "def load_auth_cookies() -&gt; Optional[Dict[str, str]]:",
+            "lineNumber": 163,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"",
+            "lineNumber": 164
+          }
+        ]
+      },
+      "score": 0.09072259813547134
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ops\\pack_ops.py",
+        "range": {
+          "startPosition": {
+            "line": 473,
+            "column": 32
+          },
+          "endPosition": {
+            "line": 497
+          }
+        },
+        "contents": "class SHEEPIT_OT_pack_and_save(Operator):\n    \"\"\"Pack project and save (pack all assets into blend files).\"\"\"\n    bl_idname = \"sheepit.pack_and_save\"\n    bl_label = \"Pack and Save\"\n    bl_description = \"Pack all assets into blend files. Outputs to temporary directory.\"\n    bl_options = {'REGISTER', 'UNDO'}\n    \n    def execute(self, context):\n        try:\n            target_path = pack_project(WorkflowMode.PACK_AND_SAVE, enable_nla=True)\n            self.report({'INFO'}, f\"Packed to: {target_path}\")\n            context.scene.sheepit_submit.pack_output_path = str(target_path)\n            return {'FINISHED'}\n        except Exception as e:\n            self.report({'ERROR'}, f\"Packing failed: {str(e)}\")\n            return {'CANCELLED'}\n\n\ndef register():\n    \"\"\"Register operators.\"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "class SHEEPIT_OT_pack_and_save(Operator):",
+            "lineNumber": 477,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Pack project and save (pack all assets into blend files).\"\"\"",
+            "lineNumber": 478
+          },
+          {
+            "text": "    bl_idname = \"sheepit.pack_and_save\"",
+            "lineNumber": 479
+          },
+          {
+            "text": "    bl_label = \"Pack and Save\"",
+            "lineNumber": 480
+          },
+          {
+            "text": "    bl_description = \"Pack all assets into blend files. Outputs to temporary directory.\"",
+            "lineNumber": 481
+          },
+          {
+            "text": "    bl_options = {'REGISTER', 'UNDO'}",
+            "lineNumber": 482
+          },
+          {
+            "text": "    ",
+            "lineNumber": 483
+          },
+          {
+            "text": "    def execute(self, context):",
+            "lineNumber": 484
+          },
+          {
+            "text": "        try:",
+            "lineNumber": 485
+          },
+          {
+            "text": "            target_path = pack_project(WorkflowMode.PACK_AND_SAVE, enable_nla=True)",
+            "lineNumber": 486
+          },
+          {
+            "text": "            self.report({'INFO'}, f\"Packed to: {target_path}\")",
+            "lineNumber": 487
+          },
+          {
+            "text": "            context.scene.sheepit_submit.pack_output_path = str(target_path)",
+            "lineNumber": 488
+          },
+          {
+            "text": "            return {'FINISHED'}",
+            "lineNumber": 489
+          },
+          {
+            "text": "        except Exception as e:",
+            "lineNumber": 490
+          },
+          {
+            "text": "            self.report({'ERROR'}, f\"Packing failed: {str(e)}\")",
+            "lineNumber": 491
+          },
+          {
+            "text": "            return {'CANCELLED'}",
+            "lineNumber": 492,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 493
+          },
+          {
+            "lineNumber": 494
+          },
+          {
+            "text": "def register():",
+            "lineNumber": 495,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Register operators.\"\"\"",
+            "lineNumber": 496
+          }
+        ]
+      },
+      "score": 0.07721690088510513
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ui\\preferences_ui.py",
+        "range": {
+          "startPosition": {
+            "line": 87
+          },
+          "endPosition": {
+            "line": 204
+          }
+        },
+        "contents": "class SHEEPIT_AddonPreferences(AddonPreferences):\n\n    \n    def draw(self, context):\n        layout = self.layout\n        \n        # Update auth status if using browser login\n        if self.use_browser_login:\n            # Use direct import to avoid circular import issues\n            from ..utils.auth import load_auth_cookies\n            cookies = load_auth_cookies()\n            if cookies:\n                if self.auth_status == \"Not logged in\":\n                    self.auth_status = \"Logged in (Browser)\"\n            else:\n                if self.auth_status != \"Not logged in\":\n                    self.auth_status = \"Not logged in\"\n        \n        # Main authentication box\n        box = layout.box()\n        box.label(text=\"SheepIt Authentication\", icon='USER')\n        \n        # Browser login toggle\n        row = box.row()\n        row.prop(self, \"use_browser_login\")\n        \n        if self.use_browser_login:",
+        "signatures": {
+          "ranges": [
+            {
+              "startPosition": {
+                "line": 88,
+                "column": 1
+              },
+              "endPosition": {
+                "line": 89,
+                "column": 5
+              }
+            }
+          ]
+        },
+        "detailedLines": [
+          {
+            "text": "class SHEEPIT_AddonPreferences(AddonPreferences):",
+            "lineNumber": 88,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 128
+          },
+          {
+            "text": "    ",
+            "lineNumber": 129
+          },
+          {
+            "text": "    def draw(self, context):",
+            "lineNumber": 130
+          },
+          {
+            "text": "        layout = self.layout",
+            "lineNumber": 131
+          },
+          {
+            "text": "        ",
+            "lineNumber": 132
+          },
+          {
+            "text": "        # Update auth status if using browser login",
+            "lineNumber": 133
+          },
+          {
+            "text": "        if self.use_browser_login:",
+            "lineNumber": 134
+          },
+          {
+            "text": "            # Use direct import to avoid circular import issues",
+            "lineNumber": 135
+          },
+          {
+            "text": "            from ..utils.auth import load_auth_cookies",
+            "lineNumber": 136
+          },
+          {
+            "text": "            cookies = load_auth_cookies()",
+            "lineNumber": 137
+          },
+          {
+            "text": "            if cookies:",
+            "lineNumber": 138
+          },
+          {
+            "text": "                if self.auth_status == \"Not logged in\":",
+            "lineNumber": 139
+          },
+          {
+            "text": "                    self.auth_status = \"Logged in (Browser)\"",
+            "lineNumber": 140
+          },
+          {
+            "text": "            else:",
+            "lineNumber": 141
+          },
+          {
+            "text": "                if self.auth_status != \"Not logged in\":",
+            "lineNumber": 142
+          },
+          {
+            "text": "                    self.auth_status = \"Not logged in\"",
+            "lineNumber": 143
+          },
+          {
+            "text": "        ",
+            "lineNumber": 144
+          },
+          {
+            "text": "        # Main authentication box",
+            "lineNumber": 145
+          },
+          {
+            "text": "        box = layout.box()",
+            "lineNumber": 146
+          },
+          {
+            "text": "        box.label(text=\"SheepIt Authentication\", icon='USER')",
+            "lineNumber": 147
+          },
+          {
+            "text": "        ",
+            "lineNumber": 148
+          },
+          {
+            "text": "        # Browser login toggle",
+            "lineNumber": 149
+          },
+          {
+            "text": "        row = box.row()",
+            "lineNumber": 150
+          },
+          {
+            "text": "        row.prop(self, \"use_browser_login\")",
+            "lineNumber": 151
+          },
+          {
+            "text": "        ",
+            "lineNumber": 152
+          },
+          {
+            "text": "        if self.use_browser_login:",
+            "lineNumber": 153
+          }
+        ]
+      },
+      "score": 0.07579665631055832
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\ui\\preferences_ui.py",
+        "range": {
+          "startPosition": {
+            "line": 204,
+            "column": 88
+          },
+          "endPosition": {
+            "line": 234
+          }
+        },
+        "contents": "reg_list = [SHEEPIT_AddonPreferences]\n\n\ndef register():\n    \"\"\"Register preferences and operators.\"\"\"\n    # Register preferences class first\n    for cls in reg_list:\n        try:\n            from bpy.utils import register_class\n            register_class(cls)\n            config.debug_print(f\"[SheepIt Debug] Registered preferences class: {cls.__name__} with bl_idname: {cls.bl_idname}\")\n        except Exception as e:\n            print(f\"[SheepIt Error] Failed to register preferences class {cls.__name__}: {e}\")\n            import traceback\n            traceback.print_exc()\n    \n    # Register test connection operator\n    compat.safe_register_class(SHEEPIT_OT_test_connection)\n\n\ndef unregister():\n    \"\"\"Unregister preferences and operators.\"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "reg_list = [SHEEPIT_AddonPreferences]",
+            "lineNumber": 208
+          },
+          {
+            "lineNumber": 209
+          },
+          {
+            "lineNumber": 210
+          },
+          {
+            "text": "def register():",
+            "lineNumber": 211,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Register preferences and operators.\"\"\"",
+            "lineNumber": 212
+          },
+          {
+            "text": "    # Register preferences class first",
+            "lineNumber": 213
+          },
+          {
+            "text": "    for cls in reg_list:",
+            "lineNumber": 214
+          },
+          {
+            "text": "        try:",
+            "lineNumber": 215
+          },
+          {
+            "text": "            from bpy.utils import register_class",
+            "lineNumber": 216
+          },
+          {
+            "text": "            register_class(cls)",
+            "lineNumber": 217
+          },
+          {
+            "text": "            config.debug_print(f\"[SheepIt Debug] Registered preferences class: {cls.__name__} with bl_idname: {cls.bl_idname}\")",
+            "lineNumber": 218
+          },
+          {
+            "text": "        except Exception as e:",
+            "lineNumber": 219
+          },
+          {
+            "text": "            print(f\"[SheepIt Error] Failed to register preferences class {cls.__name__}: {e}\")",
+            "lineNumber": 220
+          },
+          {
+            "text": "            import traceback",
+            "lineNumber": 221
+          },
+          {
+            "text": "            traceback.print_exc()",
+            "lineNumber": 222
+          },
+          {
+            "text": "    ",
+            "lineNumber": 223
+          },
+          {
+            "text": "    # Register test connection operator",
+            "lineNumber": 224
+          },
+          {
+            "text": "    compat.safe_register_class(SHEEPIT_OT_test_connection)",
+            "lineNumber": 225,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 226
+          },
+          {
+            "lineNumber": 227
+          },
+          {
+            "text": "def unregister():",
+            "lineNumber": 228,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Unregister preferences and operators.\"\"\"",
+            "lineNumber": 229
+          }
+        ]
+      },
+      "score": 0.07527226209640503
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": ".\\utils\\auth.py",
+        "range": {
+          "startPosition": {
+            "line": 30,
+            "column": 10
+          },
+          "endPosition": {
+            "line": 91
+          }
+        },
+        "contents": "from .. import config\n\n\nclass AuthCallbackHandler(BaseHTTPRequestHandler):\n    \"\"\"HTTP handler for OAuth/login callback.\"\"\"\n    \n    def do_GET(self):\n        \"\"\"Handle GET request from browser redirect.\"\"\"\n        parsed = urlparse(self.path)\n        query = parse_qs(parsed.query)\n        \n        # Extract cookies from request headers\n        cookies = {}\n        if 'Cookie' in self.headers:\n            cookie_header = self.headers['Cookie']\n            for item in cookie_header.split(';'):\n                if '=' in item:\n                    key, value = item.strip().split('=', 1)\n                    cookies[key] = value\n        \n        # Store cookies in server instance\n        if hasattr(self.server, 'auth_result'):\n            self.server.auth_result = {\n                'success': True,\n                'cookies': cookies,\n                'query_params': query,\n            }\n        \n        # Send success response\n        self.send_response(200)\n        self.send_header('Content-type', 'text/html')\n        self.end_headers()\n        self.wfile.write(b\"\"\"\n        &lt;html&gt;\n        &lt;head&gt;&lt;title&gt;Authentication Successful&lt;/title&gt;&lt;/head&gt;\n        &lt;body&gt;\n        &lt;h1&gt;Authentication Successful!&lt;/h1&gt;\n        &lt;p&gt;You can close this window and return to Blender.&lt;/p&gt;\n        &lt;script&gt;window.close();&lt;/script&gt;\n        &lt;/body&gt;\n        &lt;/html&gt;\n        \"\"\")\n    \n    def log_message(self, format, *args):\n        \"\"\"Suppress server log messages.\"\"\"\n        pass\n\n\ndef _get_auth_storage_path() -&gt; Path:\n    \"\"\"Get path to secure auth storage file.\"\"\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "from .. import config",
+            "lineNumber": 32
+          },
+          {
+            "lineNumber": 33
+          },
+          {
+            "lineNumber": 34
+          },
+          {
+            "text": "class AuthCallbackHandler(BaseHTTPRequestHandler):",
+            "lineNumber": 35,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"HTTP handler for OAuth/login callback.\"\"\"",
+            "lineNumber": 36
+          },
+          {
+            "text": "    ",
+            "lineNumber": 37
+          },
+          {
+            "text": "    def do_GET(self):",
+            "lineNumber": 38
+          },
+          {
+            "text": "        \"\"\"Handle GET request from browser redirect.\"\"\"",
+            "lineNumber": 39
+          },
+          {
+            "text": "        parsed = urlparse(self.path)",
+            "lineNumber": 40
+          },
+          {
+            "text": "        query = parse_qs(parsed.query)",
+            "lineNumber": 41
+          },
+          {
+            "text": "        ",
+            "lineNumber": 42
+          },
+          {
+            "text": "        # Extract cookies from request headers",
+            "lineNumber": 43
+          },
+          {
+            "text": "        cookies = {}",
+            "lineNumber": 44
+          },
+          {
+            "text": "        if 'Cookie' in self.headers:",
+            "lineNumber": 45
+          },
+          {
+            "text": "            cookie_header = self.headers['Cookie']",
+            "lineNumber": 46
+          },
+          {
+            "text": "            for item in cookie_header.split(';'):",
+            "lineNumber": 47
+          },
+          {
+            "text": "                if '=' in item:",
+            "lineNumber": 48
+          },
+          {
+            "text": "                    key, value = item.strip().split('=', 1)",
+            "lineNumber": 49
+          },
+          {
+            "text": "                    cookies[key] = value",
+            "lineNumber": 50
+          },
+          {
+            "text": "        ",
+            "lineNumber": 51
+          },
+          {
+            "text": "        # Store cookies in server instance",
+            "lineNumber": 52
+          },
+          {
+            "text": "        if hasattr(self.server, 'auth_result'):",
+            "lineNumber": 53
+          },
+          {
+            "text": "            self.server.auth_result = {",
+            "lineNumber": 54
+          },
+          {
+            "text": "                'success': True,",
+            "lineNumber": 55
+          },
+          {
+            "text": "                'cookies': cookies,",
+            "lineNumber": 56
+          },
+          {
+            "text": "                'query_params': query,",
+            "lineNumber": 57
+          },
+          {
+            "text": "            }",
+            "lineNumber": 58
+          },
+          {
+            "text": "        ",
+            "lineNumber": 59
+          },
+          {
+            "text": "        # Send success response",
+            "lineNumber": 60
+          },
+          {
+            "text": "        self.send_response(200)",
+            "lineNumber": 61
+          },
+          {
+            "text": "        self.send_header('Content-type', 'text/html')",
+            "lineNumber": 62
+          },
+          {
+            "text": "        self.end_headers()",
+            "lineNumber": 63
+          },
+          {
+            "text": "        self.wfile.write(b\"\"\"",
+            "lineNumber": 64
+          },
+          {
+            "text": "        &lt;html&gt;",
+            "lineNumber": 65
+          },
+          {
+            "text": "        &lt;head&gt;&lt;title&gt;Authentication Successful&lt;/title&gt;&lt;/head&gt;",
+            "lineNumber": 66
+          },
+          {
+            "text": "        &lt;body&gt;",
+            "lineNumber": 67
+          },
+          {
+            "text": "        &lt;h1&gt;Authentication Successful!&lt;/h1&gt;",
+            "lineNumber": 68
+          },
+          {
+            "text": "        &lt;p&gt;You can close this window and return to Blender.&lt;/p&gt;",
+            "lineNumber": 69
+          },
+          {
+            "text": "        &lt;script&gt;window.close();&lt;/script&gt;",
+            "lineNumber": 70
+          },
+          {
+            "text": "        &lt;/body&gt;",
+            "lineNumber": 71
+          },
+          {
+            "text": "        &lt;/html&gt;",
+            "lineNumber": 72
+          },
+          {
+            "text": "        \"\"\")",
+            "lineNumber": 73
+          },
+          {
+            "text": "    ",
+            "lineNumber": 74
+          },
+          {
+            "text": "    def log_message(self, format, *args):",
+            "lineNumber": 75
+          },
+          {
+            "text": "        \"\"\"Suppress server log messages.\"\"\"",
+            "lineNumber": 76
+          },
+          {
+            "text": "        pass",
+            "lineNumber": 77,
+            "isSignature": true
+          },
+          {
+            "lineNumber": 78
+          },
+          {
+            "lineNumber": 79
+          },
+          {
+            "text": "def _get_auth_storage_path() -&gt; Path:",
+            "lineNumber": 80,
+            "isSignature": true
+          },
+          {
+            "text": "    \"\"\"Get path to secure auth storage file.\"\"\"",
+            "lineNumber": 81
+          }
+        ]
+      },
+      "score": 0.07515556365251541
+    }
+  ]
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+---
+
+
+Checking the SheepIt GitLab repository for API endpoints:
+
+
+---
+
+Fetch timed out while retrieving content
+
+---
+
+<tool-use data-tool-type="unknown" data-tool-name="ask_question">
+<details>
+<summary>Tool use: **ask_question**</summary>
+
+
+Parameters:
+
+```json
+{
+  "questions": [
+    {
+      "id": "api_endpoints",
+      "prompt": "Do you know which SheepIt API endpoints we should use for testing authentication? For example:\n- User profile endpoint (e.g., /user/profile, /api/user/info)\n- Login endpoint (e.g., /user/signin, /api/auth/login)\n- Or should I implement a generic test that tries common protected endpoints?",
+      "options": [
+        {
+          "id": "known_endpoints",
+          "label": "I know the specific endpoints"
+        },
+        {
+          "id": "generic_test",
+          "label": "Implement generic test (try common endpoints)"
+        },
+        {
+          "id": "check_gitlab",
+          "label": "Check SheepIt GitLab repo for endpoints"
+        }
+      ]
+    }
+  ]
+}
+```
+Additional data:
+
+```json
+{
+  "status": "submitted",
+  "currentSelections": {
+    "api_endpoints": [
+      "check_gitlab"
+    ]
+  },
+  "freeformTexts": {
+    "api_endpoints": ""
+  }
+}
+```
+Result:
+
+```json
+{
+  "answers": [
+    {
+      "questionId": "api_endpoints",
+      "selectedOptionIds": [
+        "check_gitlab"
+      ],
+      "freeformText": ""
+    }
+  ]
+}
+```
+User decision: **accepted**
+
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+---
+
+
+Checking the SheepIt GitLab repository for API endpoint definitions:
+
+
+---
+
+Fetch timed out while retrieving content
+
+---
+
+<tool-use data-tool-type="search" data-tool-name="web_search">
+<details>
+            <summary>Tool use: **web_search** • Searched web `undefined` • **1** results</summary>
+        
+| Title | URL | Chunk |
+|-------|-----|-------|
+| Web Search Results |  | I searched thoroughly and didn’t find any credible source or documentation indicating that *sheepit-renderfarm.com* (SheepIt Render Farm) publicly exposes API endpoints at `/user/profile` or `/api/user` for authentication or retrieving user profiles. Below is a summary of what’s known and what wasn’t found.<br/><br/>---<br/><br/>## 🔍 What is known<br/><br/>- SheepIt Render Farm offers usual login/register/account settings via its website. There is a “register” page and “edit profile” page, accessible through the web UI. ([sheepit-renderfarm.com](https://www.sheepit-renderfarm.com/user/register?utm_source=openai))  <br/>- They use render keys (a special key not your password) for render client/client-authentication tasks. This suggests that they have some kind of token or key-based mechanism by which external clients can authenticate specific rendering tasks. ([sheepit-renderfarm.com](https://www.sheepit-renderfarm.com/faq?utm_source=openai))  <br/>- Their main website and related APIs (e.g. `api.sheepit-renderfarm.com`) don’t include any clear documentation pages for user endpoints for authentication/profile retrieval. Crawling those endpoints returns mostly website homepages or “sign in” screens, not API JSON responses. ([api.sheepit-renderfarm.com](https://api.sheepit-renderfarm.com/?utm_source=openai))  <br/><br/>---<br/><br/>## 🚫 What is *not* found / seems not to exist (publicly documented)<br/><br/>- No public documentation confirming existence of `POST /api/user/auth`, `GET /api/user/\{id\}` or `GET /user/profile` on sheepit-renderfarm.com.  <br/>- No JSON API references for user profile or authentication in their documentation or FAQ for SheepIt.  <br/>- No evidence that SheepIt has an OAuth or similar JSON-based auth API exposed publicly.<br/><br/>---<br/><br/>## ⚠️ Possibility of Private/Internal APIs<br/><br/>- It’s possible SheepIt uses internal or private APIs not disclosed publicly. Many web sites have backend endpoints for user auth/profile that are used exclusively by their own frontend (web pages, render clients) but not intended for external use.  <br/>- Reverse engineering (e.g. watching network traffic from the browser while logging in/editing profile) might reveal endpoints, but those are not officially documented, not stable, and likely unauthorized for external use.<br/><br/>---<br/><br/>## ✅ Conclusion<br/><br/>As of now:<br/><br/>- There is **no publicly documented API endpoint** such as `/user/profile` or `/api/user` on sheepit-renderfarm.com for authentication or retrieving user profiles.<br/>- If you need this functionality, you would likely either use their website’s interface or contact SheepIt to ask if they provide a private API or SDK for this.<br/><br/>---<br/><br/>If you like, I can try to dig up any hidden or undocumented endpoints (from inspecting their traffic) or see if others have discovered such APIs — though use of those is often against terms of service. Do you want me to try that? |
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="search" data-tool-name="web_search">
+<details>
+            <summary>Tool use: **web_search** • Searched web `undefined` • **1** results</summary>
+        
+| Title | URL | Chunk |
+|-------|-----|-------|
+| Web Search Results |  | I searched for “sheepitrenderfarm” on GitLab and “SheepIt API endpoints / routes,” but I couldn’t find any public documentation or repo under GitLab for “sheepitrenderfarm” detailing its API routes or endpoints. Also, the official SheepIt Render Farm site and its API subdomain do not publish a full list of API routes. ([api.sheepit-renderfarm.com](https://api.sheepit-renderfarm.com/?utm_source=openai))<br/><br/>Here’s what *is* known:<br/><br/>---<br/><br/>### What’s Known<br/><br/>- SheepIt has a public API with base URL: `api.sheepit-renderfarm.com`. ([api.sheepit-renderfarm.com](https://api.sheepit-renderfarm.com/?utm_source=openai))  <br/>- There are endpoints for interacting with the site, like `/home` and `/getstarted`. ([api.sheepit-renderfarm.com](https://api.sheepit-renderfarm.com/getstarted?utm_source=openai))  <br/>- The “www” server handles users, project creation, and rendering requests; “binary mirror,” “project mirror,” and “shepherd” servers handle assets, file storage, and actual rendering tasks respectively. ([sheepit-renderfarm.com](https://www.sheepit-renderfarm.com/servers?utm_source=openai))<br/><br/>---<br/><br/>### What’s *Not* Found<br/><br/>- No public GitLab repository under `gitlab.com/sheepitrenderfarm` describing API endpoint routes.  <br/>- No official public specification listing all route paths, parameters, or JSON input/output schemas.  <br/>- No examples of a “/api/v1/projects” or similar that are confirmed by SheepIt in documentation or community sources.<br/><br/>---<br/><br/>If you want, I can help reverse-engineer the endpoints (via observing network traffic or scraping) to build a reference list of routes that the SheepIt web API actually supports. Do you want me to do that? |
+
+</details>
+</tool-use>
+
+---
+
+
+Creating a plan to implement the connection test. Since there's no official API documentation, using a practical approach:
+
+
+---
+
+<tool-use data-tool-type="unknown" data-tool-name="create_plan">
+<details>
+<summary>Tool use: **create_plan**</summary>
+
+
+Parameters:
+
+```json
+{
+  "plan": "# Implement SheepIt Connection Test\n\n## Overview\nImplement actual API connection testing in &#96;SHEEPIT_OT_test_connection&#96; operator. The test will verify authentication works for both browser login (cookies) and username/password methods.\n\n## Implementation Details\n\n### 1. Create API test utility function (&#96;utils/auth.py&#96;)\n\nAdd a new function &#96;test_connection()&#96; that handles both authentication methods:\n\n**For Browser Login (cookies):**\n- Load stored cookies using &#96;load_auth_cookies()&#96;\n- Make HTTP GET request to a protected endpoint (e.g., &#96;/user/profile&#96; or &#96;/user/edit&#96;)\n- Check response status:\n  - 200 OK = authenticated\n  - 302 redirect to login = not authenticated\n  - 401/403 = not authenticated\n- Return tuple: &#96;(success: bool, message: str, user_info: Optional[dict])&#96;\n\n**For Username/Password:**\n- Submit login form to &#96;/user/signin&#96; endpoint\n- Extract session cookie from response\n- If successful, optionally test accessing protected endpoint\n- Return tuple: &#96;(success: bool, message: str)&#96;\n\n**Implementation approach:**\n- Use &#96;urllib.request&#96; for HTTP requests (already used in codebase)\n- Handle cookies via &#96;http.cookiejar.CookieJar&#96; for username/password flow\n- Parse HTML responses to check for login success indicators\n- Handle redirects and error responses gracefully\n\n### 2. Update test connection operator (&#96;ui/preferences_ui.py&#96;)\n\nModify &#96;SHEEPIT_OT_test_connection.execute()&#96;:\n- Call &#96;test_connection()&#96; from &#96;utils/auth.py&#96;\n- Display appropriate success/error messages based on result\n- Show user information if available (username, etc.)\n- Handle network errors gracefully with user-friendly messages\n\n### 3. Endpoints to test\n\n**Protected endpoints to try (in order):**\n1. &#96;/user/profile&#96; - User profile page\n2. &#96;/user/edit&#96; - Edit profile page  \n3. &#96;/user/projects&#96; - User projects page\n\n**Login endpoint:**\n- &#96;/user/signin&#96; - Login form submission (POST)\n\n### 4. Error handling\n\n- Network timeouts (10 second timeout)\n- Invalid credentials\n- Missing cookies\n- Server errors (5xx)\n- Connection errors\n\n### 5. User feedback\n\n- Success: \"Connection successful! Logged in as [username]\"\n- Failure: Specific error message (invalid credentials, expired session, network error, etc.)\n- Loading state: Show progress during test\n\n## Files to Modify\n\n1. **[utils/auth.py](D:\\sheepit_project_submitter\\utils\\auth.py)**\n   - Add &#96;test_connection()&#96; function\n   - Add helper function &#96;_test_with_cookies()&#96; for browser login\n   - Add helper function &#96;_test_with_credentials()&#96; for username/password\n\n2. **[ui/preferences_ui.py](D:\\sheepit_project_submitter\\ui\\preferences_ui.py)**\n   - Update &#96;SHEEPIT_OT_test_connection.execute()&#96; to call &#96;test_connection()&#96;\n   - Improve error reporting with specific messages\n\n## Implementation Notes\n\n- Since SheepIt doesn't have documented API, we'll test by accessing web pages\n- For browser login, we check if protected pages are accessible\n- For username/password, we attempt form login and check for success\n- All requests include proper User-Agent header\n- Respect &#96;bpy.app.online_access&#96; setting",
+  "name": "Implement SheepIt Connection Test",
+  "todos": [
+    {
+      "content": "Add test_connection() function to utils/auth.py that handles both browser login (cookies) and username/password authentication testing",
+      "status": "pending",
+      "id": "add_test_connection_function"
+    },
+    {
+      "content": "Add _test_with_cookies() helper function to test authentication using stored cookies by accessing protected endpoints",
+      "status": "pending",
+      "id": "add_cookie_test_helper"
+    },
+    {
+      "content": "Add _test_with_credentials() helper function to test authentication by submitting login form with username/password",
+      "status": "pending",
+      "id": "add_credential_test_helper"
+    },
+    {
+      "content": "Update SHEEPIT_OT_test_connection.execute() in ui/preferences_ui.py to call test_connection() and display results",
+      "status": "pending",
+      "id": "update_test_operator"
+    },
+    {
+      "content": "Add comprehensive error handling for network errors, timeouts, and authentication failures",
+      "status": "pending",
+      "id": "add_error_handling"
+    }
+  ],
+  "overview": "Implement the connection test functionality for SheepIt authentication. For browser login, test accessing a protected endpoint with stored cookies. For username/password, attempt a login form submission to verify credentials."
+}
+```
+Additional data:
+
+```json
+{
+  "reviewData": {
+    "status": "Requested",
+    "selectedOption": "none",
+    "isShowingInput": false
+  },
+  "planUri": "file:///c%3A/Users/Nathan/.cursor/plans/implement_sheepit_connection_test_77289268.plan.md",
+  "hasOpenedEditor": true
+}
+```
+Result:
+
+```json
+{
+  "rejected": {}
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+---
+
+_**User**_
+
+Implement the plan as specified, it is attached for your reference. Do NOT edit the plan file itself.
+
+To-do's from the plan have already been created. Do not create them again. Mark them as in_progress as you work, starting with the first one. Don't stop until you have completed all the to-dos.
+
+---
+
+_**Agent (model default, mode Agent)**_
+
+
+Implementing the connection test. Reviewing the current code, then adding the required functions.
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\ui\preferences_ui.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="task" data-tool-name="todo_write">
+<details><summary>Tool use: **todo_write** • Todo List</summary>
+
+- [-] Add test_connection() function to utils/auth.py that handles both browser login (cookies) and username/password authentication testing
+- [ ] Add _test_with_cookies() helper function to test authentication using stored cookies by accessing protected endpoints
+- [ ] Add _test_with_credentials() helper function to test authentication by submitting login form with username/password
+- [ ] Update SHEEPIT_OT_test_connection.execute() in ui/preferences_ui.py to call test_connection() and display results
+- [ ] Add comprehensive error handling for network errors, timeouts, and authentication failures
+
+</details>
+</tool-use>
+
+---
+
+
+Implementing the connection test functions:
+
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="task" data-tool-name="todo_write">
+<details><summary>Tool use: **todo_write** • Todo List</summary>
+
+- [x] Add test_connection() function to utils/auth.py that handles both browser login (cookies) and username/password authentication testing
+- [x] Add _test_with_cookies() helper function to test authentication using stored cookies by accessing protected endpoints
+- [x] Add _test_with_credentials() helper function to test authentication by submitting login form with username/password
+- [-] Update SHEEPIT_OT_test_connection.execute() in ui/preferences_ui.py to call test_connection() and display results
+- [ ] Add comprehensive error handling for network errors, timeouts, and authentication failures
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ui\preferences_ui.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="task" data-tool-name="todo_write">
+<details><summary>Tool use: **todo_write** • Todo List</summary>
+
+- [x] Add test_connection() function to utils/auth.py that handles both browser login (cookies) and username/password authentication testing
+- [x] Add _test_with_cookies() helper function to test authentication using stored cookies by accessing protected endpoints
+- [x] Add _test_with_credentials() helper function to test authentication by submitting login form with username/password
+- [x] Update SHEEPIT_OT_test_connection.execute() in ui/preferences_ui.py to call test_connection() and display results
+- [x] Add comprehensive error handling for network errors, timeouts, and authentication failures
+
+</details>
+</tool-use>
+
+---
+
+
+Implemented the connection test. Verifying the implementation and fixing a potential issue with redirect handling:
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Fixing a logic issue in error handling:
+
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Verifying the implementation is complete and checking for any remaining issues:
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\ui\preferences_ui.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Checking type hints for compatibility:
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+
+Connection test implementation is complete. Summary:
+
+## Implementation Summary
+
+### 1. Added `test_connection()` function (`utils/auth.py`)
+   - Main function that handles both authentication methods
+   - Returns `(success: bool, message: str, user_info: Optional[dict])`
+
+### 2. Added `_test_with_cookies()` helper function
+   - Tests authentication using stored browser cookies
+   - Tries multiple protected endpoints: `/user/profile`, `/user/edit`, `/user/projects`
+   - Checks for redirects to login page
+   - Handles HTTP errors (401, 403, 404, 5xx)
+
+### 3. Added `_test_with_credentials()` helper function
+   - Tests authentication by submitting login form
+   - Handles CSRF tokens if present
+   - Checks for session cookies after login
+   - Detects successful login by checking redirects away from login page
+
+### 4. Updated `SHEEPIT_OT_test_connection` operator
+   - Calls `test_connection()` based on authentication method
+   - Displays success/error messages to user
+   - Handles both browser login and username/password methods
+
+### 5. Error handling
+   - Network errors (URLError)
+   - HTTP errors (401, 403, 404, 5xx)
+   - Timeouts (10 seconds)
+   - Invalid credentials
+   - Missing cookies
+   - Connection failures
+
+The connection test is ready to use. Users can click the "Test Connection" button in preferences to verify their authentication works for both browser login and username/password methods.
+
+---
+
+
+
+---
+
+_**User**_
+
+@c:\Users\Nathan\.cursor\projects\d-sheepit-project-submitter\terminals\3.txt Is there debug for test connection?
+
+---
+
+_**Agent (model default, mode Agent)**_
+
+
+Checking the terminal output and adding debug logging to the connection test:
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: c:\Users\Nathan\.cursor\projects\d-sheepit-project-submitter\terminals\3.txt</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\config.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+No debug output in the connection test. Adding debug logging to help troubleshoot:
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+
+Added debug output to the connection test functions. When you click "Test Connection", you'll see detailed logs in Blender's console showing:
+
+1. **Which authentication method is being used** (browser login vs username/password)
+2. **Which endpoints are being tested** (for browser login)
+3. **HTTP status codes and final URLs** for each request
+4. **Cookie information** (what cookies are found/used)
+5. **Step-by-step progress** (loading login page, submitting form, checking redirects)
+6. **Error details** (network errors, HTTP errors, exceptions)
+
+All debug messages are prefixed with `[SheepIt Auth] Test Connection:` so they're easy to spot in the console.
+
+The debug output will help you see:
+- Whether cookies are being loaded correctly
+- Which endpoints are being tried
+- What HTTP responses are received
+- Why authentication might be failing
+
+Run the test connection again and check the Blender console (Window → Toggle System Console or check the terminal output) to see the detailed debug information.
+
+---
+
+_**User**_
+
+@c:\Users\Nathan\.cursor\projects\d-sheepit-project-submitter\terminals\3.txt 
+
+---
+
+_**Agent (model default, mode Agent)**_
+
+
+Checking the terminal output for test connection issues:
+
+
+---
+
+Offset 1100 is beyond file length (858 lines)
+
+---
+
+
+
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: c:\Users\Nathan\.cursor\projects\d-sheepit-project-submitter\terminals\3.txt</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Debug output shows the issue: the session cookie redirects to the login page, indicating it's invalid or expired. Also, `/user/edit` and `/user/projects` return 404. Updating the test to try different endpoints and handle redirects better:
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+
+From the terminal output:
+1. `/user/profile` returns 200 but redirects to `/user/signin/%25252Fuser%25252Fprofile` (double-encoded), indicating the session cookie is invalid or expired.
+2. `/user/edit` and `/user/projects` return 404.
+
+Updating the code to handle URL-encoded redirects and try additional endpoints:
+
+
+---
+
+The string to replace was not found in the file.
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+
+Debug output is working. From the terminal:
+
+1. The session cookie is being loaded correctly (`['session']`)
+2. The test tries `/user/profile` first
+3. It gets a 200 response but redirects to `/user/signin/%25252Fuser%25252Fprofile` (double-encoded redirect to login)
+4. This indicates the session cookie is invalid or expired
+
+I've updated the code to:
+1. Better handle URL-encoded redirects (including double-encoded paths like `%25252F`)
+2. Try more endpoints, including the home page `/` which might work better
+3. Check response content for login page indicators
+
+The debug output shows the session cookie is expired or invalid. To fix:
+1. Log out (if logged in)
+2. Log back in via browser
+3. Get a fresh session token from browser cookies
+4. Save it again using "Save Session Token"
+
+The debug messages will show each step, making it easier to troubleshoot authentication issues.
+
+---
+
+_**User**_
+
+@c:\Users\Nathan\.cursor\projects\d-sheepit-project-submitter\terminals\3.txt 
+
+---
+
+_**Agent (model default, mode Agent)**_
+
+
+Checking the latest terminal output:
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: c:\Users\Nathan\.cursor\projects\d-sheepit-project-submitter\terminals\3.txt</summary>
+
+</details>
+</tool-use>
+
+---
+
