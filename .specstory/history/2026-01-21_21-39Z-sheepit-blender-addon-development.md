@@ -20808,3 +20808,482 @@ Checking the latest terminal output:
 
 ---
 
+
+The connection test is working.
+
+From the terminal output:
+1. **Line 856-858**: Test starts, cookies are loaded
+2. **Line 860**: Tries the home page endpoint `/`
+3. **Line 861**: Gets 200 response, redirects to `/home` (indicates authentication)
+4. **Line 862-863**: Success message displayed
+
+The session cookie is valid and authentication is working. The debug output shows:
+- Cookies are being loaded correctly
+- The home page endpoint (`/`) works better than the profile endpoints
+- The redirect to `/home` confirms you're authenticated
+
+The connection test is functioning as expected. The debug messages help troubleshoot any future authentication issues.
+
+---
+
+_**User**_
+
+@c:\Users\Nathan\.cursor\projects\d-sheepit-project-submitter\terminals\3.txt i think we need more debug
+
+---
+
+_**Agent (model default, mode Agent)**_
+
+
+Checking the terminal output and adding more detailed debug logging:
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: c:\Users\Nathan\.cursor\projects\d-sheepit-project-submitter\terminals\3.txt</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Adding more detailed debug output to the connection test:
+
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\utils\auth.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+
+Added more detailed debug output. The connection test now logs:
+
+**For Browser Login (Cookies):**
+- Cookie names and truncated values (with lengths)
+- Full request headers (Cookie header, User-Agent)
+- Response timing
+- Response headers (Location, Set-Cookie, Content-Type, Content-Length)
+- Response content analysis (login page detection, username/password fields)
+- HTML content length and analysis
+- Full error details with tracebacks
+
+**For Username/Password Login:**
+- Password length (for verification)
+- Cookie jar creation and management
+- Login page loading details
+- Initial cookies received from login page
+- CSRF token detection (tries multiple patterns)
+- Form field detection
+- POST data details
+- Request headers for login submission
+- Response timing
+- Cookies received after login attempt
+- Full redirect and error analysis
+
+**General Improvements:**
+- Timing information for all requests
+- Full tracebacks for exceptions
+- Detailed HTTP error information (status codes, reasons, response bodies)
+- Network error details (reason, code)
+
+When you run the test connection, the console will show detailed information about each step, making it easier to diagnose authentication issues.
+
+---
+
+_**User**_
+
+@c:\Users\Nathan\.cursor\projects\d-sheepit-project-submitter\terminals\3.txt 
+
+---
+
+_**Agent (model default, mode Agent)**_
+
+
+Checking the latest terminal output to see the enhanced debug information:
+
+
+---
+
+Offset 850 is beyond file length (833 lines)
+
+---
+
+
+
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: c:\Users\Nathan\.cursor\projects\d-sheepit-project-submitter\terminals\3.txt</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Checking for test connection debug output earlier in the terminal:
+
+
+---
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "pattern": "\\[SheepIt Auth\\] Test Connection",
+  "path": "c:\\Users\\Nathan\\.cursor\\projects\\d-sheepit-project-submitter\\terminals\\3.txt",
+  "caseInsensitive": false
+}
+```
+Result:
+
+```json
+{
+  "success": {
+    "pattern": "\\[SheepIt Auth\\] Test Connection",
+    "path": "c:\\Users\\Nathan\\.cursor\\projects\\d-sheepit-project-submitter\\terminals\\3.txt",
+    "outputMode": "content",
+    "workspaceResults": {
+      "d:\\sheepit_project_submitter": {
+        "content": {
+          "matches": [
+            {
+              "file": "c:\\Users\\Nathan\\.cursor\\projects\\d-sheepit-project-submitter\\terminals\\3.txt",
+              "matches": [
+                {
+                  "lineNumber": 216,
+                  "content": "[SheepIt Auth] Test Connection: Starting connection test (use_browser_login=True)"
+                },
+                {
+                  "lineNumber": 217,
+                  "content": "[SheepIt Auth] Test Connection: Loading browser login cookies"
+                },
+                {
+                  "lineNumber": 218,
+                  "content": "[SheepIt Auth] Test Connection: Cookies loaded, testing connection"
+                },
+                {
+                  "lineNumber": 219,
+                  "content": "[SheepIt Auth] Test Connection: Testing with cookies: ['session']"
+                },
+                {
+                  "lineNumber": 220,
+                  "content": "[SheepIt Auth] Test Connection: Trying endpoint: https://client.sheepit-renderfarm.com/user/profile"
+                },
+                {
+                  "lineNumber": 221,
+                  "content": "[SheepIt Auth] Test Connection: Response status: 200, Final URL: https://client.sheepit-renderfarm.com/user/signin/%25252Fuser%25252Fprofile"
+                },
+                {
+                  "lineNumber": 222,
+                  "content": "[SheepIt Auth] Test Connection: Redirected to login page, trying next endpoint"
+                },
+                {
+                  "lineNumber": 223,
+                  "content": "[SheepIt Auth] Test Connection: Trying endpoint: https://client.sheepit-renderfarm.com/user/edit"
+                },
+                {
+                  "lineNumber": 224,
+                  "content": "[SheepIt Auth] Test Connection: HTTPError 404 on /user/edit"
+                },
+                {
+                  "lineNumber": 225,
+                  "content": "[SheepIt Auth] Test Connection: Endpoint not found (404), trying next endpoint"
+                },
+                {
+                  "lineNumber": 226,
+                  "content": "[SheepIt Auth] Test Connection: Trying endpoint: https://client.sheepit-renderfarm.com/user/projects"
+                },
+                {
+                  "lineNumber": 227,
+                  "content": "[SheepIt Auth] Test Connection: HTTPError 404 on /user/projects"
+                },
+                {
+                  "lineNumber": 228,
+                  "content": "[SheepIt Auth] Test Connection: Endpoint not found (404), trying next endpoint"
+                },
+                {
+                  "lineNumber": 229,
+                  "content": "[SheepIt Auth] Test Connection: All endpoints failed"
+                },
+                {
+                  "lineNumber": 244,
+                  "content": "[SheepIt Auth] Test Connection: Starting connection test (use_browser_login=True)"
+                },
+                {
+                  "lineNumber": 245,
+                  "content": "[SheepIt Auth] Test Connection: Loading browser login cookies"
+                },
+                {
+                  "lineNumber": 246,
+                  "content": "[SheepIt Auth] Test Connection: Cookies loaded, testing connection"
+                },
+                {
+                  "lineNumber": 247,
+                  "content": "[SheepIt Auth] Test Connection: Testing with cookies: ['session']"
+                },
+                {
+                  "lineNumber": 248,
+                  "content": "[SheepIt Auth] Test Connection: Trying endpoint: https://client.sheepit-renderfarm.com/user/profile"
+                },
+                {
+                  "lineNumber": 249,
+                  "content": "[SheepIt Auth] Test Connection: Response status: 200, Final URL: https://client.sheepit-renderfarm.com/user/signin/%25252Fuser%25252Fprofile"
+                },
+                {
+                  "lineNumber": 250,
+                  "content": "[SheepIt Auth] Test Connection: Redirected to login page, trying next endpoint"
+                },
+                {
+                  "lineNumber": 251,
+                  "content": "[SheepIt Auth] Test Connection: Trying endpoint: https://client.sheepit-renderfarm.com/user/edit"
+                },
+                {
+                  "lineNumber": 252,
+                  "content": "[SheepIt Auth] Test Connection: HTTPError 404 on /user/edit"
+                },
+                {
+                  "lineNumber": 253,
+                  "content": "[SheepIt Auth] Test Connection: Endpoint not found (404), trying next endpoint"
+                },
+                {
+                  "lineNumber": 254,
+                  "content": "[SheepIt Auth] Test Connection: Trying endpoint: https://client.sheepit-renderfarm.com/user/projects"
+                },
+                {
+                  "lineNumber": 255,
+                  "content": "[SheepIt Auth] Test Connection: HTTPError 404 on /user/projects"
+                },
+                {
+                  "lineNumber": 256,
+                  "content": "[SheepIt Auth] Test Connection: Endpoint not found (404), trying next endpoint"
+                },
+                {
+                  "lineNumber": 257,
+                  "content": "[SheepIt Auth] Test Connection: All endpoints failed"
+                },
+                {
+                  "lineNumber": 270,
+                  "content": "[SheepIt Auth] Test Connection: Starting connection test (use_browser_login=True)"
+                },
+                {
+                  "lineNumber": 271,
+                  "content": "[SheepIt Auth] Test Connection: Loading browser login cookies"
+                },
+                {
+                  "lineNumber": 272,
+                  "content": "[SheepIt Auth] Test Connection: Cookies loaded, testing connection"
+                },
+                {
+                  "lineNumber": 273,
+                  "content": "[SheepIt Auth] Test Connection: Testing with cookies: ['session']"
+                },
+                {
+                  "lineNumber": 274,
+                  "content": "[SheepIt Auth] Test Connection: Trying endpoint: https://client.sheepit-renderfarm.com/"
+                },
+                {
+                  "lineNumber": 275,
+                  "content": "[SheepIt Auth] Test Connection: Response status: 200, Final URL: https://client.sheepit-renderfarm.com/home"
+                },
+                {
+                  "lineNumber": 276,
+                  "content": "[SheepIt Auth] Test Connection: Success! Status 200 on /"
+                }
+              ]
+            }
+          ],
+          "totalLines": 35,
+          "totalMatchedLines": 35
+        }
+      }
+    }
+  }
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\ui\output_panel.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+The terminal shows older test connection output (before the enhanced debug). Fixing the `output_panel.py` error where `scale_y` is set on the operator instead of the layout row:
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\ui\output_panel.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ui\output_panel.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+
+Fixed the `output_panel.py` error: `scale_y` was set on the operator instead of the layout row.
+
+The terminal shows older test connection output (before the enhanced debug). The enhanced debug includes:
+- Cookie details (truncated values and lengths)
+- Request/response headers
+- Timing information
+- Response content analysis
+- Detailed error information
+
+Run the test connection again to see the enhanced debug output. It will show:
+- Cookie values (truncated for security)
+- Full request headers
+- Response timing
+- Response headers (Location, Set-Cookie, Content-Type, etc.)
+- Response content analysis
+- Detailed error information with tracebacks
+
+The debug output will help diagnose any authentication issues.
+
+---
+
