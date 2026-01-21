@@ -11251,3 +11251,221 @@ The next step would be implementing the actual SheepIt API integration for proje
 
 ---
 
+_**User**_
+
+Remove renderkey implementation. The render key is only for sheepit client (for rendering). You cannot submit projects with it, so it's not useful here.
+
+---
+
+_**Agent (model default, mode Agent)**_
+
+
+Removing render key implementation. Searching for all references:
+
+
+---
+
+rg: : IO error for operation on : The system cannot find the path specified. (os error 3)
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\ui\preferences_ui.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Removing all render key references:
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\ops\submit_ops.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\utils\compat.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ui\preferences_ui.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ui\preferences_ui.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ui\preferences_ui.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ui\preferences_ui.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\ops\submit_ops.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ops\submit_ops.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+
+Updating `submit_ops.py` to use the same preferences access method:
+
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ops\submit_ops.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\ui\preferences_ui.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Removed all render key implementation. Summary of changes:
+
+## Removed from `preferences_ui.py`:
+1. `use_render_key` property
+2. `sheepit_render_key` property
+3. Render key toggle UI
+4. Render key input field
+5. References in test connection operator
+6. Info text about render keys
+
+## Updated:
+- Password field description (removed "or leave empty to use Render Key")
+- Test connection operator (now only checks for username/password)
+- Submit operator (removed render key check)
+- Info box (removed render key information)
+
+## Authentication methods now supported:
+1. Browser Login (recommended) — uses session cookies
+2. Username/Password — traditional login
+
+The UI now shows:
+- Username field
+- Password field
+- Browser Login toggle (recommended)
+- Session token entry (when using browser login)
+
+Render key functionality has been removed since it's only for the SheepIt client, not for project submission.
+
+---
+
+_**User**_
+
+The Browser Login box, Test connection button, and About Authentication box should all be drawn within the Sheepit Authentication box. If Use Browser Login is enabled, it shouldn't draw the Username and Password boxes.
+
+---
+
+_**Agent (model default, mode Agent)**_
+
+
+Reorganizing the preferences UI: moving the Browser Login box, Test Connection button, and About Authentication box into the SheepIt Authentication box, and hiding Username/Password when Browser Login is enabled.
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\ui\preferences_ui.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ui\preferences_ui.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+
+Reorganized the preferences UI:
+
+1. **Everything is now inside the "SheepIt Authentication" box** — Browser Login, Test Connection, and About Authentication are all within the main box.
+
+2. **Conditional Username/Password display** — Username and Password fields only show when "Use Browser Login" is disabled.
+
+3. **Layout structure:**
+   - Main "SheepIt Authentication" box
+   - "Use Browser Login" toggle at the top
+   - If enabled: shows browser login UI (status, buttons, token entry)
+   - If disabled: shows Username and Password fields
+   - Test Connection button (always visible)
+   - About Authentication info (always visible)
+
+The UI is now consolidated into a single box with conditional fields based on the authentication method selected.
+
+---
+
+_**User**_
+
+let's implement the connection test.
+
+---
+
