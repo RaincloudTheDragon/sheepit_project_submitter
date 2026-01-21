@@ -3407,3 +3407,873 @@ The version detection functions (`is_version_3_x()`, `is_version_4_0()`, etc.) c
 
 ---
 
+_**User**_
+
+I don't see any preferences drawn. Also, we should integrate@d:\atomic_data_manager\rainys_repo_bootstrap.py 
+
+---
+
+_**Agent (model default, mode Agent)**_
+
+
+Checking the preferences UI registration and reviewing `rainys_repo_bootstrap.py` for integration:
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\ui\preferences_ui.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\atomic_data_manager\rainys_repo_bootstrap.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\__init__.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Fixing preferences registration and integrating the bootstrap file:
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\atomic_data_manager\__init__.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\__init__.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\__init__.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\__init__.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\rainys_repo_bootstrap.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\atomic_data_manager\ui\preferences_ui.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Registering the preferences class in the main `__init__.py` so Blender can find it:
+
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\__init__.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\__init__.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\__init__.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\ui\preferences_ui.py</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\blender_manifest.toml</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Updating the GitHub workflow to include the bootstrap file:
+
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: D:\sheepit_project_submitter\.github\workflows\release.yml</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+
+Verifying the preferences setup is correct:
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\config.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\__init__.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Fixed both issues:
+
+## 1. Preferences not showing
+
+The `AddonPreferences` class must be registered in the main `__init__.py`, not only in the UI module. Changes:
+
+- Registered `SHEEPIT_AddonPreferences` in `__init__.py` before other components
+- Removed duplicate registration from `ui/preferences_ui.py` (only the test connection operator is registered there)
+- Ensured proper unregistration order
+
+Preferences should now appear when you click the addon in Blender's preferences panel.
+
+## 2. Integrated Rainy's Extensions repository bootstrap
+
+- Copied `rainys_repo_bootstrap.py` to the addon root
+- Added import and registration in `__init__.py`
+- Updated the GitHub release workflow to include the bootstrap file in releases
+
+The bootstrap ensures the Rainy's Extensions repository is registered in Blender's extension system when the addon loads.
+
+After reloading the addon, you should see:
+1. Preferences UI when clicking the addon in Preferences → Add-ons
+2. The Rainy's Extensions repository automatically configured in Blender's extension repositories
+
+Try reloading the addon and check the preferences panel.
+
+---
+
+_**User**_
+
+grep the contents of atomic to ensure our bootstrap is integrated properly. D:\atomic_data_manager @c:\Users\Nathan\.cursor\projects\d-sheepit-project-submitter\terminals\3.txt 
+
+---
+
+_**Agent (model default, mode Agent)**_
+
+
+Checking how the bootstrap is integrated in atomic_data_manager to ensure our implementation matches:
+
+
+---
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "pattern": "rainys_repo_bootstrap",
+  "path": "D:\\atomic_data_manager",
+  "caseInsensitive": false
+}
+```
+Result:
+
+```json
+{
+  "success": {
+    "pattern": "rainys_repo_bootstrap",
+    "path": "D:\\atomic_data_manager",
+    "outputMode": "content",
+    "workspaceResults": {
+      "d:\\sheepit_project_submitter": {
+        "content": {
+          "matches": [
+            {
+              "file": "..\\atomic_data_manager\\.specstory\\history\\2025-12-18_18-37Z-blender-library-packed-files-error.md",
+              "matches": [
+                {
+                  "lineNumber": 19551,
+                  "content": "        \"contents\": \"name: Create Release\\n\\non:\\n  workflow_dispatch:\\n    inputs:\\n      release_tag:\\n        description: 'Release tag (e.g., v2.0.0)'\\n        required: true\\n        type: string\\n\\njobs:\\n  build:\\n    runs-on: ubuntu-latest\\n    permissions:\\n      contents: write\\n    steps:\\n      - uses: actions/checkout@v4\\n\\n      - name: Get Version\\n        id: get_version\\n        run: |\\n          python - &amp;lt;&amp;lt;'PY'\\n          import os\\n          import tomllib\\n          from pathlib import Path\\n\\n          data = tomllib.loads(Path(\\\"blender_manifest.toml\\\").read_text(encoding=\\\"utf-8\\\"))\\n          version = data[\\\"version\\\"]\\n\\n          with open(os.environ[\\\"GITHUB_OUTPUT\\\"], \\\"a\\\", encoding=\\\"utf-8\\\") as fh:\\n              fh.write(f\\\"version={version}\\\\n\\\")\\n              fh.write(f\\\"zip_name=Atomic_Data_Manager.v{version}.zip\\\\n\\\")\\n          PY\\n\\n      - name: Create ZIP\\n        run: |\\n          ADDON_DIR=addon_files/atomic_data_manager\\n          mkdi [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 19708,
+                  "content": "            \"text\": \"          for file in __init__.py rainys_repo_bootstrap.py blender_manifest.toml README.md CHANGELOG.md LICENSE.txt config.py; do\","
+                },
+                {
+                  "lineNumber": 23635,
+                  "content": "                  \"content\": \"        \\\"contents\\\": \\\"# Changelog\\\\n\\\\nAll notable changes to this project will be documented in this file.\\\\n\\\\n## [v2.0.0] - Raincloud's first re-release\\\\n\\\\n### Feature\\\\n- Multi-version Blender support (4.2 LTS, 4.5 LTS, and 5.0)\\\\n    - Version detection utilities in &amp;amp;#96;utils/version.py&amp;amp;#96;\\\\n    - API compatibility layer in &amp;amp;#96;utils/compat.py&amp;amp;#96; for handling version differences\\\\n\\\\n### Fixes\\\\n- Blender 5.0 compatibility: Fixed &amp;amp;#96;AttributeError&amp;amp;#96; when accessing scene compositor node tree (changed from &amp;amp;#96;scene.node_tree&amp;amp;#96; to &amp;amp;#96;scene.compositing_node_tree&amp;amp;#96;)\\\\n- Collections assigned to &amp;amp;#96;rigidbody_world.collection&amp;amp;#96; are now correctly detected as used\\\\n\\\\n### Internal\\\\n- GitHub Actions release workflow\\\\n- Integrated &amp;amp;#96;rainys_repo_bootstrap&amp;amp;#96; into &amp;amp;#96;__init__.py&amp;amp;#96; so the Rainy's Extensions repository is registered on add-on enable and the boot [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 47532,
+                  "content": "        \"contents\": \"from . import rainys_repo_bootstrap\\n\\n\\n# Atomic Data Manager Properties\\nclass ATOMIC_PG_main(bpy.types.PropertyGroup):\\n    # main panel toggle buttons\\n    collections: bpy.props.BoolProperty(default=False)\\n    images: bpy.props.BoolProperty(default=False)\\n    lights: bpy.props.BoolProperty(default=False)\\n    materials: bpy.props.BoolProperty(default=False)\\n    node_groups: bpy.props.BoolProperty(default=False)\\n    objects: bpy.props.BoolProperty(default=False)\\n    particles: bpy.props.BoolProperty(default=False)\\n    textures: bpy.props.BoolProperty(default=False)\\n    armatures: bpy.props.BoolProperty(default=False)\\n    worlds: bpy.props.BoolProperty(default=False)\\n\\n    # inspect data-block search fields\\n    collections_field: bpy.props.StringProperty(\\n        update=inspect_ui.update_inspection)\\n\\n    images_field: bpy.props.StringProperty(\\n        update=inspect_ui.update_inspection)\\n\\n    lights_field: bpy.props.StringProperty(\\n        updat [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 47536,
+                  "content": "            \"text\": \"from . import rainys_repo_bootstrap\","
+                },
+                {
+                  "lineNumber": 51782,
+                  "content": "        \"contents\": \"def register():\\n    register_class(ATOMIC_PG_main)\\n    bpy.types.Scene.atomic = bpy.props.PointerProperty(type=ATOMIC_PG_main)\\n\\n    # atomic package registration\\n    ui.register()\\n    ops.register()\\n    \\n    # Register undo handler to invalidate cache\\n    bpy.app.handlers.undo_pre.append(_on_undo_pre)\\n    \\n    # bootstrap Rainy's Extensions repository\\n    rainys_repo_bootstrap.register()\\n\\n\\ndef unregister():\\n    # bootstrap unregistration\\n    rainys_repo_bootstrap.unregister()\","
+                },
+                {
+                  "lineNumber": 51834,
+                  "content": "            \"text\": \"    rainys_repo_bootstrap.register()\","
+                },
+                {
+                  "lineNumber": 51855,
+                  "content": "            \"text\": \"    rainys_repo_bootstrap.unregister()\","
+                },
+                {
+                  "lineNumber": 52516,
+                  "content": "        \"contents\": \"from . import rainys_repo_bootstrap\\n\\n\\n# Atomic Data Manager Properties\\nclass ATOMIC_PG_main(bpy.types.PropertyGroup):\\n    # main panel toggle buttons\\n    collections: bpy.props.BoolProperty(default=False)\\n    images: bpy.props.BoolProperty(default=False)\\n    lights: bpy.props.BoolProperty(default=False)\\n    materials: bpy.props.BoolProperty(default=False)\\n    node_groups: bpy.props.BoolProperty(default=False)\\n    objects: bpy.props.BoolProperty(default=False)\\n    particles: bpy.props.BoolProperty(default=False)\\n    textures: bpy.props.BoolProperty(default=False)\\n    armatures: bpy.props.BoolProperty(default=False)\\n    worlds: bpy.props.BoolProperty(default=False)\\n\\n    # inspect data-block search fields\\n    collections_field: bpy.props.StringProperty(\\n        update=inspect_ui.update_inspection)\\n\\n    images_field: bpy.props.StringProperty(\\n        update=inspect_ui.update_inspection)\\n\\n    lights_field: bpy.props.StringProperty(\\n        updat [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 52520,
+                  "content": "            \"text\": \"from . import rainys_repo_bootstrap\","
+                },
+                {
+                  "lineNumber": 53241,
+                  "content": "                  \"content\": \"        \\\"contents\\\": \\\"# Changelog\\\\n\\\\nAll notable changes to this project will be documented in this file.\\\\n\\\\n## [v2.0.0] - Raincloud's first re-release\\\\n\\\\n### Feature\\\\n- Multi-version Blender support (4.2 LTS, 4.5 LTS, and 5.0)\\\\n    - Version detection utilities in &amp;amp;#96;utils/version.py&amp;amp;#96;\\\\n    - API compatibility layer in &amp;amp;#96;utils/compat.py&amp;amp;#96; for handling version differences\\\\n\\\\n### Fixes\\\\n- Blender 5.0 compatibility: Fixed &amp;amp;#96;AttributeError&amp;amp;#96; when accessing scene compositor node tree (changed from &amp;amp;#96;scene.node_tree&amp;amp;#96; to &amp;amp;#96;scene.compositing_node_tree&amp;amp;#96;)\\\\n- Collections assigned to &amp;amp;#96;rigidbody_world.collection&amp;amp;#96; are now correctly detected as used\\\\n\\\\n### Internal\\\\n- GitHub Actions release workflow\\\\n- Integrated &amp;amp;#96;rainys_repo_bootstrap&amp;amp;#96; into &amp;amp;#96;__init__.py&amp;amp;#96; so the Rainy's Extensions repository is registered on add-on enable and the boot [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 75306,
+                  "content": "        \"contents\": \"def register():\\n    register_class(ATOMIC_PG_main)\\n    bpy.types.Scene.atomic = bpy.props.PointerProperty(type=ATOMIC_PG_main)\\n\\n    # atomic package registration\\n    ui.register()\\n    ops.register()\\n    \\n    # Register undo handler to invalidate cache\\n    bpy.app.handlers.undo_pre.append(_on_undo_pre)\\n    \\n    # bootstrap Rainy's Extensions repository\\n    rainys_repo_bootstrap.register()\\n\\n\\ndef unregister():\\n    # bootstrap unregistration\\n    rainys_repo_bootstrap.unregister()\","
+                },
+                {
+                  "lineNumber": 75358,
+                  "content": "            \"text\": \"    rainys_repo_bootstrap.register()\","
+                },
+                {
+                  "lineNumber": 75379,
+                  "content": "            \"text\": \"    rainys_repo_bootstrap.unregister()\","
+                },
+                {
+                  "lineNumber": 77302,
+                  "content": "        \"relativeWorkspacePath\": \".\\\\rainys_repo_bootstrap.py\","
+                },
+                {
+                  "lineNumber": 85080,
+                  "content": "        \"contents\": \"- Performance optimizations for Smart Select and Clean operations (#3)\\n  - Removed inefficient threading implementation that was causing poor performance\\n  - Implemented short-circuiting logic in Smart Select to exit early when unused items are found\\n  - Fixed UI operators to use cached values instead of recalculating on every draw call\\n  - Note: Further performance improvements are limited by Blender's Python API being single-threaded and requiring sequential access to &amp;#96;bpy.data&amp;#96; collections, making true parallelization impossible without risking data corruption\\n\\n### Internal\\n- Removed incorrect \\\"Remington Creative\\\" copyright notices from newly created files\\n- Updated repository configuration in manifest\\n\\n## [v2.0.3] - 2025-12-17\\n\\n### Fixes\\n- Fixed missing import error in missing file detection\\n\\n## [v2.0.2] - 2025-12-17\\n\\n### Fixes\\n- Atomic now completely ignores all library-linked and override datablocks across all operations, as origin [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 85229,
+                  "content": "            \"text\": \"- Integrated &amp;#96;rainys_repo_bootstrap&amp;#96; into &amp;#96;__init__.py&amp;#96; so the Rainy's Extensions repository is registered on add-on enable and the bootstrap guard resets on disable.\","
+                },
+                {
+                  "lineNumber": 88684,
+                  "content": "        \"contents\": \"name: Create Release\\n\\non:\\n  workflow_dispatch:\\n    inputs:\\n      release_tag:\\n        description: 'Release tag (e.g., v2.0.0)'\\n        required: true\\n        type: string\\n\\njobs:\\n  build:\\n    runs-on: ubuntu-latest\\n    permissions:\\n      contents: write\\n    steps:\\n      - uses: actions/checkout@v4\\n\\n      - name: Get Version\\n        id: get_version\\n        run: |\\n          python - &amp;lt;&amp;lt;'PY'\\n          import os\\n          import tomllib\\n          from pathlib import Path\\n\\n          data = tomllib.loads(Path(\\\"blender_manifest.toml\\\").read_text(encoding=\\\"utf-8\\\"))\\n          version = data[\\\"version\\\"]\\n\\n          with open(os.environ[\\\"GITHUB_OUTPUT\\\"], \\\"a\\\", encoding=\\\"utf-8\\\") as fh:\\n              fh.write(f\\\"version={version}\\\\n\\\")\\n              fh.write(f\\\"zip_name=Atomic_Data_Manager.v{version}.zip\\\\n\\\")\\n          PY\\n\\n      - name: Create ZIP\\n        run: |\\n          ADDON_DIR=addon_files/atomic_data_manager\\n          mkdi [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 88841,
+                  "content": "            \"text\": \"          for file in __init__.py rainys_repo_bootstrap.py blender_manifest.toml README.md CHANGELOG.md LICENSE.txt config.py; do\","
+                },
+                {
+                  "lineNumber": 118117,
+                  "content": "        \"contents\": \"def register():\\n    register_class(ATOMIC_PG_main)\\n    bpy.types.Scene.atomic = bpy.props.PointerProperty(type=ATOMIC_PG_main)\\n\\n    # atomic package registration\\n    ui.register()\\n    ops.register()\\n    \\n    # Register undo handler to invalidate cache\\n    bpy.app.handlers.undo_pre.append(_on_undo_pre)\\n    \\n    # bootstrap Rainy's Extensions repository\\n    rainys_repo_bootstrap.register()\\n\\n\\ndef unregister():\\n    # bootstrap unregistration\\n    rainys_repo_bootstrap.unregister()\","
+                },
+                {
+                  "lineNumber": 118169,
+                  "content": "            \"text\": \"    rainys_repo_bootstrap.register()\","
+                },
+                {
+                  "lineNumber": 118190,
+                  "content": "            \"text\": \"    rainys_repo_bootstrap.unregister()\","
+                },
+                {
+                  "lineNumber": 122033,
+                  "content": "        \"contents\": \"def register():\\n    register_class(ATOMIC_PG_main)\\n    bpy.types.Scene.atomic = bpy.props.PointerProperty(type=ATOMIC_PG_main)\\n\\n    # atomic package registration\\n    ui.register()\\n    ops.register()\\n    \\n    # Register undo handler to invalidate cache\\n    bpy.app.handlers.undo_pre.append(_on_undo_pre)\\n    \\n    # bootstrap Rainy's Extensions repository\\n    rainys_repo_bootstrap.register()\\n\\n\\ndef unregister():\\n    # bootstrap unregistration\\n    rainys_repo_bootstrap.unregister()\","
+                },
+                {
+                  "lineNumber": 122085,
+                  "content": "            \"text\": \"    rainys_repo_bootstrap.register()\","
+                },
+                {
+                  "lineNumber": 122106,
+                  "content": "            \"text\": \"    rainys_repo_bootstrap.unregister()\","
+                },
+                {
+                  "lineNumber": 129508,
+                  "content": "              \"file\": \"rainys_repo_bootstrap.py\","
+                },
+                {
+                  "lineNumber": 135361,
+                  "content": "                  \"content\": \"        \\\"contents\\\": \\\"# Changelog\\\\n\\\\nAll notable changes to this project will be documented in this file.\\\\n\\\\n## [v2.0.0] - Raincloud's first re-release\\\\n\\\\n### Feature\\\\n- Multi-version Blender support (4.2 LTS, 4.5 LTS, and 5.0)\\\\n    - Version detection utilities in &amp;amp;#96;utils/version.py&amp;amp;#96;\\\\n    - API compatibility layer in &amp;amp;#96;utils/compat.py&amp;amp;#96; for handling version differences\\\\n\\\\n### Fixes\\\\n- Blender 5.0 compatibility: Fixed &amp;amp;#96;AttributeError&amp;amp;#96; when accessing scene compositor node tree (changed from &amp;amp;#96;scene.node_tree&amp;amp;#96; to &amp;amp;#96;scene.compositing_node_tree&amp;amp;#96;)\\\\n- Collections assigned to &amp;amp;#96;rigidbody_world.collection&amp;amp;#96; are now correctly detected as used\\\\n\\\\n### Internal\\\\n- GitHub Actions release workflow\\\\n- Integrated &amp;amp;#96;rainys_repo_bootstrap&amp;amp;#96; into &amp;amp;#96;__init__.py&amp;amp;#96; so the Rainy's Extensions repository is registered on add-on enable and the boot [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 145222,
+                  "content": "              \"file\": \"rainys_repo_bootstrap.py\","
+                },
+                {
+                  "lineNumber": 163093,
+                  "content": "        \"relativeWorkspacePath\": \".\\\\rainys_repo_bootstrap.py\","
+                }
+              ]
+            },
+            {
+              "file": "..\\atomic_data_manager\\CHANGELOG.md",
+              "matches": [
+                {
+                  "lineNumber": 140,
+                  "content": "- Integrated &#96;rainys_repo_bootstrap&#96; into &#96;__init__.py&#96; so the Rainy's Extensions repository is registered on add-on enable and the bootstrap guard resets on disable."
+                }
+              ]
+            },
+            {
+              "file": "..\\atomic_data_manager\\__init__.py",
+              "matches": [
+                {
+                  "lineNumber": 32,
+                  "content": "from . import rainys_repo_bootstrap"
+                },
+                {
+                  "lineNumber": 257,
+                  "content": "    rainys_repo_bootstrap.register()"
+                },
+                {
+                  "lineNumber": 262,
+                  "content": "    rainys_repo_bootstrap.unregister()"
+                }
+              ]
+            },
+            {
+              "file": "..\\atomic_data_manager\\.specstory\\history\\2025-12-16_23-24Z-blender-library-packed-files-error.md",
+              "matches": [
+                {
+                  "lineNumber": 2100,
+                  "content": "        \"contents\": \"name: Create Release\\n\\non:\\n  workflow_dispatch:\\n    inputs:\\n      release_tag:\\n        description: 'Release tag (e.g., v2.0.0)'\\n        required: true\\n        type: string\\n\\njobs:\\n  build:\\n    runs-on: ubuntu-latest\\n    permissions:\\n      contents: write\\n    steps:\\n      - uses: actions/checkout@v4\\n\\n      - name: Get Version\\n        id: get_version\\n        run: |\\n          python - &amp;lt;&amp;lt;'PY'\\n          import os\\n          import tomllib\\n          from pathlib import Path\\n\\n          data = tomllib.loads(Path(\\\"blender_manifest.toml\\\").read_text(encoding=\\\"utf-8\\\"))\\n          version = data[\\\"version\\\"]\\n\\n          with open(os.environ[\\\"GITHUB_OUTPUT\\\"], \\\"a\\\", encoding=\\\"utf-8\\\") as fh:\\n              fh.write(f\\\"version={version}\\\\n\\\")\\n              fh.write(f\\\"zip_name=Atomic_Data_Manager.v{version}.zip\\\\n\\\")\\n          PY\\n\\n      - name: Create ZIP\\n        run: |\\n          ADDON_DIR=addon_files/atomic_data_manager\\n          mkdi [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 2257,
+                  "content": "            \"text\": \"          for file in __init__.py rainys_repo_bootstrap.py blender_manifest.toml README.md CHANGELOG.md LICENSE.txt config.py; do\","
+                },
+                {
+                  "lineNumber": 2888,
+                  "content": "        \"contents\": \"# Changelog\\n\\nAll notable changes to this project will be documented in this file.\\n\\n## [v2.0.0] - Raincloud's first re-release\\n\\n### Feature\\n- Multi-version Blender support (4.2 LTS, 4.5 LTS, and 5.0)\\n    - Version detection utilities in &amp;#96;utils/version.py&amp;#96;\\n    - API compatibility layer in &amp;#96;utils/compat.py&amp;#96; for handling version differences\\n\\n### Fixes\\n- Blender 5.0 compatibility: Fixed &amp;#96;AttributeError&amp;#96; when accessing scene compositor node tree (changed from &amp;#96;scene.node_tree&amp;#96; to &amp;#96;scene.compositing_node_tree&amp;#96;)\\n- Collections assigned to &amp;#96;rigidbody_world.collection&amp;#96; are now correctly detected as used\\n\\n### Internal\\n- GitHub Actions release workflow\\n- Integrated &amp;#96;rainys_repo_bootstrap&amp;#96; into &amp;#96;__init__.py&amp;#96; so the Rainy's Extensions repository is registered on add-on enable and the bootstrap guard resets on disable.\\n- Removed \\\"Support Remington Creative\\\" popup and all related functionality\\n     [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 2955,
+                  "content": "            \"text\": \"- Integrated &amp;#96;rainys_repo_bootstrap&amp;#96; into &amp;#96;__init__.py&amp;#96; so the Rainy's Extensions repository is registered on add-on enable and the bootstrap guard resets on disable.\","
+                },
+                {
+                  "lineNumber": 4511,
+                  "content": "        \"relativeWorkspacePath\": \".\\\\rainys_repo_bootstrap.py\","
+                },
+                {
+                  "lineNumber": 7782,
+                  "content": "        \"relativeWorkspacePath\": \".\\\\rainys_repo_bootstrap.py\","
+                },
+                {
+                  "lineNumber": 9142,
+                  "content": "        \"contents\": \"## [v2.0.1] - 2025-12-16\\n\\n### Fixes\\n- Blender 5.0 compatibility: Fixed &amp;#96;AttributeError&amp;#96; when detecting missing library files (Library objects use &amp;#96;packed_file&amp;#96; singular, Image objects use &amp;#96;packed_files&amp;#96; plural in 5.0)\\n- Fixed unregistration errors in Blender 4.5 by using safe unregister functions throughout the codebase\\n\\n## [v2.0.0] - Raincloud's first re-release\\n\\n### Feature\\n- Multi-version Blender support (4.2 LTS, 4.5 LTS, and 5.0)\\n    - Version detection utilities in &amp;#96;utils/version.py&amp;#96;\\n    - API compatibility layer in &amp;#96;utils/compat.py&amp;#96; for handling version differences\\n\\n### Fixes\\n- Blender 5.0 compatibility: Fixed &amp;#96;AttributeError&amp;#96; when accessing scene compositor node tree (changed from &amp;#96;scene.node_tree&amp;#96; to &amp;#96;scene.compositing_node_tree&amp;#96;)\\n- Collections assigned to &amp;#96;rigidbody_world.collection&amp;#96; are now correctly detected as used\\n\\n### Internal\\n- GitHub Actions release workflow\\n [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 9217,
+                  "content": "            \"text\": \"- Integrated &amp;#96;rainys_repo_bootstrap&amp;#96; into &amp;#96;__init__.py&amp;#96; so the Rainy's Extensions repository is registered on add-on enable and the bootstrap guard resets on disable.\","
+                },
+                {
+                  "lineNumber": 10477,
+                  "content": "        \"contents\": \"name: Create Release\\n\\non:\\n  workflow_dispatch:\\n    inputs:\\n      release_tag:\\n        description: 'Release tag (e.g., v2.0.0)'\\n        required: true\\n        type: string\\n\\njobs:\\n  build:\\n    runs-on: ubuntu-latest\\n    permissions:\\n      contents: write\\n    steps:\\n      - uses: actions/checkout@v4\\n\\n      - name: Get Version\\n        id: get_version\\n        run: |\\n          python - &amp;lt;&amp;lt;'PY'\\n          import os\\n          import tomllib\\n          from pathlib import Path\\n\\n          data = tomllib.loads(Path(\\\"blender_manifest.toml\\\").read_text(encoding=\\\"utf-8\\\"))\\n          version = data[\\\"version\\\"]\\n\\n          with open(os.environ[\\\"GITHUB_OUTPUT\\\"], \\\"a\\\", encoding=\\\"utf-8\\\") as fh:\\n              fh.write(f\\\"version={version}\\\\n\\\")\\n              fh.write(f\\\"zip_name=Atomic_Data_Manager.v{version}.zip\\\\n\\\")\\n          PY\\n\\n      - name: Create ZIP\\n        run: |\\n          ADDON_DIR=addon_files/atomic_data_manager\\n          mkdi [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 10634,
+                  "content": "            \"text\": \"          for file in __init__.py rainys_repo_bootstrap.py blender_manifest.toml README.md CHANGELOG.md LICENSE.txt config.py; do\","
+                },
+                {
+                  "lineNumber": 10732,
+                  "content": "        \"relativeWorkspacePath\": \".\\\\rainys_repo_bootstrap.py\","
+                },
+                {
+                  "lineNumber": 11524,
+                  "content": "        \"relativeWorkspacePath\": \".\\\\rainys_repo_bootstrap.py\","
+                },
+                {
+                  "lineNumber": 12589,
+                  "content": "        \"contents\": \"from . import rainys_repo_bootstrap\\n\\n\\n# Atomic Data Manager Properties\\nclass ATOMIC_PG_main(bpy.types.PropertyGroup):\\n    # main panel toggle buttons\\n    collections: bpy.props.BoolProperty(default=False)\\n    images: bpy.props.BoolProperty(default=False)\\n    lights: bpy.props.BoolProperty(default=False)\\n    materials: bpy.props.BoolProperty(default=False)\\n    node_groups: bpy.props.BoolProperty(default=False)\\n    particles: bpy.props.BoolProperty(default=False)\\n    textures: bpy.props.BoolProperty(default=False)\\n    worlds: bpy.props.BoolProperty(default=False)\\n\\n    # inspect data-block search fields\\n    collections_field: bpy.props.StringProperty(\\n        update=inspect_ui.update_inspection)\\n\\n    images_field: bpy.props.StringProperty(\\n        update=inspect_ui.update_inspection)\\n\\n    lights_field: bpy.props.StringProperty(\\n        update=inspect_ui.update_inspection)\\n\\n    materials_field: bpy.props.StringProperty(\\n        update=inspect_ [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 12593,
+                  "content": "            \"text\": \"from . import rainys_repo_bootstrap\","
+                }
+              ]
+            },
+            {
+              "file": "..\\atomic_data_manager\\.specstory\\history\\2025-12-01_20-15Z-blender-integration-error-troubleshooting.md",
+              "matches": [
+                {
+                  "lineNumber": 2759,
+                  "content": "        \"diffString\": \"  from . import ui\\n  from .ui import inspect_ui\\n- from .utils import version\\n  from . import rainys_repo_bootstrap\\n- # updater removed for Blender 4.5 extension format\\n- \\n- # bl_info is required for Blender 4.2 LTS, replaced by blender_manifest.toml in 4.3+\\n- # Conditionally define bl_info only for 4.2 LTS (4.2.0 to 4.2.x)\\n- if version.is_version_4_2():\\n-     bl_info = {\\n-         \\\"name\\\": \\\"Atomic Data Manager\\\",\\n-         \\\"author\\\": \\\"RaincloudTheDragon\\\",\\n-         \\\"version\\\": (2, 0, 0),\\n-         \\\"blender\\\": (4, 2, 0),\\n-         \\\"location\\\": \\\"Properties &amp;gt; Scene\\\",\\n-         \\\"description\\\": \\\"An Intelligent Data Manager for Blender.\\\",\\n-         \\\"warning\\\": \\\"\\\",\\n-         \\\"doc_url\\\": \\\"https://github.com/grantwilk/atomic-data-manager\\\",\\n-         \\\"category\\\": \\\"Utility\\\",\\n-     }\\n  \\n  \","
+                },
+                {
+                  "lineNumber": 2771,
+                  "content": "  \"contentsAfterEdit\": \"\\\"\\\"\\\"\\nCopyright (C) 2019 Remington Creative\\n\\nThis file is part of Atomic Data Manager.\\n\\nAtomic Data Manager is free software: you can redistribute\\nit and/or modify it under the terms of the GNU General Public License\\nas published by the Free Software Foundation, either version 3 of the\\nLicense, or (at your option) any later version.\\n\\nAtomic Data Manager is distributed in the hope that it will\\nbe useful, but WITHOUT ANY WARRANTY; without even the implied warranty\\nof MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\\nGeneral Public License for more details.\\n\\nYou should have received a copy of the GNU General Public License along\\nwith Atomic Data Manager.  If not, see &amp;lt;https://www.gnu.org/licenses/&amp;gt;.\\n\\n---\\n\\nThis file contains Atomic's global properties and handles the\\nregistration for all packages within the add-on.\\n\\n\\\"\\\"\\\"\\n\\n\\n__author__ = \\\"RaincloudTheDragon\\\"\\n__maintainer__ = \\\"RaincloudTheDragon\\\"\\n__version__ = \\\" [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 2920,
+                  "content": "        \"diffString\": \"  - Integrated &amp;#96;rainys_repo_bootstrap&amp;#96; into &amp;#96;__init__.py&amp;#96; so the Rainy's Extensions repository is registered on add-on enable and the bootstrap guard resets on disable.\\r\\n  - Removed \\\"Support Remington Creative\\\" popup and all related functionality\\r\\n- - Removed \\\"Support Remington Creative\\\" popup and all related functionality\\r\\n-     - Removed Support popup preferences\\n+     - Removed Support popup preferences\\r\\n+ - Restored non-support preference helper setters for scriptable configuration updates\","
+                },
+                {
+                  "lineNumber": 2933,
+                  "content": "  \"contentsAfterEdit\": \"# Changelog\\r\\n\\r\\nAll notable changes to this project will be documented in this file.\\r\\n\\r\\n## [v2.0.0] - Raincloud's first re-release\\r\\n\\r\\n### Feature\\r\\n- Multi-version Blender support (4.2 LTS, 4.5 LTS, and 5.0)\\r\\n    - Version detection utilities in &amp;#96;utils/version.py&amp;#96;\\r\\n    - API compatibility layer in &amp;#96;utils/compat.py&amp;#96; for handling version differences\\r\\n- Blender metadata now relies solely on &amp;#96;blender_manifest.toml&amp;#96; (legacy &amp;#96;bl_info&amp;#96; removed)\\r\\n\\r\\n### Fixes\\r\\n- Blender 5.0 compatibility: Fixed &amp;#96;AttributeError&amp;#96; when accessing scene compositor node tree (changed from &amp;#96;scene.node_tree&amp;#96; to &amp;#96;scene.compositing_node_tree&amp;#96;)\\r\\n- Collections assigned to &amp;#96;rigidbody_world.collection&amp;#96; are now correctly detected as used\\r\\n\\r\\n### Internal\\r\\n- GitHub Actions release workflow\\r\\n- Integrated &amp;#96;rainys_repo_bootstrap&amp;#96; into &amp;#96;__init__.py&amp;#96; so the Rainy's Extensions repository is registe [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 3054,
+                  "content": "        \"diffString\": \"      steps:\\r\\n        - uses: actions/checkout@v4\\r\\n-       \\r\\n-       - name: Install dependencies\\r\\n-         run: pip install toml\\r\\n-       \\r\\n+ \\r\\n        - name: Get Version\\r\\n          id: get_version\\r\\n          run: |\\r\\n-           VERSION=$(python -c \\\"import toml; print(toml.load('blender_manifest.toml')['version'])\\\")\\r\\n-           echo \\\"version=$VERSION\\\" &amp;gt;&amp;gt; $GITHUB_OUTPUT\\r\\n-           echo \\\"zip_name=atomic_data_manager.${{ inputs.release_tag }}.zip\\\" &amp;gt;&amp;gt; $GITHUB_OUTPUT\\r\\n-       \\r\\n+           python - &amp;lt;&amp;lt;'PY'\\r\\n+           import os\\r\\n+           import tomllib\\r\\n+           from pathlib import Path\\r\\n+ \\r\\n+           data = tomllib.loads(Path(\\\"blender_manifest.toml\\\").read_text(encoding=\\\"utf-8\\\"))\\r\\n+           version = data[\\\"version\\\"]\\r\\n+ \\r\\n+           with open(os.environ[\\\"GITHUB_OUTPUT\\\"], \\\"a\\\", encoding=\\\"utf-8\\\") as fh:\\r\\n+               fh.write(f\\\"version={version}\\\\n\\\")\\r\\n+                [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 3067,
+                  "content": "  \"contentsAfterEdit\": \"name: Create Release\\r\\n\\r\\non:\\r\\n  workflow_dispatch:\\r\\n    inputs:\\r\\n      release_tag:\\r\\n        description: 'Release tag (e.g., v2.0.0)'\\r\\n        required: true\\r\\n        type: string\\r\\n\\r\\njobs:\\r\\n  build:\\r\\n    runs-on: ubuntu-latest\\r\\n    permissions:\\r\\n      contents: write\\r\\n    steps:\\r\\n      - uses: actions/checkout@v4\\r\\n\\r\\n      - name: Get Version\\r\\n        id: get_version\\r\\n        run: |\\r\\n          python - &amp;lt;&amp;lt;'PY'\\r\\n          import os\\r\\n          import tomllib\\r\\n          from pathlib import Path\\r\\n\\r\\n          data = tomllib.loads(Path(\\\"blender_manifest.toml\\\").read_text(encoding=\\\"utf-8\\\"))\\r\\n          version = data[\\\"version\\\"]\\r\\n\\r\\n          with open(os.environ[\\\"GITHUB_OUTPUT\\\"], \\\"a\\\", encoding=\\\"utf-8\\\") as fh:\\r\\n              fh.write(f\\\"version={version}\\\\n\\\")\\r\\n              fh.write(f\\\"zip_name=Atomic_Data_Manager.v{version}.zip\\\\n\\\")\\r\\n          PY\\r\\n\\r\\n      - name: Create ZIP\\r\\n        ru [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 3119,
+                  "content": "        \"diffString\": \"  - Integrated &amp;#96;rainys_repo_bootstrap&amp;#96; into &amp;#96;__init__.py&amp;#96; so the Rainy's Extensions repository is registered on add-on enable and the bootstrap guard resets on disable.\\r\\n  - Removed \\\"Support Remington Creative\\\" popup and all related functionality\\r\\n- - Removed \\\"Support Remington Creative\\\" popup and all related functionality\\r\\n-     - Removed Support popup preferences\\n+     - Removed Support popup preferences\\r\\n+ - Restored non-support preference helper setters for scriptable configuration updates\","
+                },
+                {
+                  "lineNumber": 3132,
+                  "content": "  \"contentsAfterEdit\": \"# Changelog\\r\\n\\r\\nAll notable changes to this project will be documented in this file.\\r\\n\\r\\n## [v2.0.0] - Raincloud's first re-release\\r\\n\\r\\n### Feature\\r\\n- Multi-version Blender support (4.2 LTS, 4.5 LTS, and 5.0)\\r\\n    - Version detection utilities in &amp;#96;utils/version.py&amp;#96;\\r\\n    - API compatibility layer in &amp;#96;utils/compat.py&amp;#96; for handling version differences\\r\\n- Blender metadata now relies solely on &amp;#96;blender_manifest.toml&amp;#96; (legacy &amp;#96;bl_info&amp;#96; removed)\\r\\n\\r\\n### Fixes\\r\\n- Blender 5.0 compatibility: Fixed &amp;#96;AttributeError&amp;#96; when accessing scene compositor node tree (changed from &amp;#96;scene.node_tree&amp;#96; to &amp;#96;scene.compositing_node_tree&amp;#96;)\\r\\n- Collections assigned to &amp;#96;rigidbody_world.collection&amp;#96; are now correctly detected as used\\r\\n\\r\\n### Internal\\r\\n- GitHub Actions release workflow\\r\\n- Integrated &amp;#96;rainys_repo_bootstrap&amp;#96; into &amp;#96;__init__.py&amp;#96; so the Rainy's Extensions repository is registe [... omitted end of long line]"
+                }
+              ]
+            },
+            {
+              "file": "..\\atomic_data_manager\\.github\\workflows\\release.yml",
+              "matches": [
+                {
+                  "lineNumber": 41,
+                  "content": "          for file in __init__.py rainys_repo_bootstrap.py blender_manifest.toml README.md CHANGELOG.md LICENSE.txt config.py; do"
+                }
+              ]
+            },
+            {
+              "file": "..\\atomic_data_manager\\.specstory\\history\\2025-12-01_20-46Z-setting-up-a-blender-extension-api.md",
+              "matches": [
+                {
+                  "lineNumber": 834,
+                  "content": "I've imported @rainys_repo_bootstrap.py  into this repo, too. To integrate it, we should just be able to register, unregister, and call the bootstrapper in the initpy. We then also need to add a line to include the bootstrapper in the release yml."
+                },
+                {
+                  "lineNumber": 889,
+                  "content": "&lt;details&gt;&lt;summary&gt;Tool use: **read_file** • Read file: rainys_repo_bootstrap.py&lt;/summary&gt;"
+                },
+                {
+                  "lineNumber": 908,
+                  "content": "&lt;summary&gt;Tool use: **grep** • Grep for \"rainys_repo_bootstrap|bootstrap|register|unregister\" in \"E:\\BasedPlayblast\\.specstory\\history\\2025-12-01_21-28Z-verify-and-add-github-repository.md\" • 124 matches&lt;/summary&gt;"
+                },
+                {
+                  "lineNumber": 1069,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;No GitHub workflow changes are needed for the helper itself—the repo bootstrap runs entirely inside Blender when the add-on loads. Our existing packaging/build steps already include every &#96;.py&#96; in the repo, so adding &#96;rainys_repo_bootstrap.py&#96; doesn’t require new CI logic. You’d only touch your workflow YAML if you plan to auto-test this helper in headless Blender jobs (e.g., spinning up Blender, ensuring the repo gets added). If you aren’t adding such tests right now, the current workflow can stay as-is.&#96; | L4019 |"
+                },
+                {
+                  "lineNumber": 1076,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;Updated &#96;.github/workflows/release.yml&#96; so the packaging step copies &#96;rainys_repo_bootstrap.py&#96; into the release ZIP along with &#96;__init__.py&#96;, ensuring the shared helper ships with every build. No linter issues reported.&#96; | L4108 |"
+                },
+                {
+                  "lineNumber": 1087,
+                  "content": "&lt;details&gt;&lt;summary&gt;Tool use: **read_file** • Read file: rainys_repo_bootstrap.py&lt;/summary&gt;"
+                },
+                {
+                  "lineNumber": 1106,
+                  "content": "&lt;summary&gt;Tool use: **grep** • Grep for \"from.*rainys_repo_bootstrap|import.*rainys_repo_bootstrap|rainys_repo_bootstrap\\.(register|unregister|ensure)\" in \"E:\\BasedPlayblast\\.specstory\\history\\2025-12-01_21-28Z-verify-and-add-github-repository.md\" • 2 matches&lt;/summary&gt;"
+                },
+                {
+                  "lineNumber": 1113,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;\"plan\": \"# Rainy’s Repo Bootstrap Helper\\n\\n## Goals\\n- Move the existing &amp;#96;ensure_rainys_extensions_repo&amp;#96; logic out of &amp;#96;__init__.py&amp;#96; into a dedicated helper module (e.g. &amp;#96;rainys_repo_bootstrap.py&amp;#96;).\\n- Add a module-level guard (e.g. &amp;#96;_BOOTSTRAP_DONE&amp;#96;) so multiple add-ons calling the helper in the same Blender session only run the expensive logic once.\\n- Update &amp;#96;__init__.py&amp;#96; to import and call the helper, removing the old inline implementation.\\n\\n## Todos\\n- [ ] Extract current bootstrap logic into &amp;#96;[rainys_repo_bootstrap.py](rainys_repo_bootstrap.py)&amp;#96; with a &amp;#96;_bootstrap_once()&amp;#96; guard.\\n- [ ] Replace inline function in &amp;#96;[__init__.py](__init__.py)&amp;#96; with an import + call to the shared helper.\\n- [ ] (Optional) Document usage in the helper module docstring so other add-ons know it’s safe to import and call.\\n\",&#96; | L3779 |"
+                },
+                {
+                  "lineNumber": 1114,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;\"contentsAfterEdit\": \"import bpy  # type: ignore\\r\\nimport os\\r\\nimport subprocess\\r\\nimport sys\\r\\nimport tempfile\\r\\nimport glob  # Add missing import\\r\\nfrom bpy.props import (StringProperty, BoolProperty, IntProperty, EnumProperty, PointerProperty, FloatProperty)  # type: ignore\\r\\nfrom bpy.types import (Panel, Operator, PropertyGroup, AddonPreferences)  # type: ignore\\r\\nimport time\\r\\n\\r\\nfrom .rainys_repo_bootstrap import ensure_rainys_extensions_repo\\r\\n\\r\\n# Pre-defined items lists for EnumProperties\\r\\nRESOLUTION_MODE_ITEMS = [\\r\\n    ('SCENE', \\\"Use Scene Resolution\\\", \\\"Use the scene's render resolution\\\"),\\r\\n    ('PRESET', \\\"Preset Resolution\\\", \\\"Use a preset resolution\\\"),\\r\\n    ('CUSTOM', \\\"Custom Resolution\\\", \\\"Use a custom resolution\\\")\\r\\n]\\r\\n\\r\\nRESOLUTION_PRESET_ITEMS = [\\r\\n    ('x1920y1080', \\\"1920 x 1080 (16:9) HD1080p\\\", \\\"\\\"),\\r\\n    ('x1280y720', \\\"1280 x 720 [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 1124,
+                  "content": "&lt;summary&gt;Tool use: **grep** • Grep for \"Copy.*rainys_repo_bootstrap|rainys_repo_bootstrap\\.py\" in \"E:\\BasedPlayblast\\.specstory\\history\\2025-12-01_21-28Z-verify-and-add-github-repository.md\" • 9 matches&lt;/summary&gt;"
+                },
+                {
+                  "lineNumber": 1131,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;\"plan\": \"# Rainy’s Repo Bootstrap Helper\\n\\n## Goals\\n- Move the existing &amp;#96;ensure_rainys_extensions_repo&amp;#96; logic out of &amp;#96;__init__.py&amp;#96; into a dedicated helper module (e.g. &amp;#96;rainys_repo_bootstrap.py&amp;#96;).\\n- Add a module-level guard (e.g. &amp;#96;_BOOTSTRAP_DONE&amp;#96;) so multiple add-ons calling the helper in the same Blender session only run the expensive logic once.\\n- Update &amp;#96;__init__.py&amp;#96; to import and call the helper, removing the old inline implementation.\\n\\n## Todos\\n- [ ] Extract current bootstrap logic into &amp;#96;[rainys_repo_bootstrap.py](rainys_repo_bootstrap.py)&amp;#96; with a &amp;#96;_bootstrap_once()&amp;#96; guard.\\n- [ ] Replace inline function in &amp;#96;[__init__.py](__init__.py)&amp;#96; with an import + call to the shared helper.\\n- [ ] (Optional) Document usage in the helper module docstring so other add-ons know it’s safe to import and call.\\n\",&#96; | L3779 |"
+                },
+                {
+                  "lineNumber": 1132,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;- [-] Extract current bootstrap logic into rainys_repo_bootstrap.py with a _bootstrap_once guard.&#96; | L3829 |"
+                },
+                {
+                  "lineNumber": 1133,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;\"relativeWorkspacePath\": \"rainys_repo_bootstrap.py\"&#96; | L3852 |"
+                },
+                {
+                  "lineNumber": 1134,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;\"resultForModel\": \"Success. Updated the following files:\\nM rainys_repo_bootstrap.py\",&#96; | L3881 |"
+                },
+                {
+                  "lineNumber": 1135,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;- [x] Extract current bootstrap logic into rainys_repo_bootstrap.py with a _bootstrap_once guard.&#96; | L3960 |"
+                },
+                {
+                  "lineNumber": 1136,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;- &#96;rainys_repo_bootstrap.py&#96;&#96; | L3981 |"
+                },
+                {
+                  "lineNumber": 1137,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;- Added &#96;rainys_repo_bootstrap.py&#96; with the full repository logic plus a docstring noting it’s safe for multiple add-ons. It keeps a module-level &#96;_BOOTSTRAP_DONE&#96; and skips redundant work in a session.&#96; | L3999 |"
+                },
+                {
+                  "lineNumber": 1138,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;No GitHub workflow changes are needed for the helper itself—the repo bootstrap runs entirely inside Blender when the add-on loads. Our existing packaging/build steps already include every &#96;.py&#96; in the repo, so adding &#96;rainys_repo_bootstrap.py&#96; doesn’t require new CI logic. You’d only touch your workflow YAML if you plan to auto-test this helper in headless Blender jobs (e.g., spinning up Blender, ensuring the repo gets added). If you aren’t adding such tests right now, the current workflow can stay as-is.&#96; | L4019 |"
+                },
+                {
+                  "lineNumber": 1139,
+                  "content": "| &#96;e:/BasedPlayblast/.specstory/history/2025-12-01_21-28Z-verify-and-add-github-repository.md&#96; | &#96;\"diffString\": \"            \\r\\n            # Copy the required files for Blender Extensions\\r\\n-           cp __init__.py README.md blender_manifest.toml addon_files/BasedPlayblast/\\r\\n+           cp __init__.py rainys_repo_bootstrap.py README.md blender_manifest.toml addon_files/BasedPlayblast/\\r\\n            \\r\\n            # Include other necessary files if they exist\\r\",&#96; | L4065 |"
+                },
+                {
+                  "lineNumber": 1202,
+                  "content": "  \"plan\": \"# Integrate Bootstrap and Add Release Workflow\\n\\n## Overview\\nIntegrate &amp;#96;rainys_repo_bootstrap.py&amp;#96; into the addon's registration system and create a GitHub Actions release workflow that packages the addon including the bootstrap module.\\n\\n## Changes Required\\n\\n### 1. Update &amp;#96;__init__.py&amp;#96; to integrate bootstrap\\n- Import &amp;#96;rainys_repo_bootstrap&amp;#96; module\\n- Call &amp;#96;rainys_repo_bootstrap.register()&amp;#96; in the main &amp;#96;register()&amp;#96; function\\n- Call &amp;#96;rainys_repo_bootstrap.unregister()&amp;#96; in the main &amp;#96;unregister()&amp;#96; function\\n\\n**File**: [&amp;#96;__init__.py&amp;#96;](__init__.py)\\n- Add import: &amp;#96;from . import rainys_repo_bootstrap&amp;#96;\\n- In &amp;#96;register()&amp;#96;: Add &amp;#96;rainys_repo_bootstrap.register()&amp;#96; call after existing registrations\\n- In &amp;#96;unregister()&amp;#96;: Add &amp;#96;rainys_repo_bootstrap.unregister()&amp;#96; call before existing unregistrations\\n\\n### 2. Create GitHub Actions release workflow\\n- Create &amp;#96;.github/workflows/r [... omitted end of long line]"
+                },
+                {
+                  "lineNumber": 1206,
+                  "content": "      \"content\": \"Update __init__.py to import and call rainys_repo_bootstrap.register()/unregister()\","
+                },
+                {
+                  "lineNumber": 1211,
+                  "content": "      \"content\": \"Create .github/workflows/release.yml with packaging logic that includes rainys_repo_bootstrap.py\","
+                },
+                {
+                  "lineNumber": 1216,
+                  "content": "  \"overview\": \"Integrate rainys_repo_bootstrap.py into the addon's registration system and create a GitHub Actions workflow for automated releases that includes the bootstrap module.\""
+                },
+                {
+                  "lineNumber": 1238,
+                  "content": "        \"content\": \"Update __init__.py to import and call rainys_repo_bootstrap.register()/unregister()\","
+                },
+                {
+                  "lineNumber": 1243,
+                  "content": "        \"content\": \"Create .github/workflows/release.yml with packaging logic that includes rainys_repo_bootstrap.py\","
+                },
+                {
+                  "lineNumber": 1282,
+                  "content": "- [-] Update __init__.py to import and call rainys_repo_bootstrap.register()/unregister()"
+                },
+                {
+                  "lineNumber": 1283,
+                  "content": "- [ ] Create .github/workflows/release.yml with packaging logic that includes rainys_repo_bootstrap.py"
+                },
+                {
+                  "lineNumber": 1319,
+                  "content": "+ from . import rainys_repo_bootstrap"
+                },
+                {
+                  "lineNumber": 1344,
+                  "content": "+     rainys_repo_bootstrap.register()"
+                },
+                {
+                  "lineNumber": 1368,
+                  "content": "+     rainys_repo_bootstrap.unregister()"
+                },
+                {
+                  "lineNumber": 1383,
+                  "content": "- [x] Update __init__.py to import and call rainys_repo_bootstrap.register()/unregister()"
+                },
+                {
+                  "lineNumber": 1384,
+                  "content": "- [-] Create .github/workflows/release.yml with packaging logic that includes rainys_repo_bootstrap.py"
+                },
+                {
+                  "lineNumber": 1467,
+                  "content": "+           cp __init__.py rainys_repo_bootstrap.py README.md blender_manifest.toml LICENSE.txt config.py addon_files/atomic_data_manager/"
+                },
+                {
+                  "lineNumber": 1517,
+                  "content": "- [x] Update __init__.py to import and call rainys_repo_bootstrap.register()/unregister()"
+                },
+                {
+                  "lineNumber": 1518,
+                  "content": "- [x] Create .github/workflows/release.yml with packaging logic that includes rainys_repo_bootstrap.py"
+                },
+                {
+                  "lineNumber": 1559,
+                  "content": "- Added import: &#96;from . import rainys_repo_bootstrap&#96;"
+                },
+                {
+                  "lineNumber": 1560,
+                  "content": "- Added &#96;rainys_repo_bootstrap.register()&#96; call in the &#96;register()&#96; function (after existing registrations)"
+                },
+                {
+                  "lineNumber": 1561,
+                  "content": "- Added &#96;rainys_repo_bootstrap.unregister()&#96; call in the &#96;unregister()&#96; function (before existing unregistrations)"
+                },
+                {
+                  "lineNumber": 1568,
+                  "content": "    - All core files (&#96;__init__.py&#96;, &#96;rainys_repo_bootstrap.py&#96;, &#96;blender_manifest.toml&#96;, &#96;README.md&#96;, &#96;LICENSE.txt&#96;, &#96;config.py&#96;)"
+                },
+                {
+                  "lineNumber": 1616,
+                  "content": "        \"diffString\": \"- \\n+ # Changelog\\n+ \\n+ All notable changes to this project will be documented in this file.\\n+ \\n+ ## [Unreleased] - 2025-12-02\\n+ \\n+ ### Added\\n+ - GitHub Actions release workflow that packages the add-on (including &amp;#96;rainys_repo_bootstrap.py&amp;#96;, &amp;#96;blender_manifest.toml&amp;#96;, &amp;#96;README.md&amp;#96;, &amp;#96;LICENSE.txt&amp;#96;, &amp;#96;config.py&amp;#96;, and all sub-packages) and uploads the ZIP to a tagged release.\\n+ \\n+ ### Changed\\n+ - Integrated &amp;#96;rainys_repo_bootstrap&amp;#96; into &amp;#96;__init__.py&amp;#96; so the Rainy's Extensions repository is registered on add-on enable and the bootstrap guard resets on disable.\\n+ \","
+                },
+                {
+                  "lineNumber": 1629,
+                  "content": "  \"contentsAfterEdit\": \"# Changelog\\r\\n\\r\\nAll notable changes to this project will be documented in this file.\\r\\n\\r\\n## [Unreleased] - 2025-12-02\\r\\n\\r\\n### Added\\r\\n- GitHub Actions release workflow that packages the add-on (including &amp;#96;rainys_repo_bootstrap.py&amp;#96;, &amp;#96;blender_manifest.toml&amp;#96;, &amp;#96;README.md&amp;#96;, &amp;#96;LICENSE.txt&amp;#96;, &amp;#96;config.py&amp;#96;, and all sub-packages) and uploads the ZIP to a tagged release.\\r\\n\\r\\n### Changed\\r\\n- Integrated &amp;#96;rainys_repo_bootstrap&amp;#96; into &amp;#96;__init__.py&amp;#96; so the Rainy's Extensions repository is registered on add-on enable and the bootstrap guard resets on disable.\\r\\n\\r\\n\""
+                },
+                {
+                  "lineNumber": 1669,
+                  "content": "Added &#96;CHANGELOG.md&#96; to track work-to-date. Current entry (labeled Unreleased, 2025‑12‑02) documents the new GitHub Actions release workflow and the &#96;rainys_repo_bootstrap&#96; integration in &#96;__init__.py&#96;. No linter issues reported for the new file."
+                }
+              ]
+            }
+          ],
+          "totalLines": 98,
+          "totalMatchedLines": 98
+        }
+      }
+    }
+  }
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\atomic_data_manager\__init__.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\__init__.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\atomic_data_manager\rainys_repo_bootstrap.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Comparing implementations. The bootstrap uses `__name__` to find the addon, which may not resolve correctly. Checking and fixing:
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\rainys_repo_bootstrap.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\atomic_data_manager\rainys_repo_bootstrap.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "pattern": "__name__",
+  "path": "D:\\atomic_data_manager\\rainys_repo_bootstrap.py",
+  "caseInsensitive": false
+}
+```
+Result:
+
+```json
+{
+  "success": {
+    "pattern": "__name__",
+    "path": "D:\\atomic_data_manager\\rainys_repo_bootstrap.py",
+    "outputMode": "content",
+    "workspaceResults": {
+      "d:\\sheepit_project_submitter": {
+        "content": {
+          "matches": [
+            {
+              "file": "..\\atomic_data_manager\\rainys_repo_bootstrap.py",
+              "matches": [
+                {
+                  "lineNumber": 29,
+                  "content": "    context_class_name = type(bpy.context).__name__"
+                },
+                {
+                  "lineNumber": 53,
+                  "content": "        addon_entry = prefs.addons.get(__name__)"
+                },
+                {
+                  "lineNumber": 56,
+                  "content": "            addon_entry = prefs.addons[__name__]"
+                }
+              ]
+            }
+          ],
+          "totalLines": 3,
+          "totalMatchedLines": 3
+        }
+      }
+    }
+  }
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+---
+
+
+Integration matches atomic_data_manager. Verifying the bootstrap file is identical and checking for any differences:
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\sheepit_project_submitter\rainys_repo_bootstrap.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: D:\atomic_data_manager\rainys_repo_bootstrap.py</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+Bootstrap integration matches atomic_data_manager. Summary:
+
+## Bootstrap integration verification
+
+**Matches atomic_data_manager pattern:**
+
+1. **Import** (line 13):
+   ```python
+   from . import rainys_repo_bootstrap
+   ```
+   ✓ Same as atomic_data_manager
+
+2. **Registration order** (line 115):
+   ```python
+   # Register operators and UI
+   ops.register()
+   ui.register()
+   
+   # Bootstrap Rainy's Extensions repository
+   rainys_repo_bootstrap.register()
+   ```
+   ✓ Called after ops and UI registration, same as atomic_data_manager
+
+3. **Unregistration order** (line 123):
+   ```python
+   # Bootstrap unregistration
+   rainys_repo_bootstrap.unregister()
+   
+   # Unregister operators and UI
+   ui.unregister()
+   ops.unregister()
+   ```
+   ✓ Called first in unregister(), same as at
+
+---
+
