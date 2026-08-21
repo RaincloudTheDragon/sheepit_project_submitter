@@ -1,70 +1,69 @@
 ## [v0.1.1] - 2026-08-07
 
-### Fixed
+### Fixes
+
 - Pack aborts on dead UNC/network asset paths (skips already-packed datablocks) instead of failing mid-remap with incomplete output.
 - Pack aborts when textures/fonts/media are missing and cannot be packed; asks user to remap or remove them in the source blends.
-
----
 
 ## [v0.1.0] - 2026-07-17
 
 ### Changed
+
 - Rebranded to BasedBlendfilePacker; support target is Blender 4.5 LTS and 5.2 LTS (`blender_version_min` 4.5.0).
 - Asset discovery uses official Blender Asset Tracer: BAT v1 (vendored) on 4.5 LTS, BAT v2 (bundled wheel) on 5.1+/5.2 LTS. Replaces the old `batter` fork.
 - Dependabot tracks BAT v1/v2 pins and GitHub Actions; sync workflow refreshes wheels/vendor.
 
 ### Removed
+
 - Pack Current Blend workflow (SheepIt-era leftover; #4).
 
-### Fixed
-- BAT v2 discovery during Pack as Blend with temp-file override (skip pack-path clustering; handle `Library | None` reference keys).
+### Fixes
 
----
+- BAT v2 discovery during Pack as Blend with temp-file override (skip pack-path clustering; handle `Library | None` reference keys).
 
 ## [v0.0.8] - 2026-03-16
 
-### Fixed
+### Fixes
+
 - Texture copy: dedupe assets by resolved path and use normalized copy_map keys to prevent mixed UNC/drive paths causing missing textures.
 - Pack as Blend: report "Blend file saved" instead of "ZIP file saved".
 - Pack linked: remove missing libraries before pack_libraries() to prevent failures when external blends are unavailable.
 
----
-
 ## [v0.0.7] - 2026-02-12
 
-### Fixed
+### Fixes
+
 - Pack: enable autopack before pack_all; force-load images and run pack_all twice; pack remaining images so textures are embedded (fixes "Failed to create GPU texture from Blender image" when rendering headless).
 - Remap: print actual paths in warnings (not placeholders); normalized path lookup and reverse copy_map so library blend image paths resolve.
 - pack_linked: catch PermissionError on library path checks so inaccessible (e.g. NAS) libs don't abort; remove missing/inaccessible library refs from blend before save.
 
----
-
 ## [v0.0.6] - 2026-01-27
 
-### Fixed
+### Fixes
+
 - Config import in `utils.compat`: use `from .. import config` (config is at addon root)
 - Output panel: no longer write to scene in draw(); Blender 5.0 forbids ID writes in draw; operators already fall back to prefs when output_path empty
 
----
-
 ## [v0.0.5] - 2026-01-30
 
-### Added
+### Features
+
 - Project size limit (GB) in Output panel: per-pack int (0 = no limit, default 2), max 32-bit int
 
-### Fixed
-- USD/cache file paths remapped: `bpy.data.cache_files[].filepath` remapped to packed location; .usd/.usdc/.usda added to copy_map
+### Fixes
 
----
+- USD/cache file paths remapped: `bpy.data.cache_files[].filepath` remapped to packed location; .usd/.usdc/.usda added to copy_map
 
 ## [v0.0.4] - 2026-01-27
 
-### Added
+### Features
+
 - ZIP pack: option to exclude video and audio files from archive
 - Default output path in preferences
 - NLA enable for animation layers (moved to UI panel; only runs on objects with anim layers)
 
-### Fixed
+### Fixes
+
 - Physics/point cache included in ZIP pack (robocopy fallback when Python copy fails on network paths)
 - Cache truncated to frame range (Blender bphys `name_frame_index` naming; safeguard if no files match)
 - External cache paths remapped to relative (cache dirs in copy_map; prefix matching in remap script)
@@ -72,35 +71,33 @@
 - Recursion issue in all three pack ops; send-current-blend path handling
 - Removed packed-suffix behavior
 
----
-
 ## [v0.0.3] - 2026-01-22
 
 ### Changed
+
 - **Removed all website functionality** per SheepIt developer request
 - Operators now save packed files to user-specified locations instead of uploading
 - All authentication and website interaction code has been removed
 - Users must manually upload and configure projects on the SheepIt website
 
----
-
 ## [v0.0.2] - 2026-01-22
 
-### Fixed
+### Fixes
+
 - Fixed Blender extension policy violations related to `batter.asset_usage` module import
 - Removed `sys.path` manipulation to comply with Blender extension policies
 - Changed from top-level module import to submodule import (registered as `ops._asset_usage`)
 - Fixed `dataclasses` `__module__` resolution issue when loading modules via `importlib`
 
 ### Internal
+
 - Refactored `batter.asset_usage` import to use `importlib` without violating extension policies
 - Module now properly registered in `sys.modules` as a submodule before execution
-
----
 
 ## [v0.0.1] - 2026-01-21
 
 ### Features
+
 - Initial release of SheepIt Project Submitter
 - Three submission workflows:
   - Submit Current: Direct submission of current blend file
@@ -121,6 +118,7 @@
 - Works with unsaved blend files (operates on in-memory state)
 
 ### Internal
+
 - Based on asset usage detection from Batter project
 - Modal operator architecture for responsive UI
 - Incremental packing system for large projects
