@@ -38,7 +38,7 @@ class BBP_AddonPreferences(AddonPreferences):
         description="Default directory path where packed files will be saved",
         default="",
         subtype='DIR_PATH',
-        update=lambda self, context: _sync_default_output_path(self, context),
+        update=lambda self, context: _on_default_output_path_update(self, context),
     )
 
     def draw(self, context):
@@ -54,6 +54,17 @@ class BBP_AddonPreferences(AddonPreferences):
         box.label(text="About:", icon='INFO')
         box.label(text="BasedBlendfilePacker packs Blender projects for any render farm or pipeline.")
         box.label(text="Upload or transfer packed output to your target environment manually.")
+
+
+def _on_default_output_path_update(prefs, context):
+    """Sync scene paths and persist reload-safe sidecar."""
+    try:
+        from ..utils.prefs_sidecar import is_restoring, save_sidecar
+        if not is_restoring():
+            save_sidecar(prefs)
+    except Exception:
+        pass
+    _sync_default_output_path(prefs, context)
 
 
 def _sync_default_output_path(prefs, context):
@@ -82,9 +93,20 @@ def register():
             import traceback
             traceback.print_exc()
 
+    try:
+        from ..utils.prefs_sidecar import restore_sidecar_into_prefs
+        restore_sidecar_into_prefs()
+    except Exception as e:
+        print(f"[BBP] Prefs sidecar restore failed: {e}")
+
 
 def unregister():
     """Unregister preferences."""
+    try:
+        from ..utils.prefs_sidecar import save_sidecar
+        save_sidecar()
+    except Exception:
+        pass
     from ..utils import compat
     for cls in reg_list:
         compat.safe_unregister_class(cls)
